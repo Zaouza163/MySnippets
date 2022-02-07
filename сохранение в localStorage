@@ -1,0 +1,36 @@
+сохранение в localStorage:
+
+<button class="rr-item__actions-buy <% if (Params.inCart) { %>in-cart<% } %>" href="<%=Url%>" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].addToCart(this)" data-id="<%= ItemId %>" 							onclick='rrApi.recomAddToCart(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'><% if (Params.inCart) { %>Товар добавлен в корзину<% } else { %>В корзину<% } %></button>
+
+
+
+if (localStorage.getItem('itemsInCart') !== null) {
+	recoms.forEach(function(recom) {
+            if (localStorage.getItem('itemsInCart').indexOf(recom.ItemId) > -1)
+              recom.Params.inCart = true;
+        })
+}
+
+
+
+function addToCart(el) {
+        console.log(localStorage.getItem('itemsInCart'))
+        if (!el.classList.contains('in-cart')) {
+          el.classList.add('in-cart');
+          el.textContent = 'Товар добавлен в корзину';
+
+          if (localStorage.getItem('itemsInCart') !== null) {
+            localStorage.setItem('itemsInCart', localStorage.getItem('itemsInCart') + ', ' + el.getAttribute('data-id'))
+          } else {
+            localStorage.setItem('itemsInCart', el.getAttribute('data-id'))
+          }
+        } else {
+          var items = localStorage.getItem('itemsInCart').split(',');
+          var newItems = items.filter(function(item) {
+            return item.indexOf(el.getAttribute('data-id')) === -1;
+          })
+          localStorage.setItem('itemsInCart', newItems);
+          el.classList.remove('in-cart');
+          el.textContent = 'В корзину';
+        }
+      }

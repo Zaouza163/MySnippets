@@ -1,0 +1,42 @@
+var rrBlock = document.querySelector('.rr-widget-{{data-retailrocket-markup-block}}');
+var bounding = rrBlock.getBoundingClientRect();
+
+function isInViewPort(element) {
+    var bounding = element.getBoundingClientRect();
+    if (
+        bounding.top >= 0 &&
+        bounding.left >= 0 &&
+        bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    ) {
+        return true;
+        } else {
+            return false;
+        }
+    }
+
+window.addEventListener('scroll', function (event) {
+    if (isInViewPort(rrBlock)) {
+        retailrocket.widget.render('rr-widget');
+    }
+}, false);
+
+// другой вариант
+
+var isShow = false;
+
+if (widget.getBoundingClientRect()['top'] < window.innerHeight) {
+    isShow = true;
+    // логика...
+} else {
+    window.addEventListener('scroll', function() {
+        if(!isShow) {
+            var widgetScrollTop = widget.getBoundingClientRect()['top'];
+
+            if (widgetScrollTop < window.innerHeight) {
+                isShow = true;
+                // логика...
+            }
+        }
+    })
+}

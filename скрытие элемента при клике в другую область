@@ -1,0 +1,30 @@
+document.addEventListener('click', function (e) {
+    //var labelBlock = e.closest('.rr-item').querySelectorAll('.rr-item__label-block');
+    //console.log(labelBlock);
+    //var its_menu = target == labelBlock;
+    //console.log(its_menu);
+    
+    console.log(!e.target.classList.contains('rr-item__label-block__list'), !e.target.classList.contains('rr-item__label-block'), !e.target.classList.contains('rr-item__label-arrow'))
+    
+    if (!e.target.classList.contains('rr-item__label-block__list') && !e.target.classList.contains('rr-item__label-block') && !e.target.classList.contains('rr-item__label-arrow')) {
+        var disabledLabel = document.querySelectorAll('.hide');
+        var disabledArrow = document.querySelectorAll('.rr-item__label-arrow');
+        var activeArrow = document.querySelectorAll('.rr-item__label-arrow-down');
+        var activeLabelBlock = document.querySelectorAll('.rr-item__label-block');
+        
+        console.log('click')
+        
+        disabledArrow.forEach(function(el) {
+            el.classList.remove('arrow-disabled');
+        })
+        activeArrow.forEach(function(el) {
+            el.classList.add('arrow-disabled');
+        })
+        disabledLabel.forEach(function(el) {
+            el.classList.add('label-disabled');
+        })
+        activeLabelBlock.forEach(function(el) {
+            el.classList.remove('active-label-block');
+        })
+    }
+})
