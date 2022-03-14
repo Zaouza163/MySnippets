@@ -1,0 +1,17 @@
+{
+  "name": "markups-snippets",
+  "version": "1.0.0",
+  "author": "Alexander Kim",
+  "license": "MIT",
+  "dependencies": {
+    "eslint": "5.3.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jasmine": "^2.10.1",
+    "jasmine": "^3.2.0"
+  },
+  "scripts": {
+    "lint": "eslint \"**/*.js\"",
+    "test": "jasmine **/*.test.js"
+  }
+}

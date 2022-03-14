@@ -1,0 +1,33 @@
+<@
+  const attrs = Object.assign(
+    {
+      leftRightPaddings: 5,
+      align: 'center'
+    },
+    model
+  );
+
+  let leftRightPaddings = '';
+  if (attrs.leftRightPaddings > 0) {
+    leftRightPaddings = `padding-left:${attrs.leftRightPaddings}px;padding-right:${attrs.leftRightPaddings}px;`;
+  }
+@>
+
+<table class="wa" width="auto" align="<@-attrs.align@>">
+  <tr>
+    <@
+
+    if (!attrs.icons || attrs.icons.length == 0) {
+      throw 'Элемент SocialIcons: массив иконок пуст или не существует';
+    }
+
+    attrs.icons.forEach(function(icon, i) {
+    @>
+
+    <td class="social-icon" style="<@-leftRightPaddings @>">
+      <a href="<@-icon.url@>" target="_blank"><img src="<@-icon.img@>" border="0" alt="<@-icon.alt@>" /></a>
+    </td>
+
+    <@ }); @>
+  </tr>
+</table>

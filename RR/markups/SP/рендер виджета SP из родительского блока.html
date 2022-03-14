@@ -1,0 +1,73 @@
+<div
+  style="display: none !important;"
+  class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+  data-algorithm="popular"
+  data-algorithm-argument="0"
+  data-on-pre-render="retailrocket['store{{data-retailrocket-markup-block}}'].preRenderFn(this, data, renderFn)"
+></div>
+
+<script type="text/javascript">
+/**
+ * markUpSP1 {Object} - Объект с информацией о дочернем блоке №1
+ * markUpSP2 {Object} - Объект с информацией о дочернем блоке №2
+ * markUpId {String} - id дочернего блока
+ * SPlogic {Function} - SP логика на основе которой мы определим какой из дочерних маркапов нужно рендерить
+ * needSP {Boolean} - переменная для вывода определенной логике задана как пример, определитель может быть другим, в зависимости от задачи
+ * createDOMelement {Function} - создание DOM элемента для блока SP который будет отрендерен
+ * @id {Param} - id блока который передается в функцию createDOMelement первым аргументов
+ * @widget {Param} - widget родительский контейнер который передается в функцию createDOMelement вторым аргументом
+ */
+
+  (function (retailrocket) {
+    'use strict';
+
+    retailrocket['store{{data-retailrocket-markup-block}}'] = (function () {
+      var markUpSP1 = {
+          markUpId: '5eea053397a5252aa898be6f',
+        },
+        markUpSP2 = {
+          markUpId: '5eea049897a5252aa898be6a',
+        };
+
+
+      function SPlogic(recoms) {
+        return recoms;
+      }
+
+      function preRenderFn(widget, recoms, renderFn) {
+        var needSP;
+
+        if (recoms.length > 0) {
+          needSP = SPlogic(recoms);
+
+          if (needSP) {
+            createDOMelement(markUpSP1.markUpId, widget);
+          } else {
+            createDOMelement(markUpSP2.markUpId, widget);
+          }
+        } else {
+          createDOMelement(markUpSP1.markUpId, widget);
+        }
+      }
+
+      function createDOMelement(id, widget) {
+        var blockId = id || markUpSP1.markUpId;
+
+        var container = document.createElement('div');
+        container.setAttribute('data-retailrocket-markup-block', blockId);
+        widget
+          .closest(
+            '[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]'
+          )
+          .prepend(container);
+        retailrocket.markup.render();
+      }
+
+      return {
+        preRenderFn: preRenderFn,
+      };
+    })();
+
+    retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}');
+  })(retailrocket);
+</script>

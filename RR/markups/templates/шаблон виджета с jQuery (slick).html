@@ -1,0 +1,269 @@
+<style type="text/css">
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"]{height:0;visibility:hidden;position:relative;display:inline-block;width:100%;font-family:inherit;box-sizing:border-box}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"].rr-active{height:auto;visibility:visible}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] *:focus{outline:none;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] a:hover{text-decoration:none;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__title{font-size:18px;font-weight:700;color:#333;text-align:left;margin:15px 0}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-items{width:100%;padding:0;position:relative}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item{padding:5px;float:left;list-style:none;text-align:center;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image{width:100%;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image img{width:auto;height:auto;max-width:100%;max-height:100%;vertical-align:middle;margin:0 auto;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__info{text-decoration:none;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title{font-size:16px;font-weight:400;color:#333;margin:5px 0;text-align:center;height:17px;overflow:hidden;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title:hover{text-decoration:underline}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__old-price{font-size:16px;font-weight:400;color:#333;text-decoration:line-through;display:inline-block}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price{font-size:20px;font-weight:400;color:#333;display:inline-block}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-currency::before{content:'₽ €'}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions{margin-top:5px;width:100%;line-height:27px;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-more{font-size:15px;font-weight:400;color:#0079bf;text-decoration:none;display:inline-block}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-more:hover{text-decoration:underline}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-more::after{content:'Подробнее'}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-buy{font-size:15px;font-weight:700;color:#fff;background-color:#388e3c;padding:5px 10px;text-align:center;display:inline-block;margin-left:20px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-buy:hover{background-color:#489e4c}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-buy::after{content:'Купить'}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .slick-list{position:relative;display:block;overflow:hidden;margin:0;padding:0}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .slick-slide{float:left;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-arrow{position:absolute;top:50%;-webkit-transform:translate(0, -50%);-moz-transform:translate(0, -50%);-ms-transform:translate(0, -50%);-o-transform:translate(0, -50%);transform:translate(0, -50%);width:50px;height:50px;display:block;-webkit-transition:all ease .3s;-moz-transition:all ease .3s;-ms-transition:all ease .3s;-o-transition:all ease .3s;transition:all ease .3s;cursor:pointer;background-size:100%;z-index:1}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .slick-prev{left:0;background:url(https://rrstatic.retailrocket.net/arrow-left.png) 50% no-repeat}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .slick-prev:hover{background:url(https://rrstatic.retailrocket.net/arrow-left-hover.png) 50% no-repeat}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .slick-next{right:0;background:url(https://rrstatic.retailrocket.net/arrow-right.png) 50% no-repeat}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .slick-next:hover{background:url(https://rrstatic.retailrocket.net/arrow-right-hover.png) 50% no-repeat}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .slick-disabled,
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .slick-hidden{display:none!important}
+</style>
+
+<div
+  class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+  data-algorithm="popular"
+  data-algorithm-argument="0"
+  data-template-param-header-text="Тест виджет"
+  data-template-param-number-of-items="8"
+  data-template-param-item-image-width="320"
+  data-template-param-item-image-height="320"
+  data-on-pre-render="retailrocket['store{{data-retailrocket-markup-block}}'].preRenderFn(this, data, renderFn)"
+  data-on-post-render="retailrocket['store{{data-retailrocket-markup-block}}'].postRenderFn(this)"
+  data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+  data-textoverflowhidden="true"
+  data-s="{{data-retailrocket-markup-block}}"
+  >
+</div>
+
+<script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
+  <div class="rr-widget__title">
+    <%=(headerText)%>
+  </div>
+  <div class="rr-items">
+    <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
+    <div class="rr-item">
+      <div class="rr-item__img-block">
+        <a class="rr-item__info" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+          <div class="rr-item__image">
+            <img data-lazy="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both" onerror="retailrocket.widget.hideProduct(this)">
+          </div>
+        </a>
+      </div>
+      <div class="rr-item__name-block">
+        <a class="rr-item__info" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+          <div class="rr-item__brand">
+          </div>
+          <div class="rr-item__title">
+            <% if (Name.length > 26) { %>
+            	<%=Name.substr(0,26)+('...') %>
+            <% } else { %>
+            	<%=Name %>
+            <% } %>
+          </div>
+          <div class="rr-item__description">
+          </div>
+        </a>
+      </div>
+      <div class="rr-item__block-price">
+        <% if (OldPrice > Price) { %>
+          <div class="rr-item__old-price"> <span class="rr-item__old-price-value"><%= retailrocket.widget.formatNumber(OldPrice, '.', ' ', 0) %></span> <span class="rr-item__price-currency"></span> </div>
+          <div class="rr-item__price"> <span class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, '.', ' ', 0) %></span> <span class="rr-item__price-currency"></span> </div>
+        <% } else { %>
+          <div class="rr-item__price"> <span class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, '.', ' ', 0) %></span> <span class="rr-item__price-currency"></span> </div>
+        <% } %>
+      </div>
+      <nav class="rr-item__actions">
+        <a class="rr-item__actions-more" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'></a>
+        <a class="rr-item__actions-buy" href="<%=Url%>" onclick='rrApi.recomAddToCart(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'></a>
+      </nav>
+    </div>
+    <% } %>
+  </div>
+
+  <div class="rr-slider-arrow">
+   <a class="rr-arrow slick-prev"></a>
+   <div class="rr-slider-dots"></div>
+   <a class="rr-arrow slick-next"></a>
+  </div>
+</script>
+
+<script type="text/javascript">
+(function (retailrocket) {
+  'use strict';
+
+  var waitFor = function (exitCondition, callback, force) {
+    var checkCount = 100;
+    var timeout = 1000;
+
+    (function check() {
+      var result = exitCondition();
+      if (result) {
+        callback(result);
+        return;
+      }
+
+      if (checkCount === 0) {
+        if (force) {
+          callback();
+        }
+        return;
+      }
+
+      checkCount -= 1;
+      setTimeout(check, timeout);
+    }());
+  };
+
+  var СarouselModel = function (sliderArguments) {
+    var defaultArguments = {
+      wrapSelector: '.rr-items',
+      carouselSettings: {},
+      onInit: null,
+    };
+    var carousel = {};
+    var carouselSource = 'https://rrstatic.retailrocket.net/widget/plugins/slick/1.9.0/slick.min.js';
+
+    function render(callback) {
+      function carouselInit($) {
+        var settings = $.extend({}, defaultArguments, sliderArguments);
+        var $widget = $(settings.widget);
+
+        if (!('slick' in carousel)) {
+          carousel = $widget.find(settings.wrapSelector)
+            .on('lazyLoadError', function (event, slick, $image) {
+              $image.error();
+            })
+            .on('init', function (event, slick) {
+              $widget.addClass('rr-active');
+              if (typeof settings.onInit === 'function') {
+                settings.onInit(event, slick);
+              }
+            })
+            .slick(settings.carouselSettings);
+
+          $widget.find('img[onerror]').on('error', function () {
+            var $slickItem = $(this).closest('.slick-slide');
+            var $slickSiblings = $slickItem.parent().find('.slick-slide:not(".slick-cloned")');
+            var index = $slickSiblings.index($slickItem);
+
+            if (index !== -1) {
+              carousel.slick('getSlick').removeSlide(index);
+            }
+          });
+
+          if (typeof callback === 'function') {
+            callback(carousel);
+          }
+        }
+      }
+
+      waitFor(
+        function () {
+          return window.jQuery;
+        },
+        function ($) {
+          if ($.fn.slick) {
+            carouselInit($);
+          } else {
+            $.ajaxSetup({ cache: true });
+            $.getScript(carouselSource, function () { carouselInit(window.jQuery); });
+          }
+        }
+      );
+    }
+
+    if (!('widget' in sliderArguments)) {
+      throw new Error('The widget is required');
+    }
+
+    this.render = render;
+  };
+
+  retailrocket['store{{data-retailrocket-markup-block}}'] = (function () {
+    function preRenderFn(widget, recoms, renderFn) {
+      if (recoms.length > 0) {
+        renderFn(recoms);
+      }
+    }
+
+    function postRenderFn(widget) {
+      var carousel = new СarouselModel({
+        widget: widget,
+        carouselSettings: {
+          lazyLoad: 'ondemand',
+          useTransform: true,
+          adaptiveHeight: true,
+          dots: false,
+          arrows: true,
+          TouchMove: true,
+          infinite: true,
+          centerPadding: '0',
+          autoplay: false,
+          speed: 300,
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          swipeToSlide: true,
+          variableWidth: false,
+
+          appendDots: widget.querySelector('.rr-slider-dots'),
+          appendArrows: widget.querySelector('.rr-arrow'),
+          prevArrow: widget.querySelector('.slick-prev'),
+          nextArrow: widget.querySelector('.slick-next'),
+
+          responsive: [
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 4,
+                slidesToScroll: 4,
+              },
+            },
+            {
+              breakpoint: 900,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+              },
+            },
+            {
+              breakpoint: 770,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              },
+            },
+            {
+              breakpoint: 700,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              },
+            },
+          ],
+        },
+      });
+      carousel.render();
+    }
+
+    return {
+      postRenderFn: postRenderFn,
+      preRenderFn: preRenderFn,
+    };
+  }());
+
+  retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}');
+}(retailrocket));
+</script>

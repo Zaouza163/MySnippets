@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": "airbnb-base/legacy",
+  "plugins": [
+    "eslint-plugin-html",
+    "ejs-js"
+  ],
+  "rules": {
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "never"
+    }],
+    "func-names": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "no-underscore-dangle": ["error", { "allow": ["_gaq"] }]
+  }
+}

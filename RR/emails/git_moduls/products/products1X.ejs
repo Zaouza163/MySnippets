@@ -1,0 +1,90 @@
+
+<style>
+</style>
+<@
+  let algorithmArr  = model.algorithm.split(',');
+  if (algorithmArr.length > 1) {
+@>
+{% assign algorithmFill = '' %}
+<@
+    algorithmArr.forEach((products) => {
+@>
+{% assign algorithm = <@-products@> %}
+{% assign algorithmSize = algorithm | size %}
+
+{% if algorithmSize > 0 %}
+  {% assign algorithmFill = algorithmFill | concat: algorithm %}
+{% endif %}
+{% assign algorithmSize = algorithmFill | size %}
+<@
+    });
+  } else {
+@>
+  {% assign algorithmFill = <@-model.algorithm@> %}
+  {% assign algorithmSize = algorithmFill | size %}
+<@ } @>
+{% if algorithmSize > 0 %}
+<table class="products outer">
+  <@ if (model.title) { @>
+  <tr>
+    <td class="products__title" align="center">
+      <p><@-model.title@></p>
+    </td>
+  </tr>
+  <@ } @>
+  {% for item in algorithmFill | limit: <@=model.limit || 6@> %}
+  {% assign OldPrice = item.OldPrice %}
+  <tr>
+    <td class="row products__item">
+      <!--[if (gte mso 9)|(IE)|(RP)]>
+      <table width="100%" cellpadding="0" cellspacing="0"><tr>
+      <![endif]-->
+      <!--[if (gte mso 9)|(IE)|(RP)]><td width="33%" valign="top" align="center" style="width:33%;padding:0;"><![endif]-->
+      <div class="col col-4 col-md-12">
+        <table>
+          <tr>
+            <td class="products__item-image" align="center">
+              <a href="{{item.Url}}" target="_blank">
+                <img src="{{item.PictureUrl}}?width=260&height=260&scale=both" width="180" height="180" alt="{{item.Name}}" />
+              </a>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!--[if (gte mso 9)|(IE)|(RP)]></td><![endif]-->
+      <!--[if (gte mso 9)|(IE)|(RP)]><td width="67%" valign="top" align="center" style="width:67%;padding:0;"><![endif]-->
+      <div class="col col-8 col-md-12">
+        <table class="product__info">
+          <tr>
+            <td class="inner" align="center">
+              <table class="product__wrap">
+                <tr>
+                  <td class="product__title" align="center">
+                    <a href="{{item.Url}}" target="_blank">{{item.Name | truncate: 40}}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="product__price" align="center">
+                    {% if OldPrice > item.Price %}
+                      <span class="product__old-price">{{OldPrice | money}} р.</span>
+                    {% endif %}
+                    <span class="product__current-price">{{item.Price | money}} р.</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="product__cta" align="center">
+                    <a href="{{item.Url}}" target="_blank">Купить</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!--[if (gte mso 9)|(IE)|(RP)]></td><![endif]-->
+      <!--[if (gte mso 9)|(IE)|(RP)]></tr></table><![endif]-->
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}

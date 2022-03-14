@@ -1,0 +1,200 @@
+<script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
+  <div class='retailrocket-item' item-id="<%=ItemId%>"> 
+    <a class="item-info" href="<%=Url%>" onmousedown='retailrocket["store{{data-retailrocket-markup-block}}"].setStatisticsClick(<%=ItemId%>);'
+    ></a>
+  <div>
+</script>
+<script type="text/javascript">
+  (function (retailrocket) {
+    'use strict';
+
+    function getItems(requireProducts, callback) {
+      retailrocket.items.get(
+        retailrocket.api.getPartnerId(),
+        requireProducts,
+        [],
+        callback
+      );
+    }
+
+    function getItemsPopularSp(categoryId, Vendor, callback) {
+      retailrocket.recommendation.forCategories(
+        retailrocket.api.getPartnerId(),
+        categoryId,
+        'popular',
+        {Vendor: Vendor},
+        callback
+      );
+    }
+    
+    function getItemsPopular(callback) {
+      retailrocket.recommendation.forCategories(
+        retailrocket.api.getPartnerId(),
+        [0],
+        'popular',
+        {},
+        callback
+      );
+    }
+
+    function getItemsVCI(callback) {
+      retailrocket.recommendation.forVisitorCategoryInterest(
+        retailrocket.api.getPartnerId(),
+        retailrocket.api.getSessionId(),
+        'popular',
+        {},
+        callback
+      );
+    }
+
+    retailrocket['store{{data-retailrocket-markup-block}}'] = (function () {
+      var spLogicSetting = [
+        {
+          checkTarget: [],
+          productId: [],
+          popularCategory: [],
+          popularVendor: '',
+          recomtrack: '',
+        }
+      ];
+
+      function checkCategoryMatch(recoms) {
+        var indexCheck = -1
+
+        recoms.some(function (product) {
+          return product.CategoryPathsToRoot[0].some(function (currentCategory) {
+            return spLogicSetting.some(function (item, index) {
+              if (item.checkTarget.indexOf(currentCategory) != -1) indexCheck = index;
+
+              return item.checkTarget.indexOf(currentCategory) != -1;
+            });
+          });
+        });
+
+        return indexCheck;
+      }
+
+      function filterDouble(array) {
+        var ids = array.map(function (item) {
+          return item.ItemId;
+        });
+
+        return array.filter(function (item, index) {
+          return ids.indexOf(item.ItemId) === index;
+        });
+      }
+
+      function filterDuplicates(arrayToCheck, arrayBase, paramName) {
+        return arrayToCheck.filter(function (itemToCheck) {
+          return !arrayBase.some(function (arrayBase) {
+            return itemToCheck[paramName] == arrayBase[paramName];
+          });
+        });
+      }
+
+      function checkInterest(itemsPopular, itemsVCI) {
+        var SPbase = {};
+        var VCIrecoms = filterDuplicates(itemsVCI, itemsPopular, 'ItemId');
+
+        if (VCIrecoms.length > 0) {
+          SPbase.hasVI = true;
+          SPbase.recoms = VCIrecoms.slice(0);
+        } else {
+          SPbase.hasVI = false;
+          SPbase.recoms = itemsPopular.slice(0);
+        }
+
+        return SPbase;
+      }
+
+      function filterIsAvailable(recom) {
+        return recom.IsAvailable === true;
+      }
+
+      function filteredPageProduct(recom) {
+        return recom.ItemId != this.ItemId;
+      }
+
+      function filteredSpVendor(recom) {
+        return recom.Vendor === this.popularVendor;
+      }
+
+      function preRenderFn(widget, recoms, renderFn) {
+        getItemsPopular(function (itemsPopular) {
+          getItemsVCI(function (itemsVCI) {
+            var newRecoms = checkInterest(itemsPopular, itemsVCI);
+
+            if (newRecoms.hasVI) {
+              var indexTarget = checkCategoryMatch(newRecoms.recoms);
+
+              if (indexTarget !== -1) {
+                var spTargetSetting = spLogicSetting[indexTarget];
+
+                getItems(spTargetSetting.productId, function (spProducts) {
+                  getItemsPopularSp(spTargetSetting.popularCategory, spTargetSetting.popularVendor, function (spPopular) {
+                    var spRecoms = filterDouble(spProducts.filter(filterIsAvailable).concat(spPopular.filter(filteredSpVendor, spTargetSetting)));
+
+                    if (spRecoms.length) {
+                      spRecoms = filterDouble(spRecoms.concat(recoms).filter(filteredPageProduc, { ItemId: +productPage[0].ItemId }));
+                      recomTrackSetting.check = true;
+                      recomTrackSetting.nameTrack = spTargetSetting.recomtrack;
+                      render(spRecoms, renderFn);
+                    } else {
+                      render(recoms, renderFn);
+                    }
+                  });
+                });
+              } else {
+                render(recoms, renderFn);
+              }
+            } else {
+              render(recoms, renderFn);
+            }
+          });
+        });
+      }
+
+      function render(recoms, renderFn) {
+        if (recoms.length) {
+          setStatisticsRender(recoms);
+          renderFn(recoms);
+        }
+      }
+
+      function postRenderFn(widget) {
+        var products = widget.querySelectorAll('.retailrocket-item');
+        var isShow = false;
+        var itemsId = [];
+        var recoms = [];
+
+        products.forEach(function (item) {
+          var product = {
+            ItemId: item.getAttribute('item-id'),
+          };
+
+          itemsId.push(item.getAttribute('item-id'));
+          recoms.push(product);
+        });
+
+        window.addEventListener('scroll', function () {
+          if (!isShow) {
+            var widgetScrollTop = widget.getBoundingClientRect()['top'];
+
+            if (widgetScrollTop < 600) {
+              setStatisticsShow(itemsId);
+              isShow = true;
+            }
+          }
+        });
+      }
+
+      return {
+        postRenderFn: postRenderFn,
+        preRenderFn: preRenderFn,
+        setStatisticsClick: setStatisticsClick,
+      };
+    }());
+
+    retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}');
+  }(retailrocket));
+</script>

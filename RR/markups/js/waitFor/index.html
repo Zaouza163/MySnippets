@@ -1,0 +1,47 @@
+<script type="text/javascript">
+(function (retailrocket) {
+  'use strict';
+
+  var waitFor = function (exitCondition, callback, force) {
+    var checkCount = 100;
+    var timeout = 1000;
+
+    (function check() {
+      var result = exitCondition();
+      if (result) {
+        callback(result);
+        return;
+      }
+
+      if (checkCount === 0) {
+        if (force) {
+          callback();
+        }
+        return;
+      }
+
+      checkCount -= 1;
+      setTimeout(check, timeout);
+    }());
+  };
+
+  retailrocket['shop{{data-retailrocket-markup-block}}'] = (function () {
+    function postRenderFn(widget) {
+      waitFor(
+        function () {
+          return window.jQuery;
+        },
+        function ($) {
+          var $widget = $(widget);
+        }
+      );
+    }
+
+    return {
+      postRenderFn: postRenderFn,
+    };
+  }());
+
+  retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}');
+}(retailrocket));
+</script>

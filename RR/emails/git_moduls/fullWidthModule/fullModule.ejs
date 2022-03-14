@@ -1,0 +1,62 @@
+</div>
+</center>
+</td>
+</tr>
+</table>
+</div>
+
+<div class="full-width">
+  <table bgcolor="<@=model.bgColor@>" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:<@=model.bgColor@>;">
+    <tr>
+      <td valign="top" align="center">
+        <center class="wrapper">
+          <div class="webkit">
+            <@ if (options.isResponsive === true) { -@>
+            <!--[if (gte mso 9)|(IE)]>
+            <@ } -@>
+            <table width="600" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+            <td align="center" style="padding:0;<@- options.hasShadow ? 'border:1px solid #dcdcdc;' : ''@>">
+            <@ if (options.isResponsive === true) { -@>
+            <![endif]-->
+            <@ } -@>
+
+            <table class="fullModule outer" align="center">
+              <tr>
+                <td class="row">
+                  <p style="font-size:14px;;">Здесь может быть любой контент</p>
+                </td>
+              </tr>
+            </table>
+
+            <@ if (options.isResponsive === true) { -@>
+              <!--[if (gte mso 9)|(IE)]>
+              <@ } -@>
+              </td>
+              </tr>
+              </table>
+              <@ if (options.isResponsive === true) { -@>
+              <![endif]-->
+            <@ } -@>
+          </div>
+        </center>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="full-width">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td valign="top" align="center">
+        <center class="wrapper">
+          <div class="webkit">
+            <@ if (options.isResponsive === true) { -@>
+              <!--[if (gte mso 9)|(IE)]>
+              <@ } -@>
+              <table width="600" bgcolor="<@=model.bgColor@>" align="center" cellpadding="0" cellspacing="0" style="width:<@=options.width@>px;background-color:<@=model.bgColor@>;">
+              <tr>
+              <td style="padding:0;">
+              <@ if (options.isResponsive === true) { -@>
+              <![endif]-->
+            <@ } -@>

@@ -1,0 +1,61 @@
+
+<style type="text/css">
+  .menu__items {
+    padding: 5px 0;
+    border-top:1px solid #cccccc;
+  }
+  .menu__item {
+    padding: 5px;
+  }
+  .menu__item p {
+    font-size: <@=model.fontSize@>px;
+    line-height: normal;
+    color: #000000;
+  }
+  .menu__item p a {
+    color: #000000;
+    text-decoration: none;
+  }
+</style>
+<table class="menu outer">
+  <tr>
+    <td class="row menu__items">
+      <@
+        var summLength = 0;
+        model.items.forEach(function(item) {
+          let widthWord = item.text.split('').length * model.fontSize;
+          summLength = summLength + Math.round(widthWord / 1.87);
+        });
+      @>
+      <!--[if (gte mso 9)|(IE)|(RP)]>
+      <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+      <![endif]-->
+      <@
+        model.items.forEach(function(item) {
+          let widthWord = item.text.split('').length * model.fontSize;
+          let widthColumn = Math.round(widthWord / 1.87) + ((options.width - summLength - (options.outerPaddings * 2)) / model.items.length);
+      @>
+      <!--[if (gte mso 9)|(IE)|(RP)]>
+      <td width="<@=((widthColumn * 100) / options.width).toFixed(2) @>%" valign="middle">
+      <![endif]-->
+      <div class="col col-md-12" style="max-width: <@-widthColumn@>px;">
+        <table width="100%">
+          <tr>
+            <td align="center" nowrap class="menu__item">
+              <p><a href="<@-item.url@>" target="_blank"><@-item.text@></a></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!--[if (gte mso 9)|(IE)|(RP)]>
+      </td>
+      <![endif]-->
+      <@ }); @>
+      <!--[if (gte mso 9)|(IE)|(RP)]>
+      </tr>
+      </table>
+      <![endif]-->
+    </td>
+  </tr>
+</table>

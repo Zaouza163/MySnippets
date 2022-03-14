@@ -1,0 +1,14 @@
+<@
+  const attrs = Object.assign(
+    {
+      fontSize: 40,
+      fontWeight: 'bold',
+      color: options.textColor,
+      text: 'Заголовок',
+      fontFamily: 'Trebuchet MS,-apple-system,system-ui,BlinkMacSystemFont,Arial,sans-serif',
+      letterSpacing: 'normal',
+    },
+    model
+  );
+@>
+<p style="margin:0;font-family:<@=attrs.fontFamily@>;font-weight:<@=attrs.fontWeight@>;font-size:<@=attrs.fontSize@>px;color:<@=attrs.color@>;letter-spacing:<@=attrs.letterSpacing@>;"><@=attrs.text@></p>

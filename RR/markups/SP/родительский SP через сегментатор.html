@@ -1,0 +1,136 @@
+<div
+  style="display: none !important;"
+  class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+  data-algorithm="alternative"
+  data-algorithm-argument="{{data-product-id}}"
+  data-on-pre-render="retailrocket['store{{data-retailrocket-markup-block}}'].preRenderFn(this, data, renderFn)"
+></div>
+
+<!-- алгоритм родительского блока может меняться в зависимости от страницы -->
+<!-- не забывайте менять название магазина store -->
+
+<script type="text/javascript">
+/**
+ * SP {Object} - Объект с блоками SP (дочерними) структуру важно соблюдать
+ * hair {Object} - Объект с информациях о блоке с логикой бренда hair
+ * pampers {Object} - Объект с информациях о блоке с логикой бренда pampers
+ * markUpId {String} - ID дочернего блока SP
+ * 
+ * SPtest - модуль для выбора id целевого маркапа. Если на странице будет больше одного markup-блока - модуль выставит для них одинаковый вендор и id markup'a
+ * identifierSegment {Param} - сегмент, который присваивается каждому пользователю рандомно на backend.
+ * getNeedVendor {Function} - получение случайного вендора, если у пользователя не выявлено интересовов
+ * checkCategoryMatch {Function} - функция для проверки на совпадения категорий для брендов (может отличаться в зависимости от задачи и страницы)
+ * setSegmentForClient {Function} - устанавливает для страницы определенный вендор и markup в зависимости от интересов пользователя
+ *
+ * createDOMelement {Function} - создание DOM элемента для блока SP который будет отрендерен
+ * @id {Param} - id блока который передается в функцию createDOMelement первым аргументов
+ * @widget {Param} - widget родительский контейнер который передается в функцию createDOMelement вторым аргументом
+ *
+ * для передачи параметров в дочерние блоки нужно установить атрибуты контейнеру который будет рендирится
+ * например container.setAttribute('data-product-id', '{{data-product-id}}');
+ */
+
+  (function (retailrocket) {
+    'use strict';
+
+    retailrocket['store{{data-retailrocket-markup-block}}'] = (function () {
+      var SP = {
+        hair: {
+          markUpId: '', // id маркапа с вендором hair
+          categories: [1991851936,2030377012,621678729]
+        },
+        pampers: {
+          markUpId: '', // id маркапа с вендором pampers
+          categories: [16057,15960,16085]
+        }
+      };
+      var categoryPage = '{{data-category-id}}';
+
+      if (!('SP{{data-retailrocket-markup-block}}' in retailrocket.modules)) {
+        retailrocket.setModule('SP{{data-retailrocket-markup-block}}', [], function () {
+          var needVendor = '';
+          var identifierSegment = +retailrocket.segmentator.getVisitorSegment(Object.entries(SP).length);
+
+          function getNeedVendor() {
+            needVendor = Object.entries(SP)[identifierSegment - 1][0];
+          }
+
+          function checkCategoryMatch(productRecoms) {
+            var needMarkupId = false;
+
+            if (needVendor != '') {
+              needMarkupId = SP[needVendor].markUpId;
+            } else {
+              /*
+              Object.values(SP).some(function(markup) {
+                var flag = false;
+                
+                if (markup.categories.indexOf(pageCategory) > -1) {
+                  flag = true;
+                  needMarkupId = markup.markUpId;
+                  needVendor = markup.vendor;
+                } else {
+
+                  getNeedVendor();  // В этом месте функция должна вызываться только если нету интереса
+                }
+                
+                return flag;
+              });
+              */
+            }
+
+            return needMarkupId;
+          }
+
+          function setSegmentForClient() {
+            var needMarkupId = false;
+
+            if (needVendor != '') {
+              needMarkupId = SP[needVendor].markUpId;
+            } else {
+              needMarkupId = Object.entries(SP)[identifierSegment - 1][1].markUpId;
+              getNeedVendor();
+            }
+
+            return needMarkupId;
+          }
+
+          return {
+            setSegmentForClient: setSegmentForClient,
+            checkCategoryMatch: checkCategoryMatch
+          }
+        });
+      }
+
+      function preRenderFn(widget, recoms, renderFn) {
+        var blockId = retailrocket.modules['SP{{data-retailrocket-markup-block}}'].checkCategoryMatch(categoryPage);
+        
+        if (!blockId) {
+          blockId = retailrocket.modules['SP{{data-retailrocket-markup-block}}'].setSegmentForClient();
+        }
+
+        createDOMelement(blockId, widget);
+      }
+
+      function createDOMelement(id, widget) {
+        var blockId = id;
+        var container = document.createElement('div'); // создаем контейнер родительского блока
+
+        container.setAttribute('data-retailrocket-markup-block', blockId); // устанавливаем id дочернего блока
+        container.setAttribute('data-product-id', '{{data-product-id}}'); // устанавливаем нужные атрибуты (в случае карточки товара это id товара)
+        widget
+          .closest(
+          '[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]'
+        )
+          .prepend(container);
+        retailrocket.markup.render(); // ищем родительский блок на странице и рендерим нужный дочерний блок
+      }
+
+      return {
+        preRenderFn: preRenderFn,
+      };
+    })();
+
+    retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}');
+  })(retailrocket);
+</script>

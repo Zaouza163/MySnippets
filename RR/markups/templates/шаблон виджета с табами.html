@@ -1,0 +1,160 @@
+<div class="rr-content">
+  <div class="rr-tab-title">
+    <div class="rr-category-title">
+      <a href="javascript:void(0);" class="rr-tabLink rrPopularPersonal" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].rrWidgetTabs(event, '#rrPopularPersonal')" id="rrDefaultTab">
+        <span>Лидеры продаж</span>
+      </a>
+      <a href="javascript:void(0);" class="rr-tabLink rrSaleByPopular" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].rrWidgetTabs(event, '#rrSaleByPopular')">
+        <span>Распродажа</span>
+      </a>
+      <a href="javascript:void(0);" class="rr-tabLink rrLatest" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].rrWidgetTabs(event, '#rrLatest')">
+        <span>Новинки</span>
+      </a>
+    </div>
+  </div>
+  <div id="rrPopularPersonal" class="rr-tabContent">
+    <div
+          class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+          data-algorithm="popular"
+          data-algorithm-argument="0"
+          data-template-param-header-text="Лидеры продаж"
+          data-template-param-number-of-items="12"
+          data-template-param-item-image-width="156"
+          data-template-param-item-image-height="156"
+          data-on-pre-render="retailrocket['store{{data-retailrocket-markup-block}}'].preRenderFn(this, data, renderFn)"
+          data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+          data-textoverflowhidden="true"
+          data-s="{{data-retailrocket-markup-block}}"
+          >
+    </div>
+  </div>
+  <div id="rrSaleByPopular" class="rr-tabContent">
+    <div
+          class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+          data-algorithm="saleByPopular"
+          data-algorithm-argument="0"
+          data-template-param-header-text="Распродажа"
+          data-template-param-number-of-items="12"
+          data-template-param-item-image-width="156"
+          data-template-param-item-image-height="156"
+          data-on-pre-render="retailrocket['store{{data-retailrocket-markup-block}}'].preRenderFn(this, data, renderFn)"
+          data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+          data-textoverflowhidden="true"
+          data-s="{{data-retailrocket-markup-block}}"
+          >
+    </div>
+  </div>
+  <div id="rrLatest" class="rr-tabContent">
+    <div
+          class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+          data-algorithm="latest"
+          data-algorithm-argument="0"
+          data-template-param-header-text="Новинки"
+          data-template-param-number-of-items="12"
+          data-template-param-item-image-width="156"
+          data-template-param-item-image-height="156"
+          data-on-pre-render="retailrocket['store{{data-retailrocket-markup-block}}'].preRenderFn(this, data, renderFn)"
+          data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+          data-textoverflowhidden="true"
+          data-s="{{data-retailrocket-markup-block}}"
+          >
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-tabContent{height:0;visibility:hidden;}
+div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-tabContent.active{height:auto;visibility:visible;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"]{position:relative;display:inline-block;width:100%;outline:none;font-family:inherit;box-sizing:border-box}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-items{width:100%;padding:0;position:relative}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item{padding:5px;float:left;list-style:none;text-align:center;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image{width:100%;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image img{width:auto;height:auto;max-width:100%;max-height:100%;vertical-align:middle;margin:0 auto;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__info{text-decoration:none;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title{font-size:16px;font-weight:400;color:#333;margin:5px 0;text-align:center;height:25px;overflow:hidden;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title:hover{text-decoration:underline}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__old-price{font-size:16px;font-weight:400;color:#333;text-decoration:line-through;display:inline-block}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price{font-size:20px;font-weight:400;color:#333;display:inline-block}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-currency::before{content:'₽ €'}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions{margin-top:5px;width:100%;line-height:27px;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-more{font-size:15px;font-weight:400;color:#0079bf;text-decoration:none;display:inline-block}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-more:hover{text-decoration:underline}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-more::after{content:'Подробнее'}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-buy{font-size:15px;font-weight:700;color:#fff;background-color:#388e3c;padding:5px 10px;text-align:center;display:inline-block;margin-left:20px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-buy:hover{background-color:#489e4c}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-buy::after{content:'Купить'}
+</style>
+
+<script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
+  <div class="rr-items">
+    <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
+    <div class="rr-item">
+      <div class="rr-item__image">
+        <a href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" })'>
+          <img src="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both" alt="<%=Name %>" onerror="retailrocket.widget.hideProduct(this)">
+        </a>
+      </div>
+      <div class="rr-item__info">
+        <div class="rr-item__brand">
+        </div>
+        <div class="rr-item__title">
+          <a href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" })'>
+            <%=Name %>
+          </a>
+        </div>
+        <div class="rr-item__price-wrapper">
+          <% if ( OldPrice > Price ) { %>
+          <div class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, ",", ".", 0) %> $</div>
+          <div class="rr-item__old-price-value"><%= retailrocket.widget.formatNumber(OldPrice, ",", ".", 0) %> $</div>
+          <% } else { %>
+          <div class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, ",", ".", 0) %> $</div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</script>
+
+<script type="text/javascript">
+(function (retailrocket) {
+  'use strict';
+
+  retailrocket['store{{data-retailrocket-markup-block}}'] = (function () {
+    function rrWidgetTabs(evt, tabName) {
+      var tabcontent = document.querySelectorAll('.rr-tabContent');
+      var tablinks = document.querySelectorAll('.rr-tabLink');
+
+      tabcontent.forEach(function (tabcontentEl) {
+        tabcontentEl.classList.remove('active');
+      });
+
+      tablinks.forEach(function (tablinkEl) {
+        tablinkEl.classList.remove('active');
+      });
+
+      document.querySelector(tabName).classList.add('active');
+      evt.currentTarget.classList.add('active');
+    }
+
+    function preRenderFn(widget, recoms, renderFn) {
+      recoms.forEach(function (recom) {
+      });
+
+      if (recoms.length > 0) {
+        renderFn(recoms);
+      }
+    }
+
+    return {
+      rrWidgetTabs: rrWidgetTabs,
+      preRenderFn: preRenderFn
+    }
+
+  }());
+
+  document.querySelector('#rrDefaultTab').click();
+
+  retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}');
+}(retailrocket));
+</script>

@@ -1,0 +1,225 @@
+/-- Преобразование переменой любого формата в строку --/
+{% comment %}
+- Определение переменной при помощи capture
+- Запись в переменную строкового значения параметра
+{% endcomment %}
+{% capture string %}number{% endcapture %}
+
+/-- Преобразование строки в число --/
+{% comment %}
+- Применение к строке математического фильтра round (округление), меняет тип данных исходного параметра
+{% endcomment %}
+{{ string | round: 0 }}
+
+/-- Замена точки на запятую в цене --/
+{% comment %}
+- Смена типа значения цены с number на string
+- Округление цены до 2-х знаков после запятов
+- Разбивка строки с ценой по разделителю '.' на массив
+- Вывод первого и второго элемента массива через ','
+{% endcomment %}
+
+{% capture price %}{{item.Price | round: 2}}{% endcapture %}
+{% assign arrPrice = price | split: '.' %}
+
+<span>{{arrPrice[0]}},{{arrPrice[1]}}</span>
+
+/-- Дополнение цены нулями до 2-х знаков после разделителя --/
+{{ item.Price | format: "n2" }}
+
+/-- Реверс строки списка значений (например список id товаров) --/
+{% comment %}
+- Разбивка строки по разделителю ',' на массив
+- Реверс массива
+- Вывод склеенной стоки из элементов массива
+{% endcomment %}
+
+{% assign list = '1,2,3,4,5' | split: ',' %}
+{% assign list = list | reverse %}
+{{ list | join: ',' }}
+
+/-- Отмена отправки письма --/
+{{ Message | cancel: 'причина отправки' }}
+
+/-- Падежи для некоторого слова в зависимсоти от цифрового параметра --/
+{% assign number = 1234 %}{% comment %} Пример числа {% endcomment %}
+{% assign word = 'отзывов' %}{% comment %} Значение слова для большинаства цифровых значений параметра {% endcomment %}
+{% capture numberStr %}{{number}}{% endcapture %}{% comment %} Значение цифрового параметра {% endcomment %}
+{% assign numberNum = numberStr | round: 0 %}
+{% assign numberNumMod100 = numberNum | modulo: 100 %}
+{% assign numberNumMod10 = numberNum | modulo: 10 %}
+{% if numberNumMod10 == 1 and numberNumMod100 != 11 %}
+{% assign word = 'отзыв' %}
+{% endif %}
+{% if numberNumMod10 > 1 and 5 > numberNumMod10 %}
+{% assign word = 'отзыва' %}
+{% endif %}
+{% if numberNumMod100 > 11 and 15 > numberNumMod100 %}
+{% assign word = 'отзывов' %}
+{% endif %}
+
+{{number}} {{word}} {% comment %} Вывод результата {% endcomment %}
+
+/-- Подгрузка купона по ID списка купонов --/
+{% assign Coupon = GetNextCouponFrom.ID_списка_купонов %}
+{{Coupon}}{% comment %} Вывод результата {% endcomment %}
+
+/-- Проверка наличия подстроки в строке или элемента в массиве --/
+{% comment %}
+- Если тип данных искомого значения не соответствует строке (число, массив), в начале следует предобразовать его в строку
+{% endcomment %}
+{% if '1,2,3,4,5,6,7' contains '1' %}
+	какая то логика
+{% endif %}
+
+/-- Проверка на уникальность категорий в выдаче --/
+{% comment %}
+- Запуск цикла по выдаче
+- Сбор категорий товаров выдачи в строку
+- Разбивка категорий товаров выдачи на массив
+- Удаление не уникальных элементов массива
+- Проверка количества элементов в уникальном массиве. Если кол-во равно 1, значит все товары в выдачи из одной категории
+{% endcomment %}
+{% for item in recoAlgoritm %}
+  {% capture categoryId %}{{item.CategoryIds[0]}},{% endcapture %}
+  {% assign categories = categories | append: categoryId %}
+  {% assign uniqCategories = categories | split: ',' | uniq %}
+{% endfor %}
+{% assign countCategories = uniqCategories | size %}
+{% if countCategories == 1 %}
+  логика
+{% endif %}
+
+/-- Продвинутая сортировка массива с товарами по параметру --/
+{% comment %}
+false\true на конце - удалять ли элемент, если параметра у товара нет
+{% endcomment %}
+{% assign sortedArray = Articles | advancedsort: 'Params.NameParam', true/false %}
+
+/-- Получение рандомного значения (или нескольких значений) массива (строки) --/
+{% comment %}
+- Преобразование строки в массив
+- Выборка из получившегося массива 3-х рандомных элементов и запись их в новый массив
+- Цикл по новому массиву и вывод элементов
+{% endcomment %}
+{% assign items = '0,1,2,3,4,5,6,7,8,9' | split: ',' %}
+{% assign elements = items | randomelements: 3 %}{% comment %} Кол-во рандомных элементов {% endcomment %}
+{% for element in elements %}
+{{ element }}
+{% endfor %}
+
+/-- Получение значения скидки --/
+{% assign Discount = item.Price | times: 100 | dividedby: item.OldPrice | round: 0 | minus: 100 | times: -1 %}
+
+/-- Сравние дат (запуск логики в зависимости от текущей даты) --/
+{% comment %}
+- Получение значения текущей даты (времени)
+- Приведение строки текущей даты к числу
+- Сравнение с требуемой датой и запуск логики
+{% endcomment %}
+{% assign nowNumberDate = 'now' | date: '%yMMdd' | round: 0 %}{% comment %} %yMMddHH для сравнения еще и времени {% endcomment %}
+{% if '220307' > nowNumberDate %}{% comment %} если 7 марта 2022 года ещё не наступило. 22030715 для сравнения времени (7 марта 2022 15:00 ) {% endcomment %}
+  какая то логика
+{% endif %}
+
+/-- Текущий месяц текстом --/
+{% capture monthCurrent %}{{"now" | date: "MM"}}{% endcapture %}
+{% if monthCurrent == '01' %}{% assign month = "января" %}
+{% elsif monthCurrent == '02' %}{% assign month = "февраля" %}
+{% elsif monthCurrent == '03' %}{% assign month = "марта" %}
+{% elsif monthCurrent == '04' %}{% assign month = "апреля" %}
+{% elsif monthCurrent == '05' %}{% assign month = "мая" %}
+{% elsif monthCurrent == '06' %}{% assign month = "июня" %}
+{% elsif monthCurrent == '07' %}{% assign month = "июля" %}
+{% elsif monthCurrent == '08' %}{% assign month = "августа" %}
+{% elsif monthCurrent == '09' %}{% assign month = "сентября" %}
+{% elsif monthCurrent == '10' %}{% assign month = "октября" %}
+{% elsif monthCurrent == '11' %}{% assign month = "ноября" %}
+{% elsif monthCurrent == '12' %}{% assign month = "декабря" %}{% endif %}
+
+/-- Удаление дублирующих товаров из выдач товаров --/
+{% assign ArticlesIds = '' %} {% comment %} Строка с id товаров в первой выдаче {% endcomment %}
+{% for item in Articles | limit: 6 %}
+{% capture ArticlesId %}{{item.Id}},{% endcapture %}
+{% assign ArticlesIds = ArticlesIds | append: ArticlesId %} {% comment %} Сбор строки с id товаров в первой выдаче {% endcomment %}
+
+{% comment %} Фильтруем вторую выдачу {% endcomment %}
+{% assign limitium = 0 %}
+{% for item in Recoms.Alternatives %}
+{% capture recomsId %}{{item.Id}}{% endcapture %}
+{% if ArticlesIds contains recomsId %}{% comment %}<!--Exclusion condition-->{% endcomment %}
+{% continue %}
+{% endif %}
+{% assign limitium = limitium | plus: 1 %}
+{% if limitium > 6 %}{% comment %}<!--Items limit-->{% endcomment %}
+{% break %}
+{% endif %}
+{% assign mod = limitium | modulo: inrow %}
+
+/-- Фильтр в письме --/
+{% assign iter = 0 %}{% comment %} Счетчик кол-ва товаров (итераций в цикле) {% endcomment %}
+{% assign inrow = 3 %}{% comment %} Количество колонок в выдаче {% endcomment %}
+{% for item in Algorithm %}
+{% if item.Price > 1000 and 2000 < item.Price  %}{% comment %} Условие исключения товара (пропуск не нужного товара){% endcomment %}
+{% continue %}
+{% endif %}
+{% assign iter = iter | plus: 1 %}
+{% if iter > 6 %}{% comment %} Лимит товаров {% endcomment %}
+{% break %}
+{% endif %}
+{% assign mod = iter | modulo: inrow %}
+
+/-- Скрытие неполного ряда товаров --/
+{% comment %}
+- Заводим переменную и присваиваем ей значение установленного лимита в цикле выдачи
+- Вычисляем остаток от деления кол-ва товаров на кол-во колонок
+- Заводим переменную lim и присваиваем ей значение кол-ва товарах в полных рядах
+- В цикле устанавливаем найденное кол-во товаров в полных рядах, если ранее установленный лемит превышает это кол-во.
+{% endcomment %}
+
+{% assign userLimit = limit %}
+{% assign sizeModulo = sizeReco | modulo: inrow %}
+{% assign lim = sizeReco | minus: sizeModulo %}
+{% if userLimit > lim %}
+{% assign userLimit = lim %}
+{% endif %}
+
+{% for item in Algoritm | limit: userLimit %}
+
+/-- Получение рандомного значения из заданного диапазона --/
+{% comment %}
+- значение1 - начальное значение диапазона
+- значение2 - конечное значение диапазона
+{% endcomment %}
+{% assign numbers = '' %}
+{% for i in (значение1..значение2) %}
+{% capture numbers %}{{numbers}},{{i}}{% endcapture %}
+{% endfor %}
+{% assign numbers = numbers | split: ',' %}
+{% assign randomNumber = numbers | randomelements: 1 %}
+
+/-- Перенос длинного слова в наименовании товара --/
+{% comment %}
+- разделяемый_текст - текст, в котором присутствуют слишком длинные слова
+- ограничение_длины_слова - количество символов, после которого в слово вставляется пернос (индивидуален для каждой задачи)
+- modPhrase - переменная, в преобразованным текстом
+{% endcomment %}
+{% assign modPhrase = '' %}
+{% capture dividedText %}разделяемый_текст{% endcapture %}
+{% assign limSym = ограничение_длины_слова %}
+{% assign splitName = dividedText | split: ' ' %}
+{% for word in splitName %}
+  {% if word.size > limSym %}
+    {% assign modSize = word.size | minus: limSym %}
+    {% capture modWord %}{{word | slice: 0, limSym}}&shy;{{word | slice: limSym, modSize}}{% endcapture %}
+  {% else %}
+    {% capture modWord %}{{word}}{% endcapture %}
+  {% endif %}
+  {% if modPhrase.size > 0 %}
+    {% capture modPhrase %}{{modPhrase}} {{modWord}}{% endcapture %}
+  {% else %}
+    {% capture modPhrase %}{{modWord}}{% endcapture %}
+  {% endif %}
+{% endfor %}
+
+{{modPhrase}}
