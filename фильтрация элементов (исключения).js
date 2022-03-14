@@ -1,9 +1,24 @@
-var hideCategory = [3944];
-var sortingRecoms = recoms.filter(function(recom) {
-  return recom.CategoryIds.some(function(item) {
-    return hideCategory.indexOf(item) === -1;
-  })
-})
-if (sortingRecoms.length > 4) {
-  renderFn(sortingRecoms);
-}
+//Если нужно отфильтровать элементы по совпадению
+
+var neededCategories = [3944, 2545, 2233];
+var filteredRecoms = recoms.filter(function(recom) {
+  return recom.CategoryPathsToRoot.some(function(path) {
+    return path.some(function (item) {
+      return neededCategories.indexOf(item) > -1;
+    });
+  });
+});
+
+//Если нужно скрыть ненужные категории
+
+var excludedCategories = [3944, 2545, 2233];
+var filteredRecoms = recoms.filter(function (recom) {
+  return recom.CategoryPathsToRoot.every(function (path) {
+    return path.every(function (item) {
+      return excludedCategories.indexOf(item);
+    });
+  });
+});
+
+
+
