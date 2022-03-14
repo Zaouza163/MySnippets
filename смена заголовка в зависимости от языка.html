@@ -1,0 +1,19 @@
+<%
+var language = '{{data-language}}',
+                currentHeader;
+
+switch(language) {
+  case 'ru':
+    currentHeader = 'С этими товарами покупают';
+    break;
+  case 'lv':
+    currentHeader = 'Kopā ar šo preci pērk';
+    break;
+  default:
+    currentHeader = 'Kopā ar šo preci pērk';
+    break;
+}
+%>
+<div class="rr-widget__title">
+<%=currentHeader%>
+</div>
