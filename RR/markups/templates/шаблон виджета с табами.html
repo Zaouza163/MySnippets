@@ -90,15 +90,15 @@ div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-tab
     <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
     <div class="rr-item">
       <div class="rr-item__image">
-        <a href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" })'>
-          <img src="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both" alt="<%=Name %>" onerror="retailrocket.widget.hideProduct(this)">
+        <a href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" })'>
+          <img src="https://cdnimg.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both" alt="<%=Name %>" onerror="retailrocket.widget.hideProduct(this)">
         </a>
       </div>
       <div class="rr-item__info">
         <div class="rr-item__brand">
         </div>
         <div class="rr-item__title">
-          <a href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" })'>
+          <a href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" })'>
             <%=Name %>
           </a>
         </div>

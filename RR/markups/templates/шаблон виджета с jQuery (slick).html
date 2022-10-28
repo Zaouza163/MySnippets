@@ -56,14 +56,14 @@
     <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
     <div class="rr-item">
       <div class="rr-item__img-block">
-        <a class="rr-item__info" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+        <a class="rr-item__info" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
           <div class="rr-item__image">
-            <img data-lazy="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both" onerror="retailrocket.widget.hideProduct(this)">
+            <img data-lazy="https://cdnimg.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both" onerror="retailrocket.widget.hideProduct(this)">
           </div>
         </a>
       </div>
       <div class="rr-item__name-block">
-        <a class="rr-item__info" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+        <a class="rr-item__info" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
           <div class="rr-item__brand">
           </div>
           <div class="rr-item__title">
@@ -86,7 +86,7 @@
         <% } %>
       </div>
       <nav class="rr-item__actions">
-        <a class="rr-item__actions-more" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'></a>
+        <a class="rr-item__actions-more" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'></a>
         <a class="rr-item__actions-buy" href="<%=Url%>" onclick='rrApi.recomAddToCart(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'></a>
       </nav>
     </div>

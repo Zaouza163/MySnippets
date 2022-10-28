@@ -146,12 +146,12 @@ div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-not
       <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
       <div class="retailrocket-item rr-swiper-slide">
         <div class="retailrocket-item__wrapper">
-          <a class="retailrocket-item__info" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+          <a class="retailrocket-item__info" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
             <div class="retailrocket-item__name">
               <span><%=Name.substr(0,33)+('...') %></span>
             </div>
             <div class="retailrocket-item__image">
-              <img src="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both" onerror="retailrocket.widget.hideProduct(this)">
+              <img src="https://cdnimg.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both" onerror="retailrocket.widget.hideProduct(this)">
             </div>
             <div class="retailrocket-item__price-block">
               <div class="retailrocket-item__price">

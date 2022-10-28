@@ -35,31 +35,16 @@ function getLatestItems(callback) {
 	);
 }
 
-function getViewedItems(callback) {
-	retailrocket.recommendation.forPerson(
-		retailrocket.api.getPartnerId(),
-		retailrocket.api.getSessionId(),
-		"",
-		"viewed",
-		{},
-		callback
-	);
-}
-
 // Пример использования
 
 getPopularItems(function (popularItems) {
 	console.log(popularItems);
-})
+});
 
 getPersonalItems(function (personalItems) {
 	console.log(personalItems);
-})
+});
 
 getLatestItems(function (latestItems) {
 	console.log(latestItems);
-})
-
-getViewedItems(function (viewedItems) {
-	console.log(viewedItems);
-})
+});

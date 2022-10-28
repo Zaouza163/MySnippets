@@ -61,13 +61,13 @@
       <div class="rr-swiper-slide" data-item-id="<%=ItemId%>">
         <div class="rr-item">
           <div class="rr-item__image">
-            <a class="rr-item__info" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
-              <img class="swiper-lazy" data-src="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
+            <a class="rr-item__info" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+              <img class="swiper-lazy" data-src="https://cdnimg.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
               <div class="swiper-lazy-preloader"></div>
             </a>
           </div>
           <div class="rr-item__name-block">
-            <a class="rr-item__info rr-item__title" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+            <a class="rr-item__info rr-item__title" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
               <% if (Name.length > 26) { %>
               <%=Name.substr(0,26)+('...') %>
               <% } else { %>
@@ -82,7 +82,7 @@
             <div class="rr-item__price"> <span class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, '.', ' ', 0) %></span> <span class="rr-item__price-currency"></span> </div>
           </div>
           <div class="rr-item__actions">
-            <a class="rr-item__actions-more" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>Подробнее</a>
+            <a class="rr-item__actions-more" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>Подробнее</a>
             <a class="rr-item__actions-buy" href="<%=Url%>" onclick='rrApi.recomAddToCart(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>Купить</a>
           </div>
         </div>

@@ -160,7 +160,7 @@ false\true на конце - удалять ли элемент, если пар
 {% assign iter = 0 %}{% comment %} Счетчик кол-ва товаров (итераций в цикле) {% endcomment %}
 {% assign inrow = 3 %}{% comment %} Количество колонок в выдаче {% endcomment %}
 {% for item in Algorithm %}
-{% if item.Price > 1000 and 2000 < item.Price  %}{% comment %} Условие исключения товара (пропуск не нужного товара){% endcomment %}
+{% if item.Price > 1000 and 2000 < item.Price %}{% comment %} Условие исключения товара (пропуск не нужного товара){% endcomment %}
 {% continue %}
 {% endif %}
 {% assign iter = iter | plus: 1 %}

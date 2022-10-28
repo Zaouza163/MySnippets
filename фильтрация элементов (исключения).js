@@ -15,7 +15,7 @@ var excludedCategories = [3944, 2545, 2233];
 var filteredRecoms = recoms.filter(function (recom) {
   return recom.CategoryPathsToRoot.every(function (path) {
     return path.every(function (item) {
-      return excludedCategories.indexOf(item);
+      return excludedCategories.indexOf(item) == -1;
     });
   });
 });

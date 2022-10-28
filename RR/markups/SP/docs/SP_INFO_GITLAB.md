@@ -205,7 +205,7 @@ function postRenderFn(widget) {
 
 ```html
 <a class="rr-item__info" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });retailrocket["store{{data-retailrocket-markup-block}}"].setStatisticsClick(<%=ItemId%>);'>
-  <img class="swiper-lazy" data-src="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both"/>
+  <img class="swiper-lazy" data-src="https://cdnimg.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both"/>
   <div class="swiper-lazy-preloader"></div>
 </a>
 ```
@@ -348,7 +348,7 @@ var waitFor = function (exitCondition, callback, force) {
             <a class="rr-item__info" href="<%=Url%>"
               onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });retailrocket["store{{data-retailrocket-markup-block}}"].setStatisticsClick(<%=ItemId%>);'>
               <img class="swiper-lazy"
-                data-src="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
+                data-src="https://cdnimg.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
               <div class="swiper-lazy-preloader"></div>
             </a>
           </div>
@@ -805,7 +805,7 @@ var waitFor = function (exitCondition, callback, force) {
             <a class="rr-item__info" href="<%=Url%>"
               onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });retailrocket["store{{data-retailrocket-markup-block}}"].setStatisticsClick(<%=ItemId%>);'>
               <img class="swiper-lazy"
-                data-src="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
+                data-src="https://cdnimg.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
               <div class="swiper-lazy-preloader"></div>
             </a>
           </div>
@@ -1319,7 +1319,7 @@ var waitFor = function (exitCondition, callback, force) {
             <a class="rr-item__info" href="<%=Url%>"
               onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });retailrocket["store{{data-retailrocket-markup-block}}"].setStatisticsClick(<%=ItemId%>);'>
               <img class="swiper-lazy"
-                data-src="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
+                data-src="https://cdnimg.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
               <div class="swiper-lazy-preloader"></div>
             </a>
           </div>
@@ -1799,7 +1799,7 @@ Cмотрим его categoryIDs.
             <a class="rr-item__info" href="<%=Url%>"
               onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });retailrocket["store{{data-retailrocket-markup-block}}"].setStatisticsClick(<%=ItemId%>);'>
               <img class="swiper-lazy"
-                data-src="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
+                data-src="https://cdnimg.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
               <div class="swiper-lazy-preloader"></div>
             </a>
           </div>
@@ -2336,7 +2336,7 @@ Cмотрим его categoryIDs.
             <a class="rr-item__info" href="<%=Url%>"
               onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });retailrocket["store{{data-retailrocket-markup-block}}"].setStatisticsClick(<%=ItemId%>);'>
               <img class="swiper-lazy"
-                data-src="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
+                data-src="https://cdnimg.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
               <div class="swiper-lazy-preloader"></div>
             </a>
           </div>
@@ -2900,7 +2900,7 @@ Cмотрим его categoryIDs.
             <a class="rr-item__info" href="<%=Url%>"
               onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });retailrocket["store{{data-retailrocket-markup-block}}"].setStatisticsClick(<%=ItemId%>);'>
               <img class="swiper-lazy"
-                data-src="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
+                data-src="https://cdnimg.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
               <div class="swiper-lazy-preloader"></div>
             </a>
           </div>

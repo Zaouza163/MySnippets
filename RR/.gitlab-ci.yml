@@ -1,0 +1,28 @@
+image: node:latest
+
+before_script:
+  - cd markups/js
+
+stages:
+  - test
+  - lint
+
+cache:
+  paths:
+    - node_modules/
+
+test:
+  tags:
+    - docker
+  stage: test
+  script:
+    - npm install
+    - npm run test
+
+lint:
+  tags:
+    - docker
+  stage: lint
+  script:
+    - npm install
+    - npm run lint
