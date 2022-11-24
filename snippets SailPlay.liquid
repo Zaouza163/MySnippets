@@ -1,0 +1,74 @@
+/-- Подставление промокода --/
+{% comment %}
+- Подписка 10% https://i.imgur.com/mrsDsDh.png 
+- Вместо Подписка 10% нужно указывать название группы промокодов, которая заводится а лк.
+- Заведенные группы промокодов есть в разделе персонализация. 
+{% endcomment %}
+$[promo_code["Подписка 10%"]]
+
+/-- Подставление названия партнерского кабинета --/
+{% comment %} 
+- Берется из https://i.imgur.com/hroFFzA.png
+{% endcomment %}
+$[partner_name]
+
+/-- Отписка --/
+{% comment %}
+- Только один вид отписки
+{% endcomment %}
+$[unsubscribe_url]
+
+/-- Алгоритм --/
+{% comment %}
+- [:6] - лимит товаров
+- scenario="AbandonedBasket" - вместо AbandonedBasket подставляется одно из значений, общий список ниже:
+'ProductStillOutOfStock',
+'AbandonedBasketPriceDrop',
+'AbandonedViewPriceDrop',
+'ProductBackInStock',
+'Repurchase',
+'AbandonedView',
+'PriceDrop',
+'PostTransaction',
+'AbandonedBasket',
+'NextBestOffer'
+'AbandonedSearch'
+'AbandonedViewNa'
+'AbandonedCategory', 
+'Reactivation'
+
+'NextBestOfferByEmail'
+'Related'
+'BasicPopular'
+'SaleByPopular'
+{% endcomment %}
+$$[ set inrow = 3 ]
+$$[ set iterator = 0 ]
+$$[ for item in get_scenario_recommendations(scenario="AbandonedBasket")[:6] ]
+$$[ set iterator = iterator + 1 ] {% comment %} Эта часть обязательно для оутлука {% endcomment %}
+$$[ if iterator == 7 ]$[ break ]$$[ endif ]
+$$[ set mod = iterator % inrow ]
+{% comment %} Верстка карточки {% endcomment %}
+$$[ if mod == 0 and loop.last != true ] {% comment %} Закрытие ряда для оутлука {% endcomment %}
+<!--[if (gte mso 9)|(IE)]></tr><tr><![endif]-->
+$$[ endif ]
+$$[ endfor ]
+
+
+<!-- $$[ if item.OldPrice > item.Price ] -->
+<span class="product__old-price" style="color: #737373; font-size: 12px; line-height: 12px; text-decoration: line-through;"> 
+$[item.OldPrice|round]&nbsp;руб. </span>
+<!-- $$[ endif ] -->
+
+<tr>
+	<td class="product__title" align="left" valign="top" style="padding: 0; line-height: normal; height: 32px; text-align: left;" height="32">
+		<a href="{{item.Url}}" target="_blank" style="font-size: 13px; font-weight: bold; line-height: 1; color: #737373; text-decoration: none;" data-link="709622">
+		$$[ for catId in item.CategoryIds ]
+		$$[ if catId == 1456 ]Сумка$$[ endif ]
+		$$[ if catId == 123 ]Обувь мужская$$[ endif ]
+		$$[ if catId == 124 ]Обувь женская$$[ endif ]
+		$$[ if catId == 1493 ]Аксессуар$$[ endif ]
+		$$[ endfor ] $[item.Vendor]
+		</a>
+	</td>
+</tr>
