@@ -44,7 +44,7 @@ $[unsubscribe_url]
 {% endcomment %}
 $$[ set inrow = 3 ]
 $$[ set iterator = 0 ]
-$$[ for item in get_scenario_recommendations(scenario="AbandonedBasket")[:6] ]
+$$[ for item in get_scenario_recommendations(scenario="BasicPopular")[:6] ]
 $$[ set iterator = iterator + 1 ] {% comment %} Эта часть обязательно для оутлука {% endcomment %}
 $$[ if iterator == 7 ]$[ break ]$$[ endif ]
 $$[ set mod = iterator % inrow ]

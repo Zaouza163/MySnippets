@@ -1,0 +1,68 @@
+{% assign vendors = '' %}
+{% assign dateDef = 0 %}
+{% assign yearNow = 'now' | date: 'yyyy' | round: 0 %}
+{% assign monthNow = 'now' | date: 'MM' | round: 0 %}
+{% assign dayNow = 'now' | date: 'dd' | round: 0 %}
+
+{% for item in algorithmFill %}
+  {% assign addedDate = item.Params['addedDate'] | split: ' ' %}
+  {% assign checkDate = addedDate[0] | split: '-'%}
+  {% assign yearCheck = checkDate[0] | date: 'yyyy' | round: 0 %}
+  {% assign monthCheck = checkDate[1] | date: 'MM' | round: 0 %}
+  {% assign dayCheck = checkDate[2] | date: 'dd' | round: 0 %}
+
+  {% assign daysMonth = '31,28,31,30,31,30,31,31,30,31,30,31' | split: ',' %}
+  {% assign allDays = 365 %}
+  {% assign modYear = date1Y | modulo: 4 %}
+  {% if modYear == 0 %}
+  	{% assign daysMonth = '31,29,31,30,31,30,31,31,30,31,30,31' | split: ',' %}
+  	{% assign allDays = 366 %}
+  {% endif %}
+
+  {% assign date1Sum = dayCheck %}
+  {% assign date2Sum = dayNow %}
+
+  {% for item in daysMonth %}
+	{% assign daysMonthNum = item | round: 0 %}
+	{% if monthCheck > forloop.index %}
+      {% assign date1Sum = date1Sum | plus: daysMonthNum %}
+    {% endif %}
+	{% if monthNow > forloop.index %}
+      {% assign date2Sum = date2Sum | plus: daysMonthNum %}
+    {% endif %}
+    {% if monthCheck == forloop.index and monthNow == forloop.index %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% if yearNow > yearCheck %}
+    {% if monthNow > 2 %}
+      {% assign modYear = yearNow | modulo: 4 %}
+      {% if modYear != 0 %}
+        {% assign daysMonth = '31,28,31,30,31,30,31,31,30,31,30,31' | split: ',' %}
+      {% else %}
+        {% assign daysMonth = '31,29,31,30,31,30,31,31,30,31,30,31' | split: ',' %}
+      {% endif %}
+
+      {% assign date2Sum = dayNow %}
+      {% for item in daysMonth %}
+        {% assign daysMonthNum = item | round: 0 %}
+        {% if monthNow > forloop.index %}
+          {% assign date2Sum = date2Sum | plus: daysMonthNum %}
+        {% else %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    {% assign date2Sum = date2Sum | plus: allDays %}
+  {% endif %}
+  
+  {% assign dateDef = date2Sum | minus: date1Sum %}
+
+  {% if dateDef > 7 %}{% continue %}{% endif %}
+
+  {% capture itemVendor %}{{item.Vendor}},{% endcapture %}
+  {% assign vendors = vendors | append: itemVendor %}
+  {% assign uniqVendors = vendors | split: ',' | uniq %}
+{% endfor %}

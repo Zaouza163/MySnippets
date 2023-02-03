@@ -1,0 +1,141 @@
+<style type="text/css">
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"]{height:auto;visibility:visible;position:relative;display:block;width:100%;outline:none;font-family:inherit;box-sizing:border-box;overflow:hidden}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-items{width:100%;position:relative;background-color:transparent;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-item{margin:0 auto;max-width:2360px;position:relative;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__img-block{padding-bottom:0;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image{width:100%;height:auto;outline:none;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image-mob {display:none;}
+  @media all and (max-width:768px) {
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image-desk {display:none;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image-mob {display:block;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image{width:100%;outline:none;}
+  }
+  @media all and (max-width:767px) {
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] {padding: 0 0.625rem;}
+  }
+  </style>
+  
+  <div
+       class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+       data-algorithm="personal" 
+       data-algorithm-type="personal"
+       data-template-param-header-text=""
+       data-template-param-number-of-items="1"
+       data-template-param-item-image-width="320"
+       data-template-param-item-image-height="320"
+       data-on-pre-render="retailrocket.cardinale{{data-retailrocket-markup-block}}.preRenderFn(this, data, renderFn)"
+       data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+       data-textoverflowhidden="true"
+       data-s="{{data-retailrocket-markup-block}}"
+       >
+  </div>
+  
+  <script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
+    <div class="retailrocket-items">
+      <% for (var i = 0 ; i < 1; ++i) with(items[i]) { %>
+      <div class="retailrocket-item">
+        <div class="rr-item__img-block">
+          <a class="rr-item__info" href="<%= categoryUrl %>" onmousedown='rrApi.recomMouseDown(<%= bannerId %>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+            <img class="rr-item__image rr-item__image-desk" src="<%= desktopBannerUrl %>" />
+            <img class="rr-item__image rr-item__image-mob" src="<%= mobileBannerUrl %>" />
+        </a>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </script>
+  
+  <script type="text/javascript">
+    (function (retailrocket) {
+      'use strict';
+      
+      function findCommonCategory(arr1, arr2) {
+        let obj = {};
+  
+        for (var i = 0; i < arr1.length; i++) {
+          if (!obj[arr1[i]]) {
+            var element = arr1[i];
+            obj[element] = true;
+          }
+        }
+  
+        for (var j = 0; j < arr2.length ; j++) {
+          if (obj[arr2[j]]) {
+            return true;
+          }
+        }
+        return false;
+      }
+  
+      retailrocket['cardinale{{data-retailrocket-markup-block}}'] = (function() {
+        var bannerRecoms = [
+          {
+            categoryId: [755802924],
+            desktopBannerUrl: 'https://gallery.retailrocket.net/5d8c1d7297a5252364280b1f/Dynamic-Banner-Cardinale-casual.jpg',
+            mobileBannerUrl:'https://gallery.retailrocket.net/5d8c1d7297a5252364280b1f/Dynamic-Banner-Cardinale-casual.jpg',
+            categoryUrl: 'https://www.cardinale.cl/zapatos/casual',
+            bannerId: '1',
+          },
+          {
+            categoryId: [616290888],
+            desktopBannerUrl: 'https://gallery.retailrocket.net/5d8c1d7297a5252364280b1f/Dynamic-Banner-Cardinale-formal.jpg',
+            mobileBannerUrl:'https://gallery.retailrocket.net/5d8c1d7297a5252364280b1f/Dynamic-Banner-Cardinale-formal.jpg',
+            categoryUrl: 'https://www.cardinale.cl/zapatos/formal',
+            bannerId: '2',
+          },
+          {
+            categoryId: [1085241228],
+            desktopBannerUrl: 'https://gallery.retailrocket.net/5d8c1d7297a5252364280b1f/Dynamic-Banner-Cardinale-cerano.jpg',
+            mobileBannerUrl:'https://gallery.retailrocket.net/5d8c1d7297a5252364280b1f/Dynamic-Banner-Cardinale-cerano.jpg',
+            categoryUrl: 'https://www.cardinale.cl/primavera-verano',
+            bannerId: '3',
+          },
+          {
+            categoryId: [946896729],
+            desktopBannerUrl: 'https://gallery.retailrocket.net/5d8c1d7297a5252364280b1f/Dynamic-Banner-Cardinale-zapatillas.jpg',
+            mobileBannerUrl:'https://gallery.retailrocket.net/5d8c1d7297a5252364280b1f/Dynamic-Banner-Cardinale-zapatillas.jpg',
+            categoryUrl: 'https://www.cardinale.cl/zapatillas',
+            bannerId: '4',
+          },
+        ];
+        
+        var defaultBannerRecoms = [
+          {
+            categoryId: [],
+            desktopBannerUrl: 'https://gallery.retailrocket.net/5d8c1d7297a5252364280b1f/Dynamic-Banner-Cardinale-botines.jpg',
+            mobileBannerUrl:'https://gallery.retailrocket.net/5d8c1d7297a5252364280b1f/Dynamic-Banner-Cardinale-botines.jpg',
+            categoryUrl: 'https://www.cardinale.cl/accesorios',
+            bannerId: '100',
+          },
+        ]
+  
+        function preRenderFn(widget, recoms, renderFn) {
+          var isBannerSelected = false;
+          var bannerToShow = [];
+  
+          recoms.forEach(function(recom) {
+            if (!isBannerSelected) {
+              bannerRecoms.forEach(function(bannerItem) {
+                if (findCommonCategory(bannerItem.categoryId, recom.CategoryIds)) {
+                  isBannerSelected = true;
+                  bannerToShow.push(bannerItem);
+                }
+              });
+            }
+          });
+  
+          if (bannerToShow.length) {
+            renderFn(bannerToShow);
+          } else {
+            renderFn(defaultBannerRecoms);
+          }
+        }
+  
+        return {
+          preRenderFn: preRenderFn,
+        };
+      }());
+  
+      retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}');
+      }(retailrocket));
+  </script>
