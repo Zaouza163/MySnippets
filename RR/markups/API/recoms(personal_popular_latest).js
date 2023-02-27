@@ -15,6 +15,16 @@ function getPopularItems(callback) {
 	);
 }
 
+function getLatestItems(callback) {
+  retailrocket.recommendation.forCategories(
+    retailrocket.api.getPartnerId(),
+    [0], // categoryIds
+    'latest',
+    {}, // params
+    callback
+  );
+}
+
 function getPersonalItems(callback) {
 	retailrocket.recommendation.forCategories(
 		retailrocket.api.getPartnerId(),
@@ -25,11 +35,23 @@ function getPersonalItems(callback) {
 	);
 }
 
-function getLatestItems(callback) {
-	retailrocket.recommendation.forCategories(
+//Запрос персональных рекомендаций категорий по упрощенной интеграции
+function getPersonalItemsFromCat(categoryName, callback) {
+  retailrocket.recommendation.forPerson(
+    retailrocket.api.getPartnerId(),
+    retailrocket.api.getSessionId(),
+    null,
+    'compositeForCategory',
+    {'categoryPaths':[categoryName]},
+    callback
+  );
+}
+
+//получение id категорий интересных пользователю
+function getCategoryInterest(callback) {
+  retailrocket.recommendation.forInterestedCategories(
 		retailrocket.api.getPartnerId(),
-		[0], // categoryIds
-		'latest',
+    retailrocket.api.getSessionId(),
 		{}, // params
 		callback
 	);

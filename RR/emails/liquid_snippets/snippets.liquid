@@ -117,8 +117,13 @@ false\true на конце - удалять ли элемент, если пар
 - Приведение строки текущей даты к числу
 - Сравнение с требуемой датой и запуск логики
 {% endcomment %}
-{% assign nowNumberDate = 'now' | date: '%yMMdd' | round: 0 %}{% comment %} %yMMddHH для сравнения еще и времени {% endcomment %}
-{% if '220307' > nowNumberDate %}{% comment %} если 7 марта 2022 года ещё не наступило. 22030715 для сравнения времени (7 марта 2022 15:00 ) {% endcomment %}
+{% comment %}
+%yMMddHH для сравнения еще и времени
+nowNumberDate > 22051507 логика начнется 15 мая 2022 года. 22051507 для сравнения времени (15 мая 2022 7:00)
+22053007 > nowNumberDate логика закончится 30 мая 2022 года. 22053007 для сравнения времени (30 мая 2022 7:00)
+{% endcomment %}
+{% assign nowNumberDate = 'now' | date: '%yMMdd' | round: 0 %}
+{% if nowNumberDate >= 220515 and 220530 > nowNumberDate %}
   какая то логика
 {% endif %}
 
@@ -135,7 +140,8 @@ false\true на конце - удалять ли элемент, если пар
 {% elsif monthCurrent == '09' %}{% assign month = "сентября" %}
 {% elsif monthCurrent == '10' %}{% assign month = "октября" %}
 {% elsif monthCurrent == '11' %}{% assign month = "ноября" %}
-{% elsif monthCurrent == '12' %}{% assign month = "декабря" %}{% endif %}
+{% elsif monthCurrent == '12' %}{% assign month = "декабря" %}
+{% endif %}
 
 /-- Удаление дублирующих товаров из выдач товаров --/
 {% assign ArticlesIds = '' %} {% comment %} Строка с id товаров в первой выдаче {% endcomment %}
@@ -160,7 +166,7 @@ false\true на конце - удалять ли элемент, если пар
 {% assign iter = 0 %}{% comment %} Счетчик кол-ва товаров (итераций в цикле) {% endcomment %}
 {% assign inrow = 3 %}{% comment %} Количество колонок в выдаче {% endcomment %}
 {% for item in Algorithm %}
-{% if item.Price > 1000 and 2000 < item.Price %}{% comment %} Условие исключения товара (пропуск не нужного товара){% endcomment %}
+{% if item.Price > 1000 and 2000 < item.Price  %}{% comment %} Условие исключения товара (пропуск не нужного товара){% endcomment %}
 {% continue %}
 {% endif %}
 {% assign iter = iter | plus: 1 %}

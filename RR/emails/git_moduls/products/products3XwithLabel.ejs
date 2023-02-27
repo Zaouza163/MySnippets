@@ -17,27 +17,32 @@
     text-align: center;
   }
 </style>
+
 <@
   let algorithmArr  = model.algorithm.split(',');
   if (algorithmArr.length > 1) {
 @>
 {% assign algorithmFill = '' %}
 <@
-    algorithmArr.forEach((products) => {
+  algorithmArr.forEach(function(products){
 @>
-{% assign algorithm = <@-products@> %}
-{% assign algorithmSize = algorithm | size %}
+{% assign algorithm = '' %}
+{% assign algorithmSize = <@-products@> | size %}
 
 {% if algorithmSize > 0 %}
+{% assign algorithm = <@-products@> %}
   {% assign algorithmFill = algorithmFill | concat: algorithm %}
 {% endif %}
 {% assign algorithmSize = algorithmFill | size %}
-<@
-    });
-  } else {
+<@ 
+  }); } else { 
 @>
-  {% assign algorithmFill = <@-model.algorithm@> %}
-  {% assign algorithmSize = algorithmFill | size %}
+  {% assign algorithmFill = '' %}
+  {% assign algorithmSize = <@-model.algorithm@> | size %}
+
+  {% if algorithmSize > 0 %}
+    {% assign algorithmFill = <@-model.algorithm@> %}
+  {% endif %}
 <@ } @>
 {% if algorithmSize > 0 %}
 <table class="products outer">

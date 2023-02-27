@@ -1,5 +1,5 @@
 <style type="text/css">
-.rr-widget[data-s="{{data-retailrocket-markup-block}}"]{height:0;visibility:hidden;overflow:hidden;position:relative;display:block;width:100%;min-width:0;flex-grow:1;font-family:inherit;box-sizing:border-box}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"]{height:0;visibility:hidden;overflow:hidden;position:relative;display:block;width:100%;font-family:inherit;box-sizing:border-box}
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"].rr-active{height:auto;visibility:visible;overflow:visible;}
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"] *{outline:none;}
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__title{font-size:18px;font-weight:700;color:#023f5d;text-align:left;}
@@ -36,19 +36,18 @@
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-pagination-bullets.swiper-pagination-lock{display:none;}
 </style>
 
-<div
-  class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
-  data-algorithm="popular"
-  data-algorithm-argument="0"
-  data-template-param-header-text="retailrocket"
-  data-template-param-number-of-items="8"
-  data-template-param-item-image-width="320"
-  data-template-param-item-image-height="320"
-  data-on-pre-render="retailrocket['store{{data-retailrocket-markup-block}}'].preRenderFn(this, data, renderFn)"
-  data-on-post-render="retailrocket['store{{data-retailrocket-markup-block}}'].postRenderFn(this)"
-  data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
-  data-s="{{data-retailrocket-markup-block}}"
->
+<div class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+     data-algorithm="popular"
+     data-algorithm-argument="0"
+     data-template-param-header-text="Спонсируемые товары"
+     data-template-param-number-of-items="10"
+     data-on-pre-render="retailrocket.store{{data-retailrocket-markup-block}}.preRenderFn(this, data, renderFn)"
+     data-on-post-render="retailrocket.store{{data-retailrocket-markup-block}}.postRenderFn(this)"
+     data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+     data-textoverflowhidden="true"
+     data-retailrocket-morebutton="false"
+     data-retailrocket-buybutton="false"
+     data-s="{{data-retailrocket-markup-block}}">
 </div>
 
 <script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
@@ -58,16 +57,16 @@
   <div class="rr-items rr-swiper-container">
     <div class="rr-swiper-wrapper">
       <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
-      <div class="rr-swiper-slide" data-item-id="<%=ItemId%>">
-        <div class="rr-item">
+      <div class="rr-swiper-slide" data-id="<%=ItemId%>">
+        <div class="rr-item" data-id="<%=ItemId%>" data-is-sp="<%= Params.isSp %>">
           <div class="rr-item__image">
-            <a class="rr-item__info" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
-              <img class="swiper-lazy" data-src="https://cdnimg.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
+            <a class="rr-item__info" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+              <img class="swiper-lazy" data-src="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
               <div class="swiper-lazy-preloader"></div>
             </a>
           </div>
           <div class="rr-item__name-block">
-            <a class="rr-item__info rr-item__title" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+            <a class="rr-item__info rr-item__title" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
               <% if (Name.length > 26) { %>
               <%=Name.substr(0,26)+('...') %>
               <% } else { %>
@@ -82,7 +81,7 @@
             <div class="rr-item__price"> <span class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, '.', ' ', 0) %></span> <span class="rr-item__price-currency"></span> </div>
           </div>
           <div class="rr-item__actions">
-            <a class="rr-item__actions-more" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>Подробнее</a>
+            <a class="rr-item__actions-more" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>Подробнее</a>
             <a class="rr-item__actions-buy" href="<%=Url%>" onclick='rrApi.recomAddToCart(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>Купить</a>
           </div>
         </div>
@@ -101,7 +100,7 @@
 <script type="text/javascript">
   (function (retailrocket) {
     'use strict';
-
+    
     var SwiperModel = function (setting) {
       var $widget = setting.widget;
       var swiperSeector = '.rr-swiper-container';
@@ -182,13 +181,165 @@
     };
 
     retailrocket['store{{data-retailrocket-markup-block}}'] = (function () {
-      function preRenderFn(widget, recoms, renderFn) {
-        if (recoms.length > 0) {
-          renderFn(recoms);
+      var recomTrackSetting = {
+        nameTrack: '',
+        abSegment: '',
+        check: false,
+        listTrack: function()
+        {
+          return [this.nameTrack, this.nameTrack + 'Main']; //... Main заменить на страницу, где установлен блок (Card, Cart, Search, EmptySearch и т.д.)
+        },
+      };
+      var impressionContentId = null;
+
+      function setStatisticsRender(recoms) {
+        if (recomTrackSetting.check) {
+          var itemsId = recoms.map(function(product) { return product.ItemId });
+
+          recomTrackSetting.listTrack().forEach(function(track) {
+            rrApiOnReady.push(function() {
+              rrApi.recomTrack(
+                '{{data-retailrocket-markup-block}}',
+                0,
+                [itemsId],
+                {
+                  eventType: 'blockRender',
+                  abtest: recomTrackSetting.abSegment,
+                  algorithm: track
+                }
+              );
+            });
+          });
         }
       }
 
+      function setStatisticsShow(recomIds) {
+        if (recomTrackSetting.check) {
+          recomTrackSetting.listTrack().forEach(function(track) {
+            rrApiOnReady.push(function() {
+              rrApi.recomTrack(
+                '{{data-retailrocket-markup-block}}',
+                0,
+                [recomIds],
+                {
+                  eventType: 'blockView',
+                  abtest: recomTrackSetting.abSegment,
+                  algorithm: track
+                }
+              );
+            });
+          });
+          
+          if (impressionContentId !== null) {
+            rrApi.impressionContentViewed({
+              impressionContentId: impressionContentId,
+              onSuccessCallback: function() {}
+            });
+          }
+        }
+      }
+
+      function setStatisticsClick(itemId) {
+        if (recomTrackSetting.check) {
+          recomTrackSetting.listTrack().forEach(function(track) {
+            rrApiOnReady.push(function() {
+              rrApi.recomTrack(
+                '{{data-retailrocket-markup-block}}',
+                0,
+                [],
+                {
+                  eventType: 'blockClick',
+                  clickedItem: itemId,
+                  abtest: recomTrackSetting.abSegment,
+                  algorithm: track
+                }
+              );
+            });
+          });
+          
+          if (impressionContentId !== null) {
+            rrApi.impressionContentClicked({
+              impressionContentId: impressionContentId,
+              onSuccessCallback: function() {}
+            });
+          }
+        }
+      }
+
+      function getParsedResponse(response) {
+        var responseMatch = response.match(/{[^}]+}/).toString();
+        var responseParsed = JSON.parse(responseMatch.replace(/([a-zA-Z]+):/g,'"$1":'));
+
+        return responseParsed;
+      }
+
+      function getRandomValue(min, max) {
+        return Math.round(Math.random() * (max - min) + min);
+      }
+
+      function getItems(requireProducts, callback) {
+        retailrocket.items.get(
+          retailrocket.api.getPartnerId(),
+          requireProducts,
+          ['{{data-stock-id}}'],
+          callback
+        );
+      }
+
+      function filterIsAvailable(recom) {
+        return recom.IsAvailable === true;
+      }
+      
+      function preRenderFn(widget, recoms, renderFn) {
+        retailrocket.impression.forAnyPlacements({
+          partnerId: retailrocket.api.getPartnerId(),
+          placementId: '43815606-aee0-4830-83bb-3d0f5ea664b0', //... placementId кампании в API
+          session: retailrocket.api.getSessionId(),
+          callbackContents: {
+            'string': function (content) {
+              if (typeof content === 'string') {
+                var spInfoStr = content;
+              } else {
+                var spInfoStr = content.string;
+                impressionContentId = content.id;
+              }
+
+              var SPinfoParsed = getParsedResponse(spInfoStr);
+              var isRandom = SPinfoParsed.hasOwnProperty('randomProducts');
+              var SPids = isRandom ? SPinfoParsed.randomProducts[getRandomValue(0, SPinfoParsed.randomProducts.length - 1)] : SPinfoParsed.products; 
+
+              getItems(SPids, function(spProducts) {
+                var spRecoms = spProducts.filter(filterIsAvailable);
+
+                spRecoms.forEach(function(recom) {
+                  recom.Params.isSp = true;
+                })
+
+                if (spRecoms.length > 0) {
+                  recomTrackSetting.check = true;
+                  recomTrackSetting.nameTrack = SPinfoParsed.recomTrack;
+                  setStatisticsRender(spRecoms)
+                  renderFn(spRecoms);
+                }
+              });
+            },
+            'empty': function () {
+              //... если SP выдача отсутствует
+            }
+          }
+        });   
+      }
+
       function postRenderFn(widget) {
+        var spProducts = widget.querySelectorAll('.rr-widget__item[data-is-sp=true]') //... Получаем только SP продукты в выдаче
+        var itemsId = [];
+        var isShow = false;
+        
+        spProducts.forEach(function(item) {
+          itemsId.push(item.getAttribute('data-id'));
+          item.setAttribute('onmousedown', "retailrocket['goods{{data-retailrocket-markup-block}}'].setStatisticsClick(" + item.getAttribute('data-id') + ")");
+        });
+        
         var rrSwiperCarousel = new SwiperModel({
           widget: widget,
           settingSwiper: {
@@ -199,34 +350,34 @@
             watchOverflow: true,
             observer: true,
             spaceBetween: 0,
-            lazy: true,
+            lazy: {
+              loadPrevNext: true,
+            },
+            on: {
+              slideChange: function() {}
+            },
             preloadImages: true,
             touchReleaseOnEdges: true,
             watchSlidesVisibility: true,
-            loop: true,
+            loop: false,
             navigation: {
               prevEl: widget.querySelector('.swiper-prev'),
               nextEl: widget.querySelector('.swiper-next'),
-            },
-            pagination: {
-              el: widget.querySelector('.rr-slider-dots'),
-              type: 'bullets',
-              clickable: true
             },
             autoplay: false,
             speed: 800,
             breakpoints: {
               1200: {
-                slidesPerView: 4,
-                slidesPerGroup: 4
+                slidesPerView: 4.2,
+                slidesPerGroup: 1
               },
               768: {
                 slidesPerView: 3,
-                slidesPerGroup: 3
+                slidesPerGroup: 1
               },
-              500: {
+              360: {
                 slidesPerView: 2,
-                slidesPerGroup: 2
+                slidesPerGroup: 1
               },
               320: {
                 slidesPerView: 1,
@@ -235,13 +386,24 @@
             }
           }
         });
-        
         rrSwiperCarousel.getScript();
+        
+        window.addEventListener('scroll', function () {
+          if (!isShow) {
+            var  widgetScrollTop = widget.getBoundingClientRect()['top'];
+
+            if (widgetScrollTop < widget.clientHeight) {
+              setStatisticsShow(itemsId);
+              isShow = true;
+            }
+          }
+        });
       }
 
       return {
-        postRenderFn: postRenderFn,
+        setStatisticsClick: setStatisticsClick,
         preRenderFn: preRenderFn,
+        postRenderFn: postRenderFn,
       };
     }());
 
