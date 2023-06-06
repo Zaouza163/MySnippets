@@ -8,5 +8,5 @@ function filterDouble(array) {
   });
 }
 
-//пример
+//example
 filterDouble(array);

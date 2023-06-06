@@ -43,7 +43,7 @@ var DDControler = function (modRecoms, listname) {
 							unitPrice: unitPrice,
 							unitSalePrice: recom.Price,
 							manufacturer: recom.Vendor,
-							currency: 'RUB',
+							currency: '$',
 						},
 					};
 
@@ -75,17 +75,17 @@ var DDControler = function (modRecoms, listname) {
 };
 
 retailrocket['store{{data-retailrocket-markup-block}}'] = (function () {
-	var ddControler = new DDControler(); // Заводим новый экземпляр
+	var ddControler = new DDControler(); // Starting a new instance
 
 	function preRenderFn(widget, recoms, renderFn) {
 		if (recoms.length > 0) {
-			ddControler.setDigitalData(recoms, 'Home Page - Personal'); //Возвращаем устанавливаем Data
+			ddControler.setDigitalData(recoms, 'Home Page - Personal'); // Return set Data
 			renderFn(recoms);
 		}
 	}
 
 	return {
 		preRenderFn: preRenderFn,
-		digitalDataClick: ddControler.digitalDataClick, //Возвращаем клик
+		digitalDataClick: ddControler.digitalDataClick, // return the click
 	};
 })();

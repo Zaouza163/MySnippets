@@ -12,8 +12,8 @@
     data-basket-mail-template-ready="true"
     data-viewedna-mail-template-ready="true"
     data-search-mail-template-ready="true"
-    data-header-text-viewed="текст заголовка виджета когда в нем просмотренные товары"
-    data-header-text-basket="текст заголовка виджета когда в нем товары из корзины"
+    data-header-text-viewed="widget title text when there are viewed products in it"
+    data-header-text-basket="widget title text when it contains items from the cart"
     data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
     data-on-update="retailrocket['store{{data-retailrocket-markup-block}}'].onRRUpdate(this)">
   </div>
@@ -23,21 +23,21 @@
     data-subscribe-on-trigger-email-checkbox-id="subscribe-on-trigger-email"
     data-product-to-send-widget-id="{{data-retailrocket-markup-block}}-mailrequest-widget">
 
-    <a class="retailrocket__close" onclick="retailrocket.exitIntendWidget.close(true)">x</a>
+    <a class="retailrocket__close" onclick="retailrocket.exitIntendWidget.close(true)" title="Close">x</a>
 
     <form class="retailrocket-subscribe__form" onsubmit="return false;">
       <div class="retailrocket-subscribe__input-email-block">
-        <label class="retailrocket-subscribe__input-email-label">Оставьте свой email</label>
+        <label class="retailrocket-subscribe__input-email-label">Leave your email</label>
         <input class="retailrocket-subscribe__input-email" id="storetrigger-mailrequest-form-email" required type="email" placeholder="E-mail">
       </div>
       <div class="retailrocket-subscribe__input-checkbox-block">
         <input class="retailrocket-subscribe__input-checkbox" id="subscribe-on-trigger-email" type="checkbox" required checked>
         <label class="retailrocket-subscribe__input-checkbox-label" for="subscribe-on-trigger-email">
-          <span class="rr-text-legal">Согласие на получение писем</span>
+          <span class="rr-text-legal">Consent to receive emails</span>
         </label>
       </div>
       <div class="retailrocket-subscribe__input-submit-block">
-        <input class="retailrocket-subscribe__input-submit desabledButton" id="storetrigger-mailrequest-from-send-btn" type="submit" value="Отправить">
+        <input class="retailrocket-subscribe__input-submit desabledButton" id="storetrigger-mailrequest-from-send-btn" type="submit" value="Submit">
       </div>
     </form>
   </div>

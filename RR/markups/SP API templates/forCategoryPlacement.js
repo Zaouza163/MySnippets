@@ -3,7 +3,7 @@ function preRenderFn(widget, recoms, renderFn) {
 
   retailrocket.impression.forCategoryPlacement({
     partnerId: retailrocket.api.getPartnerId(),
-    placementId: '9b7c23c8-ec49-4b2a-8eba-5f41dda1267a', //... placementId кампании в API
+    placementId: '9b7c23c8-ec49-4b2a-8eba-5f41dda1267a', //... placementId comp in API
     categoryId: categoryId,
     session: retailrocket.api.getSessionId(),
     callbackContents: {

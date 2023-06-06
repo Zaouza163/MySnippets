@@ -19,13 +19,13 @@ function getItems(requireProducts, callback) {
   retailrocket.items.get(
     retailrocket.api.getPartnerId(),
     requireProducts,
-    ['{{data-stock-id}}'], //Указываем stock, если таковой имеется
+    ['{{data-stock-id}}'], //stock, if any
     callback
   );
 }
 
 function preRenderFn(widget, recoms, renderFn) {
-  var needProducts = widget.getAttribute('data-product-add-to-start').split(','); // Товары добавляются вначало через запятую. Если товары будут добавляться в конец атрибут называем соответсвенно "data-product-add-to-end"
+  var needProducts = widget.getAttribute('data-product-add-to-start').split(','); // Products are added at the beginning separated by commas. If the goods will be added to the end, the attribute is called accordingly "data-product-add-to-end"
 
   getItems(needProducts, function (currentProducts) {
     var modRecoms = currentProducts.concat(recoms);

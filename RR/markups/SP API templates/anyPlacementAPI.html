@@ -17,7 +17,7 @@
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title:hover{text-decoration:none;color:#00528b;}
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__old-price{font-size:16px;font-weight:400;color:#023f5d;text-decoration:line-through;display:inline-block}
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price{font-size:16px;font-weight:400;color:#19addd;display:inline-block}
-.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-currency::before{content:'₽ €'}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-currency::before{content:'₽ € $'}
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions{display:flex;display:-moz-flex;display:-webkit-flex;display:-o-flex;display:-ms-flex;}
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-more{display:block;width:50%;padding:0 15px;background:#023f5d;color:#fff;font-size:14px;font-weight:400;line-height:35px;-webkit-border-radius:5px 0 0 5px;-moz-border-radius:5px 0 0 5px;border-radius:5px 0 0 5px;text-align:center;text-decoration:none;}
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-more:hover{text-decoration:none;background:#00528b;}
@@ -39,7 +39,7 @@
 <div class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
      data-algorithm="popular"
      data-algorithm-argument="0"
-     data-template-param-header-text="Спонсируемые товары"
+     data-template-param-header-text="SP Products"
      data-template-param-number-of-items="10"
      data-on-pre-render="retailrocket.store{{data-retailrocket-markup-block}}.preRenderFn(this, data, renderFn)"
      data-on-post-render="retailrocket.store{{data-retailrocket-markup-block}}.postRenderFn(this)"
@@ -81,8 +81,8 @@
             <div class="rr-item__price"> <span class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, '.', ' ', 0) %></span> <span class="rr-item__price-currency"></span> </div>
           </div>
           <div class="rr-item__actions">
-            <a class="rr-item__actions-more" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>Подробнее</a>
-            <a class="rr-item__actions-buy" href="<%=Url%>" onclick='rrApi.recomAddToCart(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>Купить</a>
+            <a class="rr-item__actions-more" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>Details</a>
+            <a class="rr-item__actions-buy" href="<%=Url%>" onclick='rrApi.recomAddToCart(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>Buy</a>
           </div>
         </div>
       </div>
@@ -187,7 +187,7 @@
         check: false,
         listTrack: function()
         {
-          return [this.nameTrack, this.nameTrack + 'Main']; //... Main заменить на страницу, где установлен блок (Card, Cart, Search, EmptySearch и т.д.)
+          return [this.nameTrack, this.nameTrack + 'Main']; //... Main replace with the page where the block is installed (Card, Cart, Search, EmptySearch, etc.)
         },
       };
       var impressionContentId = null;
@@ -293,7 +293,7 @@
       function preRenderFn(widget, recoms, renderFn) {
         retailrocket.impression.forAnyPlacements({
           partnerId: retailrocket.api.getPartnerId(),
-          placementId: '43815606-aee0-4830-83bb-3d0f5ea664b0', //... placementId кампании в API
+          placementId: '43815606-aee0-4830-83bb-3d0f5ea664b0', //... placementId comp in API
           session: retailrocket.api.getSessionId(),
           callbackContents: {
             'string': function (content) {
@@ -324,14 +324,14 @@
               });
             },
             'empty': function () {
-              //... если SP выдача отсутствует
+              //... if SP recoms is missing
             }
           }
         });   
       }
 
       function postRenderFn(widget) {
-        var spProducts = widget.querySelectorAll('.rr-widget__item[data-is-sp=true]') //... Получаем только SP продукты в выдаче
+        var spProducts = widget.querySelectorAll('.rr-widget__item[data-is-sp=true]') //... get SP items
         var itemsId = [];
         var isShow = false;
         

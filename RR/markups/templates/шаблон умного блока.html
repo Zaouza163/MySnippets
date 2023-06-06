@@ -62,26 +62,26 @@ div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-not
 <div class="retailrocket-popup__open-button">
   <a href="javascript:void(0);" class="retailrocket-popup__open-link js-rr-widget-active" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].openWidget(this);">
     <span class="rr-open__icon">%</span>
-    <span class="rr_open_button_title">Рекомендуем Вам</span>
+    <span class="rr_open_button_title">Recommended</span>
   </a>
 </div>
 <div class="retailrocket-popup">
   <div class="retailrocket-popup__window">
     <div class="retailrocket-popup__window-title">
       <span class="retailrocket-popup__window-title-icon">%</span>
-      <span class="retailrocket-popup__window-title-text">Рекомендуем Вам</span>
+      <span class="retailrocket-popup__window-title-text">Recommended</span>
     </div>
     <div class="retailrocket-popup__window-container">
-      <a href="javascript:void(0);" class="retailrocket-close-button" title="Закрыть" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].openWidget(this)"></a>
+      <a href="javascript:void(0);" class="retailrocket-close-button" title="Close" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].openWidget(this)"></a>
       <div class="retailrocket-tab__navs">
         <a href="javascript:void(0);" class="retailrocket-tab__nav" data-target="rr-saleByPopular" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].widgetTabs(event, '.retailrocket-tab__content.rr-saleByPopular');">
-          <span class="title">Акции</span>
+          <span class="title">Sale</span>
         </a>
         <a href="javascript:void(0);" class="retailrocket-tab__nav" data-target="rr-personal" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].widgetTabs(event, '.retailrocket-tab__content.rr-personal')">
-          <span class="title">Рекомендуем</span>
+          <span class="title">Recommendations</span>
         </a>
         <a href="javascript:void(0);" class="retailrocket-tab__nav rr-no-hidden" data-target="rr-viewed" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].widgetTabs(event, '.retailrocket-tab__content.rr-viewed');">
-          <span class="title">Просмотренное</span>
+          <span class="title">Viewed</span>
         </a>
       </div>
       <div class="retailrocket-tab__contents">
@@ -155,9 +155,9 @@ div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-not
             </div>
             <div class="retailrocket-item__price-block">
               <div class="retailrocket-item__price">
-                <div class="item-price"> <span class="item-price-value"><%= retailrocket.widget.formatNumber(Price, '.', ' ', 0) %>&nbsp;руб.</span></div>
+                <div class="item-price"> <span class="item-price-value"><%= retailrocket.widget.formatNumber(Price, '.', ' ', 0) %>&nbsp;$</span></div>
                 <% if (OldPrice > Price) { %>
-                <div class="item-old-price"> <span class="item-old-price-value"><%= retailrocket.widget.formatNumber(OldPrice, '.', ' ', 0) %>&nbsp;руб.</span></div>
+                <div class="item-old-price"> <span class="item-old-price-value"><%= retailrocket.widget.formatNumber(OldPrice, '.', ' ', 0) %>&nbsp;$</span></div>
                 <% } %>
               </div>
             </div>
@@ -350,7 +350,7 @@ div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-not
         if (recoms.length > 0) {
           renderFn(recoms);
         } else {
-          widget.innerHTML = '<div class="rr-note">Просмотренных товаров пока нет.</div>';
+          widget.innerHTML = '<div class="rr-note">There are no viewed products yet.</div>';
         }
       }
 

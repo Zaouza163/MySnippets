@@ -43,7 +43,7 @@
   <div class="retailrocket-items rr-swiper-container">
     <div class="rr-swiper-wrapper">
       <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
-        <div class="rr-swiper-slide <% if (isSp) { %>rr-item__is-sp<% } %>" data-id="<%= bannerId %>">
+        <div class="rr-swiper-slide" data-id="<%= bannerId %>">
           <div class="retailrocket-item">
             <div class="rr-item__img-block">
               <a class="rr-item__info" href="<%= bannerHref %>" onmousedown='rrApi.recomMouseDown(<%= bannerId %>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>

@@ -1,9 +1,9 @@
 /**
- * Возвращает слово в нужном падеже в зависимости от цифры
+ * Returns the word in the correct case depending on the digit
  *
- * @param {number} n Цифра, исходя из которой необходим падеж слова
- * @param {array} title Массив слов в разных падежах
- * @return {string} слово из массива title в нужном падеже
+ * @param {number} n The number based on which the case of the word is needed
+ * @param {array} title An array of words in different cases
+ * @return {string} a word from the title array in the desired case
  *
  */
 
@@ -17,5 +17,5 @@ function declOfNum(n, titles) {
 	];
 }
 
-// пример использования
+// used example
 declOfNum(2, ['отзыв', 'отзыва', 'отзывов']);

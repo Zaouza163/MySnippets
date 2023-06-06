@@ -1,6 +1,6 @@
 <div class="retailrocket-popup retailrocket-exit-intend deactivate-if-visitor-agreed-to-receive-marketing-mail" data-s="{{data-retailrocket-markup-block}}">
   <div class="retailrocket-popup-window">
-    <a href="javascript:void(0);" class="retailrocket-popup__close" title="Закрыть и больше не показывать" onclick="retailrocket.exitIntendWidget.close(true)">&times;</a>
+    <a href="javascript:void(0);" class="retailrocket-popup__close" title="Close" onclick="retailrocket.exitIntendWidget.close(true)">&times;</a>
 
     <div class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
          id="{{data-retailrocket-markup-block}}-mailrequest-widget"
@@ -11,8 +11,8 @@
          data-number-of-items="3"
          data-textoverflowhidden="true"
          data-retailrocket-buybutton="false"
-         data-template-param-header-text="Вас заинтересовали эти товары?"
-         data-template-param-sub-header-text="Мы отправим их на ваш e-mail"
+         data-template-param-header-text="Are you interested in these products?"
+         data-template-param-sub-header-text="We will send them to your e-mail"
          data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
          data-on-post-render="retailrocket['store{{data-retailrocket-markup-block}}'].postRenderFn(this)"
          >
@@ -27,22 +27,22 @@
         <div class="retailrocket-subscribe__input-checkbox-block">
           <input class="retailrocket-subscribe__input-checkbox" id="retailrocket-subscribe-on-trigger-email" type="checkbox" required checked>
           <label class="retailrocket-subscribe__input-checkbox-label" for="retailrocket-subscribe-on-trigger-email">
-            <span class="rr-text-legal">Согласие на получение писем</span>
+            <span class="rr-text-legal">Consent to receive emails</span>
           </label>
         </div>
         <div class="retailrocket-subscribe__input-email-block">
-          <label class="retailrocket-subscribe__input-email-label">Оставьте свой email</label>
+          <label class="retailrocket-subscribe__input-email-label">Leave your email</label>
           <input class="retailrocket-subscribe__input-email" id="retailrcoket-mailrequest-form-email" required type="email" placeholder="E-mail">
         </div>
         <div class="retailrocket-subscribe__input-submit-block">
-          <input class="retailrocket-subscribe__input-submit desabledButton" id="retailrocket-mailrequest-from-send-btn" type="submit" value="Подписаться">
+          <input class="retailrocket-subscribe__input-submit desabledButton" id="retailrocket-mailrequest-from-send-btn" type="submit" value="submit">
         </div>
       </form>
     </div>
   </div>
   <div class="retailrocket-popup__message">
-    <a href="javascript:void(0);" class="retailrocket-close-message retailrocket-popup__close" title="закрыть" onclick="retailrocket.exitIntendWidget.close(true);">&times;</a>
-    <div class="retailrocket-popup__message-text">Спасибо за подписку!</div>
+    <a href="javascript:void(0);" class="retailrocket-close-message retailrocket-popup__close" title="Close" onclick="retailrocket.exitIntendWidget.close(true);">&times;</a>
+    <div class="retailrocket-popup__message-text">Thanks for subscribing!</div>
   </div>
 </div>
 <script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">

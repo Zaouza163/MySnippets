@@ -2,7 +2,7 @@ function getItems(requireProducts, callback) {
 	retailrocket.items.get(
 		retailrocket.api.getPartnerId(),
 		requireProducts,
-		['{{data-stock}}'], // сток, если он необходим
+		['{{data-stock}}'], // stock, if any
 		callback
 	);
 }
