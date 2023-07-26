@@ -1,4 +1,4 @@
-function getPersonalItems(callback) {
+function getViewedItems(callback) {
   retailrocket.recommendation.forCategories(
     retailrocket.api.getPartnerId(),
     [0],

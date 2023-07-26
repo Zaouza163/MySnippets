@@ -1,0 +1,456 @@
+{% comment %} Проверка количества товаров в алгоритме {% endcomment %}
+$$[ set algorithmSize = 0 ] 
+$$[ for item in get_scenario_recommendations(scenario="AbandonedBasket")[:3] ] 
+$$[ if item.Name ] $$[ set algorithmSize = algorithmSize + 1 ] $$[ endif ]
+<!-- $$[ if algorithmSize > 0 and loop.last == true ] -->
+<table class="products outer">
+	<tr>
+		<td class="products__title" align="center">
+			Заголовок блока
+		</td>
+	</tr>
+	<tr>
+		<td class="row products__items" align="center">
+			Остальльная часть
+		</td>
+	</tr>
+</table>
+<!-- $$[ endif ] -->
+$$[ endfor ]
+
+{% comment %} Подсчет рейтинга. Этот код использует макрос generate_iterable_string для получения строки определенной длины {% endcomment %}
+<table class="product">
+	<tr>
+		<td class="product__raiting">
+			<!-- $$[ if item.Params['Рейтинг'] and item.Params['Рейтинг'] > 0 ] -->
+			$$[ set product_raiting = item.Params['Рейтинг'] ~ '' ]
+			$$[ set splited_raiting = product_raiting.split('.') ]
+			$$[ set splited_raiting_enough = check_length(splited_raiting, 1) ]
+			$$[ set list_integer_helper = generate_iterable_string(5, splited_raiting[0]) ]
+			$$[ set list_decimal_helper = generate_iterable_string(10, splited_raiting[1]) if check_length(splited_raiting, 1) == 'True' else '' ]
+			$$[ set integer_part = 0 ]
+			$$[ for i in list_integer_helper ]
+			$$[ set integer_part = integer_part + 1 ]
+			<img src="#" alt="F">
+
+			$$[ if loop.last == true ]
+			$$[ set decimal_part = 0 ]
+			$$[ for j in list_decimal_helper ]
+			$$[ set decimal_part = decimal_part + 1 ]
+
+			$$[ if loop.last == true]
+			<!-- $$[ if integer_part < 5 ] -->
+			<!-- $$[ if decimal_part < 7 and decimal_part != 0 ] -->
+			<img src="#" alt="H (Half)">
+			<!-- $$[ endif ] -->
+			<!-- $$[ if decimal_part > 6 ] -->
+			<img src="#" alt="F (Full)">
+			<!-- $$[ endif ] -->
+			<!-- $$[ endif ] -->
+			$$[ endif ]
+
+			$$[ endfor ]
+			$$[ endif ]
+			
+			$$[ endfor ]
+			<!-- $$[ else ] -->
+			&nbsp;
+			<!-- $$[ endif ] -->
+			{% comment %} Вывод: FFFFH {% endcomment %}
+		</td>
+	</tr>
+</table>
+
+/-- Проверка на достаточное кол-во символов/элементов в строке/списке --/
+{% comment %} 
+- iterable_type {string} - строка или список, которые необходимо проверить.
+- lower_limit {number} - минимальный порог, чтобы получить значение 'достаточно'.
+
+Вывод {string}: 'True' | 'False'.
+{% endcomment %}
+$$[ macro check_length(iterable_type, lower_limit=0) ]
+$$[ set iterator = 0 ]
+$$[ set enough = false ]
+$$[ for l in iterable_type ]
+$$[ set iterator = iterator + 1 ]
+$$[ if iterator == lower_limit + 1 or loop.last == true ]
+$$[ set enough = iterator == lower_limit + 1 ]$[enough]$[ break ]
+$$[ endif ]
+$$[ endfor ]
+$$[ endmacro ]
+
+$$[ set title = 'Наши рекомендации:' ]
+$$[ set algorithm = "AbandonedBasket" ]
+$$[ set limit = 3 ]
+$$[ set enoughItems = check_length(get_scenario_recommendations(scenario=algorithm)[:limit], 2) ]
+$$[ if enoughItems == 'True' ]
+<table class="products outer">
+	$$[ if check_length(title) == 'True' ]
+	<tr>
+		<td class="products__title" align="center">
+			<p>$[title]</p>
+		</td>
+	</tr>
+	$$[ endif ]
+	<tr>
+		<td class="row products__items" align="center">
+			Остальльная часть
+		</td>
+	</tr>
+</table>
+$$[ endif ]
+
+
+/-- Вывод вспомогательной строки с определенной длинной --/
+
+### Причины возникновения макроса:
+- Функция range() не принимает в себя строковые числа: range(0, '10');
+- Функция изменения типа на int не работает. Также не преобразовать неявно строковое число в int: '10' + 0;
+- Возможность преобразовывать int число в строковое число: 10 ~ ''.
+
+### Преимущества:
+- Можно использовать для преобразования строкового числа в нестроковое.
+
+{% comment %}
+- upper_limit {number}   - максимальная длина строки.
+- string_number {string} - строковое число, который задает сколько должно быть символов в строке.
+
+Вывод {string}: '<строка с заданным количеством символов>'
+{% endcomment %}
+$$[ macro generate_iterable_string(upper_limit=10, string_number='7') ]
+$$[ set list_helper = '' ]
+$$[ set done = false ]
+$$[ for i in range(0, upper_limit) ]
+$$[ if i ~ '' != string_number and done != true ]
+$$[ set list_helper = list_helper ~ 'i' ]
+$$[ else ]
+$$[ set done = true ]
+$$[ endif ]
+$$[ if loop.last == true ]$[list_helper]$$[ endif ]
+$$[ endfor ]
+$$[ endmacro ]
+
+=== Пример: ===
+$$[ set helper_string = generate_iterable_string(100, '7') ] --> 'iiiiiii'
+
+$$[ set helper_string_number = 0 ]
+$$[ for l in helper_string ]
+$$[ set helper_string_number = helper_string_number + 1 ]
+
+$$[ if loop.last == true ]
+$[helper_string_number] --> 7 (преобразовали строковое число в int)
+$$[ endif ]
+$$[ endfor ]
+
+
+
+
+/-- Сравнение чисел любового типа --/
+
+### Причины возникновения макроса:
+- Нет возможности сравнивать строковые и нестроковые числа;
+- Нет возможности преобразовывать строковые в нестроковые числа.
+
+### Недостатки:
+- Нельзя сравнивать вещественные числа.
+
+{% comment %}
+- a {string/number} - первое число;
+- b {string/number} - второе число;
+- range_limit {tupple/list} - кортеж/список диапозона, в которые входят первые два числа.
+
+Вывод {string}: 'a' | 'b' | 'ab'
+{% endcomment %}
+$$[ macro compare_numbers(a, b, range_limit=(-100, 100)) ]
+$$[ set number_a = 0 ]
+$$[ set number_b = 0 ]
+$$[ set counter = range_limit[0] ]
+$$[ for n in range(range_limit[0], range_limit[1]) ]
+$$[ set counter = counter + 1 ]
+$$[ set number_a = counter if counter ~ '' == a ~ '' else number_a ]
+$$[ set number_b = counter if counter ~ '' == b ~ '' else number_b ]
+$$[ if loop.last == true ]
+$$[ if number_a != number_b ]
+$$[ set iterator = range_limit[1] ]
+$$[ set checked = false ]
+$$[ for m in range(range_limit[0], range_limit[1]) ]
+$$[ if number_a == iterator and checked != true ]a$$[ set checked = true ]$$[ endif ]
+$$[ if number_b == iterator and checked != true ]b$$[ set checked = true ]$$[ endif ]
+$$[ set iterator = iterator - 1 ]
+$$[ endfor ]
+$$[ else ]
+ab
+$$[ endif ]
+$$[ endif ]
+$$[ endfor ]
+$$[ endmacro ]
+
+=== Пример: ===
+$$[ set max_number = compare_numbers('-10', 18, (-20, 20)) ]
+$$[ if max_number == 'a' ]
+... 
+$$[ endif ]
+$$[ if max_number == 'b' ] <--
+... 
+$$[ endif ]
+$$[ if max_number == 'ab' ]
+... 
+$$[ endif ]
+
+
+/-- Получение длины строки/список/кортеж --/
+
+### Причины возникновения:
+- Нет работающего метода/фильтра для получения длины строки.
+$$[ macro slt_length(slt) ]
+$$[ set iterator = 0 ]
+$$[ if slt ]
+$$[ for n in slt ]
+$$[ set iterator = iterator + 1 ]
+$$[ if loop.last == true ]$[iterator]$$[ endif ]
+$$[ endfor ]
+$$[ else ]
+0
+$$[ endif ]
+$$[ endmacro ]
+
+
+/-- Реверс строки/списка/кортежа --/
+
+$$[ set some_sting = 'Jinja' ]
+$[some_sting[::-1]] --> 'ajniJ'
+
+*reverse не работает.
+
+
+/-- Разделение числа на разряды --/
+{% comment %} ===== ИСПОЛЬЗУЕМЫЕ МАКРОСЫ ===== {% endcomment %}
+- check_length
+- slt_length
+{% comment %} ===== {% endcomment %}
+$$[ macro thousands_format(number, separator=' ') ]
+$$[ set formatted_number = '' ]
+$$[ set splitted_number = (number ~ '').split('.') ]
+$$[ set counter = 0 ]
+$$[ for n in splitted_number[0][::-1] ]
+$$[ set counter = counter + 1 ]
+$$[ set thousand_part = counter % 3 ]
+$$[ set formatted_number = (formatted_number ~ n ~ separator) if thousand_part == 0 else (formatted_number ~ n) ]
+$$[ if loop.last == true ]
+$[formatted_number[::-1] ~ '.' ~ splitted_number[1] if compare_numbers(slt_length(splitted_number), 1, (0, 3)) == 'a' else formatted_number[::-1]]
+$$[ endif ]
+$$[ endfor ]
+$$[ endmacro ]
+
+
+/-- Десятичный разделитель --/
+$$[ macro set_separete_decimal(number, symbol=',') ]
+$$[ set formatted_number = '' ]
+$$[ set splitted_number = (number ~ '').slit('.') ]
+$[splitted_number]
+$$[ endmacro ]
+
+/-- Округление --/
+### Недостатки:
+- Если цены большие письмо будет долго собираться.
+
+{% comment %} ===== ИСПОЛЬЗУЕМЫЕ МАКРОСЫ ===== {% endcomment %}
+- compare_numbers
+- slt_length
+- generate_iterable_string
+{% comment %} ===== {% endcomment %}
+$$[ macro round_number(number, upper_limit=100000) ]
+$$[ set formatted_number = '' ]
+$$[ set splitted_number = (number ~ '').split('.') ]
+$$[ if compare_numbers(slt_length(splitted_number), 1, (0, 3)) == 'a' and compare_numbers(splitted_number[1][0], 4, (0, 10)) == 'a' ]
+$$[ set number_str_helper = generate_iterable_string(1000000, splitted_number[0]) ]
+$$[ set int_number = 0 ]
+$$[ for s in number_str_helper ]
+$$[ set int_number = int_number + 1 ]
+$$[ if loop.last == true ]
+$[int_number + 1]
+$$[ endif ]
+$$[ endfor ]
+$$[ else ]
+$[splitted_number[0]]
+$$[ endif ]
+$$[ endmacro ]
+
+
+/-- Количество цифр после запятой --/
+{% comment %} ===== ИСПОЛЬЗУЕМЫЕ МАКРОСЫ ===== {% endcomment %}
+- check_length
+- slt_length
+- compare_numbers
+{% comment %} ===== {% endcomment %}
+$$[ macro set_decimal_places(number, decimal_places=0) ]
+$$[ set formatted_number = '' ]
+$$[ set splitted_number = (number ~ '').split('.') ]
+$$[ if decimal_places != 0 ]
+$$[ set decimal_part = splitted_number[1] if compare_numbers(slt_length(splitted_number), 1, (0, 3)) == 'a' else '0' ]
+$$[ for n in range(0, decimal_places) ]
+$$[ set formatted_number = (formatted_number ~ decimal_part[n]) if compare_numbers(n, slt_length(decimal_part), (0, 5)) == 'b' else formatted_number ~ '0' ]
+$$[ if loop.last == true ]
+$[splitted_number[0] ~ '.' ~ formatted_number]
+$$[ endif ]
+$$[ endfor ]
+$$[ else ]
+$[splitted_number[0]]
+$$[ endif ]
+$$[ endmacro ]
+
+
+/-- Форматирование цены --/
+{% comment %} ===== ИСПОЛЬЗУЕМЫЕ МАКРОСЫ ===== {% endcomment %}
+- thousands_format
+- set_separete_decimal
+- set_decimal_places
+{% comment %} ===== {% endcomment %}
+
+$$[ macro formatting_number(number, thousand_symbol=' ', decimal_separator=',', decimal_places=0)]
+$$[ set formatted_number = set_decimal_places(number, decimal_places) ]
+$$[ set formatted_number = thousands_format(formatted_number, thousand_symbol) ]
+$$[ set formatted_number = set_separete_decimal(formatted_number, decimal_separator) ]
+$[formatted_number]
+$$[ endmacro ]
+
+
+/-- Фильтрация дублей между блоками --/
+{% comment %} ===== ИСПОЛЬЗУЕМЫЕ МАКРОСЫ ===== {% endcomment %}
+- check_length
+{% comment %} ===== {% endcomment %}
+
+{% comment %} ===== Вариант 1 ===== {% endcomment %}
+$$[ macro get_rendered_products(algorithm="AbandonedBasket", limit=4) ]
+$$[ set products_ids = '' ]
+$$[ for item in get_scenario_recommendations(scenario=algorithm)[:limit] ]
+$$[ set products_ids = products_ids ~ item.ItemId ~ (',' if loop.last != true else '') ]
+$$[ if loop.last == true ]$[products_ids]$$[ endif ]
+$$[ endfor ]
+$$[ endmacro ]
+{% comment %} ===== {% endcomment %}
+
+{% comment %} ===== Вариант 2 (Не работает) ===== {% endcomment %}
+$$[ macro get_rendered_products(algorithm="AbandonedBasket", limit=4) ]
+$$[ set products_ids = get_scenario_recommendations(scenario=algorithm)[:limit] | map(attribute='ItemId') | join(',') ]$[products_ids]
+$$[ endmacro ]
+{% comment %} ===== {% endcomment %}
+
+
+$$[ macro get_rendered_products(algorithm="AbandonedBasket", limit=4) ]
+$$[ set products_ids = '' ]
+$$[ for item in get_scenario_recommendations(scenario=algorithm)[:limit] ]
+$$[ set products_ids = products_ids ~ item.ItemId ~ (',' if loop.last != true else '') ]
+$$[ if loop.last == true ]$[products_ids]$$[ endif ]
+$$[ endfor ]
+$$[ endmacro ]
+
+$$[ set Products2X_1__Title = 'Блок 1' ]
+$$[ set algorithm = "AbandonedBasket" ]
+$$[ set limit = 6 ]
+$$[ set rendered_ids = get_rendered_products(limit=limit) ]
+
+$$[ if check_length(get_scenario_recommendations(scenario=algorithm)[:limit]) == 'True' ]
+<table class="products1X outer">
+	$$[ if check_length(Products2X__Title) == 'True' ]
+	<tr>
+		<td class="products__title" align="center">
+			<p>$[Products2X__Title]</p>
+		</td>
+	</tr>
+	$$[ endif ]
+	<tr>
+		<td class="products__items" align="center">
+			$$[ iterator = 0 ]
+			$$[ set inrow = 3 ]
+			$$[ for item in get_scenario_recommendations(scenario=algorithm) if rendered_ids.find(item.ItemId ~ '') != -1 ]
+
+			$$[ set iterator = iterator + 1 ]
+			$$[ if iterator == 7 ]$[ break ]$$[ endif ]
+			$$[ set mod = iterator % inrow ]
+
+			...
+			
+		</td>
+	</tr>
+</table>
+
+
+$$[ set Products2X_2__Title = 'Блок 2' ]
+$$[ set algorithm = "BasicPopular" ]
+$$[ set limit = 6 ]
+
+$$[ set algorithmSize = 0 ]
+$$[ for item in get_scenario_recommendations(scenario=algorithm) ]
+$$[ set algorithmSize = (algorithmSize + 1) if rendered_ids.find(item.ItemId ~ '') == -1 else algorithmSize ]
+
+$$[ if loop.last and check_length(algorithmSize) == 'True' ]
+<table class="products1X outer">
+	$$[ if check_length(Products2X__Title) == 'True' ]
+	<tr>
+		<td class="products__title" align="center">
+			<p>$[Products2X__Title]</p>
+		</td>
+	</tr>
+	$$[ endif ]
+	<tr>
+		<td class="products__items" align="center">
+			$$[ iterator = 0 ]
+			$$[ set inrow = 3 ]
+			$$[ for item in get_scenario_recommendations(scenario=algorithm) if rendered_ids.find(item.ItemId ~ '') == -1 ]
+
+			$$[ set iterator = iterator + 1 ]
+			$$[ if iterator == limit + 1 ]$[ break ]$$[ endif ]
+			$$[ set mod = iterator % inrow ]
+
+			...
+			
+		</td>
+	</tr>
+</table>
+$$[ endif ]
+
+$$[ endfor ]
+
+
+/-- Рабочие и не рабочие методы --/
+{% comment %} ===== Рабочие методы ===== {% endcomment %}
+
+	[+] split(',')
+	[+] range(0, 10)
+	[+] str.find('sub'[, start[, end]]) --> int
+	[+] str.zfill(width)
+	[+] str.replace(' ', '_')
+
+	[-] map(attribute='ItemId')
+	[-] select('equalto', 3)
+  [-] int
+  [-] string
+
+	[?] random
+	[?] join
+	[?] list
+	[?] str.strip([chars])
+  [?] unique
+	
+{% comment %} ===== {% endcomment %}
+
+
+/-- Использование макросов в Stripo (и не только) --/
+{% comment %} ===== ОПИСАНИЕ ===== {% endcomment %}
+- Stripo приводит разметку к определенному формату, а Jinja выстраивается в одну строку, но с пробелами: $$[ macro do_some(argument=default) ]<пробел>$[value]<пробел>$$[ endmacro ];
+- В html-редакторе приходится макрос писать в одну строку, так как он возвращает разметку, а не нужное значение.
+- Не было возможности использовать условие в таком формате: <!-- $$[ if a > b ] --><!-- $$[ endif ] -->
+{% comment %} ===== {% endcomment %}
+
+$$[ macro do_some() ]
+... Ещё 20 строк Jinja ...
+
+ (return) $[value] (return) 
+
+... Ещё 10 строк Jinja ...
+$$[ endmacro ]
+
+$[do_some().split(' (return) ')[1]]
+
+

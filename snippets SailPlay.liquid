@@ -72,3 +72,11 @@ $[item.OldPrice|round]&nbsp;руб. </span>
 		</a>
 	</td>
 </tr>
+
+$$[ set Discount = (100 - (item.Price / item.OldPrice) * 100) | round(0)] $$[ set DecimalDiscount = Discount % 1 ] $$[ set DiscountFin = Discount - DecimalDiscount ]
+$$[ set Discount = (100 - (item.Price / item.OldPrice) * 100) | round(0)] $$[ set DiscountStr = Discount ~ '' ] $$[ set DiscountArr = DiscountStr.split('.') ] 
+
+{% comment %}
+Вывод имени пользователя
+{% endcomment %}
+$$[ first_name ]
