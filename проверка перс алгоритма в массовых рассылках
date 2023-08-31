@@ -1,0 +1,37 @@
+{% assign pers = VisitorCategoryInterest.Latest %}{% comment %} Алгоритм с VCI {% endcomment %}
+{% assign not_pers = Latest %}{% comment %} Алгоритм без VCI {% endcomment %}
+
+{% comment %} Сравниваются первые 6 товаров персональной выдачи и обычной. Если нет персональной выдачи, подписчику будет показан общий текст, иначе персонализированный {% endcomment %}
+{% assign itemIds = '' %}
+  {% assign i = 0 %}
+  {% assign lim = 9 %}
+  {% for item in pers %}
+    {% capture tempId %}{{item.Id}},{% endcapture %}
+    {% if itemIds contains tempId %}{% continue %}{% endif %}
+    {% if i == lim %}{% break %}{% endif %}
+    {% capture itemIds %}{{itemIds}}{{tempId}}{% endcapture %}
+    {% assign i = i | plus: 1 %}
+{% endfor %}
+
+{% assign itemIds1 = '' %}
+  {% assign i = 0 %}
+  {% assign lim = 9 %}
+  {% for item in not_pers %}
+    {% capture tempId1 %}{{item.Id}},{% endcapture %}
+    {% if itemIds1 contains tempId1 %}{% continue %}{% endif %}
+    {% if i == lim %}{% break %}{% endif %}
+    {% capture itemIds1 %}{{itemIds1}}{{tempId1}}{% endcapture %}
+    {% assign i = i | plus: 1 %}
+{% endfor %}
+
+{% assign persItems = true %}
+{% if itemIds == itemIds1 %}
+  {% assign persItems = false %}
+{% endif %}
+
+{% comment %} Подбор алгоритма для конкретного подписчика {% endcomment %}
+{% if persItems == false %}
+   {% assign reco = not_pers %}
+{% else %}
+   {% assign reco = pers %}
+{% endif %}
