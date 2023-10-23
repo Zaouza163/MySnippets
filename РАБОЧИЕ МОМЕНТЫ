@@ -30,3 +30,6 @@ support@retailrocket.io
 --> Хранение данных просотренных и заказанных товаров
 personalViewed - Используются просмотры товаров в течение последних 2-х недель 
 personaOrdered - Учитывается 50 последних заказанных товаров за 730 суток
+
+--> Инвайт сотрудников в GitLab
+https://gl.retailrocket.ru/groups/PartnerLayouts/-/group_members
