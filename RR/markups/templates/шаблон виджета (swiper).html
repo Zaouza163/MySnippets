@@ -1,3 +1,6 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap" rel="stylesheet">
 <style type="text/css">
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"]{height:0;visibility:hidden;overflow:hidden;position:relative;display:block;width:100%;min-width:0;flex-grow:1;font-family:inherit;box-sizing:border-box}
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"].rr-active{height:auto;visibility:visible;overflow:visible;}
@@ -34,6 +37,13 @@
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-pagination-bullet{border:solid 1px #19addd;width:12px;height:12px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;margin:0 2px;cursor:pointer;}
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-pagination-bullet.swiper-pagination-bullet-active{border-color:#023f5d;background:#023f5d;}
 .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-pagination-bullets.swiper-pagination-lock{display:none;}
+  
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__watermark {position:relative;display:flex;justify-content:end;align-items:center;margin-top:20px;padding:0 20px;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__watermark .watermark-image {margin-right:5px;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__watermark .watermark-text {font-family:'PT Sans Caption';font-weight:400;font-size:13px;color:#0095e9;cursor:pointer;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__watermark .watermark-tooltip {display:none;font-family:'PT Sans Caption';font-size:13px;position:absolute;width:400px;padding:20px;border:1px solid #DEE1EA;border-radius:12px;background-color:#fff;bottom: 40px;z-index: 99;right: 10px;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__watermark .watermark-tooltip.active{display:block;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__watermark .watermark-tooltip a {color:#0095e9;}
 </style>
 
 <div
@@ -89,6 +99,11 @@
       </div>
       <% } %>
     </div>
+  </div>
+  <div class="rr-widget__watermark">
+    <img class="watermark-image" src="https://gallery.retailrocket.net/5db801c197a52821e86b0d45/retailRocket%201.svg" alt="">
+    <div class="watermark-text" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].openTooltip(this);">Персонализированные предложения от Retail Rocket</div>
+    <div class="watermark-tooltip"><b>Этот блок использует персонализированные предложения на основе алгоритмов Retail Rocket.</b><br><br>Для обеспечения наилучшего пользовательского опыта используются гибридные алгоритмы. В зависимости от ситуации может использоваться как поведение пользователя, так и информация о товарном справочнике.<br><br>Подробнее об алгоритмах персонализации вы можете прочитать по <a href="https://special.retailrocket.ru/algorithm" target="__blank">ссылке</a></div>
   </div>
 
   <div class="rr-slider-arrow">
@@ -189,6 +204,14 @@
       }
 
       function postRenderFn(widget) {
+        var tooltip = widget.querySelector('.watermark-tooltip');
+        
+        widget.addEventListener('click', function (e) {
+          if (!e.target.classList.contains('watermark-tooltip') && !e.target.classList.contains('watermark-text')) {
+            tooltip.classList.remove('active');
+          }
+        })
+        
         var rrSwiperCarousel = new SwiperModel({
           widget: widget,
           settingSwiper: {
@@ -238,8 +261,16 @@
         
         rrSwiperCarousel.getScript();
       }
+      
+      function openTooltip(el) {
+        var watermarkBlock = el.closest('.rr-widget__watermark');
+        var tooltip = watermarkBlock.querySelector('.watermark-tooltip');
+        
+        tooltip.classList.toggle('active');
+      }
 
       return {
+        openTooltip: openTooltip,
         postRenderFn: postRenderFn,
         preRenderFn: preRenderFn,
       };
