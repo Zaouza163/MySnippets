@@ -83,3 +83,12 @@ $$[ first_name ]
 
 Нужно вставить переменную $[tag_params["name_tag"]["name_param"]]
 Подставить name_tag имя тега и name_param название параметра
+
+
+{% comment %}
+Вывод конкретных товаров
+{% endcomment %}
+Для обращения к списку конкретных товаров надо использовать метод get_products_data.
+
+Пример использования:
+$$[ for item in get_products_data(products_ids=[1209601])] $[ item.Name ] $[ item.Price ] $$[ endfor ]
