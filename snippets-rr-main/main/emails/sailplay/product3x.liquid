@@ -1,0 +1,48 @@
+$$[ macro check_length(iterable_type, lower_limit=0) ]$$[ set iterator = 0 ]$$[ set enough = false ]$$[ for l in iterable_type ]$$[ set iterator = iterator + 1 ]$$[ if iterator == lower_limit + 1 or loop.last == true ]$$[ set enough = iterator == lower_limit + 1 ]$[enough]$[ break ]$$[ endif ]$$[ endfor ]$$[ endmacro ]$$[ set algorithm = "Popular" ]$$[ set limit = 3 ]$$[ set enoughItems = check_length(get_scenario_recommendations(scenario=algorithm)[:limit], 1) ]
+$$[ if enoughItems == 'True' ]
+<table style="border-spacing: 0; border-collapse: collapse; width: 100%; margin: 0 auto; max-width: 600px; background-color: #ffffff;" width="100%" bgcolor="#ffffff">
+  <tr>
+    <td style="padding: 0; line-height: normal; font-size: 0; text-align: center;" align="center">
+      <!--[if (gte mso 9)|(IE)|(RP)]>
+      <table width="100%" cellpadding="0" cellspacing="0"><tr>
+      <![endif]-->
+      $$[ set inrow = 3 ]
+      $$[ set iterator = 0 ]
+      $$[ for item in get_scenario_recommendations(scenario=algorithm)[:limit] ]
+        $$[ set iterator = iterator + 1 ]
+        $$[ if iterator == limit + 1 ]$[ break ]$$[ endif ]
+        $$[ set mod = iterator % inrow ]
+
+        <!--[if (gte mso 9)|(IE)|(RP)]><td width="33.33%" valign="top" align="center" style="width:33.33%;padding:0;"><![endif]-->
+        <div style="width: 100%; display: inline-block; vertical-align: top; font-size: 12px; max-width: 200px;">
+          <table style="width: 100%; border-spacing: 0; border-collapse: collapse;" width="100%">
+            <tr>
+              <td align="center" style="line-height: normal; padding: 0;">
+                <table style="width: 100%; border-spacing: 0; border-collapse: collapse;" width="100%">
+                  <tr>
+                    <td class="product__image" align="center" style="padding: 0; line-height: normal;">
+                      <a href="$[item.Url]" target="_blank">
+                          <img src="$[item.PictureUrl]" alt="$[item.Name]" width="180" height="180" style="border: 0; display: block;" />
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="product__title" align="center" style="padding: 0; line-height: normal;">
+                      <a href="$[item.Url]" target="_blank">$[item.Name]</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!--[if (gte mso 9)|(IE)|(RP)]></td><![endif]-->
+        $$[ if mod == 0 and loop.last != true ]
+        <!--[if (gte mso 9)|(IE)|(RP)]></tr><tr><![endif]-->
+        $$[ endif ]
+      $$[ endfor ]
+      <!--[if (gte mso 9)|(IE)|(RP)]></tr></table><![endif]-->
+    </td>
+  </tr>
+</table>
+$$[ endif ]

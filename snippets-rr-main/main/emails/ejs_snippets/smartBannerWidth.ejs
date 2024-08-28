@@ -1,0 +1,46 @@
+<@
+let style = 'style="padding:0"';
+let imgWidth = 600;
+let padNum = 0
+
+if (model.padding) {
+  const padSplit = model.padding.split(' ');
+  switch(padSplit.length) {
+    case 1:
+      padNum = +padSplit[0].replace(/\D+/, '');
+      imgWidth = imgWidth - padNum * 2;
+      break;
+    case 2:
+    case 3:
+      padNum = +padSplit[1].replace(/\D+/, '');
+      imgWidth = imgWidth - padNum * 2;
+      break;
+    case 4:
+      padNums = [+padSplit[1].replace(/\D+/, ''),+padSplit[3].replace(/\D+/, '')];
+      imgWidth = imgWidth - padNums[0] - padNums[1];
+      break;
+  }
+
+  style = `style="padding:${model.padding}"`;
+}
+@>
+<table class="banner outer">
+  <tr>
+    <td align="center" <@-style@>>
+      <a href="<@=model.url@>" target="_blank">
+        <!--[if (gte mso 9)|(IE)]>
+        <img src="<@=model.img@>" width="<@=imgWidth@>" alt="<@=model.alt@>" border="0" />
+        <table width="100%" style="border-spacing:0;border-collapse:collapse;display:none;" >
+        <tr style="display:none;">
+        <td width="50%" valign="middle" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;display:none;" >
+        <![endif]-->
+        <img src="<@=model.img@>" alt="<@=model.alt@>" border="0" width="100%" style="mso-hide:all;"/>
+        <!--[if (gte mso 9)|(IE)]>
+        </td>
+        </tr>
+        </table>
+        <![endif]-->
+      </a>
+    </td>
+  </tr>
+</table>

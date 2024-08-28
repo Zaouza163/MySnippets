@@ -1,0 +1,37 @@
+<@
+  const attrs = Object.assign(
+    {
+      fontFamily: options.fontFamily,
+      fontSize: 12,
+      fontWeight: 'normal',
+      bgColor: '#556270',
+      color: '#ffffff',
+    },
+    model
+  );
+
+  let buttonType = 'rect';
+  let borderRadiusOutlook = '';
+  let borderRadius = '';
+  let borderStyleOutlook = 'stroke="f"';
+  let borderStyle = '';
+  if (attrs.borderRadius > 0) {
+    buttonType = 'roundrect';
+    borderRadiusOutlook = `arcsize="${Math.round(attrs.borderRadius / attrs.height * 100)}%"`;
+    borderRadius = `border-radius:${attrs.borderRadius}px;`;
+  }
+  if (attrs.borderColor) {
+    let borderWidth = attrs.borderWidth || 1;
+    borderStyleOutlook = `strokecolor="${attrs.borderColor}" strokeweight="${attrs.borderWidth}px"`
+    borderStyle = `border:${borderWidth}px solid ${attrs.borderColor};`;
+  }
+@>
+<div>
+  <!--[if mso]>
+    <v:<@=buttonType@> xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="<@=attrs.url@>" target="_blank" style="height:<@=attrs.height@>px;v-text-anchor:middle;width:<@=attrs.width@>px;" <@-borderRadiusOutlook@> <@-borderStyleOutlook@> fillcolor="<@=attrs.bgColor@>">
+      <w:anchorlock/>
+      <center style="color:<@=attrs.color@>;font-family:<@=attrs.fontFamily@>;font-size:<@=attrs.fontSize@>px;font-weight:<@=attrs.fontWeight@>;"><@=model.text@></center>
+    </v:<@=buttonType@>>
+  <![endif]-->
+  <a href="<@=attrs.url@>" target="_blank" style="background-color:<@=attrs.bgColor@>;<@=borderRadius@><@=borderStyle@>color:<@=attrs.color@>;display:inline-block;font-family:<@=attrs.fontFamily@>;font-size:<@=attrs.fontSize@>px;line-height:<@=attrs.height@>px;font-weight:<@=attrs.fontWeight@>;text-align:center;text-decoration:none;<@ if (model.fullWidth) {@>width:100%;min-width:200px;<@ } else { @>width:<@=attrs.width@>px;<@ } @>-webkit-text-size-adjust:none;mso-hide:all;"><@=model.text@></a>
+</div>

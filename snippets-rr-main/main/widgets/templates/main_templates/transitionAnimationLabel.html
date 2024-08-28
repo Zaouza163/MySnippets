@@ -1,0 +1,55 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var wrapLabelsShow = document.querySelectorAll('.rr-item__labels-show');
+    
+    wrapLabelsShow.forEach(function(wrapLabelShow) {
+        var labels = wrapLabelShow.querySelectorAll('.rr-item__label');
+        var btnOpenLabels = wrapLabelShow.querySelector('.rr-item__btn-open-labels');
+        
+        if (!btnOpenLabels) {
+            console.error('btnOpenLabels not found');
+            return;
+        }
+        
+        console.log('btnOpenLabels:', btnOpenLabels);
+        console.log('Number of labels:', labels.length);
+        console.log('Labels:', labels);
+        
+        // Get computed style of the button
+        var computedStyle = getComputedStyle(btnOpenLabels);
+        
+        // Get the animation duration
+        var animationDuration = computedStyle.animationDuration || computedStyle.transitionDuration;
+        
+        // Convert duration to milliseconds if it's in seconds
+        var durationInMs = 0;
+        if (animationDuration.endsWith('ms')) {
+            durationInMs = parseFloat(animationDuration);
+        } else if (animationDuration.endsWith('s')) {
+            durationInMs = parseFloat(animationDuration) * 1000;
+        }
+        
+        console.log('Animation/Transition Duration:', durationInMs, 'ms');
+        
+        // Use setTimeout with the computed duration
+        setTimeout(function() {
+            console.log('Timeout reached after animation duration');
+            // Your code to execute after animation duration
+            if (labels.length < 2) {
+                console.log('Condition met: labels.length < 2');
+                btnOpenLabels.style.display = 'none';
+            }
+            console.log('btnOpenLabels.style.display:', btnOpenLabels.style.display);
+            console.log('-------------------------------------');
+            
+            labels.forEach(function(label, i) {
+                var limitLabels = 2;
+                
+                if (i >= limitLabels) {
+                    label.style.display = 'none';
+                }
+            });
+        }, durationInMs);
+    });
+});
+</script>

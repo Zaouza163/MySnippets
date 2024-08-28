@@ -1,0 +1,5 @@
+{% comment %} /-- Продвинутая сортировка массива с товарами по параметру --/ {% endcomment %}
+{% comment %}
+false\true на конце - удалять ли элемент, если параметра у товара нет
+{% endcomment %}
+{% assign sortedArray = Articles | advancedsort: 'Params.NameParam', true/false %}

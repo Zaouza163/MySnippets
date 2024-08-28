@@ -1,0 +1,17 @@
+{% comment %} /-- Проверка на уникальность категорий в выдаче --/ {% endcomment %}
+{% comment %}
+- Запуск цикла по выдаче
+- Сбор категорий товаров выдачи в строку
+- Разбивка категорий товаров выдачи на массив
+- Удаление не уникальных элементов массива
+- Проверка количества элементов в уникальном массиве. Если кол-во равно 1, значит все товары в выдачи из одной категории
+{% endcomment %}
+{% for item in recoAlgoritm %}
+  {% capture categoryId %}{{item.CategoryIds[0]}},{% endcapture %}
+  {% assign categories = categories | append: categoryId %}
+  {% assign uniqCategories = categories | split: ',' | uniq %}
+{% endfor %}
+{% assign countCategories = uniqCategories | size %}
+{% if countCategories == 1 %}
+  логика
+{% endif %}

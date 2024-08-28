@@ -1,0 +1,152 @@
+<style type="text/css">
+  [data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]{background:#fff;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"]{height:0;visibility:hidden;position:relative;display:inline-block;width:100%;outline:none;font-family:inherit;box-sizing:border-box}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"].rr-active{height:auto;visibility:visible;padding-bottom:50px;}
+
+
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-icon-retail-info {cursor:pointer;position:relative;z-index:99999;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-icon-retail-info svg {display: block;pointer-events:none !important;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-icon-retail-info:hover rect { fill:#E2E2E2 !important;}
+  .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] {z-index: 1070;font-style: normal;padding: 2.3rem 0 0 0;display: block;opacity: 0;position: absolute;}
+  .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] .rr-bundle-tooltip__text {max-width: 400px;padding: 20px;text-align: left;background: #ffffff;border-radius: 12px;border: 1px solid #DEE1EA;background: #FFF;box-shadow: 0px 8px 16px 0px rgba(121, 156, 208, 0.12); }
+  .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] .rr-infolabel-header,
+  .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] .rr-infolabel-text,
+  .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] .rr-infolabel-link {color: #000;font-family: PT Sans Caption, sans-serif;font-style: normal;line-height: normal;}
+  .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] .rr-infolabel-header {font-size: 16px;font-weight: 700;}
+  .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] .rr-infolabel-text {font-size: 13px;font-weight: 400;}
+  .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] .rr-infolabel-link {color: #0095E9;font-size: 13px;font-weight: 400;text-decoration-line: underline; }
+  
+  @media (max-width: 400px) {
+    .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] .rr-infolabel-header {font-size: 13px;}
+    .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] .rr-infolabel-text {font-size: 10px;}
+    .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] .rr-infolabel-link {font-size: 10px;}
+  }
+</style>
+
+<div
+    class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+    data-algorithm="personal"
+    data-algorithm-argument="0"
+    data-template-param-header-text="Рекомендуем вам"
+    data-template-param-header-text-en="Especially for you"
+    data-template-param-number-of-items="20"
+    data-template-param-item-image-width="216"
+    data-template-param-item-image-height="300"
+    data-on-pre-render="retailrocket.store{{data-retailrocket-markup-block}}.preRenderFn(this, data, renderFn)"
+    data-on-post-render="retailrocket.store{{data-retailrocket-markup-block}}.postRenderFn(this)"
+    data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+    data-textoverflowhidden="true"
+    data-s="{{data-retailrocket-markup-block}}"
+>
+</div>
+
+<script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
+  <div class="widgettitle">
+  	<span class="widgettitle-title">
+      <%=(headerText)%>
+    </span>
+    <span class="rr-icon-retail-info" 
+      onmouseenter="retailrocket['store{{data-retailrocket-markup-block}}'].setToolTip(this, 'rr-title-{{data-retailrocket-markup-block}}', '<span class=rr-infolabel-header>Рекомендации на основе алгоритмов Retail Rocket.</span><br><br><span class=rr-infolabel-text>Платформа Retail Rocket в своих рекомендательных технологиях использует 6 трекинг-кодов на основных страницах интернет-площадки (главная, корзина и т.д.), которые определяют действия пользователя во время его посещения данной площадки (просмотры товаров, их покупка, приобретение комплектующих и т.д.).<br><br>Для выстраивания последующего взаимодействия между площадкой и пользователем используются данные cookie, которые формируются автоматически.</span><br><br><a class=rr-infolabel-link href=https://special.retailrocket.ru/algorithm >Подробнее об алгоритмах рекомендаций RetailRocket</a>', '{{data-retailrocket-markup-block}}');" 
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="24" height="24" rx="12" fill="#F5F5F5"/>
+        <path d="M13.1763 7.17653C13.1763 7.82559 12.6495 8.35306 11.9998 8.35306C11.35 8.35306 10.8232 7.82576 10.8232 7.17653C10.8232 6.52676 11.35 6 11.9998 6C12.6495 6 13.1763 6.52676 13.1763 7.17653Z" fill="#555555"/>
+        <path d="M12.5885 16.4119V11.1178C12.5885 10.7925 12.3256 10.5294 12.0003 10.5294H9.64746V11.7059H11.4122V16.4119H9.64746V17.5882H14.3532V16.4119H12.5885Z" fill="#555555"/>
+      </svg>
+    </span>
+  </div>
+  <div class="retailrocket-items">
+    <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
+      <div class="retailrocket-item">
+
+      </div>
+    <% } %>
+  </div>
+
+</script>
+
+<script type="text/javascript">
+  (function (retailrocket) {
+    'use strict';
+
+    retailrocket['store{{data-retailrocket-markup-block}}'] = (function () {
+      function preRenderFn(widget, recoms, renderFn) {
+
+      }
+
+      function postRenderFn(widget) {
+
+      }
+
+      function createTooltip(attrValue, tooltipTitle, ind) {
+        var tooltip = document.createElement('div');
+
+        tooltip.className = 'rr-bundle-tooltip rr-tooltip-first';
+        tooltip.setAttribute('data-retail-tool-tip', attrValue);
+        tooltip.setAttribute('data-retail-tool-tip-s', ind);
+
+        tooltip.innerHTML = `
+          <div class="rr-bundle-tooltip__arrow"></div>
+          <div class="rr-bundle-tooltip__text">${tooltipTitle}</div>
+        `;
+
+        document.body.appendChild(tooltip);
+      }
+
+      function removeToolTipTitle (dataToolTip) {
+        var rrBlock = document.querySelector('div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]');
+        var toolTips = document.querySelectorAll('.rr-tooltip-first[data-retail-tool-tip="'+ dataToolTip +'"]');
+
+        function handleMouseOver(e) {
+          if (e.target.closest('.rr-tooltip-first[data-retail-tool-tip="'+ dataToolTip +'"]') || e.target.classList.contains('rr-icon-retail-info')) {
+            return;
+          }
+
+          toolTips.forEach(function (item) {
+            item.style.opacity = '0';
+            item.remove();
+          })
+
+          document.body.removeEventListener('mouseover', handleMouseOver);
+          document.body.removeEventListener('focus', handleMouseOver);
+        }
+
+        document.body.addEventListener('mouseover', handleMouseOver);
+        document.body.addEventListener('focus', handleMouseOver);
+      }
+
+      function setToolTip (label, dataToolTip, textToolTip, ind) {
+        createTooltip(dataToolTip, textToolTip, ind);
+
+        var widget = document.querySelector('div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]'),
+            toolTip = document.querySelector('.rr-tooltip-first[data-retail-tool-tip="'+ dataToolTip +'"]');
+        
+        var positionsWidget = widget.getBoundingClientRect(),
+            positionsLabel = label.getBoundingClientRect(),
+            positionToolTip = toolTip.getBoundingClientRect(),
+            positionBottom = positionsLabel.bottom + window.scrollY - positionsLabel.height,
+            positionLeft = window.scrollX + Number(positionsLabel.left.toFixed(0)) - (toolTip.offsetWidth / 2) + (positionsLabel.width / 2);
+
+        toolTip.style.top = positionBottom + 'px';
+        toolTip.style.left = positionLeft + 'px';
+
+        if (positionLeft + toolTip.offsetWidth === window.screen.width) {
+          positionLeft = positionLeft / 3;
+          toolTip.style.left = positionLeft + 'px';
+        } 
+        
+        toolTip.style.opacity = '1';
+
+        removeToolTipTitle(dataToolTip);
+      }
+
+      return {
+        postRenderFn,
+        preRenderFn,
+        setToolTip,
+      };
+    }());
+
+    retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}');
+  }(retailrocket));
+</script>

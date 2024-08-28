@@ -1,0 +1,1 @@
+Math.round(100 - (Price / OldPrice) * 100)

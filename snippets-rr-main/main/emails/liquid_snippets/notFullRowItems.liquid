@@ -1,0 +1,16 @@
+{% comment %} /-- Скрытие неполного ряда товаров --/ {% endcomment %}
+{% comment %}
+- Заводим переменную и присваиваем ей значение установленного лимита в цикле выдачи
+- Вычисляем остаток от деления кол-ва товаров на кол-во колонок
+- Заводим переменную lim и присваиваем ей значение кол-ва товарах в полных рядах
+- В цикле устанавливаем найденное кол-во товаров в полных рядах, если ранее установленный лемит превышает это кол-во.
+{% endcomment %}
+
+{% assign userLimit = limit %}
+{% assign sizeModulo = sizeReco | modulo: inrow %}
+{% assign lim = sizeReco | minus: sizeModulo %}
+{% if userLimit > lim %}
+{% assign userLimit = lim %}
+{% endif %}
+
+{% for item in Algoritm | limit: userLimit %}

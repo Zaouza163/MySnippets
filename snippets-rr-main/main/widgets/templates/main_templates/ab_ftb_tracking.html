@@ -1,0 +1,654 @@
+<style type="text/css">
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"]{height:0;visibility:hidden;position:relative;display:inline-block;width:calc(100% + 15px);font-family:inherit;box-sizing:border-box;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"].rr-active{height:auto;visibility:visible;overflow:visible;margin: 2rem 0;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] *:focus{outline:none;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] a:hover{text-decoration:none;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__title{display: block;width: 100%;height: auto;vertical-align: top;box-sizing: border-box;margin: 0 0 10px;font-size: 17px;line-height: 1.4;font-weight: 900;color: #000;text-transform: uppercase;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-swiper-wrapper{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);position:relative;width:100%;height:100%;z-index:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform;-webkit-box-sizing:content-box;box-sizing:content-box;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-swiper-slide{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:100%;height:auto;position:relative;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-items{width:100%;padding:0;position:relative;overflow:hidden;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item{padding: 2px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__block{display: block;position: relative;width: 100%;height: auto;vertical-align: top;box-sizing: border-box;margin: 0 auto;padding: 15px;background: #fff;border: 1px solid transparent;box-shadow: 0 2px 5px rgb(0 0 0 / 18%);border-radius: 3px;transition: all .5s;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__block:hover{box-shadow: 0 2px 5px rgb(0 0 0 / 30%);transition: all .3s;border-color: #d3d1d1;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image{width:100%;outline:none;text-align:center;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image img{width:100px;height:100px;max-width:100%;max-height:100%;vertical-align:middle;margin:0 auto;outline:none}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label__new{display: block;vertical-align: top;box-sizing: border-box;width: auto;height: auto;position: absolute;bottom: 0;left: 0;font-size: 12px;line-height: 1;font-weight: 500;padding: 2px 8px 3px;border-radius: 2px;background: #30c158;color: #fff;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label__discount{display: block;vertical-align: top;box-sizing: border-box;width: auto;height: auto;position: absolute;bottom: 0;left: 0;font-size: 12px;line-height: 1;font-weight: 500;padding: 2px 8px 3px;border-radius: 2px;background: #ef0d0d;color: #fff;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label__promo{display: block;vertical-align: top;box-sizing: border-box;width: auto;height: auto;position: absolute;bottom: 0;left: 0;font-size: 12px;line-height: 1;font-weight: 500;padding: 2px 18px 3px;border-radius: 2px;background: #ef0d0d;color: #fff;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__info{text-decoration:none;outline:none}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title{display: block;position: relative;height: auto;vertical-align: top;box-sizing: border-box;text-align: left;margin: 0 auto 5px;width: 100%;height: 50px;overflow: hidden;text-decoration: none;font-size: 12px;line-height: 1.4;font-weight: 400;color: #000;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__block-price{display: block;position: relative;height: auto;vertical-align: top;box-sizing: border-box;text-align: center;margin: 0 auto 13px;width: 100%;height: 40px;overflow: hidden;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__old-price{display: block;position: relative;width: 100%;height: auto;vertical-align: top;box-sizing: border-box;font-size: 12px;line-height: 1;font-weight: 400;text-align: center;text-decoration-line: line-through;color: #666e6f;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price{display: block;position: relative;width: 100%;height: auto;vertical-align: top;box-sizing: border-box;font-size: 22px;line-height: 1;font-weight: 500;text-align: center;color: #1a1919;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .new-price{color: #ef0d0d;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-currency::before{content:'р'}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions{position: relative;padding: 0;box-sizing: border-box;display: flex;flex-direction: row;align-items: stretch;justify-content: space-between;flex-wrap: nowrap;text-align: center;margin: 0 auto 6px;width: 100%;height: 24px;max-height: 24px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__counter{position: relative;margin: 0;padding: 0;box-sizing: border-box;width: 76px;height: 24px;display: flex;flex-direction: row;align-items: stretch;justify-content: space-between;flex-wrap: nowrap;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__counter__calculate{display: flex;flex-direction: row;align-items: center;justify-content: flex-start;width: 72px;height: auto;margin: 0;padding: 0;left: auto;top: auto;position: relative;font-size: 0;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .button-less{position: relative;width: 24px;height: 24px;left: auto;top: auto;flex: 1 1 24px;background: #fff;border: 1px solid #97b4ba;box-sizing: border-box;border-radius: 3px 0 0 3px;font-size: 28px;line-height: 20px;font-weight: 300;color: #000;text-align: center;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .button-more{position: relative;width: 24px;height: 24px;left: auto;top: auto;flex: 1 1 24px;background: #fff;border: 1px solid #97b4ba;box-sizing: border-box;border-radius: 0 3px 3px 0;font-size: 21px;line-height: 22px;font-weight: 300;color: #000;text-align: center;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .quantity{position: relative;width: 24px;height: 24px;max-width: 24px;left: auto;top: auto;flex: 1 1 24px;font-family: Roboto,sans-serif;font-weight: 400;text-transform: uppercase;font-size: 12px;line-height: 20px;background: #fff;border:none !important;border-top: 1px solid #97b4ba!important;border-bottom: 1px solid #97b4ba!important;box-shadow: none!important;box-sizing: border-box;    padding: 0;text-align: center;color: #464646;border-radius: 0;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-buy{flex-direction: row;justify-content: center;align-items: center;width: 100%;height: 24px;text-align: center;border-radius: 2px;background: #fed234;text-transform: uppercase;color: #000;text-decoration: none;font-size: 12px;line-height: 24px;font-family: Roboto,sans-serif;font-weight: 400;cursor:pointer;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .in-cart::before{content: '';display: inline-block;width: 10px;height: 9px;position: relative;vertical-align: middle;margin: -2px 7px 0 0;padding: 0;background-position: 50% 50%;background-size: auto;background-repeat: no-repeat;background-color: transparent;background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAJCAYAAAALpr0TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABhSURBVHgBhY8BDcAgDAS7KZiESpiEOZkFJMzBJCAFKUhAAlBSkodA2uRJWq799iA7ojynAX1VbDANyCruo0XXwlKgfy4EgJzWhgEMsNc8af5OLnTDJzYt44HlIxnXup1lASFoG6foZNZ8AAAAAElFTkSuQmCC);}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-slider-arrow{position: initial;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-prev{position: absolute;top: 74%;display: block;width: 26px;height: 51px;margin: -45px 0 0;text-indent: -9999px;background-image: url(/local/templates/main.v4/images/icons.png);background-repeat: no-repeat;background-position: 0 -1252px;margin: 0;left: 0;top: 50%;transform: translateY(-50%);z-index:1;cursor:pointer;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-prev:hover{background-position: 0 -1303px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-prev:hover .background-arrow{background-color: rgba(192, 192, 192, 0.5);transition: all .5s;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-next{position: absolute;top: 74%;display: block;width: 26px;height: 51px;margin: -45px 0 0;text-indent: -9999px;background-image: url(/local/templates/main.v4/images/icons.png);background-repeat: no-repeat;background-position: -26px -1252px;margin: 0;right: 0;top: 50%;transform: translateY(-50%);z-index:1;cursor:pointer;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .background-arrow{position:absolute;width:26px;height:271px;top:-93px;left:0;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .background-arrow .left{border-radius:0 5px 5px 0;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .background-arrow .right{border-radius:5px 0 0 5px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-next:hover{background-position: -26px -1303px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-next:hover .background-arrow{background-color: rgba(192, 192, 192, 0.5);transition: all .5s;}
+  @media all and (max-width: 580px) {
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"]{margin-left: -15px;width:calc(100% + 30px);}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__title{text-align:center;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item{padding: 0;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__block{border: 1px solid #e5e5e5;border-radius: 0;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__counter{display:none;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-buy{display: flex;background: #fff02e;width: 150px;height: 38px;font-size: 13px;font-weight: 700;border-radius: 3px;margin: 0 auto 10px;}
+  }
+</style>
+
+<div
+     class="rr-widget rr-widget-{{data-retailrocket-markup-block}} rr-widget-{{data-retailrocket-markup-block}}--first"
+     data-algorithm="related" 
+     data-algorithm-argument="{{data-products}}"
+     data-template-param-method-name="testAddToBasket"
+     data-algorithm-param-stock-id=""
+     data-template-param-header-text="С этим покупают"
+     data-template-param-number-of-items="12"
+     data-template-param-item-image-width="120"
+     data-template-param-item-image-height="120"
+     data-on-pre-render="retailrocket['electro-mpo{{data-retailrocket-markup-block}}'].preRenderFn(this, data, renderFn)"
+     data-on-post-render="retailrocket['electro-mpo{{data-retailrocket-markup-block}}'].postRenderFn(this)"
+     data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+     data-s="{{data-retailrocket-markup-block}}"
+     >
+</div>
+
+<div
+     class="rr-widget rr-widget-{{data-retailrocket-markup-block}} rr-widget-{{data-retailrocket-markup-block}}--second"
+     data-algorithm="popular" 
+     data-algorithm-argument="0" 
+     data-template-param-method-name="testCheckoutAreaAddToBasket"
+     data-algorithm-param-stock-id=""
+     data-template-param-header-text="Может пригодиться"
+     data-template-param-number-of-items="12"
+     data-template-param-item-image-width="120"
+     data-template-param-item-image-height="120"
+     data-on-pre-render="retailrocket['electro-mpo{{data-retailrocket-markup-block}}'].preRenderFnTBP(this, data, renderFn)"
+     data-on-post-render="retailrocket['electro-mpo{{data-retailrocket-markup-block}}'].postRenderFnTBP(this)"
+     data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+     data-s="{{data-retailrocket-markup-block}}"
+     >
+</div>
+
+<script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
+  <div class="rr-widget__title">
+    <%=(headerText)%>
+  </div>
+  <div class="rr-items rr-swiper-container">
+    <div class="rr-swiper-wrapper">
+      <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
+      <div class="rr-swiper-slide" data-item-id="<%=ItemId%>" data-index="<%=i%>">
+        <div class="rr-item">
+          <div class="rr-item__block">
+            <div class="rr-item__img-block">
+              <a class="rr-item__info" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+                <div class="rr-item__image">
+                  <img src="https://cdn.retailrocket.ru/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both" title="<%=Name%>" alt="<%=Name%>">
+                </div>
+              </a>
+              <% if (Params['Суперцена'] !== undefined && Params['Суперцена'].toString() == 'true') { %>
+                <div class="rr-item__label__discount">Суперцена</div>
+              <% } else if (Params['Новинка'] !== undefined && Params['Новинка'].toString() == 'true') { %>
+                <div class="rr-item__label__new">Новинка</div>
+              <% } else if (Params['Акция'] !== undefined && Params['Акция'].toString() == 'true') { %>
+                <div class="rr-item__label__promo">Акция</div>
+              <% } %>
+            </div>
+            <div class="rr-item__name-block">
+              <a class="rr-item__info" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+                <div class="rr-item__title">
+                  <%=Name %>
+                </div>
+                <div class="rr-item__description">
+                </div>
+              </a>
+            </div>
+            <div class="rr-item__block-price">
+              <% if (OldPrice > Price) { %>
+                <div class="rr-item__old-price"><span class="rr-item__old-price-value"><%= retailrocket.widget.formatNumber(OldPrice, '.', ' ', 2) %></span> <span class="rr-item__price-currency"></span> </div>
+                <div class="rr-item__price new-price"><span class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, '.', ' ', 2) %></span> <span class="rr-item__price-currency"></span> </div>
+              <% } else { %>
+                <div class="rr-item__price"><span class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, '.', ' ', 2) %></span> <span class="rr-item__price-currency"></span> </div>
+              <% } %>
+            </div>
+            <div class="rr-item__actions">
+              <div class="rr-item__counter">
+                <div class="rr-item__counter__calculate">
+                  <input type="button" class="button-less" value="-" onclick="retailrocket['electro-mpo{{data-retailrocket-markup-block}}'].changeQuantity(this);">
+                  <input type="text" value="1" class="quantity">
+                  <input type="button" class="button-more" value="+" onclick="retailrocket['electro-mpo{{data-retailrocket-markup-block}}'].changeQuantity(this);">
+                </div>
+              </div>
+              <a class="rr-item__actions-buy" onclick="retailrocket['electro-mpo{{data-retailrocket-markup-block}}'].changeCartText(this); rrApi.recomAddToCart(<%=ItemId%>, { suggester: '<%=suggesterId%>', methodName: '<%=algorithm%>' }); rrAddToBasket(<%=ItemId%>, this.getAttribute('data-quantity'));retailrocket['electro-mpo{{data-retailrocket-markup-block}}'].setStatisticsClickBasket(<%=ItemId%>, '<%=methodName%>');" data-quantity="1">В КОРЗИНУ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+
+  <div class="rr-slider-arrow">
+    <a class="rr-arrow swiper-prev"><span class="background-arrow left"></span></a>
+    <a class="rr-arrow swiper-next"><span class="background-arrow right"></span></a>
+  </div>
+</script>
+
+<script type="text/javascript">
+  (function (retailrocket) {
+    'use strict';
+
+    var waitFor = function (exitCondition, callback, force, opts) {
+      var checkCount = (opts && opts.checkCount) || 100;
+      var timeout = (opts && opts.timeout) || 1000;
+
+      (function check() {
+        var result = exitCondition();
+        if (result) {
+          callback(result);
+          return;
+        }
+
+        if (checkCount === 0) {
+          if (force) {
+            callback();
+          }
+          return;
+        }
+
+        checkCount -= 1;
+        setTimeout(check, timeout);
+      })();
+    };
+
+    var recomTrackSetting = {
+      nameTrack: '',
+      abSegment: '',
+      check: false,
+      listTrack: function()
+      {
+        return [this.nameTrack + 'Cart'];
+      },
+    };
+    var recomTrackAddedtoBasketIds = [];
+    var recomTrackAddedtoBasketIdsTBP = [];
+
+    function setStatisticsShow(recomIds) {
+      recomTrackSetting.listTrack().forEach(function(track) {
+        rrApiOnReady.push(function() {
+          rrApi.recomTrack(
+            '{{data-retailrocket-markup-block}}',
+            0,
+            recomIds,
+            {
+              eventType: 'thompsonBasketPopular',
+              methodName: 'test',
+              shownIds: recomIds,
+            }
+          );
+        });
+      });
+    }
+
+    function setStatisticsShowTBP(recomIds) {
+      recomTrackSetting.listTrack().forEach(function(track) {
+        rrApiOnReady.push(function() {
+          rrApi.recomTrack(
+            '{{data-retailrocket-markup-block}}',
+            0,
+            recomIds,
+            {
+              eventType: 'thompsonBasketPopular',
+              stockId: '',
+              methodName: 'testCheckoutArea',
+              shownIds: recomIds,
+            }
+          );
+        });
+      });
+    }
+
+    function setStatisticsClickBasket(itemId, methodName) {
+      if (recomTrackAddedtoBasketIds.indexOf(itemId) === -1) {
+        recomTrackAddedtoBasketIds.push(itemId);
+        recomTrackSetting.listTrack().forEach(function(track) {
+          rrApiOnReady.push(function() {
+            rrApi.recomTrack(
+              '{{data-retailrocket-markup-block}}',
+              0,
+              [],
+              {
+                eventType: 'thompsonBasketPopular',
+                methodName,
+                itemId : itemId,
+              }
+            );
+          });
+        });
+      }
+    }
+
+    var SwiperModel = function (setting) {
+      var $widget = setting.widget;
+      var swiperSeector = '.rr-swiper-container';
+      var source = 'https://rrstatic.retailrocket.net/widget/plugins/rrswiper/rrswiper.min.js';
+      var itemsCount = $widget.getAttribute('data-number-of-rendered-items');
+
+      function checkloop(paramsSlider) {
+        var modSetting = paramsSlider;
+
+        if (modSetting.loop == true) {
+          for (var point in modSetting.breakpoints) {
+            if (itemsCount <= modSetting.breakpoints[point].slidesPerView) {
+              modSetting.breakpoints[point].loop = false;
+            } else {
+              modSetting.breakpoints[point].loop = true;
+            }
+          }
+        }
+
+        return modSetting;
+      }
+
+      function render(swiperLibrary) {
+        var SwiperParams = checkloop(setting.settingSwiper);
+        var $rrContainer = $widget.querySelector(swiperSeector);
+        var rrSwiper = swiperLibrary == 'RRSwiper' ? new RRSwiper($rrContainer, SwiperParams) : new Swiper($rrContainer, SwiperParams);
+
+        rrSwiper
+          .on('init', function () {
+            var $imgError = $widget.querySelectorAll('.rr-swiper-slide:not(.swiper-slide-duplicate) img');
+            var counter = 0;
+            var indexImg = [];
+
+            $imgError.forEach(function (img) {
+              img.onerror = function () {
+                var $slideItem = img.closest('.rr-swiper-slide');
+                var $slideSiblings = $slideItem.parentNode.querySelectorAll('.rr-swiper-slide:not(.swiper-slide-duplicate)');
+                indexImg.push($slideItem.getAttribute('data-swiper-slide-index'));
+
+                if ($imgError.length == counter) {
+                  rrSwiper.removeSlide(indexImg);
+                }
+              };
+              counter++;
+            });
+            $widget.classList.add('rr-active');
+          })
+          .on('observerUpdate', function () {
+            rrSwiper.resize.resizeHandler();
+          });
+        rrSwiper.init();
+      }
+
+      function getScript() {
+        var swiperJs = document.createElement('script');
+        var getElemScript = document.getElementsByTagName('script')[0];
+        swiperJs.async = 1;
+
+        swiperJs.onload = swiperJs.onreadystatechange = function(_, isAbort) {
+          if (isAbort || !swiperJs.readyState || /loaded|complete/.test(swiperJs.readyState) ) {
+            swiperJs.onload = swiperJs.onreadystatechange = null;
+            swiperJs = undefined;
+
+            if (!isAbort) setTimeout(render('RRSwiper'), 0);
+          }
+        };
+
+        swiperJs.src = source;
+        getElemScript.parentNode.insertBefore(swiperJs, getElemScript);
+      }
+
+      this.getScript = getScript;
+    };
+
+    function filterDouble(array) {
+      var ids = array.map(function (item) {
+        return item;
+      });
+
+      return array.filter(function (item, index) {
+        return ids.indexOf(item) === index;
+      });
+    }
+
+    if (!('duplicates' in retailrocket.modules)) {
+      retailrocket.setModule('duplicates', [], function () {
+        var savedIds = [];
+        var paramName = 'ItemId';
+
+        function has(id) {
+          return savedIds.indexOf(id) !== -1;
+        }
+
+        function add(id) {
+          savedIds = savedIds.concat(id);
+        }
+
+        function remove(id) {
+          var ids = [].concat(id);
+
+          savedIds = savedIds.filter(function (savedId) {
+            return ids.indexOf(savedId) === -1;
+          });
+        }
+
+        function filter(recom) {
+          if (!recom[paramName]) {
+            return true;
+          }
+
+          if (!has(recom[paramName])) {
+            add(recom[paramName]);
+            return true;
+          }
+
+          return false;
+        }
+
+        function filteredCount(recoms) {
+          return recoms.reduce(function (acc, recom) {
+            return acc + (has(recom[paramName]) ? 1 : 0);
+          }, 0);
+        }
+
+        function getItems() {
+          return savedIds.slice();
+        }
+
+        return {
+          has: has,
+          add: add,
+          remove: remove,
+          filter: filter,
+          filteredCount: filteredCount,
+          getItems: getItems,
+        };
+      });
+    }
+
+    retailrocket['electro-mpo{{data-retailrocket-markup-block}}'] = (function () {
+      function preRenderFnTBP(widget, recoms, renderFn) {
+        var siteId = retailrocket.api.getPartnerId(),
+            stockId = '',
+            categoryIds = '6911,6844,3575,3285,3249,3410,4121,3618,4894,4169,3271,4099,4066,4450,3466,4974,4237,4961,3874,4895,3414,3481,4948,3463,4999,3191,6942,4264,6979,4963,4888,3210,3215,3182,6965,4763,4221',
+            sessionId = retailrocket.api.getSessionId(),
+            pvId = retailrocket.api.getPartnerVisitorId();
+
+        var queryString = `https://thompsonbasketpopular.retailrocket.net/thompsonBasketPopular/v1/partner/${siteId}/items?&stockId=${stockId}&categoryIds=${categoryIds}&sessionId=${sessionId}&pvId=${pvId}`;
+
+        fetch(queryString).then(function (response) {
+          return response.json();
+        }).then(function (data) {
+          console.log(data);
+          var filteredRecoms = data.filter(retailrocket.modules.duplicates.filter);
+
+          if (filteredRecoms.length > 0) {
+            renderFn(filteredRecoms);
+          }
+        });
+      }
+
+      function preRenderFn(widget, recoms, renderFn) {
+        var filteredRecoms = recoms.filter(retailrocket.modules.duplicates.filter);
+
+        if (filteredRecoms.length > 0) {
+          renderFn(filteredRecoms);
+        }
+      }
+
+      function postRenderFn(widget) {
+        var usedIds = [];
+        var viewBlockFlag = false;
+
+        var rrSwiperCarousel = new SwiperModel({
+          widget: widget,
+          settingSwiper: {
+            wrapperClass: 'rr-swiper-wrapper',
+            slideClass: 'rr-swiper-slide',
+            init: false,
+            updateOnWindowResize: true,
+            watchOverflow: true,
+            observer: true,
+            spaceBetween: 0,
+            preloadImages: true,
+            touchReleaseOnEdges: true,
+            watchSlidesVisibility: true,
+            loop: true,
+            navigation: {
+              prevEl: widget.querySelector('.swiper-prev'),
+              nextEl: widget.querySelector('.swiper-next'),
+            },
+            pagination: {
+              el: widget.querySelector('.rr-slider-dots'),
+              type: 'bullets',
+              clickable: true
+            },
+            on: {
+              init: function () {
+                var swiper = this;
+
+                var allSlides = swiper.slides;
+
+                for (var i = 0; i < allSlides.length; i++) {
+                  if (allSlides[i].classList.contains('swiper-slide-visible')) {
+                    usedIds.push(allSlides[i].dataset.itemId);
+                  }
+                }
+
+                function scrollTrigger() {
+                  var block = document.querySelector('.rr-widget-{{data-retailrocket-markup-block}}--first');
+                  var blockPosition = block.getBoundingClientRect().top;
+                  var screenPosition = window.innerHeight / 2;
+
+                  if (blockPosition < screenPosition && !viewBlockFlag) {
+                    viewBlockFlag = true;
+
+                    if (usedIds.length !== 0) {
+                      setStatisticsShow(usedIds);
+                    }
+                  }
+                }
+
+                window.addEventListener('scroll', scrollTrigger);
+              },
+              transitionEnd: function () {
+                if (!viewBlockFlag) {
+                  return;
+                }
+
+                var swiper = this;
+
+                var allSlides = swiper.slides;
+                var visibleSlidesIds = [];
+
+                for (var i = 0; i < allSlides.length; i++) {
+                  if (allSlides[i].classList.contains('swiper-slide-visible')) {
+                    visibleSlidesIds.push(allSlides[i].dataset.itemId);
+                  }
+                }
+
+                visibleSlidesIds = visibleSlidesIds.filter(function (item) {
+                  return usedIds.indexOf(item) === -1;
+                });
+
+                if (visibleSlidesIds.length !== 0) {
+                  setStatisticsShow(visibleSlidesIds);
+                }
+
+                usedIds = filterDouble(usedIds.concat(visibleSlidesIds));
+              }
+            },
+            autoplay: false,
+            speed: 800,
+            breakpoints: {
+              840: {
+                slidesPerView: 4,
+                slidesPerGroup: 4
+              },
+              580: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+              },
+              100: {
+                slidesPerView: 2,
+                slidesPerGroup: 2
+              }
+            }
+          }
+        });
+        
+        rrSwiperCarousel.getScript();
+      }
+
+      function postRenderFnTBP(widget) {
+        var usedIds = [];
+        var viewBlockFlag = false;
+        
+        var rrSwiperCarousel = new SwiperModel({
+          widget: widget,
+          settingSwiper: {
+            wrapperClass: 'rr-swiper-wrapper',
+            slideClass: 'rr-swiper-slide',
+            init: false,
+            updateOnWindowResize: true,
+            watchOverflow: true,
+            observer: true,
+            spaceBetween: 0,
+            preloadImages: true,
+            touchReleaseOnEdges: true,
+            watchSlidesVisibility: true,
+            loop: true,
+            navigation: {
+              prevEl: widget.querySelector('.swiper-prev'),
+              nextEl: widget.querySelector('.swiper-next'),
+            },
+            pagination: {
+              el: widget.querySelector('.rr-slider-dots'),
+              type: 'bullets',
+              clickable: true
+            },
+            on: {
+              init: function () {
+                var swiper = this;
+
+                var allSlides = swiper.slides;
+
+                for (var i = 0; i < allSlides.length; i++) {
+                  if (allSlides[i].classList.contains('swiper-slide-visible')) {
+                    usedIds.push(allSlides[i].dataset.itemId);
+                  }
+                }
+
+                function scrollTrigger() {
+                  var block = document.querySelector('.rr-widget-{{data-retailrocket-markup-block}}--second');
+                  var blockPosition = block.getBoundingClientRect().top;
+                  var screenPosition = window.innerHeight / 2;
+
+                  if (blockPosition < screenPosition && !viewBlockFlag) {
+                    viewBlockFlag = true;
+
+                    if (usedIds.length !== 0) {
+                      setStatisticsShowTBP(usedIds);
+                    }
+                  }
+                }
+
+                window.addEventListener('scroll', scrollTrigger);
+              },
+              transitionEnd: function () {
+                if (!viewBlockFlag) {
+                  return;
+                }
+
+                var swiper = this;
+
+                var allSlides = swiper.slides;
+                var visibleSlidesIds = [];
+
+                for (var i = 0; i < allSlides.length; i++) {
+                  if (allSlides[i].classList.contains('swiper-slide-visible')) {
+                    visibleSlidesIds.push(allSlides[i].dataset.itemId);
+                  }
+                }
+
+                visibleSlidesIds = visibleSlidesIds.filter(function (item) {
+                  return usedIds.indexOf(item) === -1;
+                });
+
+                if (visibleSlidesIds.length !== 0) {
+                  setStatisticsShowTBP(visibleSlidesIds);
+                }
+
+                usedIds = filterDouble(usedIds.concat(visibleSlidesIds));
+              }
+            },
+            autoplay: false,
+            speed: 800,
+            breakpoints: {
+              840: {
+                slidesPerView: 4,
+                slidesPerGroup: 4
+              },
+              580: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+              },
+              100: {
+                slidesPerView: 2,
+                slidesPerGroup: 2
+              }
+            }
+          }
+        });
+        
+        rrSwiperCarousel.getScript();
+      }
+      
+      function changeCartText(el) {
+        el.classList.add('in-cart');
+        el.textContent = 'В КОРЗИНЕ';
+      }
+      
+      function changeQuantity(el) {
+        var quantity = el.closest('.rr-item').querySelector('.quantity');
+        var cartButton = el.closest('.rr-item').querySelector('.rr-item__actions-buy');
+
+        if (el.value == '+') {
+          quantity.value = Number(quantity.value) + 1;
+          cartButton.setAttribute('data-quantity', quantity.value);
+        } else if (el.value == '-' && quantity.value > 1) {
+          quantity.value = Number(quantity.value) - 1;
+          cartButton.setAttribute('data-quantity', quantity.value);
+        }
+      }
+
+      return {
+        changeQuantity: changeQuantity,
+        changeCartText: changeCartText,
+        postRenderFn: postRenderFn,
+        preRenderFn: preRenderFn,
+        preRenderFnTBP,
+        postRenderFnTBP,
+        setStatisticsClickBasket,
+      };
+    }());
+
+    retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}--first');
+    retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}--second');
+  }(retailrocket));
+</script>

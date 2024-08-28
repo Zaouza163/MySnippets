@@ -1,0 +1,2111 @@
+<style type="text/css">
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"]{height:0;visibility:hidden;overflow:hidden;font-family:inherit;box-sizing:border-box;height:0;visibility:hidden;outline: none !important;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"].rr-active{height:auto;visibility:visible;overflow:visible;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"].loading {pointer-events: none !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-allEmpty {padding: 20px;display: flex;justify-content: center;align-items: center;gap: 20px;flex-direction: column;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-allEmpty__text {text-align: center;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-preloader {position: absolute;width: 100%;min-height: 100%;z-index: 1001;display: flex;display: -webkit-flex;align-items: center;-webkit-box-align: center;-webkit-align-items: center;-ms-flex-align: center;justify-content: center;-webkit-box-pack: center;-webkit-justify-content: center;-ms-flex-pack: center;background-color: #fff;background-image: url(https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/big.gif);background-repeat: no-repeat;background-position: center 40%;background-attachment: fixed;height: 100%;display: none;left: 0;right: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-preloader.active {display: block;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-d-none {display: none !important;pointer-events: none !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items {display: block;width: 75%;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-actions-top {display: flex;justify-content: space-between;margin-bottom: 28px;position: relative;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner--grid {display: grid;grid-template-columns: 1fr 1fr 1fr;column-gap: 21px;row-gap: 21px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner--flex {display: flex;flex-direction: column;grid-gap: 21px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item {border: 1px solid #F1F1F1;border-radius: 8px;display: flex;justify-content: space-between;padding: 20px 20px 20px 0;position: relative;grid-gap: 132px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item.rr-item--grid {flex-wrap: wrap;padding: 16px 0;grid-gap: 30px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top {display: flex;justify-content: flex-start;grid-gap: 15px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item.rr-item--grid .rr-item-top {flex-wrap: wrap;justify-content: space-around;grid-gap: 30px;width: 100%;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-bottom {display: flex;flex-direction: column;position: relative;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item.rr-item--grid .rr-item-bottom {display: grid;flex-direction: initial;justify-content: initial;grid-template-columns: repeat(2, 2fr);grid-template-rows: repeat(2, 2fr);
+    grid-template-areas:
+    '.              bl_prd_button-s' 
+    'bl_prd_price-s btn-group-s    ';grid-gap: 10px;position: relative;margin-top: 0;margin-right: 0;padding: 0 16px;width: 100%;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-image {display: flex;justify-content: center;align-items: center;width: 206px;overflow: hidden;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item.rr-item--grid .rr-item-top-image {width: 100%;margin-top: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos {display: flex;flex-direction: column;width: 360px;width: 360px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item.rr-item--grid .rr-item-top-infos {width: 100%;padding: 0 16px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-image figure {margin: 0;display: flex;justify-content: center;align-items: center;max-width: 177px;width: 100%;height: 177px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-image__img {display: block;padding: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-image__img img {display: block;width: 100%;height: auto;max-height: 160px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item.rr-item--grid .rr-item-top-image__img img {width: auto;margin: auto;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos__name {font-weight: 500;font-size: 15px;line-height: 20px;color: #363535;margin-bottom: 8px;display: block;overflow: hidden;min-height: 60px;overflow-wrap: break-word;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-desc {margin-top: 0;margin-bottom: 1rem;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-desc__sku {display: block;font-weight: 400;font-size: 12px;line-height: 18px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-sku__name {color: #AFAFAF;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-w {display: flex;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item.rr-item--grid .rr-item-top-infos-w {display: none !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-w__country {display: block;font-weight: 400;font-size: 12px;line-height: 18px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-w__country::after {content: '|';display: inline-block;margin-left: 8px;margin-right: 8px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-w__weight {display: block;font-weight: 400;font-size: 12px;line-height: 18px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-avail {display: flex;align-items: end;grid-gap: 15px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item.rr-item--grid .rr-item-top-infos-avail .rr-instock{display: none !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-instock {color: #27ae60;font-weight: 400;font-size: 11px;line-height: 11px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item.rr-item--grid .rr-item-top-infos-avail__compare {font-weight: 400;font-size: 11px !important;line-height: 11px;margin-left: 0.5em;position: absolute;top: 0px;right: 0px;padding: 18px;opacity: 0;transition: opacity 1s;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-avail__compare {color: #007bff;text-decoration: none;background-color: transparent;opacity: 0;transition: opacity 1s;cursor: pointer;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-avail__compare-icon {display: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-avail__compare-icon.rr-comp-active {display: inline;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-avail__compare-icon svg {pointer-events: none !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-bottom-prices {margin-bottom: 14px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item.rr-item--grid .rr-item-bottom-prices {grid-area: bl_prd_price-s;margin-bottom: initial;align-self: center;max-height: 40px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-bottom-prices__width-old {display: flex;position: relative;top: 0;right: 0;width: 100%;max-width: 100%;justify-content: space-between;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item.rr-item--grid .rr-item-bottom-prices__width-old {width: 100%;max-width: initial;justify-content: flex-start;display: flex;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-price-old {font-weight: 400;font-size: 12px;line-height: 19px;color: #838a92;text-decoration: line-through;text-decoration-color: currentcolor;-webkit-text-decoration-color: #cc2035;text-decoration-color: #cc2035;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-price-old-tag {display: flex;align-items: center;width: 35px;height: 20px;background-image: url(https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/catal_discount_shield.svg);background-repeat: no-repeat;background-position: 50%;font-weight: 700;font-size: 11px;line-height: 16px;color: #f4f4f4;padding-left: 6px;margin-left: 16px;border-radius: 2px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-price {font-weight: 700;font-size: 16px;line-height: 24px;color: #363535;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-price-curr,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-price-slash,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-price-meas {font-size: 14px;font-weight: 700;color: #363535;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item.rr-item--grid .rr-cart-btn {grid-area: btn-group-s;align-self: end;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-cart-btn__btn {width: 100%;height: 40px;background: #CC2035;border-radius: 4px;border: none;color: white;font-weight: 500;font-size: 14px;line-height: 16px;-webkit-appearance: button;cursor: pointer;width: 119px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-cart-btn__btn.rr-cart-btn__btn--added{background: #ffffff;color: #CC2035;border: 1px solid #CC2035;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-actions-top-sort {display: flex;align-items: center;justify-content: space-between;margin: 0;width: 100%;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-actions-top-sort-select {position: relative;display: flex;width: 196px;padding: 7px 9px;border: 1px solid #dedede;border-radius: 4px;font-weight: 400;font-size: 14px;line-height: 16px;color: #515151;background-image: url(https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/catal22_select_down.svg);background-repeat: no-repeat;background-position: 95%;cursor: pointer;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-actions-top-sort-select.active {background-image: url(https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/catal22_select_up.svg);}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-actions-top-sort-lists {display: none;position: absolute;width: 196px;padding: 6px 9px;border: 1px solid #dedede;border-top-color: #fff;border-radius: 0 0 4px 4px;color: #515151;z-index: 1000;margin: 0;background-color: #fff;top: 27px;left: -1px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-actions-top-sort-select.active .rr-items-actions-top-sort-lists {display: block;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-actions-top-sort-lists ul {list-style: none;padding: 0;font-weight: 400;font-size: 14px;margin: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-actions-top-sort-lists ul li {padding-bottom: 12px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-actions-top-sort-lists ul li span {color: #515151;text-decoration: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-actions-top-sort-grid {display: flex;align-items: center;justify-content: space-between;max-width: 63px;width: 100%;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-style-row,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-style-grid {padding: 12px 0;width: 24px;height: 24px;background-position: 50%;background-repeat: no-repeat;cursor: pointer;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-style-row {background-image: url(https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/catal22_sort_col.svg);}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-style-row.active {background-image: url(https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/catal22_sort_col_check.svg);}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-style-grid {background-image: url(https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/catal22_sort_tablet.svg);}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-style-grid.active {background-image: url(https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/catal22_sort_tablet_check.svg);}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-cont {display: flex;max-width: 1172px;margin: 0 auto;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filters {width: 255px;margin-right: 30px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filters-top__header {margin: 0 0 10px 0;font-weight: 500;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filters-top-items {display: block;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filters-top-items__lists {margin-bottom: 1rem;margin-top: 0;list-style-type: none;padding: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filters-top-items__lists-item {margin: 0 0 7px 0;position: relative;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filters-top-items__lists-item.active span {color: #CC2035 !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filters-top-items__lists-item > span {text-decoration: none;background-color: transparent;color: #6A6A6A;font-size: 14px;cursor: pointer;display: block;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filters-top-items__lists-item span::first-letter {text-transform: uppercase;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filters-bottom-cont > div {position: relative;padding: 10px 0px;margin-top: 10px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter {margin-bottom: 2px;padding: 0.5em 0 !important;border-top: 1px solid #D6D6D6;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-title {font-size: 15px;display: flex;justify-content: space-between;align-items: center;cursor: pointer;color: #000;line-height: 15px;position: relative;background: #fff;padding: 11px 0;z-index: 1;margin-bottom: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-title__name {line-height: 25px;font-weight: 500;font-size: 16px;color: #323232;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-title__arrow-up {display: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter.active .rr-filter-title__arrow-up {display: block;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter.active .rr-filter-title__arrow-down {display: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-block {display: none;padding: 0;overflow-y: auto;overflow-x: hidden;max-height: 400px;margin-top: .5em;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter.active .rr-filter-block.rr-filter-block--checkbox {padding: 0;overflow-y: auto;overflow-x: hidden;max-height: 400px;padding-top: 45px;margin-top: -45px !important;display: block;opacity: 1;height: auto;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-block > div {padding-left: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter.active .rr-filter-block {display: block;opacity: 1;height: auto;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-left,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-right {font-size: 11px;float: left;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;width: 50%;color: #3f3f3f;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-left > div,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-right > div {width: 100%;height: 35px;display: inline-block;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;position: relative;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-left__text {position: absolute;left: 17px;top: 6px;font-size: 14px;color: #959595;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-left__text-value {display: block;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;width: 100%;font-size: 16px;height: 33px;margin: 0;padding: 0 4px;border: 1px solid #D6D6D6;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-left__text-value.rr-filter-price-left__text-value--min {border-radius: 9px 0px 0px 9px;border-right: 1px solid #D6D6D6;text-align: center;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-left__text-value.rr-filter-price-left__text-value--max {border-radius: 0px 9px 9px 0;border-left: none;text-align: center;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-left__text-value:focus-visible {border: 1px solid #CC2035 !important;outline: none !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-right {text-align: right;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-track {position: relative;height: 5px;margin: 25px 0px;background: #D6D6D6;box-shadow: 0 1px 0 0 rgba(255,255,255,.35);}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-track__vd,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-track__vn,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-track__v,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-track__range {position: absolute;top: -1px;bottom: -1px;height: 6px;z-index: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-track__v {background: url('https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/line.svg') repeat-y left, url('https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/line.svg') repeat-y right, url('https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/line.svg') repeat-x;top: -1px;bottom: -1px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-track__range-handle {position: absolute;top: 100%;width: 22px;height: 22px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-track__range-handle:hover {cursor: grab;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-track__range-handle:active {cursor: grabbing;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-track__range-handle.rr-filter-price-track__range-handle--left {margin-left: -15px;top: -8px;background: url('https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/circle.svg') no-repeat right center;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-price-track__range-handle.rr-filter-price-track__range-handle--right {margin-right: -14px;top: -8px;background: url('https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/circle.svg') no-repeat left center;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-check-wrap {position: relative;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-check-wrap__check {position: absolute;z-index: 1;opacity: 0;box-sizing: border-box;padding: 0;width: 18px;height: 18px;cursor: pointer;box-sizing: border-box;padding: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-check-wrap__check:focus-visible {outline: none !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-check-wrap__label {margin-bottom: .5rem;user-select: none;cursor: pointer;display: flex;align-items: flex-start;color: #6A6A6A;font-size: 14px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-check-wrap__check + .rr-filter-check-wrap__label::before{content: '';display: inline-block;width: 18px;height: 18px;flex-shrink: 0;flex-grow: 0;border: 2px solid #838A92;border-radius: 0.25em;margin-right: 0.5em;background-repeat: no-repeat;background-position: center center;background-size: 50% 50%;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-check-wrap__check:checked + .rr-filter-check-wrap__label::before {border-color: #DC112E;background-color: #DC112E;background: url("https://gallery.retailrocket.net/5693c2f665bf19391c0a979c/checked.svg") center no-repeat;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-btns {margin-bottom: 2px;padding: 0.5em 0 !important;clear: both;margin-top: 20px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-btns > div {padding: 0;overflow-y: auto;overflow-x: hidden;max-height: 400px;padding-top: 45px;margin-top: -45px !important;display: block;padding-left: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-btns__btn {width: 105px;height: 40px;cursor: pointer;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-btns__btn.rr-filter-btns__btn--apply {background: #CC2035;border: none;border-radius: 6px;max-width: 119px;padding: 10px 25px;font-size: 14px;color: white;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-btns__btn.rr-filter-btns__btn--reset {float: right;background: #F2F2F2;border: none;color: #CC2035;border-radius: 6px;max-width: 119px;padding: 10px 25px;font-size: 14px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-show-more-filters {display: flex;align-items: center;font-style: normal;font-weight: 400;font-size: 14px;color: #175aae;text-decoration: none;cursor: pointer;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-allEmpty__reset {height: 40px;background: #CC2035;border-radius: 4px;border: none;color: white;font-weight: 500;font-size: 14px;line-height: 16px;-webkit-appearance: button;cursor: pointer;padding: 0 20px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-pag {position: relative;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b {display: flex;justify-content: space-between;align-items: center;margin-top: 30px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num {display: flex;align-items: center;justify-content: space-between;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num__elem {color: #515151;text-decoration: none;background: transparent;border: none;outline: none;padding: 0;margin: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num__elem > i {display: block;margin-right: 16px;font-style: normal;font-weight: 400;font-size: 14px;line-height: 32px;text-align: center;color: #363535;background: #f2f2f2;border-radius: 8px;cursor: pointer;padding: 0 17px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num__elem-text-arrow {display: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list {margin-right: 7px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list > ul {padding: 0;margin: 0;display: flex;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list__item.active {padding: 6px 12px;background: #cc2035;border-radius: 8px;color: #fff !important;cursor: unset;pointer-events: none !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list__item {display: flex;justify-content: center;align-items: center;list-style: none;font-style: normal;font-weight: 400;font-size: 16px;line-height: 32px;color: #000;min-width: 32px;height: 32px;width: auto;cursor: pointer;padding-bottom: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list__item.disabled {pointer-events: none !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list__item > span {color: #000;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list__item.active > span {color: #fff !important;cursor: unset;}
+
+
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item__labels {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 24px;
+    left: 0;
+    z-index: 1;
+  }
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item__label {
+    font-size: 12px;
+    line-height: 24px;
+    color: white;
+    background-color: gray;
+    height: 24px;
+    display: block;
+    margin-bottom: 3px;
+    padding: 0 6px 0 6px;
+    border-radius: 0 4px 4px 0;
+  }
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item__label:hover {
+    color: #fff2f2;
+    opacity: .9;
+    text-decoration: none;
+  }
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item__label--new {
+    background:#27ae60;
+  }
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item__label--hit {
+    background:#f2994a;
+  }
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item__label--discount {
+    background:#cc2035;
+  }
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item__label--online{background:#175aae;}
+
+  @media (hover: hover) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos__name:hover {color: #0056b3;text-decoration: none;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item:hover .rr-item-top-infos-avail__compare {opacity: 1;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-avail__compare-icon:hover path {fill: #CC2035;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-cart-btn__btn:hover {background: #B80D25;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filters-top-items__lists-item span:hover {color: #175AAE;text-decoration: none;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-btns__btn.rr-filter-btns__btn--apply:hover {background: #B80D25;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-btns__btn.rr-filter-btns__btn--reset:hover {color: #fff;background: #CC2035;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-allEmpty__reset:hover {background: #B80D25;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-actions-top-sort-lists ul li:hover span {color: #175aae;text-decoration: none;}
+  }
+
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-tooltip > div {display: inline-block;font-size: 13px;font-weight: normal;position: absolute;z-index: 930;white-space: nowrap;background: #EFF3F7;padding: 10px 25px;border-radius: 6px;left: 267px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-tooltip > div span {color: #0073a3;text-decoration: none;background-color: transparent;cursor: pointer;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-category-tooltip {position: absolute;right: -50%;top: 50%;transform: translate(15%, -50%);font-size: 13px;font-weight: normal;z-index: 930;white-space: nowrap;background: #EFF3F7;border-radius: 6px;padding: 10px 25px;color: #007bff;cursor: pointer;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-category-tooltip:hover {color: #0056b3;text-decoration: underline;}
+
+  @media (max-width: 1200px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--flex .rr-item {grid-gap: initial;}
+  }
+  @media (max-width: 1090px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-btns__btn {width: 48%;}
+  }
+  @media (max-width: 1024px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-tooltip {display: none !important;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-category-tooltip {display: none !important;}
+  }
+  @media (max-width: 991px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-cont {flex-wrap: wrap;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filters {width: 100%;margin-right: 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items {width: 100%;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner {margin: 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid {grid-template-columns: 1fr 1fr 1fr;column-gap: 15px;row-gap: 15px;}
+  }
+  @media (min-width: 992px) and (max-width: 1155px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid {column-gap: 10px;row-gap: 10px;}
+  }
+  @media (min-width: 769px) and (max-width: 1193px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-actions-top {margin: 0 0 28px;}
+  }
+  @media (max-width: 821px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--flex .rr-item-top {width: 100%;justify-content: space-between;} 
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--flex .rr-item-bottom {width: 100%;margin: 10px;display: flex;align-content: flex-end;flex-wrap: wrap;align-items: flex-end;justify-content: flex-end;flex-direction: column;display: grid;grid-template-columns: repeat(2, 2fr);grid-template-rows: repeat(1, 20%);
+      grid-template-areas:
+      '. bl_prd_price ' 
+      '. number-wrap  ' 
+      '. bl_prd_buttom';grid-gap: 15px;margin: 0px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--flex .rr-item-top-image {width: 49%;margin-top: 10px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--flex .rr-item-top-infos {margin-top: 10px;width: 49%;margin-bottom: 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid .rr-item-bottom {width: 100%;margin: 10px;display: flex;align-content: flex-end;flex-wrap: wrap;align-items: flex-end;justify-content: flex-end;flex-direction: column;padding: 0 10px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid .rr-item-bottom-prices {align-self: flex-end;margin: 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid .rr-cart-btn {width: 100%;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid .rr-item-top-infos {margin-top: 10px;margin-bottom: 0;padding: 0 10px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos__name {font-size: 12px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-desc__sku {font-size: 10px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-price {font-size: 16px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-w__country {font-size: 10px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-w__weight {font-size: 10px;}
+  }
+  @media (max-width: 910px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b {margin-top: 22px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num {width: auto;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num__elem-text {display: none;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num__elem-text-arrow {display: flex;align-items: center;justify-content: center;padding: 9px 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list {width: 74.5%;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list > ul {justify-content: flex-start;}
+  }
+  @media (min-width: 360px) and (max-width: 910px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list__item.active {padding: 6px 9px;}
+  }
+  @media (min-width: 481px) and (max-width: 820px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner {margin: 20px 0 0 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--flex .rr-item {padding: 10px 10px 10px 0;grid-gap: initial;flex-wrap: wrap;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid {display: grid;
+      grid-template-areas:
+      "item-banner-long item-banner-long" 
+      "item-text        item-text       ";grid-template-columns: repeat(2, 1fr);grid-gap: 15px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid .rr-item {padding: 16px 0 0 0;grid-gap: 0px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--flex .rr-item-bottom-prices {grid-area: bl_prd_price;margin: 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--flex .rr-cart-btn {grid-area: bl_prd_buttom;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid .rr-item-top {grid-gap: 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid .rr-item-bottom {grid-gap: 15px;margin: 0;display: flex;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-avail__compare {opacity: 1 !important;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-cart-btn__btn {width: 100%;}
+  }
+  @media (min-width: 414px) and (max-width: 768px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-btns {margin-top: 0px;margin-bottom: 20px;}
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-item-top-infos-avail__compare {opacity: 1 !important;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-cart-btn__btn {width: 100%;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--flex {margin: 20px 0 0 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--flex .rr-item {padding: 10px 10px 10px 0;grid-gap: initial;flex-wrap: wrap;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--flex .rr-item-bottom {display: grid;grid-template-columns: repeat(2, 2fr);grid-template-rows: repeat(1, 20%);
+    grid-template-areas:
+      '. bl_prd_price ' 
+      '. number-wrap  ' 
+      '. bl_prd_buttom';grid-gap: 15px;margin: 0px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--flex .rr-item-bottom-prices {grid-area: bl_prd_price;margin: 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--flex .rr-cart-btn {grid-area: bl_prd_buttom;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid {display: grid;
+      grid-template-areas:
+      "item-banner-long item-banner-long" 
+      "item-text        item-text       ";grid-template-columns: repeat(2, 50%);grid-gap: 4px;margin: 20px 0 0 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid .rr-item {padding: 16px 0 0 0;grid-gap: 0px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid .rr-item-top {grid-gap: 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid .rr-item-bottom {grid-gap: 15px;margin: 0;display: flex;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid .rr-item-bottom-prices {align-self: flex-end;margin: 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-cont-inner.rr-items-cont-inner--grid .rr-cart-btn {width: 100%;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num {grid-gap: 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num__elem > i {margin-right: 0;padding: 1px 12px;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num__elem-text {display: none;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num__elem-text-arrow {display: flex;align-items: center;justify-content: center;padding: 9px 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list {width: 100%;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list > ul {justify-content: flex-start;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list__item.active {font-size: 16px;min-width: 26px;height: 32px;width: auto;cursor: pointer;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list__item {font-size: 16px;min-width: 26px;height: 32px;width: auto;cursor: pointer;padding-bottom: 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list__item > span {font-size: 12px;}
+  }
+  @media (min-width: 320px) and (max-width: 359px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list__item {min-width: 18px;height: 32px;width: auto;cursor: pointer;padding-bottom: 0;}
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-b-num-list__item > span {font-size: 10px;}
+  }
+
+</style>
+<div class="rr-preloader"></div>
+<div class="rr-allEmpty rr-d-none">
+  <div class="rr-allEmpty__text">К сожалению ничего не найдено или произошла ошибка</div>
+  <button class="rr-allEmpty__reset" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].allReset()">Повторить поиск</button>
+</div>
+<div
+  class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+  data-s="{{data-retailrocket-markup-block}}"
+>
+  <div class="rr-cont">
+    <aside class="rr-filters">
+      <div class="rr-filters-top">
+        <div class="rr-filters-top__header">
+          Подкатегории
+        </div>
+        <nav class="rr-filters-top-items">
+          <ul class="rr-filters-top-items__lists">
+            
+          </ul>
+          <span class="rr-show-more-filters rr-show-more-filters--open rr-d-none">Показать все</span>
+          <span class="rr-show-more-filters rr-show-more-filters--hidden rr-d-none">Свернуть категории</span>
+        </nav>
+      </div>
+
+      <div class="rr-filters-bottom">
+        <div class="rr-filters-bottom-cont">
+          <div>
+            <div class="rr-filter rr-filter--price">
+
+              <div class="rr-filter-tooltip rr-d-none">
+                <div>
+                  <span class="rr-filter-tooltip-btn">
+                    Показать
+                    <span class="rr-filter-tooltip__value">0</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="rr-filter-title">
+                <div class="rr-filter-title__name">Цена, руб.</div>
+                <svg class="rr-filter-title__arrow-down" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" style="">
+                  <path d="M5.00001 3.17199L7.82801 0.342987L9.24301 1.75699L5.00001 5.99999L0.757011 1.75699L2.17201 0.342987L5.00001 3.17199Z" fill="#6A6A6A"></path>
+                </svg>
+                <svg class="rr-filter-title__arrow-up" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.99999 2.82823L2.17199 5.65723L0.756988 4.24323L4.99999 0.000226789L9.24299 4.24323L7.82799 5.65723L4.99999 2.82823Z" fill="#6A6A6A"></path>
+                </svg>
+              </div>
+              <div class="rr-filter-block">
+                <div>
+                  <div class="rr-filter-price-left">
+                    <div>
+                      <span class="rr-filter-price-left__text">от</span>
+                      <input type="text" class="rr-filter-price-left__text-value rr-filter-price-left__text-value--min" id="smartFilter_rr_top_min" name="smartFilter_rr_top_min" size="5" type="text" placeholder="0">
+                    </div>
+                  </div>
+                  <div class="rr-filter-price-right">
+                    <div>
+                      <span class="rr-filter-price-left__text">до</span>
+                      <input type="text" class="rr-filter-price-left__text-value rr-filter-price-left__text-value--max" id="smartFilter_rr_top_max" name="smartFilter_rr_top_max" size="5" type="text" placeholder="0">
+                    </div>
+                  </div>
+                  <div style="clear: both;"></div>
+                  <div class="rr-filter-price-track" id="drag_track_rr">
+                    <div class="rr-filter-price-track__vd" id="colorUnavailableActive_rr" style="left: 0%;right: 0%;"></div>
+                    <div class="rr-filter-price-track__vn" id="colorAvailableInactive_rr" style="left: 0%;right: 0%;"></div>
+                    <div class="rr-filter-price-track__v" id="colorAvailableActive_rr" style="left: 0%;right: 0%;"></div>
+                    <div class="rr-filter-price-track__range" id="drag_tracker_rr" style="left: 9px;right: 8px;">
+                      <div class="rr-filter-price-track__range-handle rr-filter-price-track__range-handle--left" id="left_slider_rr" href="javascript:void(0)" style="left: 0%;"></div>
+                      <div class="rr-filter-price-track__range-handle rr-filter-price-track__range-handle--right" id="right_slider_rr" href="javascript:void(0)" style="right: 0%;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rr-filter rr-filter--brands">
+
+              <div class="rr-filter-tooltip rr-d-none">
+                <div>
+                  <span class="rr-filter-tooltip-btn">
+                    Показать
+                    <span class="rr-filter-tooltip__value">0</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="rr-filter-title">
+                <div class="rr-filter-title__name">Марка</div>
+                <svg class="rr-filter-title__arrow-down" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" style="">
+                  <path d="M5.00001 3.17199L7.82801 0.342987L9.24301 1.75699L5.00001 5.99999L0.757011 1.75699L2.17201 0.342987L5.00001 3.17199Z" fill="#6A6A6A"></path>
+                </svg>
+                <svg class="rr-filter-title__arrow-up" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.99999 2.82823L2.17199 5.65723L0.756988 4.24323L4.99999 0.000226789L9.24299 4.24323L7.82799 5.65723L4.99999 2.82823Z" fill="#6A6A6A"></path>
+                </svg>
+              </div>
+
+              <div class="rr-filter-block rr-filter-block--checkbox">
+                <div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="rr-filter-btns">
+              <div>
+                <button class="rr-filter-btns__btn rr-filter-btns__btn--apply" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].applyFilters()">Показать</button>
+                <button class="rr-filter-btns__btn rr-filter-btns__btn--reset" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].allReset()">Сбросить</button>
+                <div style="clear: both;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="rr-items">
+      <div class="rr-items-actions-top">
+        <div class="rr-items-actions-top-sort">
+          <div class="rr-items-actions-top-sort-select">
+            <span class="rr-items-actions-top-sort-current">По популярности</span>
+            <div class="rr-items-actions-top-sort-lists">
+              <ul>
+                
+              </ul>
+            </div>
+          </div>
+
+          <div class="rr-items-actions-top-sort-grid">
+            <span class="rr-style-row active"></span>
+            <span class="rr-style-grid"></span>
+          </div>
+
+        </div>
+      </div>
+      
+      <div class="rr-items-cont">
+        <div class="rr-items-cont-inner rr-items-cont-inner--flex">
+          
+        </div>
+        <div class="rr-item-emptydata rr-d-none" style="padding: 20px;">
+          К сожалению, в данной категории товары отсутствуют.
+        </div>
+        <div class="rr-items-cont-pag">
+          <div></div>
+          <br>
+          <aside class="rr-pag-b">
+            <div class="rr-pag-b-num">
+              <button class="rr-pag-b-num__elem rr-pag-b-num__prev">
+                <i>
+                  <span class="rr-pag-b-num__elem-text rr-pag-b-num__prev-textback">Назад</span>
+                  <div class="rr-pag-b-num__elem-text-arrow rr-pag-b-num__prev-arrowleft">
+                      <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2.828 6.99974L7.778 11.9497L6.364 13.3637L1.11272e-06 6.99974L6.364 0.635741L7.778 2.04974L2.828 6.99974Z" fill="black"></path>
+                      </svg>
+                  </div>
+                </i>
+              </button>
+              <div class="rr-pag-b-num-list">
+                <ul>
+                  <li class="rr-pag-b-num-list__item active" data-value="1">
+                    <span>1</span>
+                  </li>
+                </ul>
+              </div>
+              <button class="rr-pag-b-num__elem rr-pag-b-num__next">
+                <i>
+                  <span class="rr-pag-b-num__elem-text rr-pag-b-num__next-textback">Дальше</span>
+                  <div class="rr-pag-b-num__elem-text-arrow rr-pag-b-num__next-arrowleft">
+                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5.172 7.00026L0.221999 2.05026L1.636 0.636258L8 7.00026L1.636 13.3643L0.222 11.9503L5.172 7.00026Z" fill="black"></path>
+                    </svg>
+                  </div>
+                </i>
+              </button>
+            </div>
+            <div></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  (function (retailrocket) {
+    'use strict';
+
+    var waitFor = function (exitCondition, callback, force) {
+      var checkCount = 100;
+      var timeout = 1000;
+
+      (function check() {
+        var result = exitCondition();
+        if (result) {
+          callback(result);
+          return;
+        }
+
+        if (checkCount === 0) {
+          if (force) {
+            callback();
+          }
+          return;
+        }
+
+        checkCount -= 1;
+        setTimeout(check, timeout);
+      })();
+    };
+
+    var recomTrackSetting = {
+      nameTrack: '',
+      namePage: '',
+      abSegment: '',
+      check: false,
+
+      listTrack() {
+        var defaultTrack = [this.nameTrack];
+
+        if (this.namePage !== '') defaultTrack.push(this.nameTrack + this.namePage);
+        return defaultTrack;
+      },
+    };
+
+    function setStatisticsRender() {
+      recomTrackSetting.listTrack().forEach(function (track) {
+        rrApiOnReady.push(function () {
+          rrApi.recomTrack(
+            '{{data-retailrocket-markup-block}}',
+            0,
+            [],
+            {
+              eventType: 'rrSearch',
+              algorithm: '',
+              searchPhrase: '{{data-search-phrase}}',
+              searchPage: '{{data_search_page}}'
+            }
+          );
+        });
+      });
+    }
+
+    function setStatisticsFilters(recoms, filterObj) {
+      var { minPrice, maxPrice, currentPage, currentBrands, currentCategories } = filterObj;
+      var itemsIds = recoms.map(function (product) {
+        return product.ItemId;
+      });
+
+      recomTrackSetting.listTrack().forEach(function (track) {
+        rrApiOnReady.push(function () {
+          rrApi.recomTrack("{{data-retailrocket-markup-block}}", 0, [], {
+            eventType: "availableFilters",
+            itemsIds,
+            minPrice,
+            maxPrice,
+            currentPage,
+            currentBrands,
+            currentCategories,
+          });
+        });
+      });
+    }
+
+    function debounce(func, wait, immediate) {
+      var timeout;
+
+      return function executedFunction() {
+        var context = this;
+        var args = arguments;
+        var later = function() {
+          timeout = null;
+
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+
+        if (callNow) func.apply(context, args);
+      };
+    };
+
+    function toggleLoader(show) {
+      var mainBlock = document.querySelector('div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]')
+      var loader = mainBlock.querySelector(".rr-preloader");
+
+      if (show) {
+        mainBlock.classList.add('loading')
+        loader.classList.add("active");
+        loader.style.opacity = 1;
+        loader.style.transition = "opacity 0s ease";
+      } else {
+        loader.style.transition = "opacity 0.8s ease";
+        loader.style.opacity = 0;
+        setTimeout(() => {
+          loader.classList.remove("active");
+          mainBlock.classList.remove('loading')
+        }, 810);
+      }
+    }
+
+    function showAllEmptyData(show) {
+      var mainBlock = document.querySelector('div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]'),
+          widget = mainBlock.querySelector('.rr-widget');
+      var allEmpty = mainBlock.querySelector(".rr-allEmpty");
+
+      if (show) {
+        widget.classList.add('rr-d-none');
+        allEmpty.classList.remove("rr-d-none");
+      } else {
+        widget.classList.remove('rr-d-none');
+        allEmpty.classList.add("rr-d-none");
+      }
+    }
+
+    function scrollToTop() {
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }, 500);
+    }
+
+    retailrocket['store{{data-retailrocket-markup-block}}'] = (function () {
+      var doubleRangeObjSelectors = null,
+          block = null;
+
+      function cardController(recoms, stock, block, itemsContainerSelector, dataS) {
+        var container = block.querySelector(itemsContainerSelector);
+
+        container.innerHTML = '';
+
+        if (!recoms.length) {
+          return;
+        }
+
+        function createCard({item, stock, container, dataS}) {
+          var card = document.createElement("article"),
+              blockId = dataS;
+
+          card.className = `rr-item ${container.classList.contains('rr-items-cont-inner--grid') ? 'rr-item--grid' : ''}`;
+          card.dataset.id = item.ItemId;
+          card.dataset.category = item.CategoryIds[0];
+          card.dataset.price = item.Price;
+          card.dataset.article = item.Params['Артикул'] || '';
+
+          var labelsString = Object.keys(item.Params).indexOf('shild_' + stock) !== -1 ? item.Params['shild_' + stock] : false;
+
+          card.innerHTML = `
+            <div class="rr-item__labels">
+              ${labelsString && labelsString.indexOf('sale:1') !== -1 ? '<a class="rr-item__label rr-item__label--discount" href="/catalog/hot/index.php?FILTER_TYPE=PROPERTY_REP_ACTION_R">Суперцена</a>' : ''}
+              ${labelsString && labelsString.indexOf('hit:1') !== -1 ? '<a class="rr-item__label rr-item__label--hit" href="/catalog/hit/index.php?FILTER_TYPE=PROPERTY_REP_ACTION_FIRST">Хит</a>' : ''}
+              ${labelsString && labelsString.indexOf('new:1') !== -1 ? '<a class="rr-item__label rr-item__label--new" href="/catalog/new/index.php?FILTER_TYPE=PROPERTY_REP_ACTION_NEW">Новинка</a>' : ''}
+              ${item.Params.internet && item.Params.internet === "true" ? '<a class="rr-item__label rr-item__label--online" href="/catalog/online/index.php?FILTER_TYPE=PROPERTY_REP_IMATRIX_VALUE">Только онлайн</a>' : ''}
+            </div>
+            <div class="rr-item-top">
+                <div class="rr-item-top-image">
+                  <figure>
+                    <a href="${item.Url}" class="rr-item-top-image__img">
+                      <img src="${item.PictureUrl}" alt="${item.Name}">
+                    </a>
+                  </figure>
+                </div>
+                <div class="rr-item-top-infos">
+                  <a href="${item.Url}" class="rr-item-top-infos__name">
+                    <span>${item.Name}</span>
+                  </a>
+                  <div class="rr-item-top-infos-desc">
+                    <!-- loop?? -->
+                    ${item.Params['Артикул'] ? '<span class="rr-item-top-infos-desc__sku"><span class="rr-sku__name">Код товара:</span>&nbsp;<span class="rr-sku__value">' + item.Params['Артикул'] + '</span></span>' 
+                    : ''}
+                  </div>
+                  <div class="rr-item-top-infos-w">
+                    <span class="rr-item-top-infos-w__country">Россия</span>
+                    <span class="rr-item-top-infos-w__weight">?? кг</span>
+                  </div>
+                  <div class="rr-item-top-infos-avail">
+                    <!-- stock?? -->
+                    <span class="rr-instock">В наличии</span>
+                    <!-- compare flex -->
+                    <span class="rr-item-top-infos-avail__compare">
+                      <span class="rr-item-top-infos-avail__compare-icon ${item.IsCompare ? '' : 'rr-comp-active'}">
+                        <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path class="keep" d="M0 6H2V18H0V6ZM6 0H8V18H6V0ZM12 9H14V18H12V9ZM18 3H20V18H18V3Z" fill="#D0D0D0"></path>
+                        </svg>
+                      </span>
+                      <span class="rr-item-top-infos-avail__compare-icon rr-item-top-infos-avail__compare-icon-added ${item.IsCompare ? 'rr-comp-active' : ''}">
+                        <svg width="20" height="18" viewBox="0 0 20 18" fill="#DC112E" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M0 6H2V18H0V6ZM6 0H8V18H6V0ZM12 9H14V18H12V9ZM18 3H20V18H18V3Z" fill="#DC112E"></path>
+                        </svg>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rr-item-bottom">
+                <div class="rr-item-bottom-prices">
+                  ${item.OldPrice > item.Price ? '<div class="rr-item-bottom-prices__width-old"><div class="rr-price-old"><span class="value">' + item.OldPrice + '</span>&nbsp;<span class="current">₽</span></div><div class="rr-price-old-tag"><span>-' + Math.round(100 - (item.Price / item.OldPrice) * 100) + '</span>%</div></div>' : ''}
+                  <span class="rr-item-bottom-prices__price">
+                    <span class="rr-price">
+                      ${item.Price}
+                    </span>
+                    <span class="rr-price-curr">₽</span>
+                    <span class="rr-price-slash">/</span>
+                    <span class="rr-price-meas">${item.Params['Мера'] || ''}</span>
+                  </span>
+                </div>
+                <div class="rr-cart-btn">
+                  <button class="rr-cart-btn__btn">
+                    В корзину
+                  </button>
+                </div>
+                <div></div>
+              </div>
+          `;
+
+          var cartBtn = card.querySelector('.rr-cart-btn__btn'),
+              allLinks = card.querySelectorAll('a'),
+              compareBtn = card.querySelector('.rr-item-top-infos-avail__compare'),
+              labelContainer = card.querySelector('.rr-item__labels');
+
+          compareBtn.onclick = () => {
+            var compareBtnIcons = compareBtn.querySelectorAll('.rr-item-top-infos-avail__compare-icon'),
+                inactiveIcon = compareBtnIcons[0],
+                activeIcon = compareBtnIcons[1];
+
+            compareBtn.style.pointerEvents = 'none';
+
+            var addToCompare = inactiveIcon.classList.contains('rr-comp-active');
+
+            $maxiRR[addToCompare ? 'addCompare' : 'removeCompare'](card.dataset.article).then(() => {
+              compareBtn.style = '';
+              inactiveIcon.classList.toggle('rr-comp-active');
+              activeIcon.classList.toggle('rr-comp-active');
+              rrApi.recomMouseDown(card.dataset.id, { suggester: blockId, methodName: 'popular' });
+            });
+          };
+
+          allLinks.forEach(link => link.onclick = e => {
+            rrApi.recomMouseDown(card.dataset.id, { suggester: blockId, methodName: 'popular' });
+          });
+
+          cartBtn.onclick = () => {
+            cartBtn.textContent = 'Подождите...';
+            window.flocktory = window.flocktory || [];
+            window.flocktory.push(['addToCart', {
+              item: {
+                "id": '{{data-stock-id}}' + card.dataset.id,
+                "price": card.dataset.price,
+                "count": 1,
+                "categoryId": card.dataset.category
+              }
+            }]);
+
+            fetch(`/ajax/basket/addBasket.php?quantity=${1}&kcc=${card.dataset.article}`, {
+              method: 'GET',
+              cache: "no-cache"
+            })
+            .then(response => response.ok ? Promise.resolve() : Promise.reject())
+            .finally(() => {
+              cartBtn.classList.add('rr-cart-btn__btn--added');
+              cartBtn.textContent = 'Добавлено';
+              cartBtn.style.pointerEvents = 'none';
+              rrApi.recomAddToCart(card.dataset.id, { suggester: blockId, methodName: 'popular' });
+
+              setTimeout(() => {
+                cartBtn.classList.remove('rr-cart-btn__btn--added');
+                cartBtn.textContent = 'В корзину';
+                cartBtn.style = '';
+              }, 1500);
+            })
+            .catch(error => {
+              cartBtn.textContent = 'Ошибка';
+              setTimeout(() => {
+                cartBtn.classList.remove('rr-cart-btn__btn--added');
+                cartBtn.textContent = 'В корзину';
+                cartBtn.style = '';
+              }, 1500);
+            });
+          };
+
+          container.append(card);
+        }
+
+        for (var i = 0; i < recoms.length; i++) {
+          createCard({
+            item: recoms[i],
+            stock, 
+            container, 
+            dataS
+          });
+        }
+      }
+
+
+      let hideIntervals = [];
+      async function filterTooltip({
+        currentTooltipSelector
+      }) {
+        var allToolTip = block.querySelectorAll('.rr-filter-tooltip'),
+            currentTooltip = block.querySelector(currentTooltipSelector),
+            tooltipBtn = currentTooltip.querySelector('.rr-filter-tooltip-btn');
+
+        var {recoms, rrApi, obj} = await parseData(false, false);
+        var counter = 0;
+        
+        function hideAll() {
+          hideIntervals.forEach(clearInterval)
+          allToolTip.forEach(item => item.classList.add('rr-d-none'));
+        }
+
+        function showCurrent() {
+          hideIntervals.forEach(clearInterval)
+          currentTooltip.classList.remove('rr-d-none');
+        }
+       
+        hideAll()
+        showCurrent();
+
+        hideIntervals.push(setInterval(() => {
+          counter++;
+          if (counter > 5) {
+            hideAll();
+            hideIntervals.forEach(clearInterval)
+            hideIntervals = [];
+          }
+        }, 1000));
+        
+        currentTooltip.querySelector('.rr-filter-tooltip__value').textContent = rrApi.items_count || 0;
+
+        tooltipBtn.onclick = (e) => {
+          applyFilters();
+          hideAll();
+        }
+
+        currentTooltip.onmouseenter = () => {
+          hideIntervals.forEach(clearInterval)
+        };
+        currentTooltip.onmouseleave = () => {
+          hideIntervals.push(setInterval(() => {
+            counter++;
+            if (counter > 5) {
+              hideAll();
+              hideIntervals.forEach(clearInterval)
+              hideIntervals = [];
+            }
+          }, 1000));
+        };
+      }
+
+      var debounceFilterTooltip = debounce(function (obj) {
+        filterTooltip(obj);
+      }, 1200)
+
+
+
+      function pagintaionContoller(currentPage, maxPages, parentSelector, itemsContainerSelector) {
+        var parent = block.querySelector(parentSelector),
+            container = block.querySelector(itemsContainerSelector),
+            arrowPrev = parent.querySelector('.rr-pag-b-num__prev'),
+            arrowNext = parent.querySelector('.rr-pag-b-num__next'),
+            page = currentPage,
+            visibleRange = 3;
+
+        container.innerHTML = '';
+
+        if (maxPages < 2) {
+          parent.classList.add('rr-d-none');
+
+          return;
+        }
+
+        parent.classList.remove('rr-d-none');
+
+        var pagePos = {
+          StartRangeFlag: 0,
+          EndRangeFlag: 0,
+          firstIndex: 0,
+          lastIndex: 0,
+          setStartRangeFlag() {
+            this.StartRangeFlag = page < visibleRange && page > 0
+          },
+          setEndRangeFlag() {
+            this.EndRangeFlag = page > maxPages - visibleRange
+          },
+          setFirstIndex() {
+            this.firstIndex = page + -2 < 0 ? 1 : page + -2
+          },
+          setLastIndex() {
+            this.lastIndex = page + 3 > maxPages ? maxPages : page + 1
+          },
+          getStartRangeFlag() {
+            return this.StartRangeFlag
+          },
+          getEndRangeFlag() {
+            return this.EndRangeFlag
+          },
+          getFirstIndex() {
+            return this.firstIndex
+          },
+          getLastIndex() {
+            return this.lastIndex
+          }
+        }
+
+        pagePos.setStartRangeFlag();
+        pagePos.setEndRangeFlag();
+        pagePos.setFirstIndex();
+        pagePos.setLastIndex();
+
+        function renderPageElem({ currentPageValue, pageValueInnerElem }) {
+          var item = document.createElement("li");
+          
+          item.className = `rr-pag-b-num-list__item ${currentPageValue === pageValueInnerElem && currentPageValue !== -1 ? 'active' : ''} ${currentPageValue === -1 && 'disabled'}`;
+          item.dataset.value = pageValueInnerElem;
+          item.innerHTML = `
+            <span>
+              ${pageValueInnerElem}
+            </span>
+          `;
+
+          item.onclick = () => {
+            var all = parent.querySelectorAll('.rr-pag-b-num-list__item');
+
+            all.forEach(item => item.classList.remove('active'));
+            item.classList.add('active');
+            page = +item.dataset.value;
+
+            pagePos.setStartRangeFlag();
+            pagePos.setEndRangeFlag();
+            pagePos.setFirstIndex();
+            pagePos.setLastIndex();
+            render();
+            changePage();
+          }
+
+          container.append(item);
+        }
+
+        arrowPrev.onclick = () => {
+          if (page > 1) {
+            page--;
+          }
+
+          pagePos.setStartRangeFlag();
+          pagePos.setEndRangeFlag();
+          pagePos.setFirstIndex();
+          pagePos.setLastIndex();
+          render();
+          changePage();
+        }
+
+        arrowNext.onclick = () => {
+          if (page < maxPages) {
+            page++;
+          }
+
+          pagePos.setStartRangeFlag();
+          pagePos.setEndRangeFlag();
+          pagePos.setFirstIndex();
+          pagePos.setLastIndex();
+          render();
+          changePage();
+        }
+
+        function render() {
+          container.innerHTML = '';
+          arrowNext.classList.add('rr-d-none');
+          arrowPrev.classList.add('rr-d-none');
+
+          if (maxPages <= 3) {
+            for(var i = 0; i < maxPages; i++) {
+              renderPageElem({
+                currentPageValue: page,
+                pageValueInnerElem: i + 1, 
+              });
+            }
+
+            return
+          }
+
+          if (pagePos.getStartRangeFlag()) {
+            arrowNext.classList.remove('rr-d-none');
+
+            for(var i = 0; i < visibleRange; i++) {
+              renderPageElem({
+                currentPageValue: page,
+                pageValueInnerElem: i + 1, 
+              });
+            }
+
+            renderPageElem({
+              currentPageValue: -1,
+              pageValueInnerElem: '...', 
+            });
+
+            renderPageElem({
+              currentPageValue: page,
+              pageValueInnerElem: maxPages, 
+            });
+
+            return
+          }
+
+          if (pagePos.getEndRangeFlag()) {
+            arrowPrev.classList.remove('rr-d-none');
+
+            renderPageElem({
+              currentPageValue: -1,
+              pageValueInnerElem: '...', 
+            });
+
+            for(var i = pagePos.getFirstIndex(); i < pagePos.getLastIndex(); i++) {
+              renderPageElem({
+                currentPageValue: page,
+                pageValueInnerElem: i + 1, 
+              });
+            }
+
+            return
+          }
+
+          if (!pagePos.getStartRangeFlag() && !pagePos.getEndRangeFlag()) {
+            arrowNext.classList.remove('rr-d-none');
+            arrowPrev.classList.remove('rr-d-none');
+
+            renderPageElem({
+              currentPageValue: -1,
+              pageValueInnerElem: '...', 
+            });
+
+            for(var i = pagePos.getFirstIndex(); i < pagePos.getLastIndex(); i++) {
+              renderPageElem({
+                currentPageValue: page,
+                pageValueInnerElem: i + 1, 
+              });
+            }
+
+            renderPageElem({
+              currentPageValue: -1,
+              pageValueInnerElem: '...', 
+            });
+
+            renderPageElem({
+              currentPageValue: page,
+              pageValueInnerElem: maxPages, 
+            });
+
+
+            return
+          }
+        }
+
+        render();
+      }
+
+      async function changePage() {
+
+        var {recoms, rrApi, obj} = await parseData(false, true, true);
+
+        renderFn__pageChange(recoms, rrApi, obj);
+      }
+
+      function sortController({
+        parent,
+        currentValSelector,
+        listContainer,
+      }) {
+        var parent = block.querySelector(parent),
+            currentVal = parent.querySelector(currentValSelector),
+            container = parent.querySelector(listContainer),
+            listsValues = [
+              {
+                text: 'По цене, сначала дешевле',
+                value: '-price',
+                default: false,
+              },
+              {
+                text: 'По цене, сначала дороже',
+                value: 'price',
+                default: false,
+              },
+              {
+                text: 'По наименованию (А-Я)',
+                value: 'name',
+                default: false,
+              },
+              {
+                text: 'По новинкам',
+                value: 'new',
+                default: false,
+              },
+              {
+                text: 'По популярности',
+                value: 'popular',
+                default: true, 
+              
+              },
+              {
+                text: 'По рейтингу',
+                value: 'rating',
+                default: false,
+              },
+            ];
+
+        container.innerHTML = '';
+
+        var defaultObj = listsValues.filter(item => item.default);
+
+        currentVal.textContent = defaultObj[0].text;
+        currentVal.dataset.value = defaultObj[0].value;
+      
+        function createSortLists({text, value}) {
+          var item = document.createElement("li");
+          
+          item.dataset.value = value;
+          item.innerHTML = `
+            <span>
+              ${text}
+            </span>
+          `;
+          
+          item.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            currentVal.textContent = text;
+            currentVal.dataset.value = value;
+            parent.classList.toggle('active');
+
+            changeSort();
+          }
+
+          container.append(item);
+        }
+
+        parent.onclick = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          parent.classList.toggle('active')
+        }
+
+        for (var i = 0; i < listsValues.length; i++) {
+          createSortLists({
+            text: listsValues[i].text,
+            value: listsValues[i].value
+          });
+        }
+      }
+
+      async function changeSort() {
+        
+        /* Нужно прописать сортировку везде, как будет готова API */
+      }
+
+
+      function categoriesController(data, block, parentSelector, itemsContainerSelector) {
+        var parent = block.querySelector(parentSelector),
+            container = block.querySelector(itemsContainerSelector),
+            maxVisibleCategorys = 10;
+
+        container.innerHTML = '';
+        
+        if (!data.length) {
+          parent.classList.add('rr-d-none');
+
+          return;
+        }
+
+        parent.classList.remove('rr-d-none');
+
+        function createCategories({text, i, container}) {
+          var item = document.createElement("li");
+          
+          item.className = 'rr-filters-top-items__lists-item';
+          item.dataset.value = text;
+          item.innerHTML = `
+            <span>
+              ${text}
+            </span>
+            <div class="rr-category-tooltip">Перейти в раздел</div>
+          `;
+
+          container.append(item);
+
+          item.onclick = (e) => {
+            changeCategory(item)
+            item.querySelector('.rr-category-tooltip').classList.add('rr-d-none');
+          };
+
+          if (i > maxVisibleCategorys) {
+            item.classList.add('rr-d-none');
+          }
+        } 
+
+        for (var i = 0; i < data.length; i++) {
+          createCategories({
+            text: Object.keys(data[i])[0],
+            i,
+            container
+          });
+        }
+
+        var showMoreBtn = container.querySelector('.rr-show-more-filters--open'),
+            hiddenMoreBtn = container.querySelector('.rr-show-more-filters--hidden'),
+            categories = Array.from(container.querySelectorAll('.rr-filters-top-items__lists-item')),
+            allTooltips = Array.from(container.querySelectorAll('.rr-filters-top-items__lists-item .rr-category-tooltip'));
+
+        if (data.length > maxVisibleCategorys) {
+          showMoreBtn.classList.remove('rr-d-none');
+          hiddenMoreBtn.classList.add('rr-d-none');
+
+          showMoreBtn.onclick = () => {
+            categories.forEach(item => {
+              item.classList.remove('rr-d-none');
+              showMoreBtn.classList.add('rr-d-none');
+              hiddenMoreBtn.classList.remove('rr-d-none');
+            })
+          }
+          hiddenMoreBtn.onclick = () => {
+            var needCategories = categories.slice(maxVisibleCategorys);
+
+            needCategories.forEach(item => {
+              item.classList.add('rr-d-none');
+              showMoreBtn.classList.remove('rr-d-none');
+              hiddenMoreBtn.classList.add('rr-d-none');
+            })
+          }
+        }
+
+        function hideAllToolTip() {
+          allTooltips.forEach(item => {
+            item.classList.add('rr-d-none');
+          })
+        }
+
+        hideAllToolTip();
+
+        var timeout;
+
+        categories.forEach(item => {
+          var tooltip = item.querySelector('.rr-category-tooltip');
+
+          item.onmouseover = () => {
+            clearTimeout(timeout);
+            hideAllToolTip();
+
+            tooltip.classList.remove('rr-d-none')
+          };
+
+          item.onmouseleave = () => {
+            timeout = setTimeout(() => hideAllToolTip(), 1000);
+          };
+        })
+      }
+
+      function checkboxController(data, block, parentSelector, itemsContainerSelector, inputNameFor) {
+        var parent = block.querySelector(parentSelector),
+            container = block.querySelector(itemsContainerSelector);
+
+        container.innerHTML = '';
+
+        if (!data.length) {
+          parent.classList.add('rr-d-none');
+
+          return
+        }
+
+        parent.classList.remove('rr-d-none');
+
+        function createBrands({value, block, container, inputNameFor}) {
+          var item = document.createElement("div");
+
+          item.className = 'rr-filter-check-wrap';
+          item.innerHTML = `
+            <input class="rr-filter-check-wrap__check" type="checkbox" value="FILTER_VALUE" name="${inputNameFor}">
+            <label class="rr-filter-check-wrap__label" for="${inputNameFor}" title="FILTER_VALUE">
+              FILTER_VALUE
+            </label>
+          `;
+
+          container.append(item);
+        }
+
+        for (var i = 0; i < data.length; i++) {
+          createBrands({
+            value: Object.keys(data[i])[0],
+            block,
+            container,
+            inputNameFor: inputNameFor + i
+          });
+        }
+      }
+
+      function setDoubleRangeSlider({minDef, maxDef, selectors}) {
+        if (selectors) {
+          doubleRangeObjSelectors = selectors;
+        };
+
+        var { vd_selec, vn_selec, v_selec, rBg_selec, rHl_selec, rHr_selec, inputMin_selec, inputMax_selec, block } = doubleRangeObjSelectors;
+        var [vd, vn, v, rBg, rHl, rHr, inputMin, inputMax] = [vd_selec, vn_selec, v_selec, rBg_selec, rHl_selec, rHr_selec, inputMin_selec, inputMax_selec].map(sel => block.querySelector(sel));
+        
+        var clickedR = false;
+        var clickedL = false;
+        var pos = {};
+        var valueInputs = {
+          minValueDefault: Number(minDef),
+          maxValueDefault: Number(maxDef),
+          minValue: Number(minDef),
+          maxValue: Number(maxDef),
+          percentL: 0,
+          percentR: 0,
+          setMinDefault(val) {
+            this.minValueDefault = Number(val)
+          },
+          setMaxDefault(val) {
+            this.maxValueDefault = Number(val)
+          },
+          getMinDefault() {
+            return Number(this.minValueDefault)
+          },
+          getMaxDefault() {
+            return Number(this.maxValueDefault)
+          },
+          getMin() {
+            return Number(this.minValue)
+          },
+          getMax() {
+            return Number(this.maxValue)
+          },
+          setMin(val) {
+            this.minValue = Number(val)
+          },
+          setMax(val) {
+            this.maxValue = Number(val)
+          },
+          setPercentsLeft(percent) {
+            this.percentL = Number(percent);
+          },
+          setPercentsRight(percent) {
+            this.percentR = Number(percent);
+          },
+          getPercentsLeft() {
+            return Number(this.percentL);
+          },
+          getPercentsRight() {
+            return Number(this.percentR);
+          }
+        };
+
+        function setRangePercent(resetDot = false) {
+          var percentL = valueInputs.getPercentsLeft();
+          var percentR = valueInputs.getPercentsRight();
+
+          vd.style.left = `${percentL}%`;
+          v.style.left = `${percentL}%`;
+          vd.style.right = `${percentR}%`;
+          v.style.right = `${percentR}%`;
+
+          if (resetDot) {
+            rHl.style.left = `0%`;
+            rHr.style.right = `0%`;
+          }
+        }
+
+        function setInputsValues(valueL, valueR) {
+          inputMin.value = valueL;
+          inputMax.value = valueR;
+          inputMin.dataset.value = valueL;
+          inputMax.dataset.value = valueR;
+
+          if (valueL === valueInputs.getMinDefault()) {
+            inputMin.value = '';
+            inputMin.dataset.value = valueInputs.getMinDefault();
+            inputMin.placeholder = valueInputs.getMinDefault();
+          }
+          if (valueR === valueInputs.getMaxDefault()) {
+            inputMax.value = '';
+            inputMax.dataset.value = valueInputs.getMaxDefault();
+            inputMax.placeholder = valueInputs.getMaxDefault();
+          }
+        }
+
+        function setValues() {
+          var valueL = valueInputs.getMin();
+          var valueR = valueInputs.getMax();
+
+          setRangePercent();
+          setInputsValues(valueL, valueR);
+        }
+
+        function resetValues(minV = null, maxV = null, changeDefaultValues = false) {
+          valueInputs.setMin(minV !== null ? minV : valueInputs.getMinDefault());
+          valueInputs.setMax(maxV !== null ? maxV : valueInputs.getMaxDefault());
+          valueInputs.setPercentsLeft(0);
+          valueInputs.setPercentsRight(0);
+
+          if (changeDefaultValues) {
+            
+            valueInputs.setMinDefault(minV !== null ? minV : valueInputs.getMinDefault());
+            valueInputs.setMaxDefault(maxV !== null ? maxV : valueInputs.getMaxDefault());
+          }
+          
+          setRangePercent(true);
+          setValues();
+        }
+
+        setValues();
+
+        inputMin.onkeyup = e => {
+          var currentMax = valueInputs.getMax(),
+              currentMin = valueInputs.getMin();
+
+          function setDotPos(value) {
+            return 100 - (((valueInputs.getMaxDefault() - value) / valueInputs.getMaxDefault()) * 100)
+          }
+
+          if (parseInt(e.target.value, 10) === 0) {
+            rHl.style.left = `${setDotPos(currentMin)}%`
+            valueInputs.setPercentsLeft(setDotPos(currentMin));
+            valueInputs.setMin(currentMin);
+            setRangePercent();
+
+            return
+          }
+
+          if (e.target.value === '') {
+            rHl.style.left = `${setDotPos(valueInputs.getMinDefault())}%`
+            valueInputs.setPercentsLeft(setDotPos(valueInputs.getMinDefault()));
+            valueInputs.setMin(valueInputs.getMinDefault());
+            setRangePercent();
+
+            return
+          }
+
+          if (/^[1-9]\d*$/.test(e.target.value)) {
+            e.target.value = parseInt(e.target.value, 10);
+            rHl.style.left = `${setDotPos(e.target.value)}%`
+            valueInputs.setPercentsLeft(setDotPos(e.target.value));
+            valueInputs.setMin(e.target.value);
+
+            if (Number(e.target.value) >= currentMax) {
+              rHl.style.left = `${setDotPos(currentMax)}%`
+              valueInputs.setPercentsLeft(setDotPos(currentMax));
+              valueInputs.setMin(currentMax);
+              setRangePercent();
+
+              return
+            }
+
+            if (Number(e.target.value) <= valueInputs.getMinDefault()) {
+              rHl.style.left = `${setDotPos(valueInputs.getMinDefault())}%`
+              valueInputs.setPercentsLeft(setDotPos(valueInputs.getMinDefault()));
+              valueInputs.setMin(valueInputs.getMinDefault());
+              setRangePercent();
+
+              return
+            }
+
+            setRangePercent();
+
+            return
+          };
+        }
+
+        inputMax.onkeyup = e => {
+          var currentMax = valueInputs.getMax(),
+              currentMin = valueInputs.getMin();
+
+          function setDotPos(value) {
+            return (((valueInputs.getMaxDefault() - value) / valueInputs.getMaxDefault()) * 100)
+          }
+
+          if (parseInt(e.target.value, 10) === 0) {
+            rHr.style.right = `${setDotPos(currentMax)}%`
+            valueInputs.setPercentsRight(setDotPos(currentMax));
+            valueInputs.setMax(currentMax);
+            setRangePercent();
+
+            return
+          }
+
+          if (e.target.value === '') {
+            rHr.style.right = `${setDotPos(valueInputs.getMaxDefault())}%`
+            valueInputs.setPercentsRight(setDotPos(valueInputs.getMaxDefault()));
+            valueInputs.setMax(valueInputs.getMaxDefault());
+            setRangePercent();
+
+            return
+          }
+
+          if (/^[1-9]\d*$/.test(e.target.value)) {
+            e.target.value = parseInt(e.target.value, 10);
+            rHr.style.right = `${setDotPos(e.target.value)}%`
+            valueInputs.setPercentsRight(setDotPos(e.target.value));
+            valueInputs.setMax(e.target.value);
+
+            if (Number(e.target.value) > valueInputs.getMaxDefault()) {
+              rHr.style.right = `${setDotPos(valueInputs.getMaxDefault())}%`
+              valueInputs.setPercentsRight(setDotPos(valueInputs.getMaxDefault()));
+              valueInputs.setMax(valueInputs.getMaxDefault());
+              setRangePercent();
+
+              return 
+            }
+
+            if (Number(e.target.value) <= currentMin) {
+              rHr.style.right = `${setDotPos(currentMin)}%`
+              valueInputs.setPercentsRight(setDotPos(currentMin));
+              valueInputs.setMax(currentMin);
+              setRangePercent();
+
+              return 
+            }
+
+            setRangePercent();
+
+            return 
+          };
+        }
+        
+        inputMin.onblur = () => {
+          setValues();
+          debounceFilterTooltip({
+            currentTooltipSelector: '.rr-filter--price .rr-filter-tooltip'
+          })
+        };
+        inputMax.onblur = () => {
+          setValues();
+          debounceFilterTooltip({
+            currentTooltipSelector: '.rr-filter--price .rr-filter-tooltip'
+          })
+        };
+
+        rBg.onmousedown = rBg.ontouchstart = function(e) {
+          if (e.which === 1 || e.which === 0) {
+            pos = {
+              mouse: {
+                x: e.pageX || e.touches[0].pageX,
+                y: e.pageY || e.touches[0].pageY,
+              },
+              slider: rBg.getBoundingClientRect(),
+              round1: rHl.getBoundingClientRect(),
+              round2: rHr.getBoundingClientRect(),
+            };
+          }
+        };
+
+        rHr.onmousedown = e => clickedR = e.which === 1;
+        rHr.ontouchstart = e => clickedR = e.which === 0;
+        rHl.onmousedown = e => clickedL = e.which === 1;
+        rHl.ontouchstart = e => clickedL = e.which === 0;
+        rHr.ondragstart = rHl.ondragstart = e => e.preventDefault();
+
+        function controlSlider(e) {
+          clickedL && controlLeft(e);
+          clickedR && controlRight(e);
+        }
+
+        function changeFlags() {
+          clickedL = clickedR = false;
+        }
+
+        window.removeEventListener('onmouseup', changeFlags);
+        window.removeEventListener('touchend', changeFlags);
+        window.removeEventListener('mousemove', controlSlider);
+        window.removeEventListener('touchmove', controlSlider);
+
+        window.addEventListener('mouseup', changeFlags);
+        window.addEventListener('touchend', changeFlags);
+        window.addEventListener('mousemove', controlSlider);
+        window.addEventListener('touchmove', controlSlider);
+        
+
+        function controlRight(e) {
+          var posRnR = 100 - (pos.round2.x + pos.round2.width / 2 - pos.slider.x + (e.pageX || e.touches[0].pageX) - pos.mouse.x) / pos.slider.width * 100;
+          var step = Math.round((posRnR / 100) * valueInputs.getMaxDefault()) - Math.round((posRnR / 100) * valueInputs.getMinDefault())
+
+          valueInputs.setMax(valueInputs.getMaxDefault() - step);
+
+          debounceFilterTooltip({
+            currentTooltipSelector: '.rr-filter--price .rr-filter-tooltip'
+          })
+
+          if (valueInputs.getMin() === valueInputs.getMax() || valueInputs.getMax() < valueInputs.getMin()) {
+            var posRnL = (pos.round2.x + pos.round1.width / 2 - pos.slider.x + (e.pageX || e.touches[0].pageX) - pos.mouse.x) / pos.slider.width * 100;
+            var stepL = Math.round((posRnL / 100) * valueInputs.getMaxDefault()) - Math.round((posRnL / 100) * valueInputs.getMinDefault());
+
+            valueInputs.setMin(stepL + valueInputs.getMinDefault());
+            rHl.style.left = `${posRnL}%`;
+            valueInputs.setPercentsLeft(posRnL);
+
+            if (valueInputs.getMin() < valueInputs.getMinDefault()) {
+              rHl.style.left = '0%';
+              rHr.style.right = '100%';
+              valueInputs.setPercentsLeft(0);
+              valueInputs.setPercentsRight(100);
+              valueInputs.setMin(valueInputs.getMinDefault());
+              valueInputs.setMax(valueInputs.getMinDefault());
+              setValues();
+
+              return
+            }
+
+            rHr.style.right = `${posRnR}%`;
+            valueInputs.setPercentsRight(posRnR);
+            setValues();
+
+            return;
+          }
+
+          if (valueInputs.getMax() > valueInputs.getMaxDefault()) {
+            valueInputs.setMax(valueInputs.getMaxDefault());
+            rHr.style.right = '0%';
+            valueInputs.setPercentsRight(0);
+            setValues();
+
+            return
+          }
+
+          rHr.style.right = `${posRnR}%`;
+          rHl.style.zIndex = 0;
+          rHr.style.zIndex = 1;
+          valueInputs.setPercentsRight(posRnR);
+          setValues();
+        }
+
+        function controlLeft(e) {
+          var posRnL = (pos.round1.x + pos.round1.width / 2 - pos.slider.x + (e.pageX || e.touches[0].pageX) - pos.mouse.x) / pos.slider.width * 100;
+          var step = Math.round((posRnL / 100) * valueInputs.getMaxDefault()) - Math.round((posRnL / 100) * valueInputs.getMinDefault())
+
+          valueInputs.setMin(step + valueInputs.getMinDefault());
+
+          debounceFilterTooltip({
+            currentTooltipSelector: '.rr-filter--price .rr-filter-tooltip'
+          })
+
+          if (valueInputs.getMin() === valueInputs.getMax() || valueInputs.getMin() > valueInputs.getMax()) {
+            var posRnR = 100 -(pos.round1.x + pos.round2.width / 2 - pos.slider.x + (e.pageX || e.touches[0].pageX) - pos.mouse.x) / pos.slider.width * 100;
+            var stepR = Math.round((posRnR / 100) * valueInputs.getMaxDefault()) - Math.round((posRnR / 100) * valueInputs.getMinDefault())
+
+            valueInputs.setMax(valueInputs.getMaxDefault() - stepR);
+            rHr.style.right = `${posRnR}%`;
+            valueInputs.setPercentsRight(posRnR);
+
+            if (valueInputs.getMax() > valueInputs.getMaxDefault()) {
+              rHr.style.right = '0%';
+              rHl.style.left = '100%';
+              valueInputs.setPercentsRight(0);
+              valueInputs.setPercentsLeft(100);
+              valueInputs.setMax(valueInputs.getMaxDefault());
+              valueInputs.setMin(valueInputs.getMaxDefault());
+              setValues();
+
+              return
+            }
+
+            rHl.style.left = `${posRnL}%`;
+            valueInputs.setPercentsLeft(posRnL);
+            setValues();
+
+            return
+          }
+
+          if (valueInputs.getMin() < valueInputs.getMinDefault()) {
+            valueInputs.setMin(valueInputs.getMinDefault());
+            rHl.style.left = '0%';
+            valueInputs.setPercentsLeft(0);
+            setValues();
+
+            return
+          }
+
+          rHl.style.left = `${posRnL}%`;
+          rHl.style.zIndex = 1;
+          rHr.style.zIndex = 0;
+          valueInputs.setPercentsLeft(posRnL);
+          setValues();
+        }
+
+        return {
+          resetValues,
+        }
+      }
+
+      function setAccordion(accordSelector) {
+        var headers = Array.from(block.querySelectorAll(accordSelector + " .rr-filter-title"));
+
+        headers.forEach(function (header) {
+          header.removeEventListener("touchstart", null);
+          header.removeEventListener("click", null);
+
+          header.addEventListener("touchstart", function (e) {
+            this.parentNode.classList.toggle("active");
+            e.preventDefault();
+          });
+          
+          header.addEventListener("click", function (e) {
+            this.parentNode.classList.toggle("active");
+            e.preventDefault();
+          });
+        });
+      }
+
+
+
+      function toggleItemDisplayFormat() {
+        var rowToggle = block.querySelector('.rr-style-row'),
+            gridToggle = block.querySelector('.rr-style-grid'),
+            itemsParent = block.querySelector('.rr-items-cont-inner'),
+            items = Array.from(itemsParent.querySelectorAll('.rr-item'));
+
+        var rowParentClass = 'rr-items-cont-inner--flex',
+            gridParentClass = 'rr-items-cont-inner--grid';
+
+        rowToggle.onclick = () => {
+          toggleActive(rowToggle, gridToggle);
+          itemsParent.classList.replace(gridParentClass, rowParentClass);
+          toggleItemClass(items, 'rr-item--grid');
+        };
+
+        gridToggle.onclick = () => {
+          toggleActive(gridToggle, rowToggle);
+          itemsParent.classList.replace(rowParentClass, gridParentClass);
+          toggleItemClass(items, 'rr-item--grid');
+        };
+
+        function toggleActive(active, inactive) {
+          active.classList.add('active');
+          inactive.classList.remove('active');
+        }
+
+        function toggleItemClass(items, className) {
+          items.forEach(item => item.classList.toggle(className));
+        }
+      }
+
+      async function getItemsAsync(requireProducts) {
+        return new Promise((resolve, reject) => {
+          retailrocket.items.get(
+            retailrocket.api.getPartnerId(),
+            requireProducts,
+            ["{{data-stock-id}}"],
+            (data) => {
+              resolve(data);
+            }
+          );
+        });
+      }
+
+      function showEmptyDataResult(show) {
+        var emptyDataElem = block.querySelector(".rr-item-emptydata");
+
+        if (show) {
+          emptyDataElem.classList.remove("rr-d-none");
+        } else {
+          emptyDataElem.classList.add("rr-d-none");
+        }
+      }
+
+      function getFieldsData(resetPage = false, pageChanged = false) {
+        var flagsObj = {
+          priceChange: false,
+          brandsChange: false,
+          pageChange: !resetPage
+        }
+
+        var currentPage = (() => {
+          var activeItem = block.querySelector(".rr-pag-b-num-list__item.active");
+
+          return activeItem ? Number(activeItem.dataset.value) : 1;
+        })();
+        var minInput = block.querySelector(".rr-filter-price-left__text-value--min"),
+          maxInput = block.querySelector(".rr-filter-price-left__text-value--max"),
+          minPriceValue = Number(minInput.value),
+          maxPriceValue = Number(maxInput.value),
+          minPrice = minInput.value === "" ? minPriceValue : minInput.value,
+          maxPrice = maxInput.value === "" ? maxPriceValue : maxInput.value,
+          allBrands = block.querySelectorAll(
+            ".rr-filter-block.rr-filter-block--checkbox .rr-filter-check-wrap__check"
+          ),
+          allCategories = block.querySelectorAll(
+            ".rr-filters-top-items__lists-item"
+          ),
+          currentBrands = [],
+          currentCategories = [];
+
+        allBrands.forEach(function (item) {
+          if (item.checked) {
+            currentBrands.push(item.value);
+          }
+        });
+
+        allCategories.forEach(function (item) {
+          if (item.classList.contains('active')) {
+            currentCategories.push(item.dataset.value);
+          }
+        });
+
+        currentBrands = currentBrands.join("|");
+        currentCategories = currentCategories.join("|");
+
+        if (resetPage) {
+          currentPage = 1;
+        }
+
+        if (minInput.value !== '' || maxInput.value !== '') {
+          flagsObj.priceChange = true;
+        }
+
+        if (currentBrands.length) {
+          flagsObj.brandsChange = true;
+        }
+
+        return {
+          currentPage: Number(currentPage),
+          minPrice: pageChanged ? 0 : Number(minPrice),
+          maxPrice: pageChanged ? 0 : Number(maxPrice),
+          currentBrands: pageChanged ? [] : currentBrands,
+          flagsObj,
+          currentCategories,
+        }
+      }
+
+      function getLink({
+        currentPage = 1,
+        minPrice = false,
+        maxPrice = false,
+        currentBrands = [],
+        currentCategories = [],
+      }) {
+        var additionalObj = {
+          price_min: minPrice && minPrice > 0 ? "price_min:" + minPrice : "",
+          price_max: maxPrice && maxPrice > 0 ? "price_max:" + maxPrice : "",
+          brands: currentBrands.length ? "brands:" + currentBrands : "",
+          currentCategories: currentCategories.length ? "categories:" + currentCategories : "",
+          getFilters() {
+            return (
+              [this.currentCategories, this.price_min, this.price_max, this.brands]
+                .filter(Boolean)
+                .join("%") || ""
+            );
+          },
+        };
+        var queryObj = {
+          page: currentPage,
+          lang: "ru",//{{data-stock-id}}
+        };
+
+        if (additionalObj.getFilters() !== "") {
+          queryObj["filters"] = additionalObj.getFilters();
+        }
+
+        var rrUrl = new URL(
+            "https://rocketsearch.retailrocket.net/rocketsearch/v1/partner/" +
+              rrPartnerId +
+              "/phrase/{{data-search-phrase}}/items"
+          ),
+          rrUrlParams = new URLSearchParams(queryObj);
+
+        rrUrl.search = rrUrlParams.toString();
+
+        return rrUrl.toString();
+      }
+
+      async function getData(obj) {
+        var queryLink = getLink(obj);
+
+        try {
+          var res = await fetch(queryLink);
+
+          if (res.ok) {
+            var data = await res.json(),
+              parse = JSON.parse(data);
+
+            if (parse.status && parse.status === 204) {
+              throw res;
+            } else {
+              return {
+                data,
+                obj
+              };
+            }
+          } else {
+            throw res;
+          }
+        } catch (e) {
+          //toggleLoader(false);
+          //showAllEmptyData(true);
+          
+          return { data: [], obj }
+        }
+      }
+
+      async function changeCategory(elem) {
+        resetFileds();
+        elem.classList.add('active');
+
+        var {recoms, rrApi, obj} = await parseData(true, true);
+
+        renderFn__reset(recoms, rrApi, obj);
+      }
+
+      function resetFileds() {
+        var allBrands = block.querySelectorAll('.rr-filter-block.rr-filter-block--checkbox .rr-filter-check-wrap__check'),
+            categories = block.querySelectorAll('.rr-filters-top-items__lists-item');
+
+        allBrands.forEach(item => item.checked = false);
+        categories.forEach(item => item.classList.remove('active'));
+        setDoubleRangeSlider({
+          minDef: 0,
+          maxDef: 0,
+          selectors: doubleRangeObjSelectors,
+        }).resetValues(0, 0, true);
+      }
+
+      async function allReset() {
+        resetFileds();
+
+        var {recoms, rrApi, obj} = await parseData(true, true);
+
+        renderFn__reset(recoms, rrApi, obj);
+      }
+
+      async function applyFilters() {
+        var {recoms, rrApi, obj} = await parseData(true, true);
+
+        if (obj.flagsObj.priceChange)
+          renderFn__priceChange(recoms, rrApi, obj);
+        else if (obj.flagsObj.brandsChange)
+          renderFn__brandChange(recoms, rrApi, obj);
+        else if (obj.flagsObj.brandsChange && obj.flagsObj.priceChange)
+          renderFn__brandPriceChange(recoms, rrApi, obj);
+        else
+        render(recoms, rrApi, obj, () => {});
+      }
+
+      async function parseData(resetPage, needLoader = true, pageChange = false) {
+        toggleLoader(needLoader);
+        var {data, obj} = await getData(getFieldsData(resetPage, pageChange));
+
+        if (!data.length) {
+          return {
+            recoms: [],
+            rrApi: [],
+            obj
+          }
+        };
+
+        var rrApi = JSON.parse(data);
+        var recoms = await getItemsAsync(rrApi.items),
+            compareIds = await $maxiRR.fetchCompares();
+        
+
+        compareIds.forEach(item => {
+          recoms.forEach((recom) => {
+            if (+item.id === +recom.ItemId) {
+              recom.IsCompare = true;
+            }
+          });
+        })
+
+        /* recoms = recoms.filter(function (item) {
+          return item.IsAvailable;
+        }); */
+
+        if (rrApi.filters.brands) {
+          rrApi.filters.brands.rrValues = Object.keys(rrApi.filters.brands.values).map(function (item, i) {
+            return { [item]: rrApi.filters.brands.values[item] };
+          });
+        }
+        if (rrApi.filters.categories) {
+          rrApi.filters.categories.rrValues = Object.keys(rrApi.filters.categories.values).map(function (
+            item,
+            i
+          ) {
+            return { [item]: rrApi.filters.categories.values[item] };
+          });
+        }
+
+        return {
+          recoms,
+          rrApi,
+          obj
+        }
+      }
+
+      async function preRenderFn(blockSelector, firstRender = false, resetAll = false) {
+        block = document.querySelector(blockSelector);
+
+        var {recoms, rrApi, obj} = await parseData(true);
+
+        renderFn__first(recoms, rrApi, obj);
+      }
+
+      async function renderFn__brandPriceChange(recoms, data, obj) {
+        render(recoms, data, obj, () => {
+          cardController(recoms, '{{data-stock-id}}', block, '.rr-items-cont-inner', '{{data-retailrocket-markup-block}}')
+        })
+      }
+
+      async function renderFn__brandChange(recoms, data, obj) {
+        render(recoms, data, obj, () => {
+          cardController(recoms, '{{data-stock-id}}', block, '.rr-items-cont-inner', '{{data-retailrocket-markup-block}}')
+        })
+      }
+
+      async function renderFn__priceChange(recoms, data, obj) {
+        render(recoms, data, obj, () => {
+          checkboxController(data.filters.brands.rrValues, block, '.rr-filter.rr-filter--brands', '.rr-filter-block.rr-filter-block--checkbox > div', `filter_brand_`)
+          cardController(recoms, '{{data-stock-id}}', block, '.rr-items-cont-inner', '{{data-retailrocket-markup-block}}')
+        })
+      }
+
+      async function renderFn__pageChange(recoms, data, obj) {
+        render(recoms, data, obj, () => {
+          cardController(recoms, '{{data-stock-id}}', block, '.rr-items-cont-inner', '{{data-retailrocket-markup-block}}')
+        })
+      }
+
+      async function renderFn__first(recoms, data, obj) {
+        render(recoms, data, obj, () => {
+          cardController(recoms, '{{data-stock-id}}', block, '.rr-items-cont-inner', '{{data-retailrocket-markup-block}}')
+          categoriesController(data.filters.categories.rrValues, block, '.rr-filters-top', '.rr-filters-top-items__lists');
+          checkboxController(data.filters.brands.rrValues, block, '.rr-filter.rr-filter--brands', '.rr-filter-block.rr-filter-block--checkbox > div', `filter_brand_`)
+          setDoubleRangeSlider({
+            minDef: data.filters.price.min,
+            maxDef: data.filters.price.max,
+            selectors: {
+              vd_selec: '.rr-filter-price-track__vd',
+              vn_selec: '.rr-filter-price-track__vn',
+              v_selec: '.rr-filter-price-track__v',
+              rBg_selec: '.rr-filter-price-track__range',
+              rHl_selec: '.rr-filter-price-track__range-handle--left',
+              rHr_selec: '.rr-filter-price-track__range-handle--right',
+              inputMin_selec: '.rr-filter-price-left__text-value--min',
+              inputMax_selec: '.rr-filter-price-left__text-value--max',
+              block,
+            }
+          });
+          sortController({
+            parent: '.rr-items-actions-top-sort-select',
+            currentValSelector: '.rr-items-actions-top-sort-current',
+            listContainer: '.rr-items-actions-top-sort-lists > ul'
+          })
+
+          postRenderFn(data);
+        })
+      }
+
+      async function renderFn__reset(recoms, data, obj) {
+        render(recoms, data, obj, () => {
+          setDoubleRangeSlider({
+            minDef: data.filters.price.min,
+            maxDef: data.filters.price.max,
+            selectors: doubleRangeObjSelectors,
+          }).resetValues(data.filters.price.min, data.filters.price.max, true);
+          checkboxController(data.filters.brands.rrValues, block, '.rr-filter.rr-filter--brands', '.rr-filter-block.rr-filter-block--checkbox > div', `filter_brand_`)
+          cardController(recoms, '{{data-stock-id}}', block, '.rr-items-cont-inner', '{{data-retailrocket-markup-block}}')
+        })
+      }
+
+      async function render(recoms, data, obj, callback) {
+        if (Array.isArray(data) && !data.length) {
+          toggleLoader(false);
+          showAllEmptyData(true);
+          return
+        }
+
+        callback()
+        pagintaionContoller(obj.currentPage, data.pages_count, '.rr-pag-b-num', '.rr-pag-b-num-list > ul')
+        toggleLoader(false);
+        showAllEmptyData(false);
+        showEmptyDataResult(false);
+        toggleItemDisplayFormat();
+        setAccordion('.rr-filter');
+        scrollToTop();
+        setStatisticsFilters(recoms, obj);
+
+        if (!recoms.length) {
+          showEmptyDataResult(true);
+        }
+      }
+
+      async function postRenderFn(data) {
+        setStatisticsRender();
+        block.classList.add('rr-active');
+      }
+
+      return {
+        postRenderFn,
+        preRenderFn,
+        applyFilters,
+        allReset,
+      };
+    }());
+
+    toggleLoader(true);
+    scrollToTop();
+    retailrocket['store{{data-retailrocket-markup-block}}'].preRenderFn('.rr-widget-{{data-retailrocket-markup-block}}', true);
+  }(retailrocket));
+</script>

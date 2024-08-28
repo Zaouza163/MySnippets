@@ -1,0 +1,14 @@
+{% comment %}
+- Смена типа значения цены с number на string
+- Округление цены до 2-х знаков после запятов
+- Разбивка строки с ценой по разделителю '.' на массив
+- Вывод первого и второго элемента массива через ','
+{% endcomment %}
+
+{% capture price %}{{item.Price | round: 2}}{% endcapture %}
+{% assign arrPrice = price | split: '.' %}
+
+<span>{{arrPrice[0]}},{{arrPrice[1]}}</span>
+
+/-- Дополнение цены нулями до 2-х знаков после разделителя --/
+{{ item.Price | format: "n2" }}

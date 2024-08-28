@@ -1,0 +1,29 @@
+{% comment %} Исключить id {% endcomment %}
+{% assign algorithmSize = 0 %}
+
+{% for item in algorithmFill %}
+  {% if recosUseExludeFilter %}
+    {% capture productId %},{{item.Id}},{% endcapture %}
+    {% if recoExcludeIds contains productId %}{% continue %}{% endif %}
+  {% endif %}
+  {% assign algorithmSize = algorithmSize | plus: 1 %}
+{% endfor %}
+
+{% if algorithmSize > 0 %}
+{% comment %} товары {% endcomment %}
+
+{% assign iter = 0 %}
+{% for item in algorithmFill %}
+                          
+{% comment %} ------ {% endcomment %}
+{% if recosUseExludeFilter %}
+    {% capture productId %},{{item.Id}},{% endcapture %}
+    {% if recoExcludeIds contains productId %}{% continue %}{% endif %}
+{% endif %}
+{% assign iter = iter | plus: 1 %}
+{% comment %} ------- {% endcomment %}
+{% assign mod = iter | modulo: inrow %}
+
+{% if iter >= recoLimitX3_1 %}{% break %}{% endif %}
+{% if mod == 0 and forloop.last != true %}
+{% comment %} энд Исключить id {% endcomment %}

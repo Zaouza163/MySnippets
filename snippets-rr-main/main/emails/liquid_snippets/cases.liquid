@@ -1,0 +1,19 @@
+{% comment %} /-- Падежи для некоторого слова в зависимсоти от цифрового параметра --/ {% endcomment %}
+
+{% assign number = 1234 %}{% comment %} Пример числа {% endcomment %}
+{% assign word = 'отзывов' %}{% comment %} Значение слова для большинаства цифровых значений параметра {% endcomment %}
+{% capture numberStr %}{{number}}{% endcapture %}{% comment %} Значение цифрового параметра {% endcomment %}
+{% assign numberNum = numberStr | round: 0 %}
+{% assign numberNumMod100 = numberNum | modulo: 100 %}
+{% assign numberNumMod10 = numberNum | modulo: 10 %}
+{% if numberNumMod10 == 1 and numberNumMod100 != 11 %}
+{% assign word = 'отзыв' %}
+{% endif %}
+{% if numberNumMod10 > 1 and 5 > numberNumMod10 %}
+{% assign word = 'отзыва' %}
+{% endif %}
+{% if numberNumMod100 > 11 and 15 > numberNumMod100 %}
+{% assign word = 'отзывов' %}
+{% endif %}
+
+{{number}} {{word}} {% comment %} Вывод результата {% endcomment %}

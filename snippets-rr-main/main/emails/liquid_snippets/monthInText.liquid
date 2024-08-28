@@ -1,0 +1,15 @@
+{% comment %} /-- Текущий месяц текстом --/ {% endcomment %}
+{% capture monthCurrent %}{{"now" | date: "MM"}}{% endcapture %}
+{% if monthCurrent == '01' %}{% assign month = "января" %}
+{% elsif monthCurrent == '02' %}{% assign month = "февраля" %}
+{% elsif monthCurrent == '03' %}{% assign month = "марта" %}
+{% elsif monthCurrent == '04' %}{% assign month = "апреля" %}
+{% elsif monthCurrent == '05' %}{% assign month = "мая" %}
+{% elsif monthCurrent == '06' %}{% assign month = "июня" %}
+{% elsif monthCurrent == '07' %}{% assign month = "июля" %}
+{% elsif monthCurrent == '08' %}{% assign month = "августа" %}
+{% elsif monthCurrent == '09' %}{% assign month = "сентября" %}
+{% elsif monthCurrent == '10' %}{% assign month = "октября" %}
+{% elsif monthCurrent == '11' %}{% assign month = "ноября" %}
+{% elsif monthCurrent == '12' %}{% assign month = "декабря" %}
+{% endif %}

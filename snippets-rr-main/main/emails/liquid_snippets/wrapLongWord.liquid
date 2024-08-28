@@ -1,0 +1,25 @@
+{% comment %} /-- Перенос длинного слова в наименовании товара --/ {% endcomment %}
+{% comment %}
+- разделяемый_текст - текст, в котором присутствуют слишком длинные слова
+- ограничение_длины_слова - количество символов, после которого в слово вставляется пернос (индивидуален для каждой задачи)
+- modPhrase - переменная, в преобразованным текстом
+{% endcomment %}
+{% assign modPhrase = '' %}
+{% capture dividedText %}разделяемый_текст{% endcapture %}
+{% assign limSym = ограничение_длины_слова %}
+{% assign splitName = dividedText | split: ' ' %}
+{% for word in splitName %}
+  {% if word.size > limSym %}
+    {% assign modSize = word.size | minus: limSym %}
+    {% capture modWord %}{{word | slice: 0, limSym}}&shy;{{word | slice: limSym, modSize}}{% endcapture %}
+  {% else %}
+    {% capture modWord %}{{word}}{% endcapture %}
+  {% endif %}
+  {% if modPhrase.size > 0 %}
+    {% capture modPhrase %}{{modPhrase}} {{modWord}}{% endcapture %}
+  {% else %}
+    {% capture modPhrase %}{{modWord}}{% endcapture %}
+  {% endif %}
+{% endfor %}
+
+{{modPhrase}}

@@ -1,0 +1,2179 @@
+<style type="text/css">
+  /*.tabs-headings.block-none-bottom.filters-top{display: none !important;}*/
+  .search__empty__content{display: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-search-top-title {position: relative;margin-top: 3.5rem;margin-bottom: 2.6rem;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-search-top-title h1 {font-size: 4rem;line-height: 1.2em;text-transform: none;font-weight: 900;letter-spacing: 0.02em;color: #333333;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-hidden {display: none !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-hidden--opacity {opacity: 0 !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]{margin-top: 1rem;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"]{height:0;visibility:hidden;position:relative;display:block;width:100%;outline:none;font-family:inherit;box-sizing:border-box;margin:0 auto;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"].rr-active{height:auto;visibility:visible;margin-top:20px auto 0;z-index:1}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .widgettitle-wrap{position:relative;height:75px;padding:0;margin-bottom:4.6rem;border-bottom:1px solid #edeef0;width:100%;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .widgettitle{position:relative;color:#333;font-size:2.1rem;font-weight:900;letter-spacing:.02em;line-height:75px;text-align:center;text-transform:uppercase;user-select:none;vertical-align:middle;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .widgettitle::after{content:'';background:#ffd600;height:3px;width:100%;position:absolute;z-index:0;left:0;bottom:-1px}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-items-wrapp {flex: 1;max-width: 100%;padding-top: 2.2rem;padding-left: 2.2rem;padding-right: 2.9rem;position: relative;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .retailrocket-items{position: relative;display: flex;flex-wrap: wrap;margin-top: 3.2rem;margin-bottom: 0;margin-left: -2.2rem;margin-right: -2.2rem;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .retailrocket-item{padding:0 2.2rem;text-align:center;outline:none;position:relative;-webkit-transition-duration:0.6s;-o-transition-duration:0.6s;transition-duration:0.6s;-webkit-transition-timing-function:cubic-bezier(0.25, 0.74, 0.22, 0.99);-o-transition-timing-function:cubic-bezier(0.25, 0.74, 0.22, 0.99);transition-timing-function:cubic-bezier(0.25, 0.74, 0.22, 0.99);margin-bottom:4.8rem;flex: 0 0 auto;max-width: 33.33333%;width: 33.33333%;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .slick-active .retailrocket-item:hover .rr-overlay{opacity:1;transform:scale(1);pointer-events:all;z-index:5}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .slick-active .retailrocket-item:hover .overlay{left:-20px;top:-40px;bottom:-100px;right:-20px;z-index:7}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-img-block{margin-bottom:1.6rem;position:relative;width: 100%;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-image{width:100%;outline:none;overflow:hidden}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-image img{width:auto;height:auto;max-width:100%;max-height:100%;vertical-align:middle;margin:0 auto;outline:none;-webkit-transition-duration:0.3s;-o-transition-duration:0.3s;transition-duration:0.3s;-webkit-transition-timing-function:cubic-bezier(0.25, 0.74, 0.22, 0.99);-o-transition-timing-function:cubic-bezier(0.25, 0.74, 0.22, 0.99);transition-timing-function:cubic-bezier(0.25, 0.74, 0.22, 0.99);position:relative;-webkit-transition-delay:0.1s;-o-transition-delay:0.1s;transition-delay:0.1s}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-info{text-decoration:none;outline:none}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-title,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-brand,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-vendor{white-space:nowrap;overflow:hidden;text-align:left;-webkit-transition-duration:0.4s;-o-transition-duration:0.4s;transition-duration:0.4s;-webkit-transition-timing-function:cubic-bezier(0.25, 0.74, 0.22, 0.99);-o-transition-timing-function:cubic-bezier(0.25, 0.74, 0.22, 0.99);transition-timing-function:cubic-bezier(0.25, 0.74, 0.22, 0.99)}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-title,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-vendor{color:#333}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-title{margin-top:0.3rem}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-brand{color:#90989f;text-transform:uppercase;font-size:10px;font-weight:700;font-size:1rem;line-height:1.4em}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-brand:hover{color:#333333}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .slick-active .retailrocket-item:hover .item-title,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .slick-active .retailrocket-item:hover .item-vendor{color:#306bf5}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-block-price{margin-top:0.8rem;text-align:left;position:relative}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-price{font-size:2rem;font-weight:900;color:#000;display:block;letter-spacing:0.02em;text-transform:uppercase;line-height:1.2em}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-price-currency{font-size:2rem;line-height:1.2em;font-weight:500}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-price-currency::before{content:'€'}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-name-block{position:relative;white-space: nowrap;overflow: hidden;position: relative;width: 100%;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-name-block::after{content:'';position:absolute;right:0;top:0;bottom:0;width:40px;background:-webkit-gradient(linear,left top, right top,color-stop(0, rgba(255,255,255,0)),to(#fff));background:-o-linear-gradient(left,rgba(255,255,255,0) 0,#fff 100%);background:linear-gradient(to right,rgba(255,255,255,0) 0,#fff 100%);pointer-events:none}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-actions-buy{line-height:40px;font-size:1.2rem;letter-spacing:.02em;display:-webkit-box;display:-ms-flexbox;display:flex;color:#333;background-color:#ffd600;height:40px;padding:0 15px 0;font-size:1rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase;border-radius:4px;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-actions-buy:hover{color:#333333;background-color:#ffcc00}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .item-actions-buy:active{background-color:#ffcc00;-webkit-box-shadow:0 4px 7px rgba(51, 51, 51, 0.15) inset;box-shadow:0 4px 7px rgba(51, 51, 51, 0.15) inset}
+  div[data-stock-id="ru"] div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr_legal_entities::after{content:'Юридическим лицам';}
+  div[data-stock-id="lt"] div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr_legal_entities::after{content:'Juridiskām personām';}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-trade-price span,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-trade-price{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding-bottom:3px}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-trade-price span{color:#90989f;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-trade-price{color:#333333;font-weight:500;margin-top:13px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-search {display: flex;flex-wrap: wrap;margin-left: -2.2rem;margin-right: -2.2rem;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-sidebar {padding-top: 1.2rem;flex: 0 1 23.89831%;width: 23.89831%;max-width: 23.89831%;padding-right: 2.2rem;padding-left: 2.9rem;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-accordion__content {transition: all .2s ease;overflow: hidden;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-accordion__heading-header {border: 0;box-shadow: none;background-color: transparent;position: relative;text-align: center;text-decoration: none;text-transform: uppercase;user-select: none;vertical-align: middle;white-space: nowrap;display: inline-flex;align-items: center;justify-content: center;cursor: pointer;font-weight: 900;letter-spacing: 0.02em;border-radius: 4px;height: 46px;padding: 2px 19px 0;padding-right: 19px;padding-left: 19px;font-size: 1.2rem;line-height: 46px;padding-left: 0px;padding-right: 0px;color: #333333 !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-accordion__heading-header.active {color: #333333 !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-accordion__heading-header:hover,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-accordion__heading-header:focus {color: #306bf5 !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-accordion__heading-header:hover svg,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-accordion__heading-header:focus svg {color: #306bf5 !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-accordion__heading-header svg {display: inline-block;position: relative;top: 1px;transition-duration: 0.4s;transition-timing-function: cubic-bezier(0.25, 0.74, 0.22, 0.99);pointer-events: none;margin-top: -2px;transition-property: color, transform;flex-shrink: 0;margin-right: .9rem;color: #b4bcc3;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-accordion__heading-header.active svg {transform: rotate(180deg);}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-accordion__heading-header span {line-height: normal;white-space: normal;text-align: left;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-accordion {opacity: 1;visibility: visible;transition: .1s all ease;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-accordion.rr-not-active {opacity: 0;visibility: hidden;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .range-slider {height: 2px;position: relative;background-color: #e1e9f6;border-radius: 2px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .range-selected {height: 100%;left: 0%;right: 0%;position: absolute;border-radius: 5px;background: #306bf5;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-range-wrapp {margin: 30px 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-range .range-input {position: relative;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-range .range-input input {position: absolute;width: 100%;height: 2px;top: -2px;background: none;pointer-events: none;-webkit-appearance: none;-moz-appearance: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-range .range-input input::-webkit-slider-thumb {border-radius: 26px;border: 3px solid #1b53c0;background-color: #fff;pointer-events: auto;width: 26px;height: 26px;border: 2px solid #ffffff;background: #306bf5;width: 23px;height: 23px;-webkit-appearance: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-range .range-input input::-moz-range-thumb {border-radius: 26px;border: 3px solid #1b53c0;background-color: #fff;pointer-events: auto;-moz-appearance: none;width: 26px;height: 26px;border: 2px solid #ffffff;background: #306bf5;width: 23px;height: 23px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-range .range-price {display: flex;flex-wrap: wrap;margin-left: -0.25rem;margin-right: -0.25rem;margin-bottom: 1.3rem;margin-top: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-range .range-price label {margin-right: 5px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-range .range-price input {font-family: "Museo Sans Cyrl", Helvetica, Arial, sans-serif;font-weight: 500;letter-spacing: 0;text-rendering: optimizeLegibility;font-feature-settings: "kern" 1;font-kerning: normal;text-transform: none;transition-duration: 0.4s;transition-timing-function: cubic-bezier(0.25, 0.74, 0.22, 0.99);font-size: 1.4rem;line-height: 1.64286em;width: 100%;min-height: 60px;padding: 0 19px;border: 1px solid #c2cbd2;border-radius: 4px;background: #ffffff;color: #333333;outline: none;vertical-align: middle;transition-property: color, border-color, box-shadow;padding: 2px 15px 0;padding-top: 2px;padding-top: 0;min-height: 40px;height: 40px;-moz-appearance: textfield;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-range .range-price input::placeholder {color: #90989f;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-range .range-price input:hover {border-color: #acb5bb;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-range .range-price input:focus {border-color: #acb5bb;box-shadow: 0 10px 20px rgba(72, 72, 172, 0.06);}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-range .range-price .range-price-action-container {padding-left: 0.25rem;padding-right: 0.25rem;flex: 0 1 33.33333%;width: 33.33333%;max-width: 33.33333%;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-send-range-button {border: 0;box-shadow: none;background-color: transparent;position: relative;text-align: center;text-decoration: none;text-transform: uppercase;user-select: none;vertical-align: middle;white-space: nowrap;display: inline-flex;align-items: center;justify-content: center;cursor: pointer;border-radius: 4px;height: 40px;padding: 0 15px 0;padding-right: 15px;padding-left: 15px;font-size: 1rem;font-weight: 900;letter-spacing: 0.04em;line-height: 40px;padding-left: 30px;padding-right: 30px;color: #333333;background-color: #f5f7fa;-webkit-appearance: button;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-send-range-button:hover {color: #333333;background-color: #ebeff4;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-search {position: relative;margin-bottom: 1.3rem;margin-top: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-search__field {-webkit-appearance: textfield;outline-offset: -2px;font-size: 1.4rem;line-height: 1.64286em;width: 100%;min-height: 60px;padding: 0 19px;border: 1px solid #c2cbd2;border-radius: 4px;background: #ffffff;color: #333333;outline: none;vertical-align: middle;transition-property: color, border-color, box-shadow;padding: 2px 15px 0;padding-top: 0;min-height: 40px;height: 40px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-search__field::placeholder {color: #90989f;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-search__field:hover {border-color: #acb5bb;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-search__field:focus {border-color: #acb5bb;box-shadow: 0 10px 20px rgba(72, 72, 172, 0.06);}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-search__icon {border: 0;box-shadow: none;background-color: transparent;text-align: center;text-decoration: none;text-transform: uppercase;user-select: none;vertical-align: middle;white-space: nowrap;display: inline-flex;align-items: center;justify-content: center;border-radius: 4px;font-size: 1rem;font-weight: 900;letter-spacing: 0.04em;position: absolute;top: 0;padding: 1px 15px 0;line-height: 60px;display: flex;justify-content: center;align-items: center;pointer-events: none;left: auto;right: 0;height: 40px;color: #b4bcc3;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-search__icon svg {display: inline-block;transform: translateY(0);transition-property: transform, opacity;pointer-events: none;margin-top: 0;flex-shrink: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands {position: relative;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-fades::before,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-fades::after {content: "";position: absolute;z-index: 2;left: 0;width: 100%;height: 60px;display: none;transition-property: opacity;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-fades::before {background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0) 100%);top: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands::after {background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);bottom: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-fades.rr-scroll-top::before {opacity: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-fades.rr-scroll-bottom::after {opacity: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp.active {height: auto !important;min-height: 0 !important;max-height: 300px !important;width: auto !important;min-width: 0 !important;max-width: none !important;overflow: auto;overflow-y: auto;padding-right: 39px !important;margin-right: -17px !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp {border: 0;padding: 0;margin: 0;overflow-y: scroll;-ms-overflow-style: none;-moz-box-sizing: border-box;-webkit-overflow-scrolling: touch;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp__scroll {display: flex !important;flex-direction: column;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-scroll {overflow: auto;position: relative;height: 300px;display: flex;flex-direction: column;-ms-overflow-style: none;scrollbar-width: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-scroll::-webkit-scrollbar {display: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp__scroll-item {display: flex;position: relative;padding-top: 0.7rem;padding-bottom: 0.7rem;order: -1000;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp__scroll-item.rr-active {order: -1001;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp__scroll-item-check {position: absolute;left: -9000px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp__scroll-item-check-icon {position: relative;min-height: 16px;line-height: 16px;cursor: pointer;height: 16px;width: 16px;border-radius: 100px;background: transparent;background-color: transparent;border: 1px solid #c2cbd2;flex-shrink: 0;transition-property: border-color, border-width;background-color: #ffffff;border-radius: 3px;top: -1px;transition-duration: 0.4s;transition-timing-function: cubic-bezier(0.25, 0.74, 0.22, 0.99);transition-property: border-color, border-width;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp__scroll-item-check-icon:hover {border-color: #acb5bb;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp__scroll-item-check-icon::before {content: "";display: block;position: absolute;width: 18px;height: 18px;left: -1px;top: -2px;background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' height='18' width='18'%3E%3Cpath fill='%23306bf5' d='M15,9c-0.6,0-1,0.4-1,1v4c0,0.6-0.4,1-1,1H3c-0.6,0-1-0.4-1-1V4c0-0.6,0.4-1,1-1h10c0.6,0,1-0.4,1-1 s-0.4-1-1-1H3C1.3,1,0,2.3,0,4v10c0,1.7,1.3,3,3,3h10c1.7,0,3-1.3,3-3v-4C16,9.4,15.6,9,15,9z'/%3E%3Cpath fill='%23306bf5' d='M17.7,2.3c-0.4-0.4-1-0.4-1.4,0L9,9.6L6.7,7.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l3,3C8.5,11.9,8.7,12,9,12 s0.5-0.1,0.7-0.3l8-8C18.1,3.3,18.1,2.7,17.7,2.3z'/%3E%3C/svg%3E");transition-property: opacity;opacity: 0;transition-duration: 0.4s;transition-timing-function: cubic-bezier(0.25, 0.74, 0.22, 0.99);}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp__scroll-item-check-icon::after {content: "";display: block;position: absolute;top: -10px;right: -3px;bottom: -10px;left: -3px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp__scroll-item-check:checked ~ .rr-filter-brands-wrapp__scroll-item-check-icon::before {opacity: 1;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp__scroll-item-check-label {position: relative;min-height: 16px;line-height: 16px;cursor: pointer;flex-grow: 1;padding-left: 10px;padding-right: 10px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp__scroll-item-check-label small {font-size: 1.2rem;line-height: 1.33333em;color: #90989f;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-wrapp__scroll-item-check-label::after {content: "";display: block;position: absolute;top: -10px;right: -3px;bottom: -10px;left: -3px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-scroll-clone.rr-search-none{height: auto !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-half-brand {display: flex;flex-direction: row;flex-wrap: wrap;align-items: flex-start;justify-content: flex-start;margin-top: -5px;margin-left: -10px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-half-brand__btn {border: 0;box-shadow: none;background-color: transparent;position: relative;text-align: center;text-decoration: none;text-transform: uppercase;user-select: none;vertical-align: middle;white-space: nowrap;display: inline-flex;align-items: center;justify-content: center;border-radius: 4px;line-height: 40px;height: 40px;padding: 0 15px 0;font-size: 1.2rem;padding-left: 0px;padding-right: 0px;color: #90989f;font-weight: 500;letter-spacing: 0;text-transform: none;margin-top: 5px;margin-left: 10px;margin-bottom: 0;-webkit-appearance: button;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-half-brand__btn:hover {color: #333333;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-half-brand__btn > span {display: flex;align-items: center;justify-content: center;margin-left: auto;margin-right: auto;margin-top: 0;padding-top: 0;height: 40px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-search-top {border-bottom: 1px solid #edeef0;margin-top: -2.5rem;padding-bottom: 0;margin-bottom: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-search-top-wrapp {display: flex;flex-direction: row;flex-wrap: wrap;align-items: flex-start;justify-content: flex-start;margin-top: 0px;margin-left: 0px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-search-top-wrapp__count {margin-top: 0px;margin-left: 0px;margin-bottom: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-search-top-wrapp__count p {line-height: 1.3125em;font-size: 12px;color: #90989f;padding: 22px 0 27px;margin-top: 0;margin-bottom: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-search-top-wrapp__fill {flex-grow: 1;margin-top: 0px;margin-left: 0px;margin-bottom: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-search-top-wrapp-nav {margin-bottom: 0;margin-top: 0;padding: 13px 0 14px;align-self: center;margin-left: auto;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-search-top-wrapp-nav > div {margin-top: 5px;margin-left: 10px;margin-bottom: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination {display: flex;flex-direction: row;flex-wrap: nowrap;align-items: flex-start;justify-content: flex-start;margin-top: -2px;margin-left: -2px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-top-arr {border: 0;box-shadow: none;background-color: transparent;position: relative;text-align: center;text-decoration: none;text-transform: uppercase;user-select: none;vertical-align: middle;white-space: nowrap;display: inline-flex;align-items: center;justify-content: center;height: 40px;padding: 0 15px 0;padding-right: 15px;padding-left: 15px;font-size: 1rem;font-weight: 900;letter-spacing: 0.04em;line-height: 40px;color: #333333;background-color: #f5f6fa;width: 40px;padding-left: 0;padding-right: 0;flex-grow: 0;flex-shrink: 0;margin-top: 2px;margin-left: 2px;margin-bottom: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-top-arr:hover {color: #333333;background-color: #ebeff4;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-top-arr svg {display: inline-block;transform: translateY(0);overflow: hidden;transition-property: transform, opacity;pointer-events: none;margin-top: 0;flex-grow: 0;flex-shrink: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-top-arr--prev {border-radius: 4px 0 0 4px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-top-arr--next {border-radius: 0 4px 4px 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-top-arr--disabled {color: #b4bcc3;background-color: #f5f6fa;opacity: 1;pointer-events: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector {letter-spacing: 0.04em;text-transform: uppercase;font-size: 1rem;display: inline-block;position: relative;height: 40px;padding-left: 15px;padding-right: 37px;background-color: #f5f7fa;border-radius: 4px;font-weight: 900;line-height: 40px;cursor: pointer;user-select: none;outline: none;white-space: nowrap;-webkit-tap-highlight-color: transparent;min-width: 66px;margin-top: 2px;margin-left: 2px;margin-bottom: 0;border-radius: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector:hover, .rr-top-pagination-selector:focus {background: #ebeff4;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector::after {content: "";position: absolute;right: 16px;top: 17px;pointer-events: none;width: 0;height: 0;border-style: solid;border-width: 5px 3px 0 3px;border-color: currentColor transparent transparent transparent;transition-property: transform;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list {transition-timing-function: cubic-bezier(0.25, 0.74, 0.22, 0.99);z-index: 5;background-color: #f5f7fa;border-radius: 0 0 4px 4px;box-shadow: 0 10px 20px rgba(18, 42, 96, 0.12);pointer-events: none;position: absolute;top: 100%;left: 0;min-width: 100%;text-align: left;transition-duration: 0.2s;transition-property: transform;transform: translateY(-20px);opacity: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector.active .rr-top-pagination-selector-list {pointer-events: auto;transform: translateY(0);opacity: 1;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector.active::after {transform: rotate(-180deg);}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp {position: relative;padding: 15px 10px 15px 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp::before,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp::after {content: "";position: absolute;z-index: 2;left: 0;width: 100%;height: 60px;display: none;transition-property: opacity;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp::before {background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0) 100%);top: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp::after {background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);bottom: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp.rr-scroll-top::before {opacity: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp.rr-scroll-bottom::after {opacity: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp__list-items {overflow: auto;position: relative;height: 345px;display: flex;flex-direction: column;-ms-overflow-style: none;scrollbar-width: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp__list-items ul {list-style: none;padding: 0;margin: 0;max-width: 72px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp__list-items-item {cursor: pointer;outline: none;line-height: 40px;min-height: 40px;padding-left: 15px;padding-right: 37px;transition-property: background-color, color;transition-duration: 0.4s;transition-timing-function: cubic-bezier(0.25, 0.74, 0.22, 0.99);}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp__list-items-item:hover {background-color: #ebeff4;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp__list-items-item.rr-select {color: #306bf5;background-color: #ebeff4;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list:hover .rr-top-pagination-selector-list-wrapp__list-items-item:not(:hover) {background-color: transparent !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp__list-items.rr-scroll-clone {width: 105px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-bt {margin-top: 3.2rem;margin-bottom: 3.2rem;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-bt > div {display: flex;flex-direction: row;flex-wrap: wrap;align-items: flex-start;justify-content: flex-start;margin-top: -13px;margin-left: -26px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-bt-arrow {border: 0;box-shadow: none;background-color: transparent;position: relative;text-align: center;text-decoration: none;text-transform: uppercase;user-select: none;vertical-align: middle;white-space: nowrap;display: inline-flex;align-items: center;justify-content: center;cursor: pointer;transition-duration: 0.4s;transition-timing-function: cubic-bezier(0.25, 0.74, 0.22, 0.99);border-radius: 4px;height: 40px;padding: 0 15px 0;font-size: 1rem;font-weight: 900;letter-spacing: 0.04em;line-height: 40px;color: #333333;background-color: #f5f6fa;margin-top: 13px;margin-left: 26px;margin-bottom: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-bt-arrow svg {flex-grow: 0;flex-shrink: 0;margin-left: .9em;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-bt-arrow:hover {color: #333333;background-color: #ebeff4;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-bt-wrapp {margin-top: 13px;margin-left: 26px;margin-bottom: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-bt-wrapp > div {position: relative;display: flex;flex-direction: row;flex-wrap: wrap;align-items: flex-start;justify-content: flex-start;margin-top: -13px;margin-left: -26px;margin-top: -2px;margin-left: -2px;flex-wrap: nowrap;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-bt-wrapp > div > :last-child {border-radius: 0 4px 4px 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-bt-wrapp > div > :first-child{border-radius: 4px 0 0 4px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-bt-wrapp__elem {border: 0;box-shadow: none;background-color: transparent;position: relative;text-align: center;text-decoration: none;text-transform: uppercase;user-select: none;vertical-align: middle;white-space: nowrap;display: inline-flex;align-items: center;justify-content: center;cursor: pointer;transition-duration: 0.4s;transition-timing-function: cubic-bezier(0.25, 0.74, 0.22, 0.99);height: 40px;padding: 0 15px 0;padding-right: 15px;padding-left: 15px;font-size: 1rem;font-weight: 900;letter-spacing: 0.04em;line-height: 40px;font-size: 1.4rem;letter-spacing: 0.02em;color: #333333;background-color: #f5f6fa;width: 40px;padding-left: 0;padding-right: 0;flex-grow: 0;flex-shrink: 0;margin-top: 2px;margin-left: 2px;margin-bottom: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-bt-wrapp__elem:hover {color: #333333;background-color: #ebeff4;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-bt-wrapp__elem.active {color: #333333;background-color: #acb5bb;pointer-events: none;cursor: default;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-pag-bt-wrapp__elem.rr-pag-bt-wrapp__elem--dots {pointer-events: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-loading-overlay {width: 100%;height: 100%;background: rgba(255, 255, 255, 0.8);z-index: 2147483647;position: absolute;display: flex;flex-flow: column;align-items: center;justify-content: space-around;opacity: 1;transition: opacity .25s ease;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-loading-overlay > div {order: 3;box-sizing:border-box;overflow: visible;flex: 0 0 auto;display: flex;justify-content: center;align-items: center;width: 120px;height: 120px;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-spinner {position: fixed;top: 440px;left: 43%;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-empty-result {padding-top: 10rem;color: #90989f;text-align: center;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-empty-result h3 {font-weight: 900;letter-spacing: 0.02em;text-transform: uppercase;color: #333333;font-size: 1.6rem;line-height: 1.125em;margin-bottom: 2.6rem;margin-top: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-empty-result p {margin-top: 2.6rem;margin-bottom: 0;}
+
+@supports (pointer-events: none) {
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-fades::before,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-filter-brands-fades::after {display: block;pointer-events: none;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp::before,
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-top-pagination-selector-list-wrapp::after {display: block;pointer-events: none;}
+}
+
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .ssb_down {background-color: #33ccaa;bottom:0;cursor:pointer;position:absolute;right:0;border-radius: 10px;z-index: 4;opacity: 0 !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .ssb_sb {background-color: #22aabb;cursor:pointer;position:absolute;right:0;border-radius: 10px;background: #c2cbd2;width: 2px !important;transition-property: transform;transform-origin: right top;transition-duration: 0.4s;transition-timing-function: cubic-bezier(0.25, 0.74, 0.22, 0.99);z-index: 4;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .ssb_sb_down {z-index: 4;opacity: 1 !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .ssb_sb_over {transform: scaleX(3);z-index: 4;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .ssb_st {background-color: #dedede;cursor:pointer;height:100%;position:absolute;right:0;top:0;border-radius: 10px;z-index: 4;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .ssb_up {background-color: #33ccaa;cursor:pointer;position:absolute;right:0;top:0;border-radius: 10px;z-index: 4;opacity: 0 !important;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-swiper-category-container {position:relative;overflow:hidden;padding:0;z-index:1;margin-bottom: 2rem;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-swiper-category-container-wrapper {-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);position:relative;width:100%;height:100%;z-index:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform;-webkit-box-sizing:content-box;box-sizing:content-box;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-swiper-category-slide {-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:100%;height:auto;position:relative;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-category-item {cursor: pointer;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-category-item > div {padding-left: 2.2rem;padding-right: 2.2rem;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-category-item__image {text-align: center;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-category-item__title span {font-family: "Museo Sans Cyrl", Helvetica, Arial, sans-serif;font-weight: 600;font-size: 14px;display: inline-block;text-align: center;color: #333333;width: 100%;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-arrow {cursor: pointer;border: 0;box-shadow: none;text-align: center;text-decoration: none;text-transform: uppercase;user-select: none;white-space: nowrap;display: inline-flex;align-items: center;justify-content: center;border-radius: 4px;height: 40px;padding: 0 15px 0;font-size: 1rem;font-weight: 900;letter-spacing: 0.04em;line-height: 40px;width: 40px;padding-left: 0;padding-right: 0;margin-right: 4px;position: absolute;margin-top: -20px;top: 60px;z-index: 2;background: #f5f6fa;color: #333333;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-arrow:active {box-shadow: 0 4px 7px rgba(0, 0, 0, 0.2) inset;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-arrow.swiper-button-disabled {opacity: 0;visibility: hidden;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-arrow svg {transition-duration: 0.4s;transition-timing-function: cubic-bezier(0.25, 0.74, 0.22, 0.99);display: inline-block;transform: translateY(0);transition-property: transform, opacity;pointer-events: none;flex-shrink: 0;margin-top: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-arrow.rr-arrow--left {left: 0;}
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] .rr-arrow.rr-arrow--right {left: auto;right: 0;}
+
+</style>
+
+<div class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+     data-algorithm="search"
+     data-algorithm-argument="{{data-search-phrase}}"
+     data-algorithm-param-stock-id="{{data-stock-id}}"
+     data-template-param-header-text-lt=''
+     data-template-param-header-text-ru=''
+     data-template-param-number-of-items="15"
+     data-template-param-image-width="170"
+     data-template-param-image-height="170"
+     data-on-pre-render="retailrocket.rde{{data-retailrocket-markup-block}}.preRenderFn(this, data, renderFn)"
+     data-on-post-render="retailrocket.rde{{data-retailrocket-markup-block}}.postRenderFn(this)"
+     data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+     data-textoverflowhidden="true"
+     data-s="{{data-retailrocket-markup-block}}">
+</div>
+
+<script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
+  <%
+  var stockId = '{{data-stock-id}}';
+  var topLeftText_1 = '',
+      topLeftText_2 = '',
+      filterPrice = '',
+      filterAccord_1 = '',
+      filterAccord_2 = '',
+      accordSelector_1 = '',
+      accordSelector_2 = '',
+      pagBtnArrowPrev =  '',
+      pagBtnArrowNext =  '',
+      emptySearch = '',
+      topTitle= '';
+
+  if (stockId === 'lt') {
+    topLeftText_1 = 'Rasta';
+    topLeftText_2 = 'prekių';
+    filterPrice = 'Kaina';
+    filterAccord_1 = 'Gamintojai';
+    filterAccord_2 = 'Categories';
+    accordSelector_1 = 'Atidaryti daugiau';
+    accordSelector_2 = 'Sutraukti';
+    pagBtnArrowPrev = 'Atgal';
+    pagBtnArrowNext = 'Pirmyn';
+    emptySearch = 'nieko nerasta';
+    topTitle = 'Jūs ieškojote';
+  } else {
+    topLeftText_1 = 'Найдено';
+    topLeftText_2 = 'товаров';
+    filterPrice = 'Цена';
+    filterAccord_1 = 'Производители';
+    filterAccord_2 = 'Категории';
+    accordSelector_1 = 'Показать еще';
+    accordSelector_2 = 'Свернуть';
+    pagBtnArrowPrev = 'Назад';
+    pagBtnArrowNext = 'Вперед';
+    emptySearch = 'ничего не найдено';
+    topTitle = 'Вы искали'
+  }
+%>
+<div class="rr-search-top-title">
+	<h1><%=topTitle%> «{{data-search-phrase}}»</h1>
+</div>
+<div class="rr-swiper-category-container">
+  <div class="rr-swiper-category-container-wrapper" style="display: none !important;">
+    <% for (var i = 0; i < 10; i++) { %>
+    <div class="rr-swiper-category-slide">
+      <div class="rr-category-item">
+        <div>
+          <div class="rr-category-item__image">
+            <img src="images/categoryes/4027a3090e24b5e3417bbf743a96afdd.jpg" alt="category" width="120" height="120">
+          </div>
+          <div class="rr-category-item__title">
+            <span>Mobilieji telefonai</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <div class="rr-swiper-category-arrows">
+    <a class="rr-arrow rr-arrow--left">
+      <svg width="16" height="16">
+        <g transform="rotate(-180 8 8)">
+          <path fill="currentColor" d="M5,16c-0.2,0-0.5-0.1-0.7-0.2c-0.4-0.4-0.5-1-0.1-1.4L9.7,8L4.2,1.7c-0.4-0.4-0.3-1,0.1-1.4   c0.4-0.4,1.1-0.3,1.4,0.1l6,7c0.3,0.4,0.3,0.9,0,1.3l-6,7C5.6,15.9,5.3,16,5,16z"></path>
+        </g>
+      </svg>
+    </a>
+    <a class="rr-arrow rr-arrow--right">
+      <svg width="16" height="16">
+        <g>
+          <path fill="currentColor" d="M5,16c-0.2,0-0.5-0.1-0.7-0.2c-0.4-0.4-0.5-1-0.1-1.4L9.7,8L4.2,1.7c-0.4-0.4-0.3-1,0.1-1.4   c0.4-0.4,1.1-0.3,1.4,0.1l6,7c0.3,0.4,0.3,0.9,0,1.3l-6,7C5.6,15.9,5.3,16,5,16z"></path>
+        </g>
+      </svg>
+    </a>
+  </div>
+</div>
+<div class="rr-search-top">
+  <div class="rr-search-top-wrapp">
+    <div class="rr-search-top-wrapp__count"><p><%=topLeftText_1%> <span>?</span> <%=topLeftText_2%></p></div>
+    <div class="rr-search-top-wrapp__fill"></div>
+    <div class="rr-search-top-wrapp-nav">
+      <div>
+        <div class="rr-top-pagination">
+          <button class="rr-pag-top-arr rr-pag-top-arr--prev rr-pag-top-arr--disabled" id="pag-arr-prev">
+            <svg height="16" width="16">
+              <g transform="rotate(-180 8 8)">
+                <path fill="currentColor" d="M5,16c-0.2,0-0.5-0.1-0.7-0.2c-0.4-0.4-0.5-1-0.1-1.4L9.7,8L4.2,1.7c-0.4-0.4-0.3-1,0.1-1.4   c0.4-0.4,1.1-0.3,1.4,0.1l6,7c0.3,0.4,0.3,0.9,0,1.3l-6,7C5.6,15.9,5.3,16,5,16z"></path>
+              </g>
+            </svg>
+          </button>
+          <div class="rr-top-pagination-selector" id="selector">
+            <div class="rr-top-selector__current" id="selector-current">1</div>
+            <div class="rr-top-pagination-selector-list" id="selector-list">
+              <div class="rr-top-pagination-selector-list-wrapp">
+                <div class="rr-top-pagination-selector-list-wrapp__list-items" id="rr-scroll-top-{{data-retailrocket-markup-block}}">
+                  <ul></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="rr-pag-top-arr rr-pag-top-arr--next" id="pag-arr-next">
+            <svg height="16" width="16">
+              <g>
+                <path fill="currentColor" d="M5,16c-0.2,0-0.5-0.1-0.7-0.2c-0.4-0.4-0.5-1-0.1-1.4L9.7,8L4.2,1.7c-0.4-0.4-0.3-1,0.1-1.4   c0.4-0.4,1.1-0.3,1.4,0.1l6,7c0.3,0.4,0.3,0.9,0,1.3l-6,7C5.6,15.9,5.3,16,5,16z"></path>
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="rr-search">
+  <div class="rr-items-wrapp">
+    <div class="retailrocket-items-wrapp">
+      <div class="rr-loading-overlay rr-hidden rr-hidden--opacity">
+        <div>
+          <div class="rr-spinner spinner spinner--overlay spinner--top" style="position: fixed; top: 440px; left: 43%;"></div>
+        </div>
+      </div>
+      <div class="rr-empty-result rr-hidden">
+        <h3><%=stockId === 'lt' ? 'Deja, Jūsų paieška rezultatų nerado' : 'К сожалению, по вашему запросу ничего не найдено'%></h3>
+        <p><%=stockId === 'lt' ? 'Pabandykite pakeisti savo užklausą ar pasinaudokite' : 'Попробуйте изменить запрос или воспользуйтесь'%><br><a href="/"><%=stockId === 'lt' ? 'prekių katalogu' : 'каталогом товаров'%></a></p>
+      </div>
+      <div class="retailrocket-items product-list product-list--with-overlay">
+        <% var cartText = 'В корзину'; %>
+        <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
+        <% 
+          var favTitle = '',
+              compareTitle = '';
+  
+          switch (stockId) {
+          case 'ru' :
+            if (Params.inCart == true) {
+              cartText = 'В корзине';
+            } else {
+              cartText = 'В корзину';
+            }
+  
+            favTitle = 'Отложить';
+            compareTitle = 'В сравнение';
+          break;
+          case 'lt' :
+            if (Params.inCart == true) {
+              cartText = 'Grozā';
+            } else {
+              cartText = 'Į KREPŠELĮ';
+            }
+  
+            favTitle = 'Atidėti';
+            compareTitle = 'Į palyginimą';
+          break;
+        } %>
+        <div class="product-list--grid product product js-product js-touch-hover retailrocket-item">
+          <div class="product__background rr-overlay"></div>
+          <a class="overlay" href="<%= Url %>"
+            onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'></a>
+          <div class="item-img-block">
+            <div class="item-image">
+              <img src="<%=PictureUrl%>" onerror="retailrocket.widget.hideProduct(this)">
+            </div>
+          </div>
+          <div class="item-name-block">
+            <div class="item-brand">
+              <% if (stockId == 'lt') { %>
+              <%= Params['category_name_lt'] %>
+              <% } else { %>
+              <%= Params['category_name_lt'] %>
+              <% } %>
+            </div>
+            <div class="item-title">
+              <%= Name %>
+            </div>
+            <div class="item-vendor">
+              <%= Vendor %>
+            </div>
+          </div>
+          <div class="item-block-price">
+            <div class="item-price"> 
+              <span class="item-price-value"><%= retailrocket.widget.formatNumber(Price, '.', ' ', 2) %></span> 
+              <span class="item-price-currency"></span> 
+            </div>
+          </div>
+          <div class="product__overlay">
+            <div class="product__buttons rr-buttons">
+              <a class="rr-button btn btn--smaller btn--text-small <% if (Params.inCart == true) { %>btn--tetriary<% } else { %>btn--secondary<% } %>"
+                data-plugin="cartButton" data-lang="<%=stockId%>" data-product-id="<%=ItemId  %>" role="button" onclick='rrApi.recomAddToCart(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+                <svg class="icon icon-cart" width="20" height="20">
+                  <use xlink:href="images/icons.svg#cart">
+                    <svg id="cart" viewBox="0 0 20 20">
+                      <path fill="currentColor"
+                        d="M16.4,5.8L5,4.1V2c0-0.4-0.2-0.7-0.6-0.9l-2-1C2-0.1,1.4,0.1,1.1,0.6C0.9,1,1.1,1.6,1.6,1.9L3,2.6V10  c0,0.6,0.4,1,1,1s1-0.4,1-1V6.2l11.1,1.6c0.5,0.1,0.9,0.5,0.9,1c0,0.1,0,0.2,0,0.2l-0.6,2.2c-0.1,0.4-0.5,0.8-1,0.8H6  c-1.7,0-3,1.3-3,3c0,1.3,0.8,2.4,2,2.8c0,0.1,0,0.1,0,0.2c0,1.1,0.9,2,2,2s2-0.9,2-2h4c0,1.1,0.9,2,2,2s2-0.9,2-2s-0.9-2-2-2H6  c-0.6,0-1-0.4-1-1s0.4-1,1-1h9.4c1.4,0,2.6-0.9,2.9-2.3l0.6-2.2C19,9.2,19,9,19,8.8C19,7.3,17.9,6,16.4,5.8z">
+                      </path>
+                    </svg>
+                  </use>
+                </svg>
+                <span class="js-buy-button-text"><%=cartText%></span>
+              </a>
+              <a class="btn btn--smaller btn--square btn--simple" role="button" data-plugin="wishlistButton"
+                data-lang="<%=stockId%>" data-product-id="<%=ItemId  %>" title="<%=favTitle%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+                <svg class="icon icon-favourite-small" width="20" height="20">
+                  <use xlink:href="images/icons.svg#favourite-small">
+                    <svg id="favourite-small" viewBox="0 0 20 20">
+                      <path fill="currentColor"
+                        d="M17.9,2.3C17.1,1.6,16.1,1.2,15,1l-0.5,0C11.5,1,9,3.4,9,6.4c0,0.6,0.4,1,1,1s1-0.4,1-1C11,4.5,12.6,3,14.4,3  l0.4,0c0.7,0.1,1.3,0.4,1.9,0.8c0.8,0.7,1.3,1.7,1.4,2.7c0.1,1.1-0.3,2.1-1.1,2.9L10,17l-7-7.6C2.3,8.7,2,7.6,2,6.6  c0.1-1.1,0.5-2.1,1.4-2.7c1-0.9,2.5-1.1,3.8-0.5c0.5,0.2,1.1,0,1.3-0.5c0.2-0.5,0-1.1-0.5-1.3C6,0.6,3.7,0.9,2.1,2.3  c-1.2,1-2,2.5-2.1,4.2c-0.1,1.6,0.5,3.2,1.6,4.3l7,7.6C8.9,18.8,9.5,19,10,19c0.5,0,1.1-0.2,1.4-0.6l6.9-7.5  c1.1-1.2,1.7-2.7,1.6-4.4C19.9,4.8,19.2,3.3,17.9,2.3z">
+                      </path>
+                    </svg>
+                  </use>
+                </svg>
+              </a>
+            </div>
+            <% if (Params['Цена для юридических лиц']) { %>
+            <div class="rr-trade-price">
+              <span class="rr_legal_entities"></span> <%= Params['Цена для юридических лиц']  %> €
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <div class="rr-pag-bt">
+      <div>
+        <button class="rr-pag-bt-arrow rr-pag-bt-arrow--prev">
+          <span><%=pagBtnArrowPrev%></span>
+          <svg height="16" width="16">
+            <g transform="rotate(-180 8 8)">
+              <path fill="currentColor" d="M5,16c-0.2,0-0.5-0.1-0.7-0.2c-0.4-0.4-0.5-1-0.1-1.4L9.7,8L4.2,1.7c-0.4-0.4-0.3-1,0.1-1.4   c0.4-0.4,1.1-0.3,1.4,0.1l6,7c0.3,0.4,0.3,0.9,0,1.3l-6,7C5.6,15.9,5.3,16,5,16z"></path>
+            </g>
+          </svg>
+        </button>
+        <div class="rr-pag-bt-wrapp">
+          <div></div>
+        </div>
+        <button class="rr-pag-bt-arrow rr-pag-bt-arrow--next">
+          <span><%=pagBtnArrowNext%></span>
+          <svg height="16" width="16">
+            <g>
+              <path fill="currentColor" d="M5,16c-0.2,0-0.5-0.1-0.7-0.2c-0.4-0.4-0.5-1-0.1-1.4L9.7,8L4.2,1.7c-0.4-0.4-0.3-1,0.1-1.4   c0.4-0.4,1.1-0.3,1.4,0.1l6,7c0.3,0.4,0.3,0.9,0,1.3l-6,7C5.6,15.9,5.3,16,5,16z"></path>
+            </g>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <aside class="rr-sidebar">
+    <div class="rr-sidebar-filter">
+      <div class="rr-accordion rr-accordion-price">
+        <div class="rr-accordion__heading">
+          <a class="rr-accordion__heading-header active">
+            <svg height="16" width="16">
+              <g transform="matrix(1.1652228693037617e-7, 1.0000014305114748, -1.0000014305114748, 1.1652228693037617e-7, 15.85001182556158, 0.05001693964005938)">
+                <path fill="currentColor" d="M5,16c-0.2,0-0.5-0.1-0.7-0.2c-0.4-0.4-0.5-1-0.1-1.4L9.7,8L4.2,1.7c-0.4-0.4-0.3-1,0.1-1.4   c0.4-0.4,1.1-0.3,1.4,0.1l6,7c0.3,0.4,0.3,0.9,0,1.3l-6,7C5.6,15.9,5.3,16,5,16z"></path>
+              </g>
+            </svg>
+            <span><%=filterPrice%>, €</span>
+          </a>
+        </div>
+        <div class="rr-accordion__content active">
+          <div class="rr-range">
+            <div class="range-price">
+              <div class="range-price-action-container">
+                <input class="range-price-min" type="number" name="min" min="" max="" value="" placeholder="">
+              </div>
+              <div class="range-price-action-container">
+                <input class="range-price-max" type="number" name="max" min="" max="" value="" placeholder="">
+              </div>
+              <div class="range-price-action-container">
+                <button class="rr-send-range-button">
+                  <span>ok</span>
+                </button>
+              </div>
+            </div>
+            <div class="rr-range-wrapp">
+              <div class="range-slider">
+                <span class="range-selected"></span>
+              </div>
+              <div class="range-input">
+                <input type="range" class="min" min="" max="" value="" step="1">
+                <input type="range" class="max" min="" max="" value="" step="1">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rr-accordion rr-accordion-brands">
+        <div class="rr-accordion__heading">
+          <a class="rr-accordion__heading-header active">
+            <svg height="16" width="16">
+              <g transform="matrix(1.1652228693037617e-7, 1.0000014305114748, -1.0000014305114748, 1.1652228693037617e-7, 15.85001182556158, 0.05001693964005938)">
+                <path fill="currentColor" d="M5,16c-0.2,0-0.5-0.1-0.7-0.2c-0.4-0.4-0.5-1-0.1-1.4L9.7,8L4.2,1.7c-0.4-0.4-0.3-1,0.1-1.4   c0.4-0.4,1.1-0.3,1.4,0.1l6,7c0.3,0.4,0.3,0.9,0,1.3l-6,7C5.6,15.9,5.3,16,5,16z"></path>
+              </g>
+            </svg>
+            <span><%=filterAccord_1%></span> 
+          </a>
+        </div>
+        <div class="rr-accordion__content active">
+          <div class="rr-filter-search-wrapp">
+            <div class="rr-filter-search">
+              <input type="search" class="rr-filter-search__field search__field--brands" name="search-in-filter-input">
+              <span class="rr-filter-search__icon">
+                <svg class="icon icon-search" width="20" height="20">
+                  <g>
+                    <path fill="currentColor" d="M8,0C3.6,0,0,3.6,0,8s3.6,8,8,8s8-3.6,8-8S12.4,0,8,0z M8,14c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6   S11.3,14,8,14z"></path>
+                    <path fill="currentColor" d="M19.7,18.3l-4-4c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l4,4c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3   C20.1,19.3,20.1,18.7,19.7,18.3z"></path>
+                  </g>
+                </svg>
+              </span>
+            </div>
+            <div class="rr-emptysearch rr-hidden" style="padding: 4px;background: rgb(204, 204, 204);"><%=emptySearch%></div>
+            <div class="rr-filter-brands rr-filter-brands-fades">
+              <div class="rr-scroll" id="rr-scroll-{{data-retailrocket-markup-block}}--brands">
+              </div>
+            </div>
+            <div class="rr-half-brand">
+              <button class="rr-half-brand__btn rr-half-brand__open rr-hidden">
+                <span>
+                  <%=accordSelector_1%>&nbsp;<span>??</span>
+                </span>
+              </button>
+              <button class="rr-half-brand__btn rr-half-brand__close">
+                <span>
+                  <%=accordSelector_2%>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- off -->
+      <div class="rr-accordion rr-accordion-categories" style="display: none;">
+        <div class="rr-accordion__heading">
+          <a class="rr-accordion__heading-header active">
+            <svg height="16" width="16">
+              <g transform="matrix(1.1652228693037617e-7, 1.0000014305114748, -1.0000014305114748, 1.1652228693037617e-7, 15.85001182556158, 0.05001693964005938)">
+                <path fill="currentColor" d="M5,16c-0.2,0-0.5-0.1-0.7-0.2c-0.4-0.4-0.5-1-0.1-1.4L9.7,8L4.2,1.7c-0.4-0.4-0.3-1,0.1-1.4   c0.4-0.4,1.1-0.3,1.4,0.1l6,7c0.3,0.4,0.3,0.9,0,1.3l-6,7C5.6,15.9,5.3,16,5,16z"></path>
+              </g>
+            </svg>
+            <span><%=filterAccord_2%></span> 
+          </a>
+        </div>
+        <div class="rr-accordion__content active">
+          <div class="rr-filter-search-wrapp">
+            <div class="rr-filter-search">
+              <input type="search" class="rr-filter-search__field search__field--categories" name="search-in-filter-input">
+              <span class="rr-filter-search__icon">
+                <svg class="icon icon-search" width="20" height="20">
+                  <g>
+                    <path fill="currentColor" d="M8,0C3.6,0,0,3.6,0,8s3.6,8,8,8s8-3.6,8-8S12.4,0,8,0z M8,14c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6   S11.3,14,8,14z"></path>
+                    <path fill="currentColor" d="M19.7,18.3l-4-4c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l4,4c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3   C20.1,19.3,20.1,18.7,19.7,18.3z"></path>
+                  </g>
+                </svg>
+              </span>
+            </div>
+            <div class="rr-emptysearch rr-hidden" style="padding: 4px;background: rgb(204, 204, 204);"><%=emptySearch%></div>
+            <div class="rr-filter-brands rr-filter-brands-fades">
+              <div class="rr-scroll" id="rr-scroll-{{data-retailrocket-markup-block}}--categories">
+              </div>
+            </div>
+            <div class="rr-half-brand">
+              <button class="rr-half-brand__btn rr-half-brand__open rr-hidden">
+                <span>
+                  <%=accordSelector_1%>&nbsp;<span>??</span>
+                </span>
+              </button>
+              <button class="rr-half-brand__btn rr-half-brand__close">
+                <span>
+                  <%=accordSelector_2%>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+</script>
+<script type="text/javascript">
+  (function (retailrocket) {
+    "use strict";
+
+    var block = document.querySelector(
+      'div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]'
+    );
+
+    var waitFor = function (exitCondition, callback, force) {
+      var checkCount = 100;
+      var timeout = 1000;
+
+      (function check() {
+        var result = exitCondition();
+        if (result) {
+          callback(result);
+          return;
+        }
+
+        if (checkCount === 0) {
+          if (force) {
+            callback();
+          }
+          return;
+        }
+
+        checkCount -= 1;
+        setTimeout(check, timeout);
+      })();
+    };
+
+    var SwiperModel = function (setting) {
+      var $widget = setting.widget;
+      var swiperSeector = ".rr-swiper-category-container";
+      var source = "https://rrstatic.retailrocket.net/widget/plugins/rrswiper/8.4.7/rr-swiper-bundle.min.js";
+      var itemsCount = $widget.getAttribute("data-number-of-rendered-items");
+
+      function checkloop(paramsSlider) {
+        var modSetting = paramsSlider;
+
+        if (modSetting.loop == true) {
+          for (var point in modSetting.breakpoints) {
+            if (itemsCount <= modSetting.breakpoints[point].slidesPerView) {
+              modSetting.breakpoints[point].loop = false;
+            } else {
+              modSetting.breakpoints[point].loop = true;
+            }
+          }
+        }
+
+        return modSetting;
+      }
+
+      function render(swiperLibrary) {
+        var SwiperParams = checkloop(setting.settingSwiper);
+        var $rrContainer = $widget.querySelector(swiperSeector);
+        var rrSwiper = new RRSwiper($rrContainer, SwiperParams);
+
+        rrSwiper.init();
+      }
+
+      function getScript() {
+        var swiperJs = document.createElement("script");
+        var getElemScript = document.getElementsByTagName("script")[0];
+        swiperJs.async = 1;
+
+        if (!window.RRSwiper) {
+          swiperJs.onload = swiperJs.onreadystatechange = function (_, isAbort) {
+            if (isAbort || !swiperJs.readyState || /loaded|complete/.test(swiperJs.readyState)) {
+              swiperJs.onload = swiperJs.onreadystatechange = null;
+              swiperJs = undefined;
+
+              if (!isAbort) setTimeout(render("RRSwiper"), 0);
+            }
+          };
+
+          swiperJs.src = source;
+          getElemScript.parentNode.insertBefore(swiperJs, getElemScript);
+        } else {
+          var versionSwiper = window.hasOwnProperty("RRSwiper") ? "RRSwiper" : "Swiper";
+          render(versionSwiper);
+        }
+      }
+
+      this.getScript = getScript;
+    };
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+
+    var recomTrackSetting = {
+      nameTrack: "",
+      namePage: "",
+      abSegment: "",
+      check: false,
+
+      listTrack() {
+        var defaultTrack = [this.nameTrack];
+
+        if (this.namePage !== "") defaultTrack.push(this.nameTrack + this.namePage);
+        return defaultTrack;
+      },
+    };
+
+    function setStatisticsFilters(recoms, filterObj) {
+      var { minPrice, maxPrice, currentPage, currentBrands, currentCategories } = filterObj;
+      var itemsIds = recoms.map(function (product) {
+        return product.ItemId;
+      });
+
+      recomTrackSetting.listTrack().forEach(function (track) {
+        rrApiOnReady.push(function () {
+          rrApi.recomTrack("{{data-retailrocket-markup-block}}", 0, [], {
+            eventType: "availableFilters",
+            itemsIds,
+            minPrice,
+            maxPrice,
+            currentPage,
+            currentBrands,
+            currentCategories,
+          });
+        });
+      });
+    }
+
+    var matches = document.cookie.match(
+      new RegExp("(?:^|; )" + "rrbasket".replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)")
+    );
+    var rrbasketValue = matches ? decodeURIComponent(matches[1]) : undefined;
+
+    retailrocket["rde{{data-retailrocket-markup-block}}"] = (function () {
+      function languageTextCard(data, stock) {
+        var obj = {
+          favTitle: "",
+          compareTitle: "",
+          cartText: "",
+        };
+
+        switch (stock) {
+          case "ru":
+            if (data.Params.inCart == true) {
+              obj.cartText = "В корзине";
+            } else {
+              obj.cartText = "В корзину";
+            }
+
+            obj.favTitle = "Отложить";
+            obj.compareTitle = "В сравнение";
+            break;
+          case "lt":
+            if (data.Params.inCart == true) {
+              obj.cartText = "Grozā";
+            } else {
+              obj.cartText = "Į KREPŠELĮ";
+            }
+
+            obj.favTitle = "Atidėti";
+            obj.compareTitle = "Į palyginimą";
+            break;
+        }
+
+        return obj;
+      }
+
+      function createProduct(data, stock) {
+        var card = document.createElement("div"),
+          parent = block.querySelector(".retailrocket-items"),
+          blockId = block.dataset.retailrocketMarkupBlock;
+        var languageObj = languageTextCard(data, stock);
+
+        card.className = "product-list--grid product product js-product js-touch-hover retailrocket-item";
+        card.innerHTML = `
+          <div class="product__background rr-overlay"></div>
+          <a class="overlay" href="${data.Url}"></a>
+          <div class="item-img-block">
+            <div class="item-image">
+              <img src="${data.PictureUrl}">
+            </div>
+          </div>
+          <div class="item-name-block">
+            <div class="item-brand">
+              ${stock == "lt" ? data.Params["category_name_lt"] : data.Params["category_name_lt"]}
+            </div>
+            <div class="item-title">
+              ${data.Name}
+            </div>
+            <div class="item-vendor">
+              ${data.Vendor}
+            </div>
+          </div>
+          <div class="item-block-price">
+            <div class="item-price"> 
+              <span class="item-price-value">${retailrocket.widget.formatNumber(
+                data.Price,
+                ".",
+                " ",
+                2
+              )}</span> 
+              <span class="item-price-currency"></span>
+            </div>
+          </div>
+          <div class="product__overlay">
+            <div class="product__buttons rr-buttons">
+              <a class="rr-cart-btn rr-button btn btn--smaller btn--text-small ${
+                data.Params.inCart ? "btn--tetriary" : "btn--secondary"
+              }" data-plugin="cartButton" data-lang="${stock}" data-product-id="${
+          data.ItemId
+        }" role="button" >
+                <svg class="icon icon-cart" width="20" height="20">
+                  <use xlink:href="images/icons.svg#cart">
+                    <svg id="cart" viewBox="0 0 20 20">
+                      <path fill="currentColor"
+                        d="M16.4,5.8L5,4.1V2c0-0.4-0.2-0.7-0.6-0.9l-2-1C2-0.1,1.4,0.1,1.1,0.6C0.9,1,1.1,1.6,1.6,1.9L3,2.6V10  c0,0.6,0.4,1,1,1s1-0.4,1-1V6.2l11.1,1.6c0.5,0.1,0.9,0.5,0.9,1c0,0.1,0,0.2,0,0.2l-0.6,2.2c-0.1,0.4-0.5,0.8-1,0.8H6  c-1.7,0-3,1.3-3,3c0,1.3,0.8,2.4,2,2.8c0,0.1,0,0.1,0,0.2c0,1.1,0.9,2,2,2s2-0.9,2-2h4c0,1.1,0.9,2,2,2s2-0.9,2-2s-0.9-2-2-2H6  c-0.6,0-1-0.4-1-1s0.4-1,1-1h9.4c1.4,0,2.6-0.9,2.9-2.3l0.6-2.2C19,9.2,19,9,19,8.8C19,7.3,17.9,6,16.4,5.8z">
+                      </path>
+                    </svg>
+                  </use>
+                </svg>
+                <span class="js-buy-button-text">${languageObj.cartText}</span>
+              </a>
+              <a class="rr-wishlist-btn btn btn--smaller btn--square btn--simple" role="button" data-plugin="wishlistButton" data-lang="${stock}" data-product-id="${
+          data.ItemId
+        }" title="${languageObj.favTitle}" >
+                <svg class="icon icon-favourite-small" width="20" height="20">
+                  <use xlink:href="images/icons.svg#favourite-small">
+                    <svg id="favourite-small" viewBox="0 0 20 20">
+                      <path fill="currentColor"
+                        d="M17.9,2.3C17.1,1.6,16.1,1.2,15,1l-0.5,0C11.5,1,9,3.4,9,6.4c0,0.6,0.4,1,1,1s1-0.4,1-1C11,4.5,12.6,3,14.4,3  l0.4,0c0.7,0.1,1.3,0.4,1.9,0.8c0.8,0.7,1.3,1.7,1.4,2.7c0.1,1.1-0.3,2.1-1.1,2.9L10,17l-7-7.6C2.3,8.7,2,7.6,2,6.6  c0.1-1.1,0.5-2.1,1.4-2.7c1-0.9,2.5-1.1,3.8-0.5c0.5,0.2,1.1,0,1.3-0.5c0.2-0.5,0-1.1-0.5-1.3C6,0.6,3.7,0.9,2.1,2.3  c-1.2,1-2,2.5-2.1,4.2c-0.1,1.6,0.5,3.2,1.6,4.3l7,7.6C8.9,18.8,9.5,19,10,19c0.5,0,1.1-0.2,1.4-0.6l6.9-7.5  c1.1-1.2,1.7-2.7,1.6-4.4C19.9,4.8,19.2,3.3,17.9,2.3z">
+                      </path>
+                    </svg>
+                  </use>
+                </svg>
+              </a>
+            </div>
+            ${
+              data.Params["Цена для юридических лиц"]
+                ? '<div class="rr-trade-price"><span class="rr_legal_entities"></span>' +
+                  data.Params["Цена для юридических лиц"] +
+                  " €</div>"
+                : ""
+            }
+          </div>
+        `;
+
+        card.querySelector(".overlay").onclick = function () {
+          rrApi.recomMouseDown(data.ItemId, { suggester: blockId, methodName: "popular" });
+        };
+        card.querySelector(".rr-cart-btn").onclick = function () {
+          rrApi.recomAddToCart(data.ItemId, { suggester: blockId, methodName: "popular" });
+        };
+        card.querySelector(".rr-wishlist-btn").onclick = function () {
+          rrApi.recomMouseDown(data.ItemId, { suggester: blockId, methodName: "popular" });
+        };
+
+        parent.appendChild(card);
+      }
+
+      var ssb = {
+        aConts: [],
+        mouseY: 0,
+        N: 0,
+        asd: 0,
+        sc: 0,
+        sp: 0,
+        to: 0,
+
+        scrollbar: function (cont_id) {
+          var cont = document.getElementById(cont_id),
+            parent = cont.parentElement;
+
+          if (!ssb.init()) return false;
+          var cont_clone = cont.cloneNode(false);
+
+          cont_clone.classList.add("rr-scroll-clone");
+          cont_clone.style.overflow = "hidden";
+          cont.parentNode.appendChild(cont_clone);
+          cont_clone.appendChild(cont);
+          cont.style.position = "absolute";
+          cont.style.left = cont.style.top = "0px";
+          cont.style.width = cont.style.height = "100%";
+          ssb.aConts[ssb.N++] = cont;
+          cont.sg = false;
+          cont.st = this.create_div("rr-ssb ssb_st", cont, cont_clone);
+          cont.sb = this.create_div("rr-ssb ssb_sb", cont, cont_clone);
+          cont.su = this.create_div("rr-ssb ssb_up", cont, cont_clone);
+          cont.sd = this.create_div("rr-ssb ssb_down", cont, cont_clone);
+
+          cont.sb.onmousedown = function (e) {
+            if (!this.cont.sg) {
+              if (!e) e = window.event;
+
+              ssb.asd = this.cont;
+              this.cont.yZ = e.screenY;
+              this.cont.sZ = cont.scrollTop;
+              this.cont.sg = true;
+              this.className = "rr-ssb ssb_sb ssb_sb_down";
+            }
+
+            return false;
+          };
+
+          cont.st.onmousedown = function (e) {
+            if (!e) e = window.event;
+
+            ssb.asd = this.cont;
+            ssb.mouseY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+
+            for (var o = this.cont, y = 0; o != null; o = o.offsetParent) y += o.offsetTop;
+
+            this.cont.scrollTop =
+              (ssb.mouseY - y - (this.cont.ratio * this.cont.offsetHeight) / 2 - this.cont.sw) /
+              this.cont.ratio;
+            this.cont.sb.onmousedown(e);
+          };
+
+          cont.su.onmousedown = cont.su.ondblclick = function (e) {
+            ssb.mousedown(this, -1);
+            return false;
+          };
+          cont.sd.onmousedown = cont.sd.ondblclick = function (e) {
+            ssb.mousedown(this, 1);
+            return false;
+          };
+
+          cont.su.onmouseout = cont.su.onmouseup = ssb.clear;
+          cont.sd.onmouseout = cont.sd.onmouseup = ssb.clear;
+
+          cont.sb.onmouseover = function (e) {
+            if (!this.cont.sg) this.className = "rr-ssb ssb_sb ssb_sb_over";
+            return false;
+          };
+
+          cont.sb.onmouseout = function (e) {
+            if (!this.cont.sg) this.className = "rr-ssb ssb_sb";
+            return false;
+          };
+
+          cont.ssb_onscroll = function (flag = false) {
+            var maxScroll = this.scrollHeight - this.offsetHeight,
+              scroll = this.scrollTop,
+              atTop = scroll === 0 ? true : false,
+              atBottom = scroll >= maxScroll ? true : false;
+            this.ratio = (this.offsetHeight - 2 * this.sw) / this.scrollHeight;
+            this.sb.style.top = Math.floor(this.sw + this.scrollTop * this.ratio) + "px";
+
+            if (atTop) {
+              parent.classList.add("rr-scroll-top");
+            }
+            if (!atTop && !atBottom) {
+              parent.classList.remove("rr-scroll-top", "rr-scroll-bottom");
+            }
+            if (atBottom) {
+              parent.classList.add("rr-scroll-bottom");
+            }
+          };
+
+          cont.sw = 1;
+          cont.ssb_onscroll();
+          ssb.refresh();
+          cont.onscroll = cont.ssb_onscroll;
+
+          return cont;
+        },
+        init: function () {
+          if (window.oper || (!window.addEventListener && !window.attachEvent)) {
+            return false;
+          }
+
+          function addEvent(o, e, f) {
+            if (window.addEventListener) {
+              o.addEventListener(e, f, false);
+              ssb.w3c = true;
+              return true;
+            }
+            if (window.attachEvent) return o.attachEvent("on" + e, f);
+            return false;
+          }
+
+          addEvent(window.document, "mousemove", ssb.onmousemove);
+          addEvent(window.document, "mouseup", ssb.onmouseup);
+          addEvent(window, "resize", ssb.refresh);
+
+          return true;
+        },
+        create_div: function (c, cont, cont_clone) {
+          var o = document.createElement("div");
+          o.cont = cont;
+          o.className = c;
+          cont_clone.appendChild(o);
+          return o;
+        },
+        clear: function () {
+          clearTimeout(ssb.to);
+          ssb.sc = 0;
+          return false;
+        },
+        refresh: function () {
+          for (var i = 0, N = ssb.N; i < N; i++) {
+            var o = ssb.aConts[i];
+
+            o.ssb_onscroll();
+            o.sb.style.width =
+              o.st.style.width =
+              o.su.style.width =
+              o.su.style.height =
+              o.sd.style.width =
+              o.sd.style.height =
+                o.sw + "px";
+            o.sb.style.height = Math.ceil(Math.max(o.sw * 0.5, o.ratio * o.offsetHeight) + 1) + "px";
+          }
+        },
+        arrow_scroll: function () {
+          if (ssb.sc != 0) {
+            ssb.asd.scrollTop += (6 * ssb.sc) / ssb.asd.ratio;
+            ssb.to = setTimeout(ssb.arrow_scroll, ssb.sp);
+            ssb.sp = 32;
+          }
+        },
+        mousedown: function (o, s) {
+          if (ssb.sc == 0) {
+            o.cont.sb.className = "rr-ssb ssb_sb ssb_sb_down";
+            ssb.asd = o.cont;
+            ssb.sc = s;
+            ssb.sp = 400;
+            ssb.arrow_scroll();
+          }
+        },
+        onmousemove: function (e) {
+          if (!e) e = window.event;
+
+          ssb.mouseY = e.screenY;
+
+          if (ssb.asd.sg) ssb.asd.scrollTop = ssb.asd.sZ + (ssb.mouseY - ssb.asd.yZ) / ssb.asd.ratio;
+        },
+        onmouseup: function (e) {
+          if (!e) e = window.event;
+
+          var tg = e.target ? e.target : e.srcElement;
+
+          if (ssb.asd && document.releaseCapture) ssb.asd.releaseCapture();
+          if (ssb.asd)
+            ssb.asd.sb.className =
+              tg.className.indexOf("scrollbar") > 0 ? "rr-ssb ssb_sb ssb_sb_over" : "rr-ssb ssb_sb";
+
+          document.onselectstart = "";
+          ssb.clear();
+
+          if (ssb.asd) ssb.asd.sg = false;
+        },
+      };
+
+      function paginationController(currPage, maxPage) {
+        var paginationBottomWrapper = block.querySelector(".rr-pag-bt"),
+          paginationElemsWrapp = paginationBottomWrapper.querySelector(".rr-pag-bt-wrapp > div"),
+          paginationBottomArrowPrev = paginationBottomWrapper.querySelector(".rr-pag-bt-arrow--prev"),
+          paginationBottomArrowNext = paginationBottomWrapper.querySelector(".rr-pag-bt-arrow--next");
+
+        var paginationTopWrapper = block.querySelector(".rr-top-pagination"),
+          paginationTopElemsWrapp = paginationTopWrapper.querySelector(
+            ".rr-top-pagination-selector-list-wrapp__list-items > ul"
+          ),
+          paginationTopCurrent = paginationTopWrapper.querySelector(".rr-top-selector__current"),
+          paginationTopArrowPrev = paginationTopWrapper.querySelector(".rr-pag-top-arr--prev"),
+          paginationTopArrowNext = paginationTopWrapper.querySelector(".rr-pag-top-arr--next");
+
+        if (+maxPage === 0) {
+          paginationBottomWrapper.classList.add("rr-hidden");
+          paginationTopWrapper.classList.add("rr-hidden");
+
+          return;
+        }
+
+        paginationBottomWrapper.classList.remove("rr-hidden");
+        paginationTopWrapper.classList.remove("rr-hidden");
+
+        var currentPage = currPage;
+
+        function createElem(elemName, elemWrap, className, page) {
+          var elem = document.createElement(elemName);
+
+          elem.className = className;
+          elem.textContent = page;
+          elem.dataset.page = page;
+
+          elemWrap.appendChild(elem);
+        }
+
+        renderPaginationBottom(
+          currentPage,
+          maxPage,
+          paginationElemsWrapp,
+          paginationBottomArrowPrev,
+          paginationBottomArrowNext,
+          createElem
+        );
+        renderPaginationTop(
+          currentPage,
+          maxPage,
+          paginationTopElemsWrapp,
+          paginationTopCurrent,
+          paginationTopArrowPrev,
+          paginationTopArrowNext,
+          createElem
+        );
+
+        function plusPage(e) {
+          currentPage = currentPage + 1 > maxPage ? maxPage : currentPage + 1;
+
+          renderPaginationBottom(
+            currentPage,
+            maxPage,
+            paginationElemsWrapp,
+            paginationBottomArrowPrev,
+            paginationBottomArrowNext,
+            createElem
+          );
+          renderPaginationTop(
+            currentPage,
+            maxPage,
+            paginationTopElemsWrapp,
+            paginationTopCurrent,
+            paginationTopArrowPrev,
+            paginationTopArrowNext,
+            createElem
+          );
+          getAllFieldData();
+        }
+
+        function minusPage(e) {
+          currentPage = currentPage - 1 < 1 ? 1 : currentPage - 1;
+
+          renderPaginationBottom(
+            currentPage,
+            maxPage,
+            paginationElemsWrapp,
+            paginationBottomArrowPrev,
+            paginationBottomArrowNext,
+            createElem
+          );
+          renderPaginationTop(
+            currentPage,
+            maxPage,
+            paginationTopElemsWrapp,
+            paginationTopCurrent,
+            paginationTopArrowPrev,
+            paginationTopArrowNext,
+            createElem
+          );
+          getAllFieldData();
+        }
+
+        function clickElem(ev) {
+          var target = ev.target;
+
+          if (
+            target.classList.contains("rr-pag-bt-wrapp__elem--page") ||
+            target.classList.contains("rr-top-pagination-selector-list-wrapp__list-items-item")
+          ) {
+            currentPage = Number(target.dataset.page);
+            renderPaginationBottom(
+              currentPage,
+              maxPage,
+              paginationElemsWrapp,
+              paginationBottomArrowPrev,
+              paginationBottomArrowNext,
+              createElem
+            );
+            renderPaginationTop(
+              currentPage,
+              maxPage,
+              paginationTopElemsWrapp,
+              paginationTopCurrent,
+              paginationTopArrowPrev,
+              paginationTopArrowNext,
+              createElem
+            );
+            getAllFieldData();
+          }
+        }
+
+        function heightControll() {
+          var pagintaionTopItemsContainer = paginationTopWrapper.querySelector(
+              ".rr-top-pagination-selector-list-wrapp__list-items.rr-scroll-clone"
+            ),
+            pagintaionTopItemsContainerAllItems = pagintaionTopItemsContainer.querySelectorAll(
+              ".rr-top-pagination-selector-list-wrapp__list-items-item"
+            ),
+            pagintaionTopItemsContainerItemHeight = pagintaionTopItemsContainer.querySelector(
+              ".rr-top-pagination-selector-list-wrapp__list-items-item"
+            )?.offsetHeight;
+
+          var heightEqual =
+            pagintaionTopItemsContainerAllItems.length * pagintaionTopItemsContainerItemHeight;
+
+          if (heightEqual > 345) {
+            pagintaionTopItemsContainer.style.height = 345 + "px";
+          } else {
+            pagintaionTopItemsContainer.style.height = heightEqual + "px";
+          }
+
+          ssb.refresh();
+        }
+
+        paginationBottomArrowPrev.onclick = function (e) {
+          scrollToTop();
+          minusPage(e);
+        };
+        paginationBottomArrowNext.onclick = function (e) {
+          scrollToTop();
+          plusPage(e);
+        };
+        paginationTopArrowPrev.onclick = function (e) {
+          minusPage(e);
+        };
+        paginationTopArrowNext.onclick = function (e) {
+          plusPage(e);
+        };
+        paginationTopElemsWrapp.onclick = function (e) {
+          clickElem(e);
+        };
+        paginationElemsWrapp.onclick = function (e) {
+          scrollToTop();
+          clickElem(e);
+        };
+
+        function renderPaginationTop(
+          currentPage,
+          maxPage,
+          paginationElemWrap,
+          currentCounter,
+          topArrowPrev,
+          topArrowNext,
+          createElem
+        ) {
+          if (maxPage < 2) {
+            block.querySelector(".rr-top-pagination").classList.add("rr-hidden");
+
+            return;
+          }
+
+          block.querySelector(".rr-top-pagination").classList.remove("rr-hidden");
+
+          paginationElemWrap.innerHTML = "";
+
+          currentCounter.textContent = currentPage;
+
+          for (var i = 0; i < maxPage; i++) {
+            createElem(
+              "li",
+              paginationElemWrap,
+              `rr-top-pagination-selector-list-wrapp__list-items-item ${
+                currentPage === i + 1 ? "rr-select" : ""
+              }`,
+              i + 1
+            );
+          }
+
+          topArrowPrev.classList.remove("rr-pag-top-arr--disabled");
+          topArrowNext.classList.remove("rr-pag-top-arr--disabled");
+
+          if (currentPage === 1) {
+            topArrowPrev.classList.add("rr-pag-top-arr--disabled");
+          }
+
+          if (currentPage === maxPage) {
+            topArrowNext.classList.add("rr-pag-top-arr--disabled");
+          }
+
+          ssb.refresh();
+        }
+
+        function renderPaginationBottom(
+          currentPage,
+          maxPage,
+          paginationElemWrap,
+          bottomArrowPrev,
+          bottomArrowNext,
+          createElem
+        ) {
+          if (maxPage < 2) {
+            block.querySelector(".rr-pag-bt").classList.add("rr-hidden");
+
+            return;
+          }
+
+          block.querySelector(".rr-pag-bt").classList.remove("rr-hidden");
+
+          paginationElemWrap.innerHTML = "";
+
+          var firstIndex = currentPage + -3 < 0 ? 1 : currentPage + -3,
+            lastIndex = currentPage + 3 > maxPage ? maxPage : currentPage + 3,
+            firstRangeFlag = checkFirstRange(currentPage),
+            secondRangeFlag = checkSecondRange(currentPage);
+
+          if (maxPage < 8) {
+            bottomArrowNext.classList.add("rr-hidden");
+            bottomArrowPrev.classList.add("rr-hidden");
+
+            for (var i = 0; i < maxPage; i++) {
+              createElem(
+                "div",
+                paginationElemWrap,
+                `rr-pag-bt-wrapp__elem rr-pag-bt-wrapp__elem--page ${currentPage - 1 === i ? "active" : ""}`,
+                i + 1
+              );
+            }
+
+            return;
+          }
+
+          function checkFirstRange(currPage) {
+            if (currentPage < 7 && currentPage > 0) {
+              return true;
+            }
+
+            return false;
+          }
+
+          function checkSecondRange(currPage) {
+            if (currentPage > maxPage - 6) {
+              return true;
+            }
+
+            return false;
+          }
+
+          if (firstRangeFlag) {
+            lastIndex = 7;
+            firstIndex = 1;
+          }
+
+          if (secondRangeFlag) {
+            lastIndex = maxPage;
+            firstIndex = maxPage - 6;
+          }
+
+          for (var i = firstIndex - 1; i < lastIndex; i++) {
+            if (secondRangeFlag && i === firstIndex - 1) {
+              bottomArrowNext.classList.add("rr-hidden");
+              bottomArrowPrev.classList.remove("rr-hidden");
+              createElem("div", paginationElemWrap, "rr-pag-bt-wrapp__elem rr-pag-bt-wrapp__elem--page", 1);
+              createElem(
+                "div",
+                paginationElemWrap,
+                "rr-pag-bt-wrapp__elem rr-pag-bt-wrapp__elem--dots",
+                "..."
+              );
+            }
+
+            if (!secondRangeFlag && !firstRangeFlag && i === firstIndex - 1) {
+              bottomArrowNext.classList.remove("rr-hidden");
+              createElem("div", paginationElemWrap, "rr-pag-bt-wrapp__elem rr-pag-bt-wrapp__elem--page", 1);
+              createElem(
+                "div",
+                paginationElemWrap,
+                "rr-pag-bt-wrapp__elem rr-pag-bt-wrapp__elem--dots",
+                "..."
+              );
+            }
+
+            createElem(
+              "div",
+              paginationElemWrap,
+              `rr-pag-bt-wrapp__elem rr-pag-bt-wrapp__elem--page ${currentPage - 1 === i ? "active" : ""}`,
+              i + 1
+            );
+
+            if (!secondRangeFlag && !firstRangeFlag && i === lastIndex - 1) {
+              bottomArrowPrev.classList.remove("rr-hidden");
+              createElem(
+                "div",
+                paginationElemWrap,
+                "rr-pag-bt-wrapp__elem rr-pag-bt-wrapp__elem--dots",
+                "..."
+              );
+              createElem(
+                "div",
+                paginationElemWrap,
+                "rr-pag-bt-wrapp__elem rr-pag-bt-wrapp__elem--page",
+                maxPage
+              );
+            }
+
+            if (firstRangeFlag && i === lastIndex - 1) {
+              bottomArrowPrev.classList.add("rr-hidden");
+              bottomArrowNext.classList.remove("rr-hidden");
+              createElem(
+                "div",
+                paginationElemWrap,
+                "rr-pag-bt-wrapp__elem rr-pag-bt-wrapp__elem--dots",
+                "..."
+              );
+              createElem(
+                "div",
+                paginationElemWrap,
+                "rr-pag-bt-wrapp__elem rr-pag-bt-wrapp__elem--page",
+                maxPage
+              );
+            }
+          }
+        }
+
+        heightControll();
+      }
+
+      function setAccordion() {
+        var accordHeading = block.querySelectorAll(".rr-accordion__heading");
+
+        function getAccordionSelectors(elem) {
+          var parentElem = elem.closest(".rr-accordion");
+
+          var obj = {
+            parent: parentElem,
+            header: parentElem.querySelector(".rr-accordion__heading-header"),
+            content: parentElem.querySelector(".rr-accordion__content"),
+          };
+
+          return obj;
+        }
+
+        accordHeading.forEach(function (elem) {
+          var selectors = getAccordionSelectors(elem);
+
+          selectors.content.style.maxHeight = selectors.content.scrollHeight + "px";
+
+          elem.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            var selectors = getAccordionSelectors(event.target);
+            var parentElem = selectors.parent;
+            var header = selectors.header;
+            var content = selectors.content;
+
+            header.classList.toggle("active");
+            content.classList.toggle("active");
+
+            if (content.classList.contains("active")) {
+              content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+              content.style.maxHeight = 0;
+            }
+          });
+        });
+      }
+
+      function setDoubleRangeSlider(min, max) {
+        var rangeMin = min;
+        var range = block.querySelector(".range-selected");
+        var rangeInput = block.querySelectorAll(".range-input input");
+        var rangePrice = block.querySelectorAll(".range-price input");
+
+        rangeInput.forEach(function (item) {
+          item.min = min;
+          item.max = max;
+
+          if (item.classList.contains("min")) {
+            item.placeholder = min;
+            item.value = min;
+          } else {
+            item.placeholder = max;
+            item.value = max;
+          }
+        });
+
+        rangePrice.forEach(function (item) {
+          item.min = min;
+          item.max = max;
+
+          if (item.classList.contains("range-price-min")) {
+            item.placeholder = min;
+            item.value = min;
+          } else {
+            item.placeholder = max;
+            item.value = max;
+          }
+        });
+
+        var currentValueMin = rangeInput[1].min;
+        var currentValueMax = rangeInput[1].max;
+        var confirmButton = block.querySelector(".rr-send-range-button");
+
+        range.style.right = 0 + "%";
+        range.style.left = 0 + "%";
+
+        confirmButton.addEventListener("click", function (e) {
+          e.preventDefault();
+          getAllFieldData(true, true);
+        });
+
+        var cleanObj = {
+          cleanFirstInput: function (min) {
+            rangePrice[0].value = "";
+            currentValueMin = min;
+          },
+          cleanSecondInput: function (max) {
+            rangePrice[1].value = "";
+            currentValueMax = max;
+          },
+        };
+
+        rangeInput.forEach(function (input) {
+          input.addEventListener("input", function (e) {
+            var minRange = parseInt(rangeInput[0].value);
+            var maxRange = parseInt(rangeInput[1].value);
+
+            if (maxRange - minRange < rangeMin) {
+              if (e.target.className === "min") {
+                rangeInput[0].value = maxRange - rangeMin;
+              } else {
+                rangeInput[1].value = minRange + rangeMin;
+              }
+            } else {
+              if (e.target.className === "min") {
+                rangePrice[0].value = minRange;
+                range.style.left = (minRange / parseInt(rangeInput[0].max)) * 100 + "%";
+                currentValueMin = minRange;
+
+                if (minRange === parseInt(rangeInput[0].min)) {
+                  cleanObj.cleanFirstInput(rangeInput[0].min);
+                }
+              } else {
+                rangePrice[1].value = maxRange;
+                range.style.right = 100 - (maxRange / parseInt(rangeInput[1].max)) * 100 + "%";
+                currentValueMax = maxRange;
+
+                if (maxRange === parseInt(rangeInput[1].max)) {
+                  cleanObj.cleanSecondInput(rangeInput[1].max);
+                }
+              }
+            }
+          });
+
+          input.addEventListener("mousedown", function (e) {
+            rangeInput.forEach(function (item) {
+              item.style.zIndex = 0;
+            });
+            e.target.style.zIndex = 2;
+          });
+        });
+
+        rangePrice.forEach(function (input) {
+          input.addEventListener("blur", function (e) {
+            if (e.target.className === "range-price-min") {
+              if (Number(e.target.value) > Number(rangeInput[0].max)) {
+                e.target.value = Number(rangeInput[1].value) - rangeMin;
+              }
+              if (
+                Number(e.target.value) < Number(rangeInput[0].min) ||
+                Number(e.target.value) === Number(rangeInput[0].min)
+              ) {
+                cleanObj.cleanFirstInput(rangeInput[0].min);
+              }
+            } else {
+              if (e.target.value === "") {
+                return;
+              }
+
+              if (
+                Number(e.target.value) <= Number(rangeInput[0].value) ||
+                Number(e.target.value) < rangeMin
+              ) {
+                e.target.value = Number(rangeInput[0].value) + rangeMin;
+              }
+
+              if (Number(e.target.value) === 0) {
+                cleanObj.cleanSecondInput(rangeInput[1].max);
+              }
+
+              if (Number(e.target.value) >= Number(rangeInput[0].max)) {
+                cleanObj.cleanSecondInput(rangeInput[1].max);
+              }
+            }
+          });
+
+          input.addEventListener("blur", function (e) {
+            var minPrice =
+              rangePrice[0].value === "" ? parseInt(rangePrice[0].min) : parseInt(rangePrice[0].value);
+            var maxPrice =
+              rangePrice[1].value === "" ? parseInt(rangePrice[1].max) : parseInt(rangePrice[1].value);
+
+            if (maxPrice - minPrice >= rangeMin && maxPrice <= parseInt(rangeInput[1].max)) {
+              if (e.target.className === "range-price-min") {
+                rangeInput[0].value = minPrice;
+                range.style.left = (minPrice / parseInt(rangeInput[0].max)) * 100 + "%";
+
+                rangeInput.forEach(function (item) {
+                  item.style.zIndex = 0;
+                });
+                rangeInput[0].style.zIndex = 2;
+              } else {
+                rangeInput[1].value = maxPrice;
+                range.style.right = 100 - (maxPrice / parseInt(rangeInput[1].max)) * 100 + "%";
+
+                rangeInput.forEach(function (item) {
+                  item.style.zIndex = 0;
+                });
+                rangeInput[1].style.zIndex = 2;
+              }
+            }
+          });
+        });
+      }
+
+      function accordHide(obj) {
+        var { wrapp } = obj;
+
+        var wrapp = block.querySelector(wrapp),
+          searchInput = wrapp.querySelector(".rr-filter-search__field"),
+          accord = wrapp.querySelector(".rr-accordion__content"),
+          hideBtn_1 = wrapp.querySelector(".rr-half-brand__open"),
+          hideBtn_2 = wrapp.querySelector(".rr-half-brand__close"),
+          hideArea = wrapp.querySelector(".rr-scroll-clone"),
+          hideArea_child = hideArea.firstElementChild,
+          search = wrapp.querySelector(".rr-filter-search"),
+          cmCroll = wrapp.querySelectorAll(".rr-ssb");
+
+        hideBtn_2.addEventListener("click", function () {
+          hideArea.style.height = "150px";
+          hideBtn_2.classList.add("rr-hidden");
+          search.classList.add("rr-hidden");
+          cmCroll.forEach(function (item) {
+            item.style.opacity = 0;
+          });
+
+          hideBtn_1.classList.remove("rr-hidden");
+          hideArea_child.style.overflow = "hidden";
+
+          searchInput.value = "";
+          searchInput.dispatchEvent(new Event("input"));
+          ssb.refresh();
+        });
+
+        hideBtn_1.addEventListener("click", function () {
+          hideArea.style.height = "300px";
+          hideBtn_1.classList.add("rr-hidden");
+          hideBtn_2.classList.remove("rr-hidden");
+          search.classList.remove("rr-hidden");
+          hideArea_child.style.overflow = "auto";
+          cmCroll.forEach(function (item) {
+            item.style.opacity = 1;
+          });
+
+          searchInput.value = "";
+          searchInput.dispatchEvent(new Event("input"));
+
+          setTimeout(function () {
+            accord.style.maxHeight = wrapp.offsetHeight + "px";
+            ssb.refresh();
+          }, 200);
+        });
+      }
+
+      function accordSearch(obj) {
+        var { wrapp } = obj;
+        var parent = block.querySelector(wrapp),
+          searchField = parent.querySelector(".rr-filter-search__field"),
+          emptySearchElem = parent.querySelector(".rr-emptysearch"),
+          searchList = parent.querySelector(".rr-scroll.rr-scroll-clone");
+
+        searchField.addEventListener("input", function (e) {
+          var value = e.target.value.trim(),
+            items = parent.querySelectorAll(".rr-filter-brands-wrapp__scroll-item"),
+            searchRegExp = new RegExp(value, "gi");
+
+          if ((value = "")) {
+            items.forEach(function (item) {
+              item.classList.remove("rr-hidden");
+
+              ssb.refresh();
+              return;
+            });
+          }
+
+          items.forEach(function (item) {
+            var innerItem = item.querySelector(".rr-filter-brands-wrapp__scroll-item-check-label"),
+              innerItemText = innerItem.textContent,
+              isContainsSearchRequest = searchRegExp.test(innerItemText);
+
+            if (!isContainsSearchRequest) {
+              item.classList.add("rr-hidden");
+            } else {
+              item.classList.remove("rr-hidden");
+            }
+          });
+
+          var itemWithoutHidden = parent.querySelectorAll(
+            ".rr-filter-brands-wrapp__scroll-item:not(.rr-hidden)"
+          );
+
+          if (!itemWithoutHidden.length) {
+            emptySearchElem.classList.remove("rr-hidden");
+            searchList.classList.add("rr-search-none");
+          } else {
+            emptySearchElem.classList.add("rr-hidden");
+            searchList.classList.remove("rr-search-none");
+          }
+
+          ssb.refresh();
+        });
+      }
+
+      function rightAccordController(data, obj) {
+        var { wrapp } = obj;
+        var accordCheckboxContainer = block.querySelector(wrapp),
+          parenContainer = accordCheckboxContainer.querySelector(".rr-scroll.rr-scroll-clone > div"),
+          wholeCount = accordCheckboxContainer.querySelector(".rr-half-brand__btn > span > span");
+
+        if (data.length < 2) {
+          accordCheckboxContainer.classList.add("rr-not-active");
+
+          return;
+        }
+
+        accordCheckboxContainer.classList.remove("rr-not-active");
+        parenContainer.innerHTML = "";
+
+        function create_elem_brand({ classNames, container, value, count, index }) {
+          var elem = document.createElement("label");
+
+          elem.classList = classNames;
+          elem.for = value + "_" + index;
+          elem.innerHTML = `
+          <input class="rr-filter-brands-wrapp__scroll-item-check" type="checkbox" id="${
+            value + "_" + index
+          }" value="${value}">
+          <span class="rr-filter-brands-wrapp__scroll-item-check-icon"></span>
+          <span class="rr-filter-brands-wrapp__scroll-item-check-label">
+            ${value}
+            <small>${count}</small>
+          </span>
+          `;
+
+          elem.querySelector("input").onchange = function (ev) {
+            ev.target.parentElement.classList.toggle("rr-active");
+            getAllFieldData(true);
+            ssb.refresh();
+          };
+
+          container.append(elem);
+        }
+
+        for (var i = 0; i < data.length; i++) {
+          create_elem_brand({
+            classNames: "rr-filter-brands-wrapp__scroll-item",
+            container: parenContainer,
+            value: Object.keys(data[i])[0],
+            count: Object.values(Object.values(data[i])[0])[0],
+            index: i,
+          });
+        }
+
+        var emptySearchElem = accordCheckboxContainer.querySelector(".rr-emptysearch"),
+          searchList = accordCheckboxContainer.querySelector(".rr-scroll.rr-scroll-clone"),
+          itemWithoutHidden = accordCheckboxContainer.querySelectorAll(
+            ".rr-filter-brands-wrapp__scroll-item:not(.rr-hidden)"
+          );
+
+        if (!itemWithoutHidden.length) {
+          emptySearchElem.classList.remove("rr-hidden");
+          searchList.classList.add("rr-search-none");
+        }
+
+        wholeCount.textContent = data.length;
+        ssb.refresh();
+      }
+
+      function setCategoriesSlides(data, obj) {
+        var { wrapp } = obj;
+        var parentContainer = block.querySelector(wrapp),
+          categoriesContainer = parentContainer.querySelector(".rr-swiper-category-container-wrapper");
+
+        if (data.length < 2) {
+          parentContainer.style.display = "none";
+
+          return;
+        }
+
+        parentContainer.style.display = "block";
+        categoriesContainer.innerHTML = "";
+        function createSliders({ classNames, container, text, img, index }) {
+          var elem = document.createElement("div");
+
+          elem.classList = classNames;
+          elem.dataset.category = text;
+          elem.innerHTML = `
+          <div class="rr-category-item">
+            <div>
+              <div class="rr-category-item__image">
+                <img src="${img}" alt="${text}" width="120" height="120">
+              </div>
+              <div class="rr-category-item__title">
+                  <span>${text}</span>
+              </div>
+            </div>
+          </div>
+          `;
+
+          container.append(elem);
+        }
+
+        for (var i = 0; i < data.length; i++) {
+          createSliders({
+            classNames: "rr-swiper-category-slide",
+            container: categoriesContainer,
+            text: Object.keys(data[i])[0],
+            img: Object.values(Object.values(data[i])[0])[1],
+            index: i,
+          });
+        }
+
+        ssb.refresh();
+      }
+
+      function clickOnSlide(elem) {
+        var elemCategory = elem.dataset.category,
+          needCategoryAccord = block.querySelector(`input[value='${elemCategory}']`),
+          needCategoryAccordParent = needCategoryAccord.parentElement;
+
+        needCategoryAccord.checked = true;
+        needCategoryAccordParent.classList.add("rr-active");
+
+        getAllFieldData(true, true);
+      }
+
+      function controlSelector(elemId) {
+        var elem = block.querySelector("#" + elemId),
+          elemChild = elem.querySelector("#selector-list");
+
+        elem.addEventListener("click", function (e) {
+          elem.classList.toggle("active");
+        });
+
+        window.addEventListener("click", function (e) {
+          var target = e.target;
+
+          if (!target.closest(".rr-top-pagination-selector")) {
+            elem.classList.remove("active");
+          }
+        });
+      }
+
+      function toggleLoader(flag) {
+        var overlay = block.querySelector(".rr-loading-overlay") || null;
+
+        if (!overlay) return;
+
+        if (flag) {
+          block.style.pointerEvents = "none";
+          overlay.classList.remove("rr-hidden");
+          setTimeout(function () {
+            overlay.classList.remove("rr-hidden--opacity");
+          }, 300);
+        } else {
+          block.style.pointerEvents = "auto";
+          overlay.classList.add("rr-hidden--opacity");
+          setTimeout(function () {
+            overlay.classList.add("rr-hidden");
+          }, 300);
+        }
+      }
+
+      function toggleEmptyDataInfo(flag) {
+        if (flag) {
+          block.querySelector(".rr-empty-result").classList.remove("rr-hidden");
+        } else {
+          block.querySelector(".rr-empty-result").classList.add("rr-hidden");
+        }
+      }
+
+      function setWholeItems(count) {
+        block.querySelector(".rr-search-top-wrapp__count span").textContent = count;
+      }
+
+      async function getItemsAsync(requireProducts) {
+        return new Promise((resolve, reject) => {
+          retailrocket.items.get(
+            retailrocket.api.getPartnerId(),
+            requireProducts,
+            ["{{data-stock-id}}"],
+            (data) => {
+              resolve(data);
+            }
+          );
+        });
+      }
+
+      function getAllFieldData(resetPage = false, priceChange = false) {
+        var currentPage = block.querySelector(".rr-top-selector__current").textContent,
+          minInput = block.querySelector(".range-price-min"),
+          maxInput = block.querySelector(".range-price-max"),
+          minPriceValue = Number(minInput.min),
+          maxPriceValue = Number(maxInput.max),
+          minPrice = minInput.value === "" ? minPriceValue : minInput.value,
+          maxPrice = maxInput.value === "" ? maxPriceValue : maxInput.value,
+          allBrands = block.querySelectorAll(
+            ".rr-accordion-brands .rr-filter-brands-wrapp__scroll-item input"
+          ),
+          allCategories = block.querySelectorAll(
+            ".rr-accordion-categories .rr-filter-brands-wrapp__scroll-item input"
+          ),
+          currentBrands = [],
+          currentCategories = [];
+
+        allBrands.forEach(function (item) {
+          if (item.checked) {
+            currentBrands.push(item.value);
+          }
+        });
+
+        allCategories.forEach(function (item) {
+          if (item.checked) {
+            currentCategories.push(item.value);
+          }
+        });
+
+        currentBrands = currentBrands.join("|");
+        currentCategories = currentCategories.join("|");
+
+        if (resetPage) {
+          currentPage = 1;
+        }
+
+        rrRender({
+          currentPage: Number(currentPage),
+          minPrice: Number(minPrice),
+          maxPrice: Number(maxPrice),
+          currentBrands,
+          priceChange,
+          currentCategories,
+        });
+      }
+
+      function clearItems() {
+        var itemsContainer = block.querySelector(".retailrocket-items") || null;
+
+        if (itemsContainer) itemsContainer.innerHTML = "";
+      }
+
+      function getLink({
+        currentPage = 1,
+        minPrice = false,
+        maxPrice = false,
+        currentBrands = [],
+        currentCategories = [],
+      }) {
+        var additionalObj = {
+          price_min: minPrice && minPrice > 0 ? "price_min:" + minPrice : "",
+          price_max: maxPrice && maxPrice > 0 ? "price_max:" + maxPrice : "",
+          brands: currentBrands.length ? "brands:" + currentBrands : "",
+          currentCategories: currentCategories.length ? "categories:" + currentCategories : "",
+          getFilters() {
+            return (
+              [this.currentCategories, this.price_min, this.price_max, this.brands]
+                .filter(Boolean)
+                .join("%") || ""
+            );
+          },
+        };
+        var queryObj = {
+          page: currentPage,
+          lang: "{{data-stock-id}}",
+        };
+
+        if (additionalObj.getFilters() !== "") {
+          queryObj["filters"] = additionalObj.getFilters();
+        }
+
+        var rrUrl = new URL(
+            "https://rocketsearch.retailrocket.net/rocketsearch/v1/partner/" +
+              rrPartnerId +
+              "/phrase/{{data-search-phrase}}/items"
+          ),
+          rrUrlParams = new URLSearchParams(queryObj);
+
+        rrUrl.search = rrUrlParams.toString();
+
+        return rrUrl.toString();
+      }
+
+      async function getData(obj, renderFn) {
+        var queryLink = getLink(obj);
+
+        toggleLoader(true);
+
+        try {
+          var res = await fetch(queryLink);
+
+          if (res.ok) {
+            var data = await res.json(),
+              parse = JSON.parse(data);
+
+            if (parse.status && parse.status === 204) {
+              throw res;
+            } else {
+              return {
+                data,
+                obj
+              };
+            }
+          } else {
+            throw res;
+          }
+        } catch (e) {
+          
+          if (!renderFn) {
+            toggleLoader(false);
+            clearItems();
+            toggleEmptyDataInfo(true);
+            paginationController(1, 0);
+            setWholeItems(0);
+          }
+
+          document.querySelector('.search__empty__content').style.display = 'block';
+          return { data: [], obj }
+        }
+      }
+
+      async function rrRender(obj, renderFn = null) {
+        var {data, obj} = await getData(obj, renderFn);
+
+        if (!data.length) return;
+
+        var rrApi = JSON.parse(data);
+        var apiItems = await getItemsAsync(rrApi.items);
+        var recoms = apiItems.filter(function (item) {
+          return item.IsAvailable;
+        });
+
+        if (rrbasketValue) recoms.forEach(basketAvailability);
+
+        if (rrApi.filters.brands) {
+          rrApi.filters.brands.rrValues = Object.keys(rrApi.filters.brands.values).map(function (item, i) {
+            return { [item]: rrApi.filters.brands.values[item] };
+          });
+        }
+        if (rrApi.filters.categories) {
+          rrApi.filters.categories.rrValues = Object.keys(rrApi.filters.categories.values).map(function (
+            item,
+            i
+          ) {
+            return { [item]: rrApi.filters.categories.values[item] };
+          });
+        }
+
+        if (renderFn) {
+          renderFn(recoms);
+          rightAccordController(rrApi.filters.brands.rrValues, {
+            wrapp: ".rr-accordion-brands",
+          });
+          rightAccordController(rrApi.filters.categories.rrValues, {
+            wrapp: ".rr-accordion-categories",
+          });
+          setCategoriesSlides(rrApi.filters.categories.rrValues, {
+            wrapp: ".rr-swiper-category-container",
+          });
+          setDoubleRangeSlider(rrApi.filters.price.min, rrApi.filters.price.max);
+        } else {
+          setCategoriesSlides(rrApi.filters.categories.rrValues, {
+            wrapp: ".rr-swiper-category-container",
+          });
+
+          clearItems();
+          recoms.forEach(function (item) {
+            createProduct(item, "{{data-stock-id}}");
+          });
+          $("div[data-retailrocket-markup-block='{{data-retailrocket-markup-block}}']").app();
+        }
+
+        toggleEmptyDataInfo(false);
+
+        if (!recoms.length) {
+          toggleEmptyDataInfo(true);
+        }
+
+        paginationController(obj.currentPage, rrApi.pages_count);
+        setWholeItems(rrApi.items_count);
+        setStatisticsFilters(recoms, obj);
+        toggleLoader(false);
+      }
+
+      function basketAvailability(recom) {
+        if (rrbasketValue.indexOf(recom.ItemId) > -1) {
+          recom.Params.inCart = true;
+        } else {
+          recom.Params.inCart = false;
+        }
+      }
+
+      function preRenderFn(widget, recoms, renderFn) {
+        rrRender(
+          {
+            currentPage: 1,
+            minPrice: false,
+            maxPrice: false,
+            currentBrands: [],
+            currentCategories: [],
+          },
+          renderFn
+        );
+      }
+
+      function postRenderFn(widget) {
+        ssb.scrollbar("rr-scroll-top-{{data-retailrocket-markup-block}}");
+        ssb.scrollbar("rr-scroll-{{data-retailrocket-markup-block}}--categories");
+        ssb.scrollbar("rr-scroll-{{data-retailrocket-markup-block}}--brands");
+
+        var rrSwiperCarousel = new SwiperModel({
+          widget: widget,
+          settingSwiper: {
+            wrapperClass: "rr-swiper-category-container-wrapper",
+            slideClass: "rr-swiper-category-slide",
+            init: false,
+            updateOnWindowResize: true,
+            watchOverflow: true,
+            observer: true,
+            observeParents: true,
+            observeSlideChildren: true,
+            resizeObserver: true,
+            spaceBetween: 0,
+            lazy: false,
+            preloadImages: false,
+            touchReleaseOnEdges: true,
+            watchSlidesVisibility: true,
+            loop: false,
+            on: {
+              afterInit: function (swiper) {
+                setAccordion();
+                accordHide({
+                  wrapp: ".rr-accordion-brands",
+                });
+                accordHide({
+                  wrapp: ".rr-accordion-categories",
+                });
+                accordSearch({
+                  wrapp: ".rr-accordion-brands",
+                });
+                accordSearch({
+                  wrapp: ".rr-accordion-categories",
+                });
+                controlSelector("selector");
+                $("div[data-retailrocket-markup-block='{{data-retailrocket-markup-block}}']").app();
+
+                widget.classList.add("rr-active");
+
+                scrollToTop();
+              },
+              click: function (swiper, event) {
+                clickOnSlide(event.target.offsetParent);
+              },
+            },
+            navigation: {
+              prevEl: widget.querySelector(".rr-arrow.rr-arrow--left"),
+              nextEl: widget.querySelector(".rr-arrow.rr-arrow--right"),
+            },
+            autoplay: false,
+            speed: 200,
+            breakpoints: {
+              0: {
+                slidesPerView: 5,
+                slidesPerGroup: 1,
+              },
+            },
+          },
+        });
+
+        rrSwiperCarousel.getScript();
+      }
+
+      return {
+        postRenderFn,
+        preRenderFn,
+      };
+    })();
+
+    waitFor(
+      function () {
+        return window.jQuery;
+      },
+      function () {
+        retailrocket.widget.render("rr-widget-{{data-retailrocket-markup-block}}");
+      }
+    );
+  })(retailrocket);
+</script>

@@ -1,0 +1,729 @@
+<style type="text/css">
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"] {max-width:1370px;margin:0 auto;padding:0 10px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"]{height:0;visibility:hidden;overflow:hidden;position:relative;display:block;width:100%;font-family: inherit;box-sizing:border-box}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"].rr-active{height:auto;visibility:visible;overflow:visible;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] *{outline:none;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__title{font-size:24px;font-weight:700;color:#0074c8;text-align:left;text-transform:uppercase;margin:0 0 20px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-items{position:relative;overflow:hidden;padding:0 18px 25px;z-index:1;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image{position: relative;width:100%;height:260px;outline:none}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image img{width:auto;height:auto;max-width:100%;max-height:100%;vertical-align:middle;margin:0 auto;outline:none}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item{padding: 15px;text-align:center;background-color:#fff;border-radius:10px;position:relative;transition: all 0.3s;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item:hover {-webkit-box-shadow: 0 15px 15px rgb(0 0 0 / 15%);-moz-box-shadow: 0 15px 15px rgba(0,0,0,0.15);box-shadow: 0 15px 15px rgb(0 0 0 / 15%);}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__info{text-decoration:none;outline:none}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__brand {display: block;font-family: Montserrat-SemiBold,Arial,sans-serif;text-transform: uppercase;color: #0074c8;font-size: 18px;font-weight:600;text-align:left;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__name-block {height:40px;overflow:hidden;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title{color: #333;font-size:14px;line-height:18px;height: 35px;display: block;overflow: hidden;margin-bottom: 6px;text-align:left;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__old-price-value{display: block;color: #b9b9b9;font-size: 12px;margin: 6px 0 3px;height: 15px;line-height: 15px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__block-price {text-align:left;margin-bottom:6px;height:57px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__withSbPrice {margin-top:6px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__withSbPrice .rr-item__price-value {color:#0074c8;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__sbPrice {display:flex;justify-content:flex-start;align-items:center;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__sbPrice::before {content:'';display:inline-block;width:27px;height:17px;background:url('https://gallery.retailrocket.net/602bba6097a5281b4cc438c9/tarjeta_sbpay_visa_svg%20(2).svg') no-repeat 50% 50%;background-size:contain;margin-bottom:2px;margin-right:5.5px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__sbPrice .rr-item__price-value {display: inline-block;font-size: 18px;font-weight:600;color: #c90188;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-value {display: block;font-size: 18px;font-weight:600;color: #c90188;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-currency::before{content:'$'}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__labels-top{position:absolute;z-index:15;top:15px;right:5px;width:61px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-top{border-radius:0 22.5px 22.5px 22.5px;background-color:#c90188;color: #fff;height:45px;width:45px;line-height:45px;font-size:16px;white-space:nowrap;text-align:center;-webkit-box-shadow:0 10px 20px rgba(201, 1, 136, 0.3);box-shadow:0 10px 20px rgba(201, 1, 136, 0.3);margin-bottom:2px;-webkit-transition:all 0.3s;-o-transition:all 0.3s;transition:all 0.3s;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__badgeTitle {font-family: Montserrat-Regular,Arial,sans-serif;-webkit-border-radius: 10px;-ms-border-radius: 10px;border-radius: 10px;display: block;background-color: #C90188;width: auto;padding:0 5px;font-size: 11px;height: 18px;line-height: 19px;-webkit-transition: all, 0.3s;-moz-transition: all, 0.3s;-ms-transition: all, 0.3s;-o-transition: all, 0.3s;transition: all, 0.3s;color: #FFF;font-weight: normal;text-align: center;white-space: nowrap;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item:hover .rr-item__badgeTitle{color:#333;background:#f5f5f5;box-shadow:none;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item:hover .rr-item__label-top {color:#333;background:#f5f5f5;box-shadow:none;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__labels-bottom {display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;height:100px;margin-bottom:20px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-bottom {display:flex;justify-content:flex-start;align-items:center;font-size:12px;font-weight:400;margin-bottom:3px;color:#939393;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-bottom::before {content:'';margin-right:5px;width:16px;height:16px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-prescription::before {background:url('https://gallery.retailrocket.net/602bba6097a5281b4cc438c9/5.png') no-repeat 50% 50%;background-size:contain;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-restricted::before {background:url('https://gallery.retailrocket.net/602bba6097a5281b4cc438c9/9.png') no-repeat 50% 50%;background-size:contain;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-present_prescription::before {background:url('https://gallery.retailrocket.net/602bba6097a5281b4cc438c9/7.png') no-repeat 50% 50%;background-size:contain;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-not_drug::before {background:url('https://gallery.retailrocket.net/602bba6097a5281b4cc438c9/1.png') no-repeat 50% 50%;background-size:contain;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-pickupDelivery::before {background:url('https://gallery.retailrocket.net/602bba6097a5281b4cc438c9/2.png') no-repeat 50% 50%;background-size:contain;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-packageDeliveryTrue::before {background:url('https://gallery.retailrocket.net/602bba6097a5281b4cc438c9/3.png') no-repeat 50% 50%;background-size:contain;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-packageDeliveryFalse::before {background:url('https://gallery.retailrocket.net/602bba6097a5281b4cc438c9/8.svg') no-repeat 50% 50%;background-size:contain;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-payWithSurplus::before {background:url('https://gallery.retailrocket.net/602bba6097a5281b4cc438c9/4.svg') no-repeat 50% 50%;background-size:contain;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-bioequivalent::before {background:url('https://gallery.retailrocket.net/602bba6097a5281b4cc438c9/6.png') no-repeat 50% 50%;background-size:contain;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions-row {display:flex;align-items:center;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .input-group {border-radius: 50px;border: 1px solid #efefef;width: 100%;box-sizing: border-box;-webkit-appearance: textfield !important;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .input-group input {padding:3px 15px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .input-group i {right:10px;font-size:8px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__cart{position:relative;width:100%;background-color:#fff;border:none;outline:none;padding:5px 30px 1px 0;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__cart:hover {color:#c16f12;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__cart span{display:inline-block;color:#ea8a1c;font-size:12px;font-weight:700;text-transform:uppercase;height:27px;text-align:center;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__cart div{position:absolute;top:0;right:10px;display:flex;align-items:center;justify-content:center;width:27px;height:27px;border-radius:50%;background-color:#F5F5F5;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-lazy-preloader{background:#fff;width:100%;height:100%;position:absolute;top:0;left:0;z-index:9;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-lazy-preloader:after{display:block;content:'';background-image:url('https://rrstatic.retailrocket.net/widget/img/swiper_preloader.svg');background-position:50%;background-size:100%;background-repeat:no-repeat;width:42px;height:42px;position:absolute;left:50%;top:50%;margin-left:-21px;margin-top:-21px;z-index:10;-webkit-transform-origin:50%;-ms-transform-origin:50%;transform-origin:50%;background-repeat:no-repeat;-webkit-animation:swiper-preloader-spin 1s steps(50, end) infinite;animation:swiper-preloader-spin 1s steps(50, end) infinite;}
+  @-webkit-keyframes swiper-preloader-spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes swiper-preloader-spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-swiper-wrapper{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);position:relative;width:100%;height:100%;z-index:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform;-webkit-box-sizing:content-box;box-sizing:content-box;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-swiper-slide{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:100%;height:auto;position:relative;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-arrow{top: 47%;position: absolute;z-index: 22;opacity: 1;cursor: pointer;width: 14px;height: 23px;-webkit-transition: all 0.1s ease-in-out;-moz-transition: all 0.1s ease-in-out;-ms-transition: all 0.1s ease-in-out;-o-transition: all 0.1s ease-in-out;transition: all 0.1s ease-in-out;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-prev{left: -10px;background: url('https://gallery.retailrocket.net/602bba6097a5281b4cc438c9/arrowPrev.png') no-repeat 50% 50%; background-size:contain;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-next{right: -10px;background: url('https://gallery.retailrocket.net/602bba6097a5281b4cc438c9/arrowNext.png') no-repeat 50% 50%; background-size:contain;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-slider-arrow .swiper-button-disabled{opacity:0.5;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__misb-badge {position: absolute;width: 85px;bottom: 0px;right: 0;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .misb-badge {background: transparent;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .misb-badge img {width: 100%;margin: 0 auto;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-value--oldprice {font-weight: 600;font-size: 18px;color: #0074c8;}
+  
+  @media all and (max-width:1430px){
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__cart span{font-size:10px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__cart div{right:0;}  
+  }
+  @media all and (max-width:1024px){
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__cart span{font-size:12px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__cart div{right:50px;}  
+  }
+  @media all and (max-width:991px) {
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__brand {font-size:12px;line-height:15px;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title {font-size:11px;line-height:12px;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-value {font-size:10px!important;line-height:12px!important;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__sbPrice::before {width:15px;height:10px;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-bottom {font-size:10px;line-height:1.8;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label-bottom::before {width:11px;height:11px;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions-quantity,
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__cart div {display:none;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__cart{padding-right:0;margin-bottom:5px;}
+  }
+  @media all and (max-width:480px) {
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image{height:160px;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__labels-bottom{margin-bottom:0;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item {padding:7px;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"].rr-active {margin-bottom:20px;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__title {text-align:center;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-items {padding:0 5px 30px;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .input-group i.fa-chevron-up {top:5px;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .input-group i {color:#000;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .input-group input {color:#000;font-size:13px;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-prev{left: -5px;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-next{right: -5px;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__old-price-value {font-size:10px;}
+  }
+</style>
+
+<div
+    class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+    data-algorithm="alternative"
+    data-algorithm-argument="{{data-product-id}}"
+    data-template-param-header-text="TAMBIÉN TE PODRÍA INTERESAR"
+    data-template-param-number-of-items="25"
+    data-template-param-item-image-width="260"
+    data-template-param-item-image-height="286"
+    data-on-pre-render="retailrocket['salcobrandonline{{data-retailrocket-markup-block}}'].preRenderFn(this, data, renderFn)"
+    data-on-post-render="retailrocket['salcobrandonline{{data-retailrocket-markup-block}}'].postRenderFn(this)"
+    data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+    data-s="{{data-retailrocket-markup-block}}"
+>
+</div>
+
+<script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
+  <div class="rr-widget__title">
+    <%=(headerText)%>
+  </div>
+  <div class="rr-items rr-swiper-container">
+    <div class="rr-swiper-wrapper">
+      <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
+        <div class="rr-swiper-slide" data-id="<%=ItemId%>">
+          <div class="rr-item" data-id="<%=ItemId%>" data-is-sp="<%= Params.isSp %>" data-is-sp-new="<%= Params.isSpNew %>">
+            <div class="rr-item__labels-top">
+              <% if (Params.badge) { %>
+                <div class="rr-item__label-top rr-item__discount"><%= Params.badge %></div>
+                <% if (Params.badgeTitle) { %>
+                  <div class="rr-item__badgeTitle"><%= Params.badgeTitle %></div>
+                <% } else if (Params.badgeAmount) { %>
+                  <div class="rr-item__badgeTitle"><%= Params.badgeAmount %></div>
+                <% } %>
+              <% } %>
+            </div>
+            <div class="rr-item__image">
+              <a class="rr-item__info" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+                <% if (Params.misb) { %>
+                  <div class="rr-item__misb-badge">
+  					<span class="misb-badge">
+  					  <img src="https://gallery.retailrocket.net/602bba6097a5281b4cc438c9/msb-logo-781069d15114ca18bf8e550155ddbd40.jpg">
+  					</span>
+  				  </div>
+                <% } %>
+                <img class="swiper-lazy" 
+                src="<%= PictureUrl %>"
+                style="width:<%= Params.width %>px; height:<%= Params.height %>px;"
+                >
+                <div class="swiper-lazy-preloader"></div>
+              </a>
+            </div>
+            <div class="rr-item__brand"><%= Vendor %></div>
+            <div class="rr-item__name-block">
+              <a class="rr-item__info rr-item__title" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+                <%=Name %>
+              </a>
+            </div>
+            <div class="rr-item__block-price">
+              <% if (OldPrice > Price) { %>
+                <div class="rr-item__old-price">
+                  <span class="rr-item__old-price-value">Precio Farmacia: <span class="rr-item__price-currency"></span><%= retailrocket.widget.formatNumber(OldPrice, ' ', '.', 0) %></span>
+                  <span class="rr-item__price-value rr-item__price-value--oldprice">Precio Internet: <span class="rr-item__price-currency"></span><%= retailrocket.widget.formatNumber(Price, ' ', '.', 0) %></span>
+                </div>
+                <% if (Params.sbPrice) { %>
+                  <div class="rr-item__sbPrice">
+                    <span class="rr-item__price-value">SBPay: <span class="rr-item__price-currency"></span><%= retailrocket.widget.formatNumber(Params.sbPrice, ' ', '.', 0) %></span>
+                  </div>
+                <% } %>
+              <% } else { %>
+                <div class="rr-item__price<% if (Params.sbPrice) { %> rr-item__withSbPrice<% } %>">
+                  <span class="rr-item__price-value">Precio Farmacia: <span class="rr-item__price-currency"></span><%= retailrocket.widget.formatNumber(Price, ' ', '.', 0) %></span>
+                </div>
+                <% if (Params.sbPrice) { %>
+                  <div class="rr-item__sbPrice">
+                    <span class="rr-item__price-value">SBPay: <span class="rr-item__price-currency"></span><%= retailrocket.widget.formatNumber(Params.sbPrice, ' ', '.', 0) %></span>
+                  </div>
+                <% } %>
+              <% } %>
+            </div>
+            <div class="rr-item__labels-bottom">
+              <% if (Params.bioequivalent && Params.bioequivalent === 'true') { %>
+                <div class="rr-item__label-bottom rr-item__label-bioequivalent">Bioequivalente</div>
+              <% } %>
+              <% if (Params.saleType && Params.saleType === 'prescription') { %>
+                <div class="rr-item__label-bottom rr-item__label-prescription">Receta Médica</div>
+              <% } else if (Params.saleType && Params.saleType === 'restricted') { %>
+                <div class="rr-item__label-bottom rr-item__label-restricted">Receta Retenida</div>
+              <% } else if (Params.saleType && Params.saleType === 'present_prescription') { %>
+                <div class="rr-item__label-bottom rr-item__label-present_prescription">Presentación Receta</div>
+              <% } else if (Params.saleType && Params.saleType === 'not_drug') { %>
+                <div class="rr-item__label-bottom rr-item__label-not_drug">Venta Directa</div>
+              <% } %>
+              <% if (Params.pickupDelivery !== undefined && Params.pickupDelivery.toString() === 'true') { %>
+                <div class="rr-item__label-bottom rr-item__label-pickupDelivery">Retiro en tienda</div>
+              <% } %>
+              <% if (Params.packageDelivery !== undefined && Params.packageDelivery.toString() === 'true') { %>
+                <div class="rr-item__label-bottom rr-item__label-packageDeliveryTrue">Despacho a domicilio</div>
+              <% } else { %>
+                <div class="rr-item__label-bottom rr-item__label-packageDeliveryFalse">Despacho a domicilio</div>
+              <% } %>
+              <% if (Params.payWithSurplus !== undefined && Params.payWithSurplus.toString() === 'true') { %>
+                <div class="rr-item__label-bottom rr-item__label-payWithSurplus">Pago con excedentes</div>
+              <% } %>
+            </div>
+            <div class="rr-item__actions">
+              <form action="/orders/populate" accept-charset="UTF-8" data-remote="true" method="post">
+                <input name="utf8" type="hidden" value="✓" />
+                <input type="hidden" name="sku" value="<%= ItemId %>" />
+                <input type="hidden" name="catalog" value="true" />
+                <div class="row rr-item__actions-row">
+                  <div class="col-md-4 rr-item__actions-quantity">
+                    <div class="quantity">
+                      <div class="input-group">
+                        <i class="fa fa-chevron-up up" id="quantity-up"></i>
+                        <input type="number" name="quantity" id="product-quantity" value="1" />
+                        <i class="fa fa-chevron-down down" id="quantity-down"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-8 text-right">
+                    <button class="rr-item__cart" data-disable-with="Agregando ..." type="submit" onmousedown='rrApi.recomAddToCart(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+                      <span>Añadir al carro</span>
+                      <div>
+                      	<img height="13" width="14" src="https://salcobrand.cl/packs/_/assets/images/shopping_cart_icon_orange-e85e24b129129f732716b9db3ecaa05d.svg" alt="Shopping cart icon orange"/>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <% if (numberOfItems > 4) { %>
+    <div class="rr-slider-arrow">
+      <a class="rr-arrow swiper-prev"></a>
+      <a class="rr-arrow swiper-next"></a>
+    </div>
+  <% } %>
+</script>
+
+<script type="text/javascript">
+  (function (retailrocket) {
+    'use strict';
+
+    var SwiperModel = function (setting) {
+      var $widget = setting.widget;
+      var swiperSeector = '.rr-swiper-container';
+      var source = 'https://rrstatic.retailrocket.net/widget/plugins/rrswiper/rrswiper.min.js';
+      var itemsCount = $widget.getAttribute('data-number-of-rendered-items');
+
+      function checkloop(paramsSlider) {
+        var modSetting = paramsSlider;
+
+        if (modSetting.loop == true) {
+          for (var point in modSetting.breakpoints) {
+            if (itemsCount <= modSetting.breakpoints[point].slidesPerView) {
+              modSetting.breakpoints[point].loop = false;
+            } else {
+              modSetting.breakpoints[point].loop = true;
+            }
+          }
+        }
+
+        return modSetting;
+      }
+
+      function render(swiperLibrary) {
+        var SwiperParams = checkloop(setting.settingSwiper);
+        var $rrContainer = $widget.querySelector(swiperSeector);
+        var rrSwiper = swiperLibrary == 'RRSwiper' ? new RRSwiper($rrContainer, SwiperParams) : new Swiper($rrContainer, SwiperParams);
+
+        rrSwiper
+          .on('init', function () {
+            var $imgError = $widget.querySelectorAll('.rr-swiper-slide:not(.swiper-slide-duplicate) img');
+            var counter = 0;
+            var indexImg = [];
+
+            $imgError.forEach(function (img) {
+              img.onerror = function () {
+                var $slideItem = img.closest('.rr-swiper-slide');
+                var $slideSiblings = $slideItem.parentNode.querySelectorAll('.rr-swiper-slide:not(.swiper-slide-duplicate)');
+                indexImg.push($slideItem.getAttribute('data-swiper-slide-index'));
+
+                if ($imgError.length == counter) {
+                  rrSwiper.removeSlide(indexImg);
+                }
+              };
+              counter++;
+            });
+            $widget.classList.add('rr-active');
+          })
+          .on('observerUpdate', function () {
+            rrSwiper.resize.resizeHandler();
+          });
+        rrSwiper.init();
+      }
+
+      function getScript() {
+        var swiperJs = document.createElement('script');
+        var getElemScript = document.getElementsByTagName('script')[0];
+        swiperJs.async = 1;
+
+        if (!window.Swiper && !window.RRSwiper) {
+          swiperJs.onload = swiperJs.onreadystatechange = function(_, isAbort) {
+            if (isAbort || !swiperJs.readyState || /loaded|complete/.test(swiperJs.readyState) ) {
+              swiperJs.onload = swiperJs.onreadystatechange = null;
+              swiperJs = undefined;
+
+              if (!isAbort) setTimeout(render('RRSwiper'), 0);
+            }
+          };
+
+          swiperJs.src = source;
+          getElemScript.parentNode.insertBefore(swiperJs, getElemScript);
+        } else {
+          var versionSwiper = window.hasOwnProperty('RRSwiper') ? 'RRSwiper' : 'Swiper';
+          render(versionSwiper);
+        }
+      }
+
+      this.getScript = getScript;
+    };
+
+    if (!('duplicates' in retailrocket.modules)) {
+      retailrocket.setModule('duplicates', [], function () {
+        var savedIds = [];
+        var paramName = 'ItemId';
+
+        function has(id) {
+          return savedIds.indexOf(id) !== -1;
+        }
+
+        function add(id) {
+          savedIds = savedIds.concat(id);
+        }
+
+        function remove(id) {
+          var ids = [].concat(id);
+
+          savedIds = savedIds.filter(function (savedId) {
+            return ids.indexOf(savedId) === -1;
+          });
+        }
+
+        function filter(recom) {
+          if (!recom[paramName]) {
+            return true;
+          }
+
+          if (!has(recom[paramName])) {
+            add(recom[paramName]);
+            return true;
+          }
+
+          return false;
+        }
+
+        function filteredCount(recoms) {
+          return recoms.reduce(function (acc, recom) {
+            return acc + (has(recom[paramName]) ? 1 : 0);
+          }, 0);
+        }
+
+        function getItems() {
+          return savedIds.slice();
+        }
+
+        return {
+          has: has,
+          add: add,
+          remove: remove,
+          filter: filter,
+          filteredCount: filteredCount,
+          getItems: getItems,
+        };
+      });
+    }
+
+    retailrocket['salcobrandonline{{data-retailrocket-markup-block}}'] = (function () {
+      var changeTitleForSpRecoms = false;
+
+      function TrackerSender() {
+        this.impressionContentId = '';
+        this.nameTrack = '';
+        this.abSegment = '';
+        this.check = false;
+        this.listTrack = function() {
+          return [this.nameTrack + 'Product page'];
+        };
+        this.changeAbCheck = function (value) {
+          return this.check = value;
+        }
+        
+        this.setImpressionContentId = function (value) {
+          return this.impressionContentId = value;
+        }
+
+        this.setStatisticsRender = function(recoms) {
+          var _this = this;
+
+          if (_this.check) {
+            var itemsId = recoms.map(function(product) { return product.ItemId });
+
+            _this.listTrack().forEach(function(track) {
+              rrApiOnReady.push(function() {
+                rrApi.recomTrack(
+                  '{{data-retailrocket-markup-block}}',
+                  0,
+                  [itemsId],
+                  {
+                    eventType: 'blockRender',
+                    abtest: _this.abSegment,
+                    algorithm: track
+                  }
+                );
+              });
+            });
+          }
+        }
+
+        this.setStatisticsShow = function(recomIds) {
+          var _this = this;
+
+          if (_this.check) {
+            _this.listTrack().forEach(function(track) {
+              rrApiOnReady.push(function() {
+                rrApi.recomTrack(
+                  '{{data-retailrocket-markup-block}}',
+                  0,
+                  [recomIds],
+                  {
+                    eventType: 'blockView',
+                    abtest: _this.abSegment,
+                    algorithm: track
+                  }
+                );
+              });
+            });
+
+            if (_this.impressionContentId !== null) {
+              rrApi.impressionContentViewed({
+                impressionContentId: _this.impressionContentId,
+                onSuccessCallback: function() {}
+              });
+            }
+          }
+        }
+
+        this.setStatisticsClick = function(itemId) {
+          var _this = this;
+
+          if (_this.check) {
+            _this.listTrack().forEach(function(track) {
+              rrApiOnReady.push(function() {
+                rrApi.recomTrack(
+                  '{{data-retailrocket-markup-block}}',
+                  0,
+                  [],
+                  {
+                    eventType: 'blockClick',
+                    clickedItem: itemId,
+                    abtest: _this.abSegment,
+                    algorithm: track
+                  }
+                );
+              });
+            });
+
+            if (_this.impressionContentId !== null) {
+              rrApi.impressionContentClicked({
+                impressionContentId: _this.impressionContentId,
+                onSuccessCallback: function() {}
+              });
+            }
+          }
+        }
+      }
+
+      function getParsedResponse(response) {
+        var responseMatch = response.match(/{[^}]+}/).toString();
+        var responseParsed = JSON.parse(responseMatch.replace(/([a-zA-Z]+):/g,'"$1":'));
+
+        return responseParsed;
+      }
+
+      function getRandomValue(min, max) {
+        return Math.round(Math.random() * (max - min) + min);
+      }
+
+      function getItems(requireProducts, callback) {
+        retailrocket.items.get(
+          retailrocket.api.getPartnerId(),
+          requireProducts,
+          [],
+          callback
+        );
+      }
+
+      function filterIsAvailable(recom) {
+        return recom.IsAvailable === true;
+      }
+
+      function filterDouble(array) {
+        var ids = array.map(function (item) {
+          return item.ItemId;
+        });
+
+        return array.filter(function (item, index) {
+          return ids.indexOf(item.ItemId) === index;
+        });
+      }
+
+      function filterUnique(a, b) {
+        return a.filter(function(e) {
+          return !b.some(function(f) {
+            return f.ItemId === e.ItemId;
+          });
+        });
+      }
+
+      function spGetter(content, callback) {
+        var spProductsIds = content.productIds;
+
+        getItems(spProductsIds, function (spProducts) {
+          var spRecoms = spProducts.filter(filterIsAvailable);
+
+          callback(spRecoms);
+        })
+      }
+
+      function getProductList() {
+        return ('{{data-product-id}}'.split(',')).slice(0,1);
+      }
+
+      var firstTracking = new TrackerSender(),
+          secondTracking = new TrackerSender();
+
+      function preRenderFn(widget, recoms, renderFn) {
+        retailrocket.impression.forProductPlacement({
+          partnerId: retailrocket.api.getPartnerId(),
+          placementId: 'f49bf53c-b10d-49eb-8aa0-39fa20966fb3',
+          session: retailrocket.api.getSessionId(),
+          productId: getProductList(),
+          callbackContents: {
+            'productIds': function (content) {
+              spGetter(content, function (spRecoms) {
+                firstTracking.setImpressionContentId(content.id);
+
+                spRecoms.forEach(function (recom) { recom.Params.isSp = true });
+
+                if (spRecoms.length > 0) {
+                  changeTitleForSpRecoms = true;
+                  firstTracking.changeAbCheck(true);
+                  firstTracking.setStatisticsRender(spRecoms);
+                  spRecoms = spRecoms.slice(0, 2);
+                  nextRender(widget, spRecoms, recoms, renderFn);
+                } else {
+                  nextRender(widget, [], recoms, renderFn);
+                }
+              })
+            },
+            'empty': function () {
+              nextRender(widget, [], recoms, renderFn);
+            }
+          }
+        });
+      }
+
+      function nextRender(widget, spRecomsFirst, recoms, renderFn) {
+        retailrocket.impression.forProductPlacement({
+          partnerId: retailrocket.api.getPartnerId(),
+          placementId: '01HZ6Z5BAHR0JJ4S00M8769P01',
+          session: retailrocket.api.getSessionId(),
+          productId: getProductList(),
+          callbackContents: {
+            'productIds': function (content) {
+              spGetter(content, function (spRecoms) {
+                secondTracking.setImpressionContentId(content.id);
+
+                spRecoms.forEach(function (recom) { recom.Params.isSpNew = true });
+
+                var unicSpRecoms = filterUnique(spRecoms, spRecomsFirst);
+
+                if (unicSpRecoms.length > 0) {
+                  changeTitleForSpRecoms = true;
+                  secondTracking.changeAbCheck(true);
+                  secondTracking.setStatisticsRender(unicSpRecoms);
+                  spRecoms = spRecomsFirst.concat(unicSpRecoms.slice(0, 2));
+                  continueRender(widget, spRecoms, recoms, renderFn);
+                } else {
+                  continueRender(widget, spRecomsFirst, recoms, renderFn);
+                }
+              })
+            },
+            'empty': function () {
+              continueRender(widget, spRecomsFirst, recoms, renderFn);
+            }
+          }
+        });
+      }
+
+      function filterRecoms(recoms) {
+        return recoms
+        .filter(function (recom) {
+          return (
+            recom.Params.saleType !== 'restricted' &&
+            recom.Params.saleType !== 'present_prescription' &&
+            recom.Params.saleType !== 'prescription' && 
+            recom.Params.saleType !== 'not_drug'
+          );
+        })
+        .filter(function (recom) {
+          return recom.Params.badge !== 'cupon' || recom.Params.badge !== 'sbpay'
+        })
+        .filter(function (recom) {
+          return recom.Url.indexOf('salcobrand.cl') > -1
+        })
+        .filter(retailrocket.modules.duplicates.filter);
+      }
+
+      function continueRender(widget, spRecoms, recoms, renderFn) {
+        var modRecoms = filterDouble(
+          filterRecoms(spRecoms.concat(recoms))
+        );
+
+        if (modRecoms.length > 3) {
+          renderFn(modRecoms);
+        }
+      }
+
+      function postRenderFn(widget) {
+        var isShow = false;
+
+        var spProducts = widget.querySelectorAll('.rr-item[data-is-sp=true], .rr-item[data-is-sp-new=true]');
+        var idsTrackingObj = {
+          first: [],
+          second: [],
+        };
+
+        Array.prototype.forEach.call(spProducts, function(item) {
+          var isSp = item.getAttribute('data-is-sp') === 'true';
+
+          idsTrackingObj[isSp ? 'first' : 'second'].push(item.getAttribute('data-id'));
+          item.setAttribute(
+            'onmousedown',
+            "retailrocket['salcobrandonline{{data-retailrocket-markup-block}}'].setStatisticsClick" + (isSp ? 'First' : 'Second') + "(" + item.getAttribute('data-id') + ")"
+          );
+        });
+        
+        if (changeTitleForSpRecoms) {
+          widget.querySelector('.rr-widget__title').textContent = 'ESCOGIMOS ESTO PARA TI';
+        }
+        
+        var rrSwiperCarousel = new SwiperModel({
+          widget: widget,
+          settingSwiper: {
+            wrapperClass: 'rr-swiper-wrapper',
+            slideClass: 'rr-swiper-slide',
+            init: false,
+            updateOnWindowResize: true,
+            watchOverflow: true,
+            observer: true,
+            spaceBetween: 20,
+            lazy: {
+              loadPrevNext: true,
+            },
+            preloadImages: true,
+            touchReleaseOnEdges: true,
+            watchSlidesVisibility: true,
+            loop: true,
+            navigation: {
+              prevEl: widget.querySelector('.swiper-prev'),
+              nextEl: widget.querySelector('.swiper-next'),
+            },
+            pagination: {
+              el: widget.querySelector('.rr-slider-dots'),
+              type: 'bullets',
+              clickable: true
+            },
+            autoplay: false,
+            speed: 800,
+            breakpoints: {
+              1200: {
+                slidesPerView: 4,
+                slidesPerGroup: 4
+              },
+              1024: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+              },
+              768: {
+                slidesPerView: 2,
+                slidesPerGroup: 2
+              },
+              320: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+                spaceBetween: 10,
+              },
+            }
+          }
+        });
+        rrSwiperCarousel.getScript();
+
+        window.addEventListener('scroll', function () {
+          if (!isShow) {
+            var  widgetScrollTop = widget.getBoundingClientRect()['top'];
+
+            if (widgetScrollTop < widget.clientHeight) {
+              firstTracking.setStatisticsShow(idsTrackingObj.first);
+              secondTracking.setStatisticsShow(idsTrackingObj.second);
+              isShow = true;
+            }
+          }
+        });
+      }
+
+      return {
+        setStatisticsClickFirst: firstTracking.setStatisticsClick,
+        setStatisticsClickSecond: secondTracking.setStatisticsClick,
+        postRenderFn: postRenderFn,
+        preRenderFn: preRenderFn,
+      };
+    }());
+
+    retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}');
+  }(retailrocket));
+</script>

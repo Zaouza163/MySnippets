@@ -1,0 +1,118 @@
+<style type="text/css">
+.master .row {
+  padding-left: 0;
+  padding-right: 0;
+}
+.master__title {
+  padding-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+}
+.master__line {
+  border-top: 1px solid #000000;
+}
+.master__item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.master__item a {
+  font-size: <@=model.fontSize@>px;
+  text-decoration: none;
+  color: #000000;
+}
+</style>
+<table class="master outer">
+  <@
+    model.menus.forEach(function(itemBlock, i) {
+  @>
+  <tr>
+    <td class="master__title-wrap" align="center">
+      <table class="wa" align="center">
+        <tr>
+          <td class="master__title" align="center"><@-itemBlock.title@></td>
+        </tr>
+        <tr>
+          <td class="master__line" align="center">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="row" align="center">
+      <@
+        var summLength = [0];
+        var counterWord = [0];
+        var conuterRows = 0;
+
+        itemBlock.items.forEach(function(item) {
+          let widthWord = item.text.split('').length * model.fontSize;
+
+          if (summLength[conuterRows] + Math.round(widthWord / 1.27) < 580) {
+            if (summLength[conuterRows] > 0) {
+              summLength[conuterRows] = +summLength[conuterRows] + Math.round(widthWord / 1.27);
+            } else {
+              summLength[conuterRows] = Math.round(widthWord / 1.27);
+            }
+            counterWord[conuterRows]++;
+          } else {
+            conuterRows++;
+            summLength[conuterRows] = 0;
+            counterWord[conuterRows] = 0;
+            summLength[conuterRows] = summLength[conuterRows] + Math.round(widthWord / 1.27);
+            counterWord[conuterRows]++;
+          }
+        });
+      @>
+      <!--[if (gte mso 9)|(IE)|(RP)]>
+      <table align="center" width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+      <![endif]-->
+      <@
+      var itemsSize = itemBlock.items.length;
+      var counterWordMod = 0;
+      conuterRows = 0;
+
+      itemBlock.items.forEach(function(item, i) {
+        
+        var widthWord = item.text.split('').length * model.fontSize;
+        var widthColumn = Math.round(widthWord / 1.27) + ((600 - summLength[conuterRows] - (options.outerPaddings * 2)) / counterWord[conuterRows]);      
+      @>
+      <!--[if (gte mso 9)|(IE)|(RP)]>
+      <td align="center" width="<@=((widthColumn * 100) / 600).toFixed(2) @>%" valign="middle">
+      <![endif]-->
+      <div class="col" style="max-width: <@-widthColumn@>px;">
+        <table width="100%">
+          <tr>
+            <td align="center" class="master__item">
+              <img src="https://gallery.retailrocket.net/58c653775a6588681861a585/point.png" style="border: 0; display: inline-block;">
+              <a href="<@-item.url@>" target="_blank"><@-item.text@></a>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!--[if (gte mso 9)|(IE)|(RP)]>
+      </td>
+      <![endif]-->
+      <@ counterWordMod++;
+      if (counterWordMod == counterWord[conuterRows]) {@>
+      <!--[if (gte mso 9)|(IE)|(RP)]>
+      </tr></table><table align="center" width="100%" cellpadding="0" cellspacing="0"><tr>
+      <![endif]-->
+      <@ 
+      }
+        
+        if (counterWordMod == counterWord[conuterRows]) {
+          conuterRows++;
+          counterWordMod = 0;
+        }
+      }); 
+      @>
+      <!--[if (gte mso 9)|(IE)|(RP)]>
+      </tr>
+      </table>
+      <![endif]-->
+    </td>
+  </tr>
+  <@ }); @>
+</table>

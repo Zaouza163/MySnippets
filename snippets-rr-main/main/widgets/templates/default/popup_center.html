@@ -1,0 +1,220 @@
+<div class="retailrocket-popup retailrocket-exit-intend deactivate-if-visitor-agreed-to-receive-marketing-mail" data-s="{{data-retailrocket-markup-block}}">
+  <div class="retailrocket-popup-window">
+    <a href="javascript:void(0);" class="retailrocket-popup__close" title="Закрыть и больше не показывать" onclick="retailrocket.exitIntendWidget.close(true)">&times;</a>
+
+    <div class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+         id="{{data-retailrocket-markup-block}}-mailrequest-widget"
+         data-retailrocket-multiline="autoheight"
+         data-template-param-item-image-width="180"
+         data-template-param-item-image-height="180"
+         data-algorithm="mailrequest"
+         data-number-of-items="3"
+         data-textoverflowhidden="true"
+         data-retailrocket-buybutton="false"
+         data-viewed-mail-template-ready="false"
+         data-basket-mail-template-ready="true"
+         data-viewedna-mail-template-ready="false"
+         data-search-mail-template-ready="false"
+         data-template-param-header-text="Вас заинтересовали эти товары?"
+         data-template-param-sub-header-text="Мы отправим их на ваш e-mail"
+         data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+         data-on-post-render="retailrocket['store{{data-retailrocket-markup-block}}'].postRenderFn(this)"
+         >
+    </div>
+    <div class="retailrocket retailrocket-mailrequest-form retailrocket-subscribe__widget"
+         data-send-btn-id="retailrocket-mailrequest-from-send-btn"
+         data-email-input-id="retailrcoket-mailrequest-form-email"
+         data-product-to-send-widget-id="{{data-retailrocket-markup-block}}-mailrequest-widget"
+         data-subscribe-on-trigger-email-checkbox-id="retailrocket-subscribe-on-trigger-email">
+
+      <form class="retailrocket-subscribe__form" onsubmit="retailrocket['store{{data-retailrocket-markup-block}}'].rrOnSubmit(this);return false;">
+        <div class="retailrocket-subscribe__input-checkbox-block">
+          <input class="retailrocket-subscribe__input-checkbox" id="retailrocket-subscribe-on-trigger-email" type="checkbox" required checked>
+          <label class="retailrocket-subscribe__input-checkbox-label" for="retailrocket-subscribe-on-trigger-email">
+            <span class="rr-text-legal">Согласие на получение писем</span>
+          </label>
+        </div>
+        <div class="retailrocket-subscribe__input-email-block">
+          <label class="retailrocket-subscribe__input-email-label">Оставьте свой email</label>
+          <input class="retailrocket-subscribe__input-email" id="retailrcoket-mailrequest-form-email" required type="email" placeholder="E-mail">
+        </div>
+        <div class="retailrocket-subscribe__input-submit-block">
+          <input class="retailrocket-subscribe__input-submit desabledButton" id="retailrocket-mailrequest-from-send-btn" type="submit" value="Подписаться">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="retailrocket-popup__message">
+    <a href="javascript:void(0);" class="retailrocket-close-message retailrocket-popup__close" title="закрыть" onclick="retailrocket.exitIntendWidget.close(true);">&times;</a>
+    <div class="retailrocket-popup__message-text">Спасибо за подписку!</div>
+  </div>
+</div>
+<script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
+  <div class="rr-widget__container">
+    <div class="rr-widget__widgettitle">
+      <%=headerText%><br/>
+      <%=subHeaderText%>
+    </div>
+    <div class="rr-items">
+      <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
+      <div class="rr-item">
+        <div class="rr-item__image">
+          <a href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" })'>
+            <img src="https://cdnimg.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both" alt="<%=Name %>" onerror="retailrocket.widget.hideProduct(this)">
+          </a>
+        </div>
+        <div class="rr-item__info">
+          <div class="rr-item__title">
+            <a href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" })'>
+              <%=Name %>
+            </a>
+          </div>
+          <div class="rr-item__price-wrapper">
+            <% if ( OldPrice > Price ) { %>
+            <div class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, ",", ".", 0) %> $</div>
+            <div class="rr-item__old-price-value"><%= retailrocket.widget.formatNumber(OldPrice, ",", ".", 0) %> $</div>
+            <% } else { %>
+            <div class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, ",", ".", 0) %> $</div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</script>
+<style>
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] {display:none;box-sizing:border-box;font-family:inherit;z-index:100;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"].active {display:block;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] *:focus{outline:none;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] a:hover{text-decoration:none;}
+
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__container{width:100%;text-align:center;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__widgettitle{margin-bottom:20px;font-weight:bold;font-size:18px;color:#444;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .rr-items{height:100%;display:-webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .rr-item{margin:0;padding:5px;width:33%;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .rr-item-container{position:relative;height:100%;overflow:hidden;background-color:#fff;border:1px solid #f6f0f6;border-bottom:1px solid #eee;border-radius:0}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image{position:relative}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .rr-item__info{padding:5px 10px;position:relative;text-align:center;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title{margin-bottom:7px;height:62px;overflow:hidden;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title a{font-size:14px;line-height:16px;font-weight:300;color:#444;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-wrapper{margin-top:5px;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-value{font-size:20px;font-weight:500;color:#000;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .rr-item__old-price-value{font-size:15px;color:#999;text-decoration:line-through;}
+
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-popup__close{position:absolute;width:36px;height:36px;top:0;right:0;cursor:pointer;font-size:32px;line-height:32px;text-align:center;color:#000;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__widget{padding:10px;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__form {text-align: center;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-email-block{margin-top:10px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center; -webkit-box-align:center; -ms-flex-align:center; align-items:center;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-email-label{color:#000;font-size:14px;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-email{padding:0 10px 0 20px;margin-left:15px;width:210px;height:37px;font-size:14px;color:#000;border-radius:3px;border:1px solid #ccc;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-checkbox{position:absolute;opacity:0;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-checkbox-label{position:relative;cursor:pointer;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-checkbox-label::before {content:'';margin-bottom:4px;padding:6px;display:inline-block;position:relative;-webkit-appearance: none;border:1px solid #000;border-radius:3px;vertical-align:middle;cursor:pointer;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-checkbox:checked + .retailrocket-subscribe__input-checkbox-label:after {content: '';display:block;position:absolute;top:2px;left:5px;width:5px;height:11px;border:solid #000;border-width:0 2px 2px 0;transform: rotate(45deg);}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-checkbox-label.warning,
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-checkbox-label.warning a{color:red;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-submit {padding:8px 25px;width:auto;height:37px;font-size:15px;color:#fff;border:1px solid #fff;background-color:#000;border-radius:3px;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-submit-block{margin-top:10px;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-submit:hover{background-color:#fff;color:#000;}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-submit.desabledButton:hover{cursor:not-allowed}
+
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-popup__message{display:none;position: fixed;z-index: 100;width: 500px;background-color: #fff;border: 1px solid #c3cace;border-radius:3px;top: 50%;left: 50%;height: 220px;transform: translate(-50%,-50%);-webkit-box-shadow: 0px 0px 29px 0px rgba(0,0,0,0.75);-moz-box-shadow: 0px 0px 29px 0px rgba(0,0,0,0.75);box-shadow: 0px 0px 29px 0px rgba(0,0,0,0.75);}
+  .retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-popup__message-text{height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center; -webkit-box-align:center; -ms-flex-align:center; align-items:center;font-size:28px;line-height:1.05;text-align:center;}
+</style>
+
+<script>
+(function(retailrocket) {
+  'use strict';
+
+  retailrocket['store{{data-retailrocket-markup-block}}'] = (function() {
+    (function validateRRForm() {
+      var widget = document.querySelector('.retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"]'),
+          button = widget.querySelector('.retailrocket-subscribe__input-submit'),
+          checkbox = widget.querySelector('.retailrocket-subscribe__input-checkbox'),
+          label = widget.querySelector('.retailrocket-subscribe__input-checkbox-label'),
+          emailForm = widget.querySelector('.retailrocket-subscribe__input-email'),
+          isValidEmail = false;
+
+      emailForm.addEventListener('input', function() {
+        if (this.value != '') {
+          var pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
+          /* var pattern = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu; */
+
+          if(pattern.test(this.value)){
+            isValidEmail = true;
+
+            if (checkbox.checked) {
+              label.classList.remove('warning');
+              button.removeAttribute('disabled');
+              button.classList.remove('desabledButton');
+            } else {
+              label.classList.add('warning');
+              button.classList.add('desabledButton');
+              button.setAttribute('disabled', 'disabled');
+            }
+          } else {
+            button.classList.add('desabledButton');
+            button.setAttribute('disabled', 'disabled');
+            isValidEmail = false;
+          }
+        } else {
+          button.classList.add('desabledButton');
+          button.setAttribute('disabled', 'disabled');
+          isValidEmail = false;
+        }
+      });
+
+      checkbox.addEventListener('change', function() {
+        if (checkbox.checked) {
+          label.classList.remove('warning');
+
+          if (isValidEmail) {
+            button.removeAttribute('disabled');
+            button.classList.remove('desabledButton');
+          }
+        } else {
+          label.classList.add('warning');
+          button.classList.add('desabledButton');
+          button.setAttribute('disabled', 'disabled');
+        }
+      });
+    })();
+
+    function rrOnSubmit(form) {
+      var widget = document.querySelector('.retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"]');
+      var emailForm = form.querySelector('.retailrocket-subscribe__input-email');
+      var popup = widget.querySelector('.retailrocket-popup-window');
+      var messageBlock = widget.querySelector('.retailrocket-popup__message');
+
+      rrApi.setEmail(emailForm.value);
+
+      popup.style.display = 'none';
+      messageBlock.style.display = 'block';
+
+      setTimeout(function() {
+        widget.style.display = 'none';
+      }, 4000);
+    }
+
+    function postRenderFn(widget) {
+      var markupBlock = widget.closest('.retailrocket-popup[data-s="{{data-retailrocket-markup-block}}"]');
+      var amountItemsRender = widget.getAttribute('data-number-of-rendered-items');
+
+      if (amountItemsRender < 1) {
+        markupBlock.style.display = 'none';
+      }
+    }
+
+  return {
+      postRenderFn,
+      rrOnSubmit
+    };
+  })();
+
+  retailrocket.exitIntendWidget.initialize();
+  retailrocket.mailRequestForm.initialize();
+  retailrocket.deactivateIfAgreedToReceiveMarketingMail.initialize();
+  retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}');
+}(retailrocket));
+</script>

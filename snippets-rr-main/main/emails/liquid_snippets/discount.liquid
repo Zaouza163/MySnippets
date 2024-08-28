@@ -1,0 +1,2 @@
+{% comment %} /-- Получение значения скидки --/ {% endcomment %}
+{% assign Discount = item.Price | times: 100 | dividedby: item.OldPrice | round: 0 | minus: 100 | times: -1 %}

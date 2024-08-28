@@ -1,0 +1,510 @@
+<style type="text/css">
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"]{height:0;visibility:hidden;overflow:hidden;position:relative;display:block;width:95%;font-family:inherit;box-sizing:border-box;margin:0 auto}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"].rr-active{height:auto;visibility:visible;overflow:visible;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] *{outline:none;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__title{font-size:24px;font-weight:400;color:#000;text-align:center;margin-bottom:45px}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-items{position:relative;overflow:hidden;padding:0;z-index:1;padding:0 2px;margin:0 -2px}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image{width:100%;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image img{width:auto;height:auto;max-width:100%;max-height:100%;vertical-align:middle;margin:0 auto;outline:none}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__discount-round{position: absolute;top: 14px;right: 14px;color: #ff0073;width:50px;height:50px;border-radius: 50%;display: flex;justify-content: center;align-items: center;border: 1px solid #ff0073;font-size: 17px;background-color: #fff;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__discount-sale{position: absolute;top: 0;right: 0;padding: 0 10px;font-weight: bold;font-size: 11px;line-height: 28px;height: 28px;color: #ff0073;text-transform: uppercase;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-swiper-wrapper{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);position:relative;width:100%;height:100%;z-index:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform;-webkit-box-sizing:content-box;box-sizing:content-box;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-swiper-slide{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:100%;height:auto;position:relative;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item{padding:0 20px 18px 20px;text-align:center;border:1px solid transparent}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item:hover{border-color:#d9d9d9;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-lazy-preloader{background:#fff;width:100%;height:100%;position:absolute;top:0;left:0;z-index:9;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-lazy-preloader:after{display:block;content:'';background-image:url('https://rrstatic.retailrocket.net/widget/img/swiper_preloader.svg');background-position:50%;background-size:100%;background-repeat:no-repeat;width:42px;height:42px;position:absolute;left:50%;top:50%;margin-left:-21px;margin-top:-21px;z-index:10;-webkit-transform-origin:50%;-ms-transform-origin:50%;transform-origin:50%;background-repeat:no-repeat;-webkit-animation:swiper-preloader-spin 1s steps(50, end) infinite;animation:swiper-preloader-spin 1s steps(50, end) infinite;}
+@-webkit-keyframes swiper-preloader-spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes swiper-preloader-spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__info{text-decoration:none;outline:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__vendor{font-size:14px;font-weight:700;margin-bottom:5px;color:#000;opacity:1;cursor:pointer;margin-bottom:8px;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__vendor:hover{opacity: .7}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title{display:inline-block;font-size:12px;font-weight:400;line-height:14.4px;color:#000;height:30px;overflow:hidden;outline:none;white-space:nowrap;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title:hover{text-decoration:none;opacity: .7}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__block-price{display:flex;justify-content:center;margin-top:8px;cursor:default;white-space:nowrap;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__old-price{font-size:10px;font-weight:400;color:#000;text-decoration:line-through;display:inline-block}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__old-price-discount{margin-left:5px;line-height:12px}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__old-price-discount span{font-size:10px;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price{font-size:12px;font-weight:400;line-height:16px;color:#000;display:inline-block;margin-right:8px;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-currency::before{content:' ₽';}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions{display:none}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-more{display:block;width:50%;padding:0 15px;background:#023f5d;color:#fff;font-size:14px;font-weight:400;line-height:35px;-webkit-border-radius:5px 0 0 5px;-moz-border-radius:5px 0 0 5px;border-radius:5px 0 0 5px;text-align:center;text-decoration:none;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-more:hover{text-decoration:none;background:#00528b;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-buy{font-size:14px;font-weight:400;line-height:35px;color:#fff;background-color:#19addd;padding:0 15px;text-align: center;display:block;text-decoration: none;-webkit-border-radius:0 5px 5px 0;-moz-border-radius:0 5px 5px 0;border-radius:0 5px 5px 0;width:50%;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions .rr-item__actions-buy:hover{background-color:#2bc4f7}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-arrow{position:absolute;top:50%;-webkit-transform:translate(0, -50%);-moz-transform:translate(0, -50%);-ms-transform:translate(0, -50%);-o-transform:translate(0, -50%);transform:translate(0, -50%);background:url('https://sale.keng.ru/local/templates/sale19/img/content/arrow-right.png') no-repeat ;background-size:contain;width:22px;height:22px;display:block;cursor:pointer;z-index:1;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-prev{left:-32px;-webkit-transform:translate(0, -50%) rotate(180deg);-moz-transform:translate(0, -50%) rotate(180deg);-ms-transform:translate(0, -50%) rotate(180deg);-o-transform:translate(0, -50%) rotate(180deg);transform:translate(0, -50%) rotate(180deg);}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-prev:hover,
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-next:hover{opacity:0.5;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-next{right:-32px;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-slider-arrow .swiper-button-disabled{opacity:0.5;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-button-lock{display:none;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-slider-dots{display:none;justify-content:center;-webkit-justify-content:center;margin-top:10px;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-pagination-bullet{border:solid 1px #19addd;width:12px;height:12px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;margin:0 2px;cursor:pointer;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-pagination-bullet.swiper-pagination-bullet-active{border-color:#023f5d;background:#023f5d;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-pagination-bullets.swiper-pagination-lock{display:none;}
+  @media screen and (max-width: 1000px){
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"]{width:98%}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-prev{left:-2%;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-next{right:-2%;}
+  }
+</style>
+
+<div
+  class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+  data-algorithm="personal"
+  data-algorithm-argument="personal"
+  data-template-param-header-text="Рекомендуем Вам"
+  data-template-param-number-of-items="15"
+  data-template-param-item-image-width="206"
+  data-template-param-item-image-height="257"
+  data-on-pre-render="retailrocket['store{{data-retailrocket-markup-block}}'].preRenderFn(this, data, renderFn)"
+  data-on-post-render="retailrocket['store{{data-retailrocket-markup-block}}'].postRenderFn(this)"
+  data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+  data-s="{{data-retailrocket-markup-block}}"
+>
+</div>
+
+<script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
+  <div class="rr-widget__title">
+    <%=(headerText)%>
+  </div>
+  <div class="rr-items rr-swiper-container">
+    <div class="rr-swiper-wrapper">
+      <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
+      <!-- ------------------------------------ -->
+
+      <!-- data-index="<%=i%>" обязателен  -->
+
+      <!-- ------------------------------------ -->
+      <div class="rr-swiper-slide" data-item-id="<%=ItemId%>" data-index="<%=i%>">
+        <!-- ------------------------------------ -->
+
+        <!-- Событие клика опциально -->
+
+        <!-- ------------------------------------ -->
+        <div class="rr-item" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].dataLayerClick(<%=i%>);">
+          <% var discount = Math.round(100 - (Price / OldPrice) * 100); %>
+          <% if(OldPrice > Price) {%>
+            <% if(discount % 10 == 0) {%>
+              <div class="rr-item__discount-round">
+                -<%= Math.round(100 - (Price / OldPrice) * 100) %>%
+              </div>
+            <%} else {%>
+              <div class="rr-item__discount-sale">
+                sale
+              </div>
+            <% } %>
+          <% } %>
+          <div class="rr-item__image">
+            <a class="rr-item__info" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+              <img class="swiper-lazy" data-src="https://cdn.retailrocket.net/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
+              <div class="swiper-lazy-preloader"></div>
+            </a>
+          </div>
+          <div class="rr-item__vendor" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" }); location.href="<%=Url%>";'>
+            <%= Vendor %>
+          </div>
+          <div class="rr-item__name-block">
+            <a class="rr-item__info rr-item__title" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+              <% if (Model.length > 26) { %>
+              <%=Model.substr(0,26)+('...') %>
+              <% } else { %>
+              <%=Model %>
+              <% } %>
+            </a>
+          </div>
+          <div class="rr-item__block-price">
+            <div class="rr-item__price"> <span class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, '.', ' ', 0) %></span><span class="rr-item__price-currency"></span> </div>
+            <% if (OldPrice > Price) { %>
+            <div class="rr-item__old-price"> <span class="rr-item__old-price-value"><%= retailrocket.widget.formatNumber(OldPrice, '.', ' ', 0) %></span><span class="rr-item__price-currency"></span> </div>
+            <div class="rr-item__old-price-discount">
+              <span>
+                (<%= Math.round(100 - (Price / OldPrice) * 100) %>%)
+              </span>
+            </div>
+            <% } %>
+          </div>
+          <div class="rr-item__actions">
+            <a class="rr-item__actions-more" href="<%=Url%>" onmousedown='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>Подробнее</a>
+            <a class="rr-item__actions-buy" href="<%=Url%>" onclick='rrApi.recomAddToCart(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>Купить</a>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+
+  <div class="rr-slider-arrow">
+    <a class="rr-arrow swiper-prev"></a>
+    <div class="rr-slider-dots"></div>
+    <a class="rr-arrow swiper-next"></a>
+  </div>
+</script>
+
+<script type="text/javascript">
+  (function (retailrocket) {
+    'use strict';
+
+    var waitFor = function (exitCondition, callback, force, opts) {
+      var checkCount = (opts && opts.checkCount) || 100;
+      var timeout = (opts && opts.timeout) || 1000;
+
+      (function check() {
+        var result = exitCondition();
+        if (result) {
+          callback(result);
+          return;
+        }
+
+        if (checkCount === 0) {
+          if (force) {
+            callback();
+          }
+          return;
+        }
+
+        checkCount -= 1;
+        setTimeout(check, timeout);
+      })();
+    };
+
+    var SwiperModel = function (setting) {
+      var $widget = setting.widget;
+      var swiperSeector = '.rr-swiper-container';
+      var source = 'https://rrstatic.retailrocket.net/widget/plugins/rrswiper/rrswiper.min.js';
+      var itemsCount = $widget.getAttribute('data-number-of-rendered-items');
+
+      function checkloop(paramsSlider) {
+        var modSetting = paramsSlider;
+
+        if (modSetting.loop == true) {
+          for (var point in modSetting.breakpoints) {
+            if (itemsCount <= modSetting.breakpoints[point].slidesPerView) {
+              modSetting.breakpoints[point].loop = false;
+            } else {
+              modSetting.breakpoints[point].loop = true;
+            }
+          }
+        }
+
+        return modSetting;
+      }
+
+      function render(swiperLibrary) {
+        var SwiperParams = checkloop(setting.settingSwiper);
+        var $rrContainer = $widget.querySelector(swiperSeector);
+        var rrSwiper = swiperLibrary == 'RRSwiper' ? new RRSwiper($rrContainer, SwiperParams) : new Swiper($rrContainer, SwiperParams);
+
+        rrSwiper
+          .on('init', function () {
+            var $imgError = $widget.querySelectorAll('.rr-swiper-slide:not(.swiper-slide-duplicate) img');
+            var counter = 0;
+            var indexImg = [];
+
+            $imgError.forEach(function (img) {
+              img.onerror = function () {
+                var $slideItem = img.closest('.rr-swiper-slide');
+                var $slideSiblings = $slideItem.parentNode.querySelectorAll('.rr-swiper-slide:not(.swiper-slide-duplicate)');
+                indexImg.push($slideItem.getAttribute('data-swiper-slide-index'));
+
+                if ($imgError.length == counter) {
+                  rrSwiper.removeSlide(indexImg);
+                }
+              };
+              counter++;
+            });
+            $widget.classList.add('rr-active');
+          })
+          .on('observerUpdate', function () {
+            rrSwiper.resize.resizeHandler();
+          });
+        rrSwiper.init();
+      }
+
+      function getScript() {
+        var swiperJs = document.createElement('script');
+        var getElemScript = document.getElementsByTagName('script')[0];
+        swiperJs.async = 1;
+
+        if (!window.Swiper && !window.RRSwiper) {
+          swiperJs.onload = swiperJs.onreadystatechange = function(_, isAbort) {
+            if (isAbort || !swiperJs.readyState || /loaded|complete/.test(swiperJs.readyState) ) {
+              swiperJs.onload = swiperJs.onreadystatechange = null;
+              swiperJs = undefined;
+
+              if (!isAbort) setTimeout(render('RRSwiper'), 0);
+            }
+          };
+
+          swiperJs.src = source;
+          getElemScript.parentNode.insertBefore(swiperJs, getElemScript);
+        } else {
+          var versionSwiper = window.hasOwnProperty('RRSwiper') ? 'RRSwiper' : 'Swiper';
+          render(versionSwiper);
+        }
+      }
+
+      this.getScript = getScript;
+    };
+
+    var DDControler = function (modRecoms, listname) {
+      var dataLayerRecoms = [];
+
+      function setdataLayer(modRecoms, listname) {
+        waitFor(
+          function () {
+            return 'dataLayer' in window;
+          },
+          function () {
+            modRecoms.forEach(function (recom, i) {
+              var dataLayerViewedRecom = {
+                'item_id': recom.ItemId ,
+                'item_name': recom.Name,
+                'item_brand': recom.Vendor,
+                'price': recom.Price,
+                'item_category': recom.Params.MainCategory && recom.Params.MainCategory !== '' ? recom.Params.MainCategory : recom.CategoryIds[0],
+                'item_category2': recom.CategoryNames[0] || '',
+                'item_list_name': 'Home Page - Personal',
+                'index': i,
+                'quantity': 1
+              };
+
+              dataLayerRecoms.push(dataLayerViewedRecom);
+            });
+
+            /* dataLayer.push({ //если нужно запушить весь массив после загрузки
+              'event': 'view_item_list',
+              'ecommerce': {
+                'items': dataLayerRecoms
+              }
+            }); */ 
+          }
+        );
+      }
+
+      function setRangeDataLayer(firstIndex, lastIndex) { // если нужно запушить только просмотренные элементы
+        dataLayer.push({
+          'event': 'view_item_list',
+          'ecommerce': {
+            'items': dataLayerRecoms.slice(firstIndex, lastIndex)
+          }
+        });
+      }
+
+      function dataLayerClick(indexItem/* , itemId */) {
+        dataLayer.push({
+          'event': 'select_item',
+          'ecommerce': {
+            'items': dataLayerRecoms[indexItem]
+          }
+        });
+
+        /* let productEventInfo = JSON.parse(localStorage.getItem('productEventInfo'))?.length? new Map(JSON.parse(localStorage.getItem('productEventInfo'))) : new Map();
+
+        if (!productEventInfo?.has(Number(itemId))) {
+          productEventInfo.set(Number(itemId), {
+            'item_list_name': 'Home Page - Personal',
+            "position": indexItem
+          });
+          localStorage.setItem('productEventInfo', JSON.stringify(Array.from(productEventInfo.entries())));
+        } */ // клиентский код. Не нужен!
+      }
+
+      this.dataLayerClick = dataLayerClick;
+      this.setdataLayer = setdataLayer;
+      this.setRangeDataLayer = setRangeDataLayer;
+      this.dataLayerRecoms = dataLayerRecoms;
+    };
+
+    retailrocket['store{{data-retailrocket-markup-block}}'] = (function () {
+      var ddControler = new DDControler();
+
+      function filterDouble(array) {
+        var ids = array.map(function (item) {
+          return item;
+        });
+
+        return array.filter(function (item, index) {
+          return ids.indexOf(item) === index;
+        });
+      }
+
+      if (!('duplicates' in retailrocket.modules)) {
+        retailrocket.setModule('duplicates', [], function () {
+          var savedIds = [];
+          var paramName = 'ItemId';
+
+          function has(id) {
+            return savedIds.indexOf(id) !== -1;
+          }
+
+          function add(id) {
+            savedIds = savedIds.concat(id);
+          }
+
+          function remove(id) {
+            var ids = [].concat(id);
+
+            savedIds = savedIds.filter(function (savedId) {
+              return ids.indexOf(savedId) === -1;
+            });
+          }
+
+          function filter(recom) {
+            if (!recom[paramName]) {
+              return true;
+            }
+
+            if (!has(recom[paramName])) {
+              add(recom[paramName]);
+              return true;
+            }
+
+            return false;
+          }
+
+          function filteredCount(recoms) {
+            return recoms.reduce(function (acc, recom) {
+              return acc + (has(recom[paramName]) ? 1 : 0);
+            }, 0);
+          }
+
+          function getItems() {
+            return savedIds.slice();
+          }
+
+          return {
+            has: has,
+            add: add,
+            remove: remove,
+            filter: filter,
+            filteredCount: filteredCount,
+            getItems: getItems,
+          };
+        });
+      }
+
+      function preRenderFn(widget, recoms, renderFn) {
+        var filteredRecoms = recoms.filter(retailrocket.modules.duplicates.filter);
+
+        if (filteredRecoms.length > 4) {
+          ddControler.setdataLayer(filteredRecoms);
+          renderFn(filteredRecoms);
+        }
+      }
+
+      function postRenderFn(widget) {
+        var usedIndex = [];
+        var viewBlockFlag = false;
+        
+        var rrSwiperCarousel = new SwiperModel({
+          widget: widget,
+          settingSwiper: {
+            wrapperClass: 'rr-swiper-wrapper',
+            slideClass: 'rr-swiper-slide',
+            init: false,
+            updateOnWindowResize: true,
+            watchOverflow: true,
+            observer: true,
+            spaceBetween: 2,
+            lazy: true,
+            preloadImages: true,
+            touchReleaseOnEdges: true,
+            watchSlidesVisibility: true,
+            loop: false,
+            navigation: {
+              prevEl: widget.querySelector('.swiper-prev'),
+              nextEl: widget.querySelector('.swiper-next'),
+            },
+            pagination: {
+              el: widget.querySelector('.rr-slider-dots'),
+              type: 'bullets',
+              clickable: true
+            },
+            autoplay: false,
+            speed: 500,
+            on: {
+              init: function () {
+                var swiper = this;
+
+                var allSlides = swiper.slides;
+
+                for (var i = 0; i < allSlides.length; i++) {
+                  if (allSlides[i].classList.contains('swiper-slide-visible')) {
+                    usedIndex.push(allSlides[i].dataset.index);
+                  }
+                }
+
+                function scrollTrigger() { //чекаем при скролле долистали ли мы до блока
+                  var block = document.querySelector('div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]');
+                  var blockPosition = block.getBoundingClientRect().top;
+                  var screenPosition = window.innerHeight / 2;
+
+                  if (blockPosition < screenPosition && !viewBlockFlag) {
+                    viewBlockFlag = true;
+
+                    if (usedIndex.length !== 0) {
+                      ddControler.setRangeDataLayer(Number(usedIndex[0]), Number(usedIndex[usedIndex.length - 1]) + 1);
+                      window.removeEventListener('scroll', scrollTrigger);
+                    }
+                  }
+                }
+
+                window.addEventListener('scroll', scrollTrigger);
+              },
+              transitionEnd: function () {
+                var swiper = this;
+
+                var allSlides = swiper.slides;
+                var visibleSlidesIndex = [];
+
+                for (var i = 0; i < allSlides.length; i++) {
+                  if (allSlides[i].classList.contains('swiper-slide-visible')) {
+                    visibleSlidesIndex.push(allSlides[i].dataset.index);
+                  }
+                }
+
+                visibleSlidesIndex = visibleSlidesIndex.filter(function (item) {
+                  return usedIndex.indexOf(item) === -1;
+                });
+
+                if (visibleSlidesIndex.length !== 0) {
+                  ddControler.setRangeDataLayer(Number(visibleSlidesIndex[0]), Number(visibleSlidesIndex[visibleSlidesIndex.length - 1]) + 1);
+                }
+
+                usedIndex = filterDouble(usedIndex.concat(visibleSlidesIndex));
+              }
+            },
+            breakpoints: {
+              1024: {
+                slidesPerView: 5,
+                slidesPerGroup: 1
+              },
+              768: {
+                slidesPerView: 4,
+                slidesPerGroup: 1
+              },
+              448: {
+                slidesPerView: 3,
+                slidesPerGroup: 1
+              },
+              280: {
+                slidesPerView: 2,
+                slidesPerGroup: 1
+              }
+            }
+          }
+        });
+        rrSwiperCarousel.getScript();
+      }
+
+      return {
+        postRenderFn,
+        preRenderFn,
+        dataLayerClick: ddControler.dataLayerClick,
+      };
+    }());
+
+    retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}');
+  }(retailrocket));
+</script>

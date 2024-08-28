@@ -1,0 +1,493 @@
+$$[ if first_name and first_name != '' and first_name != 'имя клиента' ]$[first_name], с$$[ else ]С$$[ endif ]
+/-- Подставление промокода --/
+{% comment %}
+- Подписка 10% https://i.imgur.com/mrsDsDh.png 
+- Вместо Подписка 10% нужно указывать название группы промокодов, которая заводится а лк.
+- Заведенные группы промокодов есть в разделе персонализация. 
+{% endcomment %}
+$[promo_code["Подписка 10%"]]
+
+/-- Подставление названия партнерского кабинета --/
+{% comment %} 
+- Берется из https://i.imgur.com/hroFFzA.png
+{% endcomment %}
+$[partner_name]
+
+/-- Отписка --/
+{% comment %}
+- Только один вид отписки
+{% endcomment %}
+$[unsubscribe_url]
+
+/-- Алгоритм --/
+{% comment %}
+- [:6] - лимит товаров
+- scenario="AbandonedBasket" - вместо AbandonedBasket подставляется одно из значений, общий список ниже:
+'ProductStillOutOfStock',
+'AbandonedBasketPriceDrop',
+'AbandonedViewPriceDrop',
+'ProductBackInStock',
+'Repurchase',
+'AbandonedView',
+'PriceDrop',
+'PostTransaction',
+'AbandonedBasket',
+'NextBestOffer'
+'AbandonedSearch'
+'AbandonedViewNa'
+'AbandonedCategory',
+'Reactivation'
+
+'NextBestOfferByEmail'
+'Related'
+'BasicPopular'
+'SaleByPopular'
+{% endcomment %}
+$$[ set inrow = 3 ]
+$$[ set iterator = 0 ]
+$$[ for item in get_scenario_recommendations(scenario="AbandonedBasket")[:6] ]
+$$[ for item in get_scenario_recommendations(scenario="SaleByPopularByCategoryPath",count=8) ]
+
+$$[ set iterator = iterator + 1 ] {% comment %} Эта часть обязательно для оутлука {% endcomment %}
+$$[ if iterator == 7 ]$[ break ]$$[ endif ]
+$$[ set mod = iterator % inrow ]
+{% comment %} Верстка карточки {% endcomment %}
+$$[ if mod == 0 and loop.last != true ] {% comment %} Закрытие ряда для оутлука {% endcomment %}
+<!--[if (gte mso 9)|(IE)]></tr><tr><![endif]-->
+$$[ endif ]
+$$[ endfor ]
+
+
+{% comment %} На говно с > , когда ломается все нахуй в этом классном редакторе {% endcomment %}
+$$[ macro compareNumbers(n, m) ]<!--(return)$['true' if n > m else 'false'](return)-->$$[ endmacro ] 
+
+
+<!-- $$[ if item.OldPrice > item.Price ] -->
+<span class="product__old-price" style="color: #737373; font-size: 12px; line-height: 12px; text-decoration: line-through;"> 
+$[item.OldPrice|round]&nbsp;руб. </span>
+<!-- $$[ endif ] -->
+
+<tr>
+	<td class="product__title" align="left" valign="top" style="padding: 0; line-height: normal; height: 32px; text-align: left;" height="32">
+		<a href="{{item.Url}}" target="_blank" style="font-size: 13px; font-weight: bold; line-height: 1; color: #737373; text-decoration: none;" data-link="709622">
+		$$[ for catId in item.CategoryIds ]
+		$$[ if catId == 1456 ]Сумка$$[ endif ]
+		$$[ if catId == 123 ]Обувь мужская$$[ endif ]
+		$$[ if catId == 124 ]Обувь женская$$[ endif ]
+		$$[ if catId == 1493 ]Аксессуар$$[ endif ]
+		$$[ endfor ] $[item.Vendor]
+		</a>
+	</td>
+</tr>
+
+*мы исправили отображение скидки и теперь можем округлять ее до десятых. Комментарий от Вовы:
+Использовал следующее:
+
+$$[ set Discount = (100 - (item.Price / item.OldPrice) * 100) | round(2)]
+$$[ set DecimalDiscount = Discount % 1 ]
+$$[ set DiscountFin = Discount - DecimalDiscount ]
+
+
+
+{% comment %} Проверка количества товаров в алгоритме {% endcomment %}
+$$[ set algorithmSize = 0 ] 
+$$[ for item in get_scenario_recommendations(scenario="AbandonedBasket")[:3] ] 
+$$[ if item.Name ] $$[ set algorithmSize = algorithmSize + 1 ] $$[ endif ]
+<!-- $$[ if algorithmSize > 0 and loop.last == true ] -->
+<table class="products outer">
+	<tr>
+		<td class="products__title" align="center">
+			Заголовок блока
+		</td>
+	</tr>
+	<tr>
+		<td class="row products__items" align="center">
+			Остальльная часть
+		</td>
+	</tr>
+</table>
+<!-- $$[ endif ] -->
+$$[ endfor ]
+
+{% comment %} Подсчет рейтинга. Этот код использует макрос generate_iterable_string для получения строки определенной длины {% endcomment %}
+<table class="product">
+	<tr>
+		<td class="product__raiting">
+			<!-- $$[ if item.Params['Рейтинг'] and item.Params['Рейтинг'] > 0 ] -->
+			$$[ set product_raiting = item.Params['Рейтинг'] ~ '' ]
+			$$[ set splited_raiting = product_raiting.split('.') ]
+			$$[ set splited_raiting_enough = check_count(splited_raiting, 1) ]
+			$$[ set list_integer_helper = generate_iterable_string(5, splited_raiting[0]) ]
+			$$[ set list_decimal_helper = generate_iterable_string(10, splited_raiting[1]) if check_count(splited_raiting, 1) == 'True' else '' ]
+			$$[ set integer_part = 0 ]
+			$$[ for i in list_integer_helper ]
+			$$[ set integer_part = integer_part + 1 ]
+			<img src="#" alt="F">
+
+			$$[ if loop.last == true ]
+			$$[ set decimal_part = 0 ]
+			$$[ for j in list_decimal_helper ]
+			$$[ set decimal_part = decimal_part + 1 ]
+
+			$$[ if loop.last == true]
+			<!-- $$[ if integer_part < 5 ] -->
+			<!-- $$[ if decimal_part < 7 and decimal_part != 0 ] -->
+			<img src="#" alt="H (Half)">
+			<!-- $$[ endif ] -->
+			<!-- $$[ if decimal_part > 6 ] -->
+			<img src="#" alt="F (Full)">
+			<!-- $$[ endif ] -->
+			<!-- $$[ endif ] -->
+			$$[ endif ]
+
+			$$[ endfor ]
+			$$[ endif ]
+			
+			$$[ endfor ]
+			<!-- $$[ else ] -->
+			&nbsp;
+			<!-- $$[ endif ] -->
+			{% comment %} Вывод: FFFFH {% endcomment %}
+		</td>
+	</tr>
+</table>
+
+/-- Проверка на достаточное кол-во символов/элементов в строке/списке --/
+{% comment %} 
+- iterable_type {string} - строка или список, которые необходимо проверить.
+- lower_limit {number} - минимальный порог, чтобы получить значение 'достаточно'.
+
+Вывод {string}: 'True' | 'False'.
+{% endcomment %}
+$$[ macro check_length(iterable_type, lower_limit=0) ]
+$$[ set iterator = 0 ]
+$$[ set enough = false ]
+$$[ for l in iterable_type ]
+$$[ set iterator = iterator + 1 ]
+$$[ if iterator == lower_limit + 1 or loop.last == true ]
+$$[ set enough = iterator == lower_limit + 1 ]$[enough]$[ break ]
+$$[ endif ]
+$$[ endfor ]
+$$[ endmacro ]
+
+$$[ set title = 'Наши рекомендации:' ]
+$$[ set algorithm = "AbandonedBasket" ]
+$$[ set limit = 3 ]
+$$[ set enoughItems = check_length(get_scenario_recommendations(scenario=algorithm)[:limit], 2) ]
+$$[ if enoughItems == 'True' ]
+<table class="products outer">
+	$$[ if check_length(title) == 'True' ]
+	<tr>
+		<td class="products__title" align="center">
+			<p>$[title]</p>
+		</td>
+	</tr>
+	$$[ endif ]
+	<tr>
+		<td class="row products__items" align="center">
+			Остальльная часть
+		</td>
+	</tr>
+</table>
+$$[ endif ]
+
+
+/-- Вывод вспомогательной строки с определенной длинной --/
+
+### Причины возникновения макроса:
+- Функция range() не принимает в себя строковые числа: range(0, '10');
+- Функция изменения типа на int не работает. Также не преобразовать неявно строковое число в int: '10' + 0;
+- Возможность преобразовывать int число в строковое число: 10 ~ ''.
+
+### Преимущества:
+- Можно использовать для преобразования строкового числа в нестроковое.
+
+{% comment %}
+- upper_limit {number}   - максимальная длина строки.
+- string_number {string} - строковое число, который задает сколько должно быть символов в строке.
+
+Вывод {string}: '<строка с заданным количеством символов>'
+{% endcomment %}
+$$[ macro generate_iterable_string(upper_limit=10, string_number='7') ]
+$$[ set list_helper = '' ]
+$$[ set done = false ]
+$$[ for i in range(0, upper_limit) ]
+$$[ if i ~ '' != string_number and done != true ]
+$$[ set list_helper = list_helper ~ 'i' ]
+$$[ else ]
+$$[ set done = true ]
+$$[ endif ]
+$$[ if loop.last == true ]$[list_helper]$$[ endif ]
+$$[ endfor ]
+$$[ endmacro ]
+
+=== Пример: ===
+$$[ set helper_string = get_iterable_string(100, '7') ] --> 'iiiiiii'
+
+$$[ set helper_string_number = 0 ]
+$$[ for l in helper_string ]
+$$[ set helper_string_number = helper_string_number + 1 ]
+$$[ endfor ]
+
+$[helper_string_number] --> 7 (преобразовали строковое число в int)
+
+
+
+/-- Сравнение чисел любового типа --/
+
+### Причины возникновения макроса:
+- Нет возможности сравнивать строковые и нестроковые числа;
+- Нет возможности преобразовывать строковые в нестроковые числа.
+
+### Недостатки:
+- Нельзя сравнивать вещественные числа.
+
+{% comment %}
+- a {string/number} - первое число;
+- b {string/number} - второе число;
+- range_limit {tupple/list} - кортеж/список диапозона, в которые входят первые два числа.
+
+Вывод {string}: 'a' | 'b' | 'ab'
+{% endcomment %}
+$$[ macro compare_numbers(a, b, range_limit=(-100, 100)) ]
+$$[ set number_a = 0 ]
+$$[ set number_b = 0 ]
+$$[ set counter = range_limit[0] ]
+$$[ for n in range(range_limit[0], range_limit[1]) ]
+$$[ set counter = counter + 1 ]
+$$[ set number_a = counter if counter ~ '' == a ~ '' else number_a ]
+$$[ set number_b = counter if counter ~ '' == b ~ '' else number_b ]
+$$[ if loop.last == true ]
+$$[ if number_a != number_b ]
+$$[ set iterator = range_limit[1] ]
+$$[ set checked = false ]
+$$[ for m in range(range_limit[0], range_limit[1]) ]
+$$[ if number_a == iterator and checked != true ]a$$[ set checked = true ]$$[ endif ]
+$$[ if number_b == iterator and checked != true ]b$$[ set checked = true ]$$[ endif ]
+$$[ set iterator = iterator - 1 ]
+$$[ endfor ]
+$$[ else ]
+ab
+$$[ endif ]
+$$[ endif ]
+$$[ endfor ]
+$$[ endmacro ]
+
+=== Пример: ===
+$$[ set max_number = compare_numbers('-10', 18, (-20, 20)) ]
+$$[ if max_number == 'a' ]
+... 
+$$[ endif ]
+$$[ if max_number == 'b' ] <--
+... 
+$$[ endif ]
+$$[ if max_number == 'ab' ]
+... 
+$$[ endif ]
+
+
+/-- Получение длины строки/список/кортеж --/
+$$[ macro slt_length(slt) ]
+$$[ set iterator = 0 ]
+$$[ if slt ]
+$$[ for n in slt ]
+$$[ set iterator = iterator + 1 ]
+$$[ if loop.last == true ]$[iterator]$$[ endif ]
+$$[ endfor ]
+$$[ else ]
+0
+$$[ endif ]
+$$[ endmacro ]
+
+
+/-- Реверс строки/списка/кортежа --/
+
+$$[ set some_sting = 'Jinja' ]
+$[some_sting[::-1]] --> 'ajniJ'
+
+*reverse не работает.
+
+
+/-- Форматирование цены --/
+{% comment %} ===== ИСПОЛЬЗУЕМЫЕ МАКРОСЫ ===== {% endcomment %}
+- compare_numbers
+- slt_length
+- generate_iterable_string
+{% comment %} ===== {% endcomment %}
+
+$$[ macro format_price(price, thousand_separator=' ', decimal_separator=',', decimal_places=0)]
+$$[ set formatted_price = '' ]
+$$[ set price_parts = (price ~ '').split('.') ]
+$$[ set iterator = 0 ]
+$$[ for n in price_parts[0][::-1] ]
+$$[ set iterator = iterator + 1 ]
+$$[ set thousand_part = iterator % 3 ]
+$$[ set formatted_price = (formatted_price ~ n ~ thousand_separator) if thousand_part == 0 else (formatted_price ~ n) ]
+$$[ if loop.last == true ]
+$$[ if decimal_places != 0 ]
+$$[ set decimal_part = price_parts[1] if compare_numbers(slt_length(price_parts), 1, (0, 5)) == 'a' else '' ]
+$$[ set decimal_helper = generate_iterable_string(10, slt_length(decimal_part)) ]
+$$[ set decimal_part_length = 0 ]
+$$[ for n in decimal_helper ]
+$$[ set decimal_part_length = decimal_part_length + 1 ]
+$$[ if loop.last == true ]
+$$[ set length_decimal_opts = compare_numbers(slt_length(decimal_part), decimal_places, (0, 5)) ]
+$$[ if length_decimal_opts == 'b' ]
+$$[ for m in range(0, (decimal_places - decimal_part_length)) ]
+$$[ set decimal_part = decimal_part ~ '0' ]
+$$[ if loop.last == true ]
+$[formatted_price[::-1] ~ decimal_separator ~ decimal_part]
+$$[ endif ]
+$$[ endfor ]
+$$[ endif ]
+$$[ if length_decimal_opts == 'ab']
+$[formatted_price[::-1] ~ decimal_separator ~ decimal_part]
+$$[ endif ]
+$$[ if length_decimal_opts == 'a' ]
+$$[ set decimal_part = '' ]
+$$[ set iterator = 0 ]
+$$[ for s in price_parts[1] ]
+$$[ set iterator = iterator + 1 ]
+$$[ set decimal_part = decimal_part ~ s ]
+$$[ if iterator == decimal_places ]$[formatted_price[::-1] ~ decimal_separator ~ decimal_part]$$[ endif ]$$[ endfor ]$$[ endif ]$$[ endif ]$$[ endfor ]$$[ else ]
+$[formatted_price[::-1]]
+$$[ endif ]$$[ endif ]$$[ endfor ]
+$$[ endmacro ]
+
+
+/-- Разделение числа на разряды --/
+{% comment %} ===== ИСПОЛЬЗУЕМЫЕ МАКРОСЫ ===== {% endcomment %}
+- check_length
+- slt_length
+{% comment %} ===== {% endcomment %}
+$$[ macro thousands_format(number, current_decimal_separator='.', separator=' ') ]
+$$[ set formatted_number = '' ]
+$$[ set splitted_number = (number ~ '').split(current_decimal_separator) ]
+$$[ set counter = 0 ]
+$$[ for n in splitted_number[0][::-1] ]
+$$[ set counter = counter + 1 ]
+$$[ set thousand_part = counter % 3 ]
+$$[ set formatted_number = (formatted_number ~ n ~ separator) if thousand_part == 0 else (formatted_number ~ n) ]
+$$[ if loop.last == true ]
+$[formatted_number[::-1] ~ current_decimal_separator ~ splitted_number[1] if check_length(slt_length(splitted_number), 1) == 'True' else formatted_number[::-1]]
+$$[ endif ]
+$$[ endfor ]
+$$[ endmacro ]
+
+/-- Фильтрация дублей между блоками --/
+
+{% comment %} ===== ИСПОЛЬЗУЕМЫЕ МАКРОСЫ ===== {% endcomment %}
+- check_length
+{% comment %} ===== {% endcomment %}
+
+{% comment %} ===== Вариант 1 ===== {% endcomment %}
+$$[ macro get_rendered_products(algorithm="AbandonedBasket", limit=4) ]
+$$[ set products_ids = '' ]
+$$[ for item in get_scenario_recommendations(scenario=algorithm)[:limit] ]
+$$[ set products_ids = products_ids ~ item.ItemId ~ (',' if loop.last != true else '') ]
+$$[ if loop.last == true ]$[products_ids]$$[ endif ]
+$$[ endfor ]
+$$[ endmacro ]
+{% comment %} ===== {% endcomment %}
+
+{% comment %} ===== Вариант 2 (Не работает) ===== {% endcomment %}
+$$[ macro get_rendered_products(algorithm="AbandonedBasket", limit=4) ]
+$$[ set products_ids = get_scenario_recommendations(scenario=algorithm)[:limit] | map(attribute='ItemId') | join(',') ]$[products_ids]
+$$[ endmacro ]
+{% comment %} ===== {% endcomment %}
+
+
+$$[ macro get_rendered_products(algorithm="AbandonedBasket", limit=4) ]
+$$[ set products_ids = '' ]
+$$[ for item in get_scenario_recommendations(scenario=algorithm)[:limit] ]
+$$[ set products_ids = products_ids ~ item.ItemId ~ (',' if loop.last != true else '') ]
+$$[ if loop.last == true ]$[products_ids]$$[ endif ]
+$$[ endfor ]
+$$[ endmacro ]
+
+$$[ set Products2X_1__Title = 'Блок 1' ]
+$$[ set algorithm = "AbandonedBasket" ]
+$$[ set limit = 6 ]
+$$[ set rendered_ids = get_rendered_products(limit=limit) ]
+
+$$[ if check_length(get_scenario_recommendations(scenario=algorithm)[:limit]) == 'True' ]
+<table class="products1X outer">
+	$$[ if check_length(Products2X__Title) == 'True' ]
+	<tr>
+		<td class="products__title" align="center">
+			<p>$[Products2X__Title]</p>
+		</td>
+	</tr>
+	$$[ endif ]
+	<tr>
+		<td class="products__items" align="center">
+			$$[ iterator = 0 ]
+			$$[ set inrow = 3 ]
+			$$[ for item in get_scenario_recommendations(scenario=algorithm) if rendered_ids.find(item.ItemId ~ '') != -1 ]
+
+			$$[ set iterator = iterator + 1 ]
+			$$[ if iterator == 7 ]$[ break ]$$[ endif ]
+			$$[ set mod = iterator % inrow ]
+
+			...
+			
+		</td>
+	</tr>
+</table>
+
+
+$$[ set Products2X_2__Title = 'Блок 2' ]
+$$[ set algorithm = "BasicPopular" ]
+$$[ set limit = 6 ]
+
+$$[ set algorithmSize = 0 ]
+$$[ for item in get_scenario_recommendations(scenario=algorithm) ]
+$$[ set algorithmSize = (algorithmSize + 1) if rendered_ids.find(item.ItemId ~ '') == -1 else algorithmSize ]
+
+$$[ if loop.last and check_length(algorithmSize) == 'True' ]
+<table class="products1X outer">
+	$$[ if check_length(Products2X__Title) == 'True' ]
+	<tr>
+		<td class="products__title" align="center">
+			<p>$[Products2X__Title]</p>
+		</td>
+	</tr>
+	$$[ endif ]
+	<tr>
+		<td class="products__items" align="center">
+			$$[ iterator = 0 ]
+			$$[ set inrow = 3 ]
+			$$[ for item in get_scenario_recommendations(scenario=algorithm) if rendered_ids.find(item.ItemId ~ '') == -1 ]
+
+			$$[ set iterator = iterator + 1 ]
+			$$[ if iterator == limit + 1 ]$[ break ]$$[ endif ]
+			$$[ set mod = iterator % inrow ]
+
+			...
+			
+		</td>
+	</tr>
+</table>
+$$[ endif ]
+
+$$[ endfor ]
+
+
+/-- Рабочие и не рабочие методы --/
+{% comment %} ===== Рабочие методы ===== {% endcomment %}
+
+	[+] split(',')
+	[+] range(0, 10)
+	[+] str.find('sub'[, start[, end]]) --> int
+	[+] str.zfill(width)
+
+	[-] map(attribute='ItemId')
+	[-] select('equalto', 3)
+
+	[?] random
+	[?] join
+	[?] list
+	[?] str.strip([chars])
+	[?] str.replace(old, new[, count])
+	
+{% comment %} ===== {% endcomment %}

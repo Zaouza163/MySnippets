@@ -1,0 +1,36 @@
+{%- comment -%}Добавление 00 ил 0 в конец цены{%- endcomment -%}
+
+{% capture itemPrice %}{{item.Price}}{% endcapture %}
+{% assign itemPrice = itemPrice | replace: '\.', ','%}
+{% assign itemPriceArr = itemPrice | split: ',' %}
+{% assign itemPriceArrSize = itemPriceArr | size %}
+{% if itemPriceArrSize > 1 %}
+  {% if 2 > itemPriceArr[1].size %}
+    {% capture itemPrice %}{{itemPrice}}0{% endcapture %}
+  {% endif %}
+{% else %}
+  {% capture itemPrice %}{{itemPrice}},00{% endcapture %}
+{% endif %}
+
+
+{% capture itemPrice %}{{item.Price}}{% endcapture %}
+{% assign itemPriceArr = itemPrice | split: '.' %}
+{% assign itemPriceArrSize = itemPriceArr | size %}
+{% if itemPriceArrSize > 1 %}
+  {% if 2 > itemPriceArr[1].size %}
+    {% capture itemPrice %}{{itemPrice}}0{% endcapture %}
+  {% endif %}
+{% else %}
+  {% capture itemPrice %}{{itemPrice}}.00{% endcapture %}
+{% endif %}
+{% comment %} OldPrice {% endcomment %}
+{% capture itemOldPrice %}{{item.OldPrice}}{% endcapture %}
+{% assign itemOldPriceArr = itemOldPrice | split: '.' %}
+{% assign itemOldPriceArrSize = itemOldPriceArr | size %}
+{% if itemOldPriceArrSize > 1 %}
+  {% if 2 > itemOldPriceArr[1].size %}
+    {% capture itemOldPrice %}{{itemOldPrice}}0{% endcapture %}
+  {% endif %}
+{% else %}
+  {% capture itemOldPrice %}{{itemOldPrice}}.00{% endcapture %}
+{% endif %}

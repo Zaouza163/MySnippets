@@ -1,0 +1,11 @@
+{% comment %} /-- Получение рандомного значения из заданного диапазона --/ {% endcomment %}
+{% comment %}
+- значение1 - начальное значение диапазона
+- значение2 - конечное значение диапазона
+{% endcomment %}
+{% assign numbers = '' %}
+{% for i in (значение1..значение2) %}
+{% capture numbers %}{{numbers}},{{i}}{% endcapture %}
+{% endfor %}
+{% assign numbers = numbers | split: ',' %}
+{% assign randomNumber = numbers | randomelements: 1 %}

@@ -1,0 +1,198 @@
+<style type="text/css">
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"]{height:0;visibility:hidden;overflow:hidden;position:relative;display:block;width:100%;min-width:0;flex-grow:1;font-family:inherit;box-sizing:border-box}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"].rr-active{height:auto;visibility:visible;overflow:visible;margin: 2rem 0;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] *{outline:none;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-items{position:relative;overflow:hidden;padding:0;z-index:1;display: flex;justify-content: center;align-items: center;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item{position: relative;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image{width:100%;outline:none;display: inline-block;}
+.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image img{width:auto;height:auto;max-width:100%;max-height:100%;vertical-align:middle;margin:0 auto;outline:none}
+
+</style>
+
+<div
+  class="rr-widget rr-widget-{{data-retailrocket-markup-block}}"
+  data-algorithm="popular"
+  data-algorithm-argument="0"
+  data-template-param-header-text=""
+  data-template-param-number-of-items="1"
+  data-template-param-item-image-width="0"
+  data-template-param-item-image-height="0"
+  data-on-pre-render="retailrocket['store{{data-retailrocket-markup-block}}'].preRenderFn(this, data, renderFn)"
+  data-on-post-render="retailrocket['store{{data-retailrocket-markup-block}}'].postRenderFn(this)"
+  data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+  data-s="{{data-retailrocket-markup-block}}"
+>
+</div>
+
+<script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
+  <div class="rr-items">
+    <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
+      <div class="rr-item" data-is-sp="<%= isSP %>" data-item-id="<%= bannerId %>">
+        <a class="rr-item__image" href="<%= targetUrl %>" onclick="rrApi.recomMouseDown(<%=bannerId%>, { suggester: '<%=suggesterId%>', methodName: '<%=algorithm%>' });">
+          <img src="<%= pictureUrl %>" alt="br">
+        </a>
+      </div>
+    <% } %>
+  </div>
+</script>
+
+<script type="text/javascript">
+  (function (retailrocket) {
+    'use strict';
+
+    var recomTrackSetting = {
+      nameTrack: '',
+      abSegment: '',
+      check: false,
+      listTrack: function()
+      {
+        return [this.nameTrack, this.nameTrack + 'Landing page - Supermarket Banner'];
+      },
+    };
+    var impressionContentId = null;
+
+    function setStatisticsRender(recoms) {
+      if (recomTrackSetting.check) {
+        var itemsId = recoms.map(function(item) { return item.bannerId });
+
+        recomTrackSetting.listTrack().forEach(function(track) {
+          rrApiOnReady.push(function() {
+            rrApi.recomTrack(
+              '{{data-retailrocket-markup-block}}',
+              0,
+              [itemsId],
+              {
+                eventType: 'blockRender',
+                abtest: recomTrackSetting.abSegment,
+                algorithm: track
+              }
+            );
+          });
+        });
+      }
+    }
+
+    function setStatisticsShow(recomIds) {
+      if (recomTrackSetting.check) {
+        recomTrackSetting.listTrack().forEach(function(track) {
+          rrApiOnReady.push(function() {
+            rrApi.recomTrack(
+              '{{data-retailrocket-markup-block}}',
+              0,
+              [recomIds],
+              {
+                eventType: 'blockView',
+                abtest: recomTrackSetting.abSegment,
+                algorithm: track
+              }
+            );
+          });
+        });
+
+        if (impressionContentId !== null) {
+          rrApi.impressionContentViewed({
+            impressionContentId: impressionContentId,
+            onSuccessCallback: function() {}
+          });
+        }
+      }
+    }
+
+    function setStatisticsClick(itemId) {
+      if (recomTrackSetting.check) {
+        recomTrackSetting.listTrack().forEach(function(track) {
+          rrApiOnReady.push(function() {
+            rrApi.recomTrack(
+              '{{data-retailrocket-markup-block}}',
+              0,
+              [],
+              {
+                eventType: 'blockClick',
+                clickedItem: itemId,
+                abtest: recomTrackSetting.abSegment,
+                algorithm: track
+              }
+            );
+          });
+        });
+
+        if (impressionContentId !== null) {
+          rrApi.impressionContentClicked({
+            impressionContentId: impressionContentId,
+            onSuccessCallback: function() {}
+          });
+        }
+      }
+    }
+
+
+    retailrocket['store{{data-retailrocket-markup-block}}'] = (function () {
+      function preRenderFn(widget, recoms, renderFn) {
+          retailrocket.impression.forAnyPlacements({
+          partnerId: retailrocket.api.getPartnerId(),
+          placementId: '01HWF8Z05Z0JGHBWGW7W27FFX8',
+          session: retailrocket.api.getSessionId(),
+          callbackContents: {
+            'banners': function (content) {
+              var spInfoStr = content.banners.slice(0, 1);
+
+              impressionContentId = content.id;
+
+              recomTrackSetting.check = true;
+              recomTrackSetting.nameTrack = 'SP';
+              spInfoStr.forEach(function (item, i) {
+                item.bannerId = i
+                item.isSP = true;
+              });
+
+              setStatisticsRender(spInfoStr);
+              continueRender(widget, spInfoStr, renderFn);
+            },
+            'empty': function () {}
+          },
+        });
+      }
+
+      function continueRender(widget, recoms, renderFn) {
+        if (recoms.length > 0) {
+          renderFn(recoms);
+        }
+      }
+
+      function postRenderFn(widget) {
+        var spProducts = widget.querySelectorAll('.rr-item[data-is-sp=true]')
+        var itemsId = [];
+        var isShow = false;
+        
+        spProducts.forEach(function(item) {
+          itemsId.push(item.getAttribute('data-item-id'));
+          item.setAttribute(
+            'onmousedown', 
+            "retailrocket['store{{data-retailrocket-markup-block}}'].setStatisticsClick(" + item.getAttribute('data-item-id') + ")"
+          );
+        });
+
+        widget.classList.add('rr-active');
+
+        window.addEventListener('scroll', function () {
+          if (!isShow) {
+            var  widgetScrollTop = widget.getBoundingClientRect()['top'];
+
+            if (widgetScrollTop < widget.clientHeight) {
+              setStatisticsShow(itemsId);
+              isShow = true;
+            }
+          }
+        });
+      }
+
+      return {
+        postRenderFn,
+        preRenderFn,
+        setStatisticsClick
+      };
+    }());
+
+    retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}');
+  }(retailrocket));
+</script>

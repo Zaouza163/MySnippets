@@ -1,0 +1,620 @@
+<style type="text/css">
+  div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]{max-width:100%}
+  .rr-widget--flatbp[data-s="{{data-retailrocket-markup-block}}"]{margin-bottom:3rem;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"]{height:0;visibility:hidden;overflow:hidden;position:relative;display:block;width:100%;font-family:inherit;box-sizing:border-box}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"].rr-active{height:auto;visibility:visible;overflow:visible}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] *{outline:none}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__title{font-size:37px;font-weight:400;color:#333;text-align:center;font-family:glober-light!important;line-height:1.16;letter-spacing:-1px;margin-bottom:40px}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"].darkthemepromo .rr-widget__title{color:#fff!important;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-items{position:relative;padding:0;z-index:5;overflow:hidden}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image{width:100%;outline:none;margin-bottom:10px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image img{width:auto;height:auto;max-width:100%;max-height:100%;vertical-align:middle;margin:0 auto;outline:none}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-swiper-wrapper{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);position:relative;width:100%;height:100%;z-index:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform;-webkit-box-sizing:content-box;box-sizing:content-box}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-content__container{text-align:left!important;margin-top: auto;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-swiper-slide{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:100%;height:auto;position:relative;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item{height:100%;display:flex;flex-direction:column;text-align:center;border:1px solid #f6f7f7;padding:17px 27px 16px;border-radius:4px;background:#fff}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__info{text-decoration:none;outline:none}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title{ font-family: glober-bold;border-bottom:1px solid rgba(80,24,91,.3);text-align:left;font-size:18px;font-weight:600;line-height:20px;color:#560551;overflow:hidden;outline:none;margin-top:20px;height:40px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title:hover{text-decoration:none;cursor:pointer;color:#1d2533;color:#CC0862;border-bottom-color:rgba(204,8,98,.3)}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-value{position:relative}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__old-price{color:#969dab;font-size:15px;text-decoration:line-through;margin-bottom:3px;padding-left:2px;display:inline-block}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price.rr-old{color:#e1085d!important}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price{position:relative;font-size:30px;font-weight:400;display:inline-block;font: 30px/1em glober-book;color: #2a94e5;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__vendor{min-height:22px;font-size:14px;margin-top:10px;cursor:pointer}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__acticle{min-height:44px;font-size:14px;margin:10px 0;cursor:pointer}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-currency{right:-15px;top:-9px;position:absolute}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-currency::before{content:'₽';font-size:16px}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-price__wrapper{cursor:pointer;display:flex;justify-content:space-between;width:100%;padding-bottom:20px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__points{cursor:pointer;padding:5px 9px 0;height:30px;line-height:25px;border-radius:15px;background:#F3F1ED;font-size:18px;color:#4f4a40}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-baloon_happy{z-index:9;position:absolute;top:22px;left:10px;justify-content:flex-end;align-items:center;width:auto;height:32px;min-width:66px;padding:0 8px;background:url(https://ru.siberianhealth.com/shopen/web/bundles/shopenapp/themes/purple/assets/img/os_happy-moments/baloon-happy.svg) no-repeat;background-size:cover;color:#FFF;border-radius:20px;font:18px/1 gerbera-medium;text-align:center;letter-spacing:-.3px;flex-direction:row;display:flex}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-baloon_happy:after{content:"";position:relative;display:inline-block;width:18px;height:18px;margin:0 0 0 .4em;border-radius:50%;background:url(https://ru.siberianhealth.com/shopen/web/bundles/shopenapp/themes/purple/assets/img/os_happy-moments/snowflake.svg) center no-repeat #C65CC0;background-size:10px;box-shadow:0 .5px 5px #C206B8}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-baloon_happy:hover .rr-tooltip__text{display:block}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-tooltip__text{display:none;top:calc(100% + 15px);max-width:265px;line-height:1.6;text-align:left;box-shadow:0 2px 30px rgba(0,0,0,.25);padding:24px 30px;background:#FFF;color:#333;width:max-content;margin-top:5px;border-radius:4px;font-family:glober-semibold;font-size:14px;white-space:normal;cursor:auto;z-index:50;transform:translateX(-50%);left:50%;position:absolute}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-tooltip__text:after{position:absolute;left:0;bottom:100%;width:100%;height:30px;content:''}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-tooltip__text:before{bottom:100%;content:'';width:0;height:0;border-style:solid;border-width:0 5px 5px;border-color:transparent transparent #536275;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:16px solid #FFF;transform:translateX(-50%);left:50%;position:absolute}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-tooltip__info{font-family:glober-regular;margin-bottom:15px;line-height:1.5em;color:#000}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-os-tooltip__link{border-bottom:1px solid rgba(255,255,255,.5);cursor:pointer;color:#3797E1;border-color:#3797E1}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-label__container{cursor:pointer;position:absolute;right:19px;top:17px;z-index:9;max-width:100%;display:flex;flex-direction:column;align-items:flex-end}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-label__container span{padding:5px 10px;height:30px;background-color:rgba(255,255,255,.7);white-space:nowrap;text-transform:uppercase;border-radius:2px;line-height:20px;font-size:14px}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item:hover .rr-product-btn__wrapper{opacity:1;-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item:hover{background-color:#F9F8F6}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-btn__wrapper{opacity:0;position:absolute;top:132px;left:10%;width:80%;z-index:8;-webkit-transition:all ease .1s;-o-transition:all ease .1s;transition:all ease .1s;-webkit-transform:scale3d(.9,.9,1);-moz-transform:scale3d(.9,.9,1);-ms-transform:scale3d(.9,.9,1);transform:scale3d(.9,.9,1)}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product--button__container{display:flex;justify-content:center;min-height:49px;-webkit-transition:all ease .1s;-o-transition:all ease .1s;transition:all ease .1s}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product--button__container button{display:inline-block;overflow:visible;text-decoration:none;cursor:pointer;font:16px/1 glober-regular;transition:all .1s ease-out}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-button__decrease{border-radius:4px 0 0 4px}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-button__decrease:after{content:'-'}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-button__decrease:after,.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-button__increase:after{color:#fff;position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);font-size:33px;line-height:0;padding-top:.2em}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-button__decrease,.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-button__increase{flex:0 0 15%;position:relative;padding:0;margin:0;text-align:center;background:#55d1ff;border:#55d1ff;font-size:0}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-button__add{flex:1 0 70%;display:flex;align-items:center;justify-content:center;margin:0;padding:12px 16px 7px;text-align:center;border-radius:0;border:none;font-size:16px;background-color:#00adee;color:#fff}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-button__add:hover{color:#fff;background-color:#28bff8;border-color:#28bff8}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-binding{pointer-events:none;white-space:normal;line-height:1.1;max-width:100%;word-wrap:break-word;position:relative;vertical-align:top;color:#fff}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-button__increase:hover,.rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-button__decrease:hover{color:#fff;background-color:#28bff8;border-color:#28bff8}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__name-block{text-align:left;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-button__increase{border-radius:0 4px 4px 0}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-button__increase:after{content:'+'}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-params__counter{position:relative;padding-left:13px}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-params__counter:before{content:"\2022";font-size:28px;position:absolute;top:8px;left:0;line-height:0}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-label-hit{margin-bottom:10px;border:2px solid #DED8CE;color:#65625A}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-label-new{border:2px solid #C8E58E;color:#77AA0F}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-item__points sup{position:relative;top:-4px}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-arrow{display:flex;justify-content:center;align-items:center;position:absolute;cursor:pointer;z-index:55;width:48px;height:48px;background-color:#fff;top:50%;border-radius:50%;transition:all .3s ease 0;color:#000;box-shadow: 0 2px 16px rgb(0 0 0 / 15%);user-select:none;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-prev{left:0;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-prev svg{margin-left:5px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-next{right:0;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-next svg{margin-right:5px;}
+  .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-slider-arrow .swiper-button-disabled{opacity:.5}
+  @media (min-width: 1200px) {
+    div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]{max-width:100%;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-prev{left:0;transform:translateX(-50%);}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .swiper-next{right:0;transform:translateX(50%);}
+  }
+  @media (max-width: 992px) {
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-product-btn__wrapper{opacity:1!important;width:100%;position:relative;-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0);top: 0;
+      left: 0;}
+    .rr-widget[data-s="{{data-retailrocket-markup-block}}"] .rr-arrow{display:none;}
+  }
+</style>
+
+<div
+    class="rr-widget rr-widget--flatbp rr-widget-{{data-retailrocket-markup-block}}--relatedToBasket"
+    data-algorithm="popular"
+    data-algorithm-argument="999"
+    data-alg-click="relatedToBasket"
+    data-template-param-header-text="С товарами из вашей корзины также покупают"
+    data-template-param-number-of-items="10"
+    data-template-param-item-image-width="300"
+    data-template-param-item-image-height="300"
+    data-on-pre-render="retailrocket['store{{data-retailrocket-markup-block}}'].preRenderFnFLATBP(this, data, renderFn)"
+    data-on-post-render="retailrocket['store{{data-retailrocket-markup-block}}'].postRenderFn(this)"
+    data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+    data-s="{{data-retailrocket-markup-block}}"
+>
+</div>
+
+<div
+    class="rr-widget rr-widget-{{data-retailrocket-markup-block}}--related"
+    data-algorithm="related"
+    data-algorithm-argument="{{data-product-id}}"
+    data-algorithm-param-stock-id="{{data-stock-id}}"
+    data-algorithm-param-excluded-item-ids="501188,501187,501186,501185,501184,414749"
+    data-alg-click="related"
+    data-template-param-header-text="С этим товаром покупают"
+    data-template-param-number-of-items="10"
+    data-template-param-item-image-width="300"
+    data-template-param-item-image-height="300"
+    data-on-pre-render="retailrocket['store{{data-retailrocket-markup-block}}'].preRenderFn(this, data, renderFn)"
+    data-on-post-render="retailrocket['store{{data-retailrocket-markup-block}}'].postRenderFn(this)"
+    data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+    data-s="{{data-retailrocket-markup-block}}"
+>
+</div>
+
+<script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
+  <div class="rr-widget__title">
+    <%=(headerText)%>
+  </div>
+  <div class="rr-items rr-swiper-container">
+    <div class="rr-swiper-wrapper">
+      <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
+      <div class="rr-swiper-slide" data-index="<%=i%>">
+        <div class="rr-item">
+          <div class="rr-item__image">
+            <% if(Params['chips'] > 0) { %>
+            <div class="rr-product-baloon_happy ">
+              <%=Params['chips']%>
+              <div class="rr-tooltip__text">
+                <p class="rr-tooltip__info">Копи счастливые фишки и обменивай их на продуктовые сертификаты в личном кабинете Программы. </p>
+                <a href="/ru/backoffice/happy/" class="rr-item__info rr-os-tooltip__link"> Подробнее о программе </a>
+              </div>
+            </div>
+            <% } %>
+            <div class="rr-label__container">
+              <% if (Params['hit']) { %> <span class="rr-label-hit">Хит</span> <% } %>
+              <% if (Params['new']) { %> <span class="rr-label-new">Новинка</span> <% } %>
+            </div>
+            <a class="rr-item__info" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });retailrocket["store{{data-retailrocket-markup-block}}"].eventClickGa();retailrocket["store{{data-retailrocket-markup-block}}"].setStatisticsClick(this, <%=ItemId%>);'>
+              <img src="https://cdn.retailrocket.ru/api/1.0/partner/<%=partnerId%>/item/<%=ItemId%>/picture/?format=jpg&width=<%=itemImageWidth%>&height=<%=itemImageHeight%>&scale=both">
+            </a>
+          </div>
+          <div class="rr-content__container">
+            <div class="rr-item__name-block">
+              <a class="rr-item__info rr-item__title" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });retailrocket["store{{data-retailrocket-markup-block}}"].eventClickGa();retailrocket["store{{data-retailrocket-markup-block}}"].setStatisticsClick(this, <%=ItemId%>);'>
+                <%=Name %>
+              </a>
+              <div class="rr-item__vendor"><%=Vendor %></div>
+              <div class="rr-item__acticle">#<%=Params['vendorCode'] %> <span class="rr-params__counter"><%=Params['amount']%> </span></div>
+            </div>
+            <div class="rr-price__wrapper">
+              <div class="rr-item__block-price">
+                <% if (OldPrice > Price) { %>
+                  <sup><div class="rr-item__old-price"> <span class="rr-item__old-price-value"><%= retailrocket.widget.formatNumber(OldPrice, '.', ' ', 0) %></span></div></sup>
+                  <div class="rr-item__price rr-old"> <span class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, '.', ' ', 0) %></span> <span class="rr-item__price-currency"></span> </div>
+                <% } else { %>
+                  <div class="rr-item__price "> <span class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, '.', ' ', 0) %></span> <span class="rr-item__price-currency"></span> </div>
+                <% } %>
+              </div>
+              <div class="rr-item__points"><%=Params['points']%><sup>б.</sup></div>
+            </div>
+            <div class="rr-product-btn__wrapper">
+              <div class="rr-product--button__container">
+                <button class="rr-product-button__decrease"></button>
+                <button class="rr-product-button__add" onclick='retailrocket["store{{data-retailrocket-markup-block}}"].rrAddToBasket(<%=ItemId%>, this);rrApi.recomAddToCart(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });retailrocket["store{{data-retailrocket-markup-block}}"].setStatisticsClick(this, <%=ItemId%>);' counter="1"><span class="rr-binding">В корзину 1&nbsp;шт.</span></button>
+                <button class="rr-product-button__increase"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+
+  <% if (screen.width > 500) { %>
+  	<% if (items.length > 4) {%>
+    	<div class="rr-slider-arrow">
+          <a class="rr-arrow swiper-prev"><svg width="20" height="20"><use xlink:href="/shopen/web/bundles/shopenapp/OS/assets/img/sprites/svg/sprite.symbol.svg?7af3748183addad60fdcd6fe0970905b#arrow_left"></use></svg></a>
+          <a class="rr-arrow swiper-next"><svg width="20" height="20"><use xlink:href="/shopen/web/bundles/shopenapp/OS/assets/img/sprites/svg/sprite.symbol.svg?7af3748183addad60fdcd6fe0970905b#arrow_right"></use></svg></a>
+        </div>
+    <% } %>
+  <% } else { %>
+  	<% if (items.length > 2) {%>
+    	<div class="rr-slider-arrow">
+          <a class="rr-arrow swiper-prev"><svg width="20" height="20"><use xlink:href="/shopen/web/bundles/shopenapp/OS/assets/img/sprites/svg/sprite.symbol.svg?7af3748183addad60fdcd6fe0970905b#arrow_left"></use></svg></a>
+          <a class="rr-arrow swiper-next"><svg width="20" height="20"><use xlink:href="/shopen/web/bundles/shopenapp/OS/assets/img/sprites/svg/sprite.symbol.svg?7af3748183addad60fdcd6fe0970905b#arrow_right"></use></svg></a>
+        </div>
+    <% } %>
+  <% } %>
+</script>
+
+<script type="text/javascript">
+  (function (retailrocket) {
+    'use strict';
+
+    var waitFor = function (exitCondition, callback, force, sec = 100) {
+      var checkCount = sec;
+      var timeout = 1000;
+
+      (function check() {
+        var result = exitCondition();
+        if (result) {
+          callback(result);
+          return;
+        }
+
+        if (checkCount === 0) {
+          if (force) {
+            callback();
+          }
+          return;
+        }
+
+        checkCount -= 1;
+        setTimeout(check, timeout);
+      }());
+    };
+
+    var SwiperModel = function (setting) {
+      var $widget = setting.widget;
+      var swiperSeector = '.rr-swiper-container';
+      var source = 'https://rrstatic.retailrocket.net/widget/plugins/rrswiper/rrswiper.min.js';
+      var itemsCount = $widget.getAttribute('data-number-of-rendered-items');
+
+      function checkloop(paramsSlider) {
+        var modSetting = paramsSlider;
+
+        if (modSetting.loop == true) {
+          for (var point in modSetting.breakpoints) {
+            if (itemsCount <= modSetting.breakpoints[point].slidesPerView) {
+              modSetting.breakpoints[point].loop = false;
+            } else {
+              modSetting.breakpoints[point].loop = true;
+            }
+          }
+        }
+
+        return modSetting;
+      }
+
+      function render(swiperLibrary) {
+        var SwiperParams = checkloop(setting.settingSwiper);
+        var $rrContainer = $widget.querySelector(swiperSeector);
+        var rrSwiper = swiperLibrary == 'RRSwiper' ? new RRSwiper($rrContainer, SwiperParams) : new Swiper($rrContainer, SwiperParams);
+
+        rrSwiper
+          .on('init', function () {
+            var $imgError = $widget.querySelectorAll('.retailrocket-item:not(.swiper-slide-duplicate) img');
+            var counter = 0;
+            var indexImg = [];
+
+            $imgError.forEach(function (img) {
+              img.onerror = function () {
+                var $slideItem = img.closest('.rr-swiper-slide');
+                var $slideSiblings = $slideItem.parentNode.querySelectorAll('.rr-swiper-slide:not(.swiper-slide-duplicate)');
+                indexImg.push($slideItem.getAttribute('data-index'));
+
+                if ($imgError.length == counter) {
+                  rrSwiper.removeSlide(indexImg);
+                }
+              };
+              counter++;
+            });
+            $widget.classList.add('rr-active');
+          })
+          .on('observerUpdate', function () {
+            rrSwiper.resize.resizeHandler();
+          });
+        rrSwiper.init();
+      }
+
+      function getScript() {
+        var swiperJs = document.createElement('script');
+        var getElemScript = document.getElementsByTagName('script')[0];
+        swiperJs.async = 1;
+
+        if (!window.Swiper && !window.RRSwiper) {
+          swiperJs.onload = swiperJs.onreadystatechange = function(_, isAbort) {
+            if (isAbort || !swiperJs.readyState || /loaded|complete/.test(swiperJs.readyState) ) {
+              swiperJs.onload = swiperJs.onreadystatechange = null;
+              swiperJs = undefined;
+
+              if (!isAbort) setTimeout(render('RRSwiper'), 0);
+            }
+          };
+
+          swiperJs.src = source;
+          getElemScript.parentNode.insertBefore(swiperJs, getElemScript);
+        } else {
+          var versionSwiper = window.hasOwnProperty('RRSwiper') ? 'RRSwiper' : 'Swiper';
+          render(versionSwiper);
+        }
+      }
+
+      this.getScript = getScript;
+    };
+
+    if (!('duplicates' in retailrocket.modules)) {
+      retailrocket.setModule('duplicates', [], function () {
+        var savedIds = [];
+        var paramName = 'ItemId';
+
+        function has(id) {
+          return (savedIds.indexOf(id) !== -1);
+        }
+
+        function add(id) {
+          savedIds = savedIds.concat(id);
+        }
+
+        function remove(id) {
+          var ids = [].concat(id);
+
+          savedIds = savedIds.filter(function (savedId) {
+            return ids.indexOf(savedId) === -1;
+          });
+        }
+
+        function filter(recom) {
+          if (!recom[paramName]) {
+            return true;
+          }
+
+          if (!has(recom[paramName])) {
+            add(recom[paramName]);
+            return true;
+          }
+
+          return false;
+        }
+
+        function filteredCount(recoms) {
+          return recoms.reduce(function (acc, recom) {
+            return (acc + (has(recom[paramName]) ? 1 : 0));
+          }, 0);
+        }
+
+        function getItems() {
+          return savedIds.slice();
+        }
+
+        return {
+          has: has,
+          add: add,
+          remove: remove,
+          filter: filter,
+          filteredCount: filteredCount,
+          getItems: getItems,
+        };
+      });
+    }
+
+    retailrocket['store{{data-retailrocket-markup-block}}'] = (function () {
+      
+      var recomTrackSetting = {
+        nameTrack: '',
+        namePage: '',
+        abSegment: '',
+        check: false,
+
+        listTrack() {
+          var defaultTrack = [this.nameTrack];
+
+          if (this.namePage !== '') defaultTrack.push(this.nameTrack + this.namePage);
+          return defaultTrack;
+        },
+      };
+
+      function setStatisticsRender(alg, recoms) {
+        var itemsId = recoms.map(function (product) { return product.ItemId });
+
+        recomTrackSetting.listTrack().forEach(function (track) {
+          rrApiOnReady.push(function () {
+            rrApi.recomTrack(
+              '{{data-retailrocket-markup-block}}',
+              0,
+              [itemsId],
+              {
+                eventType: 'blockBasket',
+                abtest: recomTrackSetting.abSegment,
+                algorithm: alg,
+                recomItemIds: [itemsId],
+              }
+            );
+          });
+        });
+      }
+      
+      function setStatisticsClick(elem, itemId) {
+        var getAlgorithm = elem.closest('.rr-widget').dataset.algClick;
+        
+        recomTrackSetting.listTrack().forEach(function (track) {
+          rrApiOnReady.push(function () {
+            rrApi.recomTrack(
+              '{{data-retailrocket-markup-block}}',
+              0,
+              [],
+              {
+                eventType: 'blockClick',
+                clickedItem: itemId,
+                abtest: recomTrackSetting.abSegment,
+                algorithm: getAlgorithm
+              }
+            );
+          });
+        });
+      }
+      
+      function rrGetCookie(name) {
+        var matches = document.cookie.match(new RegExp(
+          '(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'
+        ));
+
+        return matches ? decodeURIComponent(matches[1]) : false;
+      }
+
+      function getRelatedProducts(productIds, callback) {
+        retailrocket.recommendation.forProducts(
+          retailrocket.api.getPartnerId(),
+          productIds,
+          'related',
+          {stock:'3875'},
+          callback
+        );
+      }
+
+      function eventClickGa() {
+        waitFor(
+          function () {
+            return ('ga' in window && 'getAll' in window.ga);
+          },
+          function () {
+            waitFor(
+              function () { return ga.getAll()[1].get('name') != undefined },
+              function () { ga(ga.getAll()[1].get('name') + '.send', 'event', 'RetailRocket', 'click', 'card_related') }
+            );
+          }
+        );
+      }
+      
+      function arrayFilter (recoms) {
+        var excludeCategory = [1365527693, 589144505],
+        	currentProductId = '{{data-product-id}}';
+        
+      	var filteredRecoms = recoms.filter(function(recom){
+          return recom.CategoryIds.every(function(categoryId){return excludeCategory.indexOf(categoryId) == -1}) &&
+            recom.Url.indexOf('blogs') == -1 &&
+            currentProductId.indexOf(recom.ItemId) == -1
+        }).filter(retailrocket.modules.duplicates.filter);
+        
+        return filteredRecoms;
+      }
+
+      function preRenderFn(widget, recoms, renderFn) {
+        var productIds = widget.parentElement.getAttribute('data-product-id').split(',').map(function (item) { return Number(item) });
+        var filteredRecoms = arrayFilter(recoms);
+
+        if (filteredRecoms.length > 3) {
+          renderFn(filteredRecoms);
+        } else {
+          getRelatedProducts(productIds, function (relatedProducts) {
+            var filteredRecomsRelated = arrayFilter(relatedProducts);
+
+            if (filteredRecomsRelated.length > 3) {
+              renderFn(filteredRecomsRelated);
+            }
+          });
+        }
+      }
+      
+      function preRenderFnFLATBP (widget, recoms, renderFn) {
+        var getRRPvid = rrGetCookie('rrpvid');
+        var partnerId = retailrocket.api.getPartnerId();
+        var sessionId = retailrocket.api.getSessionId();
+
+        fetch(
+          `https://api.retailrocket.ru/api/2.0/recommendation/relatedForLastAddedToBasketProducts/${partnerId}/?&stockId=${'{{data-stock-id}}'}&session=${sessionId}&pvid=${getRRPvid}&isDebug=false&format=json`
+        )
+          .then(function (response) {
+          return response.json();
+        })
+          .then(function (data) {
+          var newAlgorithmRecoms = data.filter(retailrocket.modules.duplicates.filter);
+
+          if (newAlgorithmRecoms.length > 0) {
+            setStatisticsRender('relatedForLastAddedToBasketProducts', newAlgorithmRecoms);
+          	renderFn(newAlgorithmRecoms)
+          }
+        })
+      }
+
+      function rrAddToBasket(productId, widget) {
+        if (widget.hasAttribute('counter')) {
+          var value = widget.getAttribute('counter');
+        } else {
+          value = 1;
+        }
+
+        rrAddToCart(productId, value);
+      }
+
+      function postRenderFn(widget) {
+        if (widget.parentElement.getAttribute('data-darkthemepromo') == 1) {widget.classList.add('darkthemepromo')}
+        widget.addEventListener('click', function(ev) {
+          if (ev.target.classList.contains('rr-product-button__increase')) {
+            var counterInput = ev.target.previousElementSibling;
+            var inputText = counterInput.querySelector('.rr-binding');
+
+            if (counterInput.hasAttribute) {
+              var counter = Number(counterInput.getAttribute('counter'));
+            } else {
+              counter = 1;
+            }
+
+            if (counter < 100) {
+              counter = counter + 1;
+              counterInput.setAttribute('counter', counter);
+              inputText.innerText = 'В корзину ' + counter + ' шт.';
+            }
+          }
+        })
+
+        widget.addEventListener('click', function(ev){
+          if (ev.target.classList.contains('rr-product-button__decrease')) {
+            var counterInput = ev.target.nextElementSibling;
+            var inputText = counterInput.querySelector('.rr-binding');
+
+            if (counterInput.hasAttribute) {
+              var counter = Number(counterInput.getAttribute('counter'));
+
+              if (counter > 1) {
+                counter = counter - 1;
+                counterInput.setAttribute('counter', counter);
+                inputText.innerText = 'В корзину ' + counter + ' шт.';
+              }
+            }
+          }
+        })
+
+        var rrSwiperCarousel = new SwiperModel({
+          widget: widget,
+          settingSwiper: {
+            wrapperClass: 'rr-swiper-wrapper',
+            slideClass: 'rr-swiper-slide',
+            init: false,
+            updateOnWindowResize: true,
+            watchOverflow: true,
+            observer: true,
+            spaceBetween: 10,
+            lazy: false,
+            slidesPerView: 4,
+            slidesPerGroup: 1,
+            preloadImages: true,
+            touchReleaseOnEdges: true,
+            watchSlidesVisibility: true,
+            loop: false,
+            navigation: {
+              prevEl: widget.querySelector('.swiper-prev'),
+              nextEl: widget.querySelector('.swiper-next'),
+            },
+            autoplay: false,
+            speed: 300,
+            breakpoints: {
+              2000: {
+                slidesPerView: 4,
+                slidesPerGroup: 1
+              },
+              1200: {
+                slidesPerView: 3,
+                slidesPerGroup: 1
+              },
+              900: {
+                slidesPerView: 2,
+                slidesPerGroup: 1
+              },
+              500: {
+                slidesPerView: 1.5,
+                slidesPerGroup: 1
+              }
+            }
+          }
+        });
+        rrSwiperCarousel.getScript();
+        
+        waitFor(
+          function () {
+            return ('ga' in window && 'getAll' in window.ga);
+          },
+          function () {
+            setTimeout(function() {
+              waitFor(
+                function () { 
+                  return (ga.getAll()[1].get('name').indexOf('gtm') >= 0) 
+                },
+                function () { ga(ga.getAll()[1].get('name') + '.send', 'event', 'RetailRocket', 'render', 'card_related', { 'nonInteraction': true }) }
+              );
+            }, 100);
+          }
+        ); 
+      }
+
+      return {
+        postRenderFn: postRenderFn,
+        preRenderFn: preRenderFn,
+        rrAddToBasket: rrAddToBasket,
+        eventClickGa: eventClickGa,
+        preRenderFnFLATBP,
+        setStatisticsClick,
+      };
+    }());
+
+    retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}--relatedToBasket');
+    
+    waitFor(
+    	function () {
+        	return document.querySelector('.rr-widget-{{data-retailrocket-markup-block}}--relatedToBasket').classList.contains('rr-active');
+        },
+      	function () {
+          retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}--related');
+        }, true, 6
+    )
+  }(retailrocket));
+</script>

@@ -1,0 +1,11 @@
+{% assign cancel = false %}
+{% if 1 > algorithmSize and <@-model.minReco@> == 'cancelCampaign' %}
+{% assign cancel = true %}
+{% endif %}
+{% if cancel == true %}
+{{ Message | cancel: 'no reco' }}
+{% endif %}
+
+{% if algorithmSize > 0 %}
+<!-- items -->
+{% endif %}

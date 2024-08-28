@@ -1,0 +1,406 @@
+<div class="retailrocket deactivate-if-visitor-agreed-to-receive-marketing-mail" data-s="{{data-retailrocket-markup-block}}" data-on-show="">
+  <div class="rr-text-after-sub">
+    <a class="retailrocket__close rr-close-after-sub" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].closePopup(this);">x</a>
+    <span>¡Gracias por suscribirte!</span>
+  </div>
+  <div class="rr-content">
+    <div class="retailrocket-widget retailrocket-exit-bar rr-widget-{{data-retailrocket-markup-block}}"
+      id="{{data-retailrocket-markup-block}}-mailrequest-widget"
+      data-algorithm="mailrequest"
+      data-number-of-items="3"
+      data-image-width="224"
+      data-image-height="224"
+      data-textoverflowhidden="true"
+      data-retailrocket-morebutton="false"
+      data-retailrocket-buybutton="false"
+      data-viewed-mail-template-ready="true"
+      data-basket-mail-template-ready="false"
+      data-viewedna-mail-template-ready="true"
+      data-search-mail-template-ready="false"
+      data-header-text-viewed="¿QUIERES QUE TE ENVIEMOS ESTOS PRODUCTOS A TU EMAIL Y ASÍ AHORRAS TIEMPO EN TU PRÓXIMA VISITA?"
+      data-header-text-basket=""
+      data-template-container-id="widget-template-{{data-retailrocket-markup-block}}"
+      data-number-of-rendered-items="0"
+      data-on-pre-render="retailrocket['store{{data-retailrocket-markup-block}}'].preRenderFn(this, data, renderFn)"
+      data-on-update="retailrocket['store{{data-retailrocket-markup-block}}'].onRRUpdate(this)">
+    </div>
+    <div class="retailrocket retailrocket-subscribe__widget retailrocket-mailrequest-form"
+      data-send-btn-id="storetrigger-mailrequest-from-send-btn"
+      data-email-input-id="storetrigger-mailrequest-form-email"
+      data-subscribe-on-trigger-email-checkbox-id="subscribe-on-trigger-email"
+      data-product-to-send-widget-id="{{data-retailrocket-markup-block}}-mailrequest-widget">
+      <form class="retailrocket-subscribe__form" onsubmit="retailrocket['store{{data-retailrocket-markup-block}}'].rrOnSubmit(this);return false;">
+        <a class="retailrocket__close" onclick="retailrocket['store{{data-retailrocket-markup-block}}'].closePopup(this);">x</a>
+        <div class="rr-form-top">
+          <div class="retailrocket-subscribe__input-email-block">
+            <label class="retailrocket-subscribe__input-email-label">Tu dirección de correo electrónico</label>
+            <input class="retailrocket-subscribe__input-email" id="storetrigger-mailrequest-form-email" placeholder="E-mail"
+            autocomplete="off" readonly onfocus="this.removeAttribute('readonly')" type="text">
+          </div>
+          <div class="retailrocket-subscribe__input-submit-block">
+            <input class="retailrocket-subscribe__input-submit desabledButton" id="storetrigger-mailrequest-from-send-btn" type="submit" value="ENVIAR">
+          </div>
+        </div>
+        <div>
+          <div class="retailrocket-subscribe__input-checkbox-block">
+            <input class="retailrocket-subscribe__input-checkbox" id="subscribe-on-trigger-email" type="checkbox" required checked>
+            <label class="retailrocket-subscribe__input-checkbox-label" for="subscribe-on-trigger-email">
+              <span class="rr-text-legal">Acepto recibir promociones y descuentos vía e-mail.</span>
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script id="widget-template-{{data-retailrocket-markup-block}}" type="text/html">
+  <div class="rr-widget__container">
+    <div class="rr-widget__widgetheader">
+      <div class="rr-widget__widgetlogo">
+        <img src="https://gallery.retailrocket.net/65aebd452b1a6938deb1c28d/logo%20homaven.png" alt="homaven">
+      </div>
+      <div class="rr-widget__widgettitle">
+        <%=headerText%>
+      </div>
+    </div>
+    <div class="rr-items">
+      <% for (var i = 0 ; i < numberOfItems; ++i) with(items[i]) { %>
+        <div class="rr-item">
+          <div class="rr-item__image">
+            <a class="rr-item__info" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+              <img src="<%=PictureUrl%>">
+              <% if (Params.PictureUrl2) { %>
+                <img class="rr-item__img" src="<%=PictureUrl%>">
+                <img class="rr-item__img-hover" src="<%=PictureUrl%>">
+              <% } %>
+              <div class="rr-item__labels">
+              	<% if (OldPrice > Price) { %>
+                  <span class="rr-item__label"><%= Math.round(100 - (Price / OldPrice) * 100) %>%</span>
+                <% } %>
+              </div>
+            </a>
+            <div class="rr-item__actions wd-add-btn-replace">
+                <a href="?add-to-cart=<%=ItemId%>" data-quantity="1" class="rr-item__link-basket button product_type_simple add_to_cart_button ajax_add_to_cart add-to-cart-loop" data-product_id="<%=ItemId%>" data-product_sku="WR000259" aria-label="Agregar al carrito: " aria-describedby="" rel="nofollow" onclick='rrApi.recomAddToCart(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" }); (window[&quot;rrApiOnReady&quot;] = window[&quot;rrApiOnReady&quot;] || []).push(function() { try { rrApi.addToBasket(<%=ItemId%>) } catch(e) {} })'><span>Añadir al carrito</span></a>
+            </div>
+          </div>
+          <div class="rr-item__name-block">
+            <a class="rr-item__info rr-item__title" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'>
+              <%=Name %>
+            </a>
+          </div>
+          <div class="rr-item__wrap-vendor">
+            <a class="rr-item__vendor" href="<%=Url%>" onclick='rrApi.recomMouseDown(<%=ItemId%>, { suggester: "<%=suggesterId%>", methodName: "<%=algorithm%>" });'><%= Vendor %></a>
+          </div>
+          <div class="rr-item__block-price">
+            <% if (OldPrice > Price) { %>
+            <div class="rr-item__old-price"> <span class="rr-item__price-currency"></span> <span class="rr-item__old-price-value"><%= retailrocket.widget.formatNumber(OldPrice, ',', '.', 0) %></span> </div>
+            <% } %>
+            <div class="rr-item__price"> <span class="rr-item__price-currency"></span> <span class="rr-item__price-value"><%= retailrocket.widget.formatNumber(Price, ',', '.', 0) %></span> </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</script>
+<style>
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] *{box-sizing:border-box;font-family:inherit}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"].retailrocket-notify-widget{top:-200%;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"].retailrocket-notify-widget.active{top:0;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-text-after-sub {position: absolute;top: 0;bottom: 0;right: 0;left: 0;justify-content: center;align-items: center;z-index: 5;background: #fff;font-size: 40px;color: #000;font-weight: bold;display: none;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket__close.rr-close-after-sub {position: absolute;right: 20px;top: 10px;color: #000;font-size: 30px;z-index: 1;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] {padding:20px 0;width:1700px;max-width:100%;display:block;outline:none;box-sizing:border-box;background-color:#fff;z-index:500;left: 50%;transform: translateX(-50%);padding: 0;display: block;top:-200%;position: fixed;transition: all .2s ease;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"].rr_popup_show{top:0;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket__close{position:absolute;right:20px;top:0px;color:#fff;font-size:20px;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__widget{padding: 5px 0;background-color: #009932;color: #fff;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__form {max-width:100%;margin: 0 auto;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;position: relative;flex-direction: column;margin-top: 10px;margin-bottom: 10px;gap: 10px;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-form-top {display: flex;align-items: center;justify-content: center;gap: 20px;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-email-block{margin:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center; -webkit-box-align:center; -ms-flex-align:center; align-items:center;font-size:4px;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-email-label{color:#fff;font-size:14px;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-email{padding: 0 10px 0 14px;margin-left: 15px;width: 280px;height: 30px;font-size: 14px;color: #000;border-radius: 3px;border: none;background: #fff;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-submit-block {display: flex;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-checkbox{position:absolute;opacity:0;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-checkbox-label{position:relative;cursor:pointer;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-checkbox-label::before {content: '';padding: 7px;display: inline-block;position: relative;-webkit-appearance: none;background-color: #2c75ff;border-radius: 2px;vertical-align: middle;cursor: pointer;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-text-legal {color: #fff;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-checkbox:checked + .retailrocket-subscribe__input-checkbox-label:after {content: '';display: block;position: absolute;top: 4px;left: 5px;width: 5px;height: 11px;border: solid #fff;border-width: 0 2px 2px 0;transform: rotate(45deg);}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-checkbox-label.warning,
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-checkbox-label.warning a{color:red;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-submit {margin: 0;width: 150px;height: 30px;font-size: 15px;color: #fff;border: 1px solid #fff;background-color: transparent;border-radius: 3px;display: block;min-height: unset;opacity: 1 !important;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .retailrocket-subscribe__input-submit.desabledButton:hover{cursor:not-allowed}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__container{margin:0 auto;width:100%;max-width:1170px;text-align:center;margin-top: 15px;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__widgetheader {display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 15px;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__widgetlogo img {width: 260px;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-widget__widgettitle{margin-bottom:20px;font-weight:bold;font-size:18px;color:#444;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-items{height:100%;display:-webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;padding: 20px;gap: 15px;}
+  .retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image{position: relative;width:100%;outline:none;overflow:hidden;}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image img{width:auto;height:auto;max-width:200px;max-height:100%;vertical-align:middle;margin:0 auto;outline:none}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__img{opacity: 1;transition: opacity 0.5s ease,transform 2s cubic-bezier(0, 0, 0.44, 1.18);}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image:hover .rr-item__img{opacity: 0;}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__img-hover{position:absolute;top:0;left:0;opacity: 0;transition: opacity 0.5s ease,transform 2s cubic-bezier(0, 0, 0.44, 1.18);}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__image:hover .rr-item__img-hover{opacity: 1;transform: scale(1.09);}  
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__actions{overflow: hidden;width: 100%;position: absolute;bottom: 0;opacity: .8;transition: transform .3s ease, opacity .3s ease;transform: translateY(103%) translateZ(0);z-index: 5;height: 38px;}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item:hover .rr-item__actions{opacity:1;transform: translateY(0) translateZ(0);}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__link-basket{padding:0;min-height: 38px!important;display: block;font-size: 13px;color: #fff;box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .15);background-color: rgb(0,153,51);text-transform: uppercase;font-weight: 600;}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__link-basket:hover{background-color: #000;}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__link-basket:before{position: absolute;inset: 0;display: flex;align-items: center;justify-content: center;font-weight: 400;font-size: 20px;transition: opacity .15s ease, transform .25s ease;transform: translateY(100%);content: "\f123";font-family: "woodmart-font";}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__link-basket:hover:before{transform: translateY(0) translateZ(0);}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__link-basket span{min-height: 38px;display: flex;align-items: center;justify-content: center;min-height: inherit;transition: transform .25s ease, opacity .15s ease;}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__link-basket:hover span{transform: translateY(-100%) translateZ(0);}  
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item{height: 100%;display: flex;text-align: center;flex-direction: column;gap: 12px;padding:15px;border: 1px solid rgba(0,0,0,0.105);}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__info{text-decoration:none;outline:none}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__labels{position: absolute;top: 7px;inset-inline-start: 7px;z-index: 1;display: flex;align-items: flex-start;flex-direction: column;flex-wrap: nowrap;gap: 10px;max-width: 50%;transition: opacity .3s ease;}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__label{padding: 5px 10px;min-width: 50px;color: #fff;text-align: center;text-transform: uppercase;word-break: break-all;font-weight: 600;font-size: 12px;line-height: 1.2;background:rgb(0,161,75);}  
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title{display:block;font-size: 15px;font-weight:600;line-height:1.4em;color:#333;overflow:hidden;outline:none}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__title:hover{text-decoration:none;color:rgb(51 51 51 / 65%);}  
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__wrap-vendor{margin-top: auto;}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__vendor{color:#a5a5a5;transition: all .25s ease;}
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__vendor:hover{color:#555;}  
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__block-price{font-size: 25px;font-weight: 700;color: rgb(242,114,21);display: flex;flex-wrap: wrap;justify-content: center;column-gap: 5px;align-items: baseline;}  
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__old-price{font-size:90%;font-weight:400;color:#bbb;text-decoration:line-through;display:inline-block}  
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price{display:inline-block;}  
+.retailrocket[data-s="{{data-retailrocket-markup-block}}"] .rr-item__price-currency::before{content:'$'}  
+  @media (max-width: 1000px) {
+    .retailrocket[data-s="{{data-retailrocket-markup-block}}"]{display:none!important;}
+  }
+</style>
+<script>
+  (function(retailrocket) {
+    'use strict';
+
+    var waitFor = function (exitCondition, callback, force) {
+      var checkCount = 100;
+      var timeout = 1000;
+
+      (function check() {
+        var result = exitCondition();
+        if (result) {
+          callback(result);
+          return;
+        }
+
+        if (checkCount === 0) {
+          if (force) {
+            callback();
+          }
+          return;
+        }
+
+        checkCount -= 1;
+        setTimeout(check, timeout);
+      }());
+    };
+
+    function rrGetCookie(name) {
+      var matches = document.cookie.match(new RegExp(
+        '(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'
+      ));
+
+      return matches ? decodeURIComponent(matches[1]) : false;
+    }
+
+    function rrSetCookie(name, value, daysOfLife) {
+      var date = new Date(new Date().getTime() + 60 * 1000 * 60 * 24 * daysOfLife);
+      document.cookie = name + '=' + value + '; path=/; expires=' + date.toUTCString();
+    }
+
+    retailrocket['store{{data-retailrocket-markup-block}}'] = (function() {
+      (function validateRRForm() {
+        var widget = document.querySelector('.retailrocket[data-s="{{data-retailrocket-markup-block}}"]'),
+            button = widget.querySelector('.retailrocket-subscribe__input-submit'),
+            checkbox = widget.querySelector('.retailrocket-subscribe__input-checkbox'),
+            label = widget.querySelector('.retailrocket-subscribe__input-checkbox-label'),
+            emailForm = widget.querySelector('.retailrocket-subscribe__input-email'),
+            isValidEmail = false;
+
+        emailForm.addEventListener('input', function() {
+          if (this.value != '') {
+            var pattern = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
+            if(pattern.test(this.value)){
+              isValidEmail = true;
+
+              if (checkbox.checked) {
+                label.classList.remove('warning');
+                button.removeAttribute('disabled');
+                button.classList.remove('desabledButton');
+              } else {
+                label.classList.add('warning');
+                button.classList.add('desabledButton');
+                button.setAttribute('disabled', 'disabled');
+              }
+            } else {
+              button.classList.add('desabledButton');
+              button.setAttribute('disabled', 'disabled');
+              isValidEmail = false;
+            }
+          } else {
+            button.classList.add('desabledButton');
+            button.setAttribute('disabled', 'disabled');
+            isValidEmail = false;
+          }
+        });
+
+        checkbox.addEventListener('change', function() {
+          if (checkbox.checked) {
+            label.classList.remove('warning');
+
+            if (isValidEmail) {
+              button.removeAttribute('disabled');
+              button.classList.remove('desabledButton');
+            }
+          } else {
+            label.classList.add('warning');
+            button.classList.add('desabledButton');
+            button.setAttribute('disabled', 'disabled');
+          }
+        });
+      })();
+
+      function preRenderFn(widget, recoms, renderFn) {
+        var filteredRecoms = recoms.filter(function (item) {
+          return item.Price > 0 && item.Url.indexOf('https://homevan.cl/') > -1;
+        }); 
+
+        if (filteredRecoms.length > 0) {
+          renderFn(filteredRecoms);
+        }
+      }
+
+      function domObserver(el, callback){
+        var done = function () { callback(el); };
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+
+        if (MutationObserver) {
+          var observer = new MutationObserver(done);
+
+          observer.observe(el, { attributes: true });
+        } else if (el.addEventListener) {
+          el.addEventListener('DOMNodeInserted', done, false);
+        } else {
+          var html = el.innerHTML;
+
+          setInterval(function (){
+            if( html != el.innerHTML ){
+              html = el.innerHTML;
+              done();
+            }
+          }, 300);
+        }
+      };
+
+      function renderControll(ev, callback) {
+        var widget = document.querySelector('.retailrocket[data-s="{{data-retailrocket-markup-block}}"]');
+
+        if (ev === 'add') {
+          widget.classList.add('rr_popup_show');
+
+          setTimeout(function () {
+            callback && callback();
+          }, 200)
+
+          return;
+        }
+
+        widget.classList.remove('rr_popup_show');
+
+        setTimeout(function () {
+          callback && callback();
+        }, 200)
+      }
+
+      function rrOnSubmit(form) {
+        event.preventDefault();
+
+        var widget = form.closest('.retailrocket[data-s="{{data-retailrocket-markup-block}}"]'),
+            successWindow = widget.querySelector('.rr-text-after-sub');
+        var emailForm = widget.querySelector('.retailrocket-subscribe__input-email');
+
+        rrApi.setEmail(emailForm.value);
+        rrSetCookie('rrDataSend', 'true', 365);
+        successWindow.style.display = 'flex';
+
+        widget.removeEventListener("mouseleave", function(event){
+          renderControll('remove');
+        });
+
+        setTimeout(function () {
+          renderControll('remove', function () {
+              widget.style.display = 'none';
+          })
+        }, 3000);
+      } 
+
+      domObserver(document.querySelector('.rr-widget-{{data-retailrocket-markup-block}}'), function (el) {
+        var attrValue = el.dataset.numberOfRenderedItems,
+            attrListType = el.dataset.renderedListType;
+        var getCookieClose = rrGetCookie('rrclosePopup'),
+            getCookieDataSend = rrGetCookie('rrDataSend');
+
+        if (Number(attrValue) > 2 && attrListType === 'viewed' && !getCookieClose && !getCookieDataSend) {
+          postRenderFn(el);
+        }
+      });
+
+      function postRenderFn(widget) {
+        var rrBlock = widget.closest('div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]');
+        var markupBlock = widget.closest('.retailrocket[data-s="{{data-retailrocket-markup-block}}"]');
+
+        function render() {
+          var amountItemsRender = widget.dataset.numberOfRenderedItems;
+          var getCookieClose = rrGetCookie('rrclosePopup'),
+              getCookieDataSend = rrGetCookie('rrDataSend');
+          var attrListType = widget.dataset.renderedListType;
+
+          if(event.clientY <= 0 || event.clientY >= window.innerHeight) {
+            
+            if (amountItemsRender > 2 && attrListType === 'viewed' && !getCookieClose && !getCookieDataSend) {
+              renderControll('add');
+            } else {
+              renderControll('remove');
+            }
+          }
+        }
+
+        function hide () {
+          renderControll('remove');
+        }
+
+        document.body.onmouseleave = render;
+        markupBlock.onmouseleave = hide;
+      }
+
+      function closePopup(elem) {
+        var widget = elem.closest('.retailrocket[data-s="{{data-retailrocket-markup-block}}"]');
+        
+        renderControll('remove', function () {
+          widget.style.display = 'none';
+          rrSetCookie('rrclosePopup', 'true', 1);
+        });
+      }
+
+      function onRRUpdate (widget) {}
+
+      return {
+        onRRUpdate,
+        preRenderFn,
+        postRenderFn,
+        closePopup,
+        rrOnSubmit
+      };
+    })();
+
+    retailrocket.mailRequestForm.initialize();
+    retailrocket.deactivateIfAgreedToReceiveMarketingMail.initialize();
+    retailrocket.widget.render('rr-widget-{{data-retailrocket-markup-block}}');
+
+    waitFor(
+      function () {
+        return document.querySelector('.rr-widget-{{data-retailrocket-markup-block}}').getAttribute('data-number-of-rendered-items') !== null;
+      },
+      function () {
+        retailrocket['store{{data-retailrocket-markup-block}}'].postRenderFn(document.querySelector('.rr-widget-{{data-retailrocket-markup-block}}'));
+      }
+    )
+  }(retailrocket));
+</script>

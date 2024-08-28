@@ -1,0 +1,1 @@
+retailrocket.widget.render(widget.getAttribute('data-next'));

@@ -1,0 +1,69 @@
+<style>
+  .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] {z-index: 1070;margin: 0;font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-style: normal;font-weight: 400;line-height: 1.5;text-align: left;text-align: start;text-decoration: none;text-shadow: none;text-transform: none;letter-spacing: normal;word-break: normal;word-spacing: normal;white-space: normal;line-break: auto;font-size: .875rem;word-wrap: break-word;opacity: .0;padding: 0.4rem 0;display: block;opacity: 0;transition: opacity .15s linear;position: absolute;}
+  .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] .rr-bundle-tooltip__arrow {border-radius: 5px;position: absolute;display: block;width: 0.8rem;height: 0.4rem;bottom: 0;left: 94px;}
+  .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] .rr-bundle-tooltip__arrow::before {position: absolute;content: "";border-color: transparent;border-style: solid;top: 0;border-width: 0.4rem 0.4rem 0;border-top-color: #000000;}
+  .rr-bundle-tooltip[data-retail-tool-tip-s="{{data-retailrocket-markup-block}}"] .rr-bundle-tooltip__text {max-width: 200px;padding: 0.25rem 0.5rem;text-align: center;background: #000000;color: #ffffff;border-radius: 5px;}
+</style>
+
+<script>
+  function createTooltip(attrValue, tooltipTitle, ind) {
+    var tooltip = document.createElement('div');
+
+    tooltip.className = 'rr-bundle-tooltip rr-tooltip-first';
+    tooltip.setAttribute('data-retail-tool-tip', attrValue);
+    tooltip.setAttribute('data-retail-tool-tip-s', ind);
+
+    tooltip.innerHTML = `
+      <div class="rr-bundle-tooltip__arrow"></div>
+      <div class="rr-bundle-tooltip__text">${tooltipTitle}</div>
+    `;
+
+    document.body.appendChild(tooltip);
+  }
+
+  function setToolTip (label, dataToolTip, textToolTip, ind) {
+    // пример вызова
+    /* 
+    onmouseenter="retailrocket['store{{data-retailrocket-markup-block}}'].setToolTip(this, 'rr-<%=i%>-{{data-retailrocket-markup-block}}', 'Ahorra comprando varios artículos', '{{data-retailrocket-markup-block}}');" 
+    */
+    createTooltip(dataToolTip, textToolTip, ind);
+
+    var widget = document.querySelector('div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]'),
+        toolTip = document.querySelector('.rr-tooltip-first[data-retail-tool-tip="'+ dataToolTip +'"]');
+    
+    var positionsWidget = widget.getBoundingClientRect(),
+        positionsLabel = label.getBoundingClientRect(),
+        positionTop = window.scrollY + Number(positionsLabel.top.toFixed(0)) - (toolTip.offsetHeight),
+        positionLeft = window.scrollX + Number(positionsLabel.left.toFixed(0)) - (toolTip.offsetWidth / 2) + (positionsLabel.width / 2);
+
+    toolTip.style.top = positionTop + 'px';
+    toolTip.style.left = positionLeft + 'px';
+    
+    setTimeout(function () {
+      toolTip.style.opacity = '.9';
+    }, 150);
+  }
+
+  function removeToolTip (dataToolTip) {
+    // пример вызова
+    /* 
+    onmouseleave="retailrocket['store{{data-retailrocket-markup-block}}'].removeToolTip('rr-<%=i%>-{{data-retailrocket-markup-block}}');"
+    */
+    var toolTips = document.querySelectorAll('.rr-tooltip-first[data-retail-tool-tip="'+ dataToolTip +'"]');
+    
+    toolTips.forEach(function (item) {
+      item.style.opacity = '0';
+
+      setTimeout(function () {
+        item.remove();
+      }, 150);
+    })
+  }
+
+  /* return {
+    postRenderFn: postRenderFn,
+    preRenderFn: preRenderFn,
+    setToolTip,
+    removeToolTip
+  } */
+</script>

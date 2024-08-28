@@ -1,0 +1,40 @@
+<script type="text/javascript">
+  try {
+    (function (id) {
+      if (!retailrocket.dev.developmentMode()) return;
+
+      var markUp = document.querySelector('div[data-retailrocket-markup-block="{{data-retailrocket-markup-block}}"]'),
+          needToRemoveMainMB = true; // if true than origin block will be removed
+
+      if (!markUp) return;
+
+      var rrBlocksContainer = markUp.parentElement,
+          attributes = Object.values(markUp.attributes)
+      .map(function(attr){ return { name: attr.name, value: attr.value } })
+      .filter(function(attr){ return attr.name != "" && attr.value != "" && !/"|'/.test(attr.name) }),
+          testMarkUpContainer = document.createElement('div');
+      
+      attributes.forEach(function (attr) {
+        if (attr.name !== 'initialized') {
+          if (attr.name == 'data-retailrocket-markup-block') {
+            testMarkUpContainer.setAttribute(attr.name, id);
+          } else {
+            testMarkUpContainer.setAttribute(attr.name, attr.value);
+          }
+        }
+      });
+
+      markUp.insertAdjacentElement('afterend', testMarkUpContainer);
+
+      if (needToRemoveMainMB) {
+        for (var i = 0; i < rrBlocksContainer.children.length; i++) {
+          if (rrBlocksContainer.children[i].dataset.retailrocketMarkupBlock === '{{data-retailrocket-markup-block}}') rrBlocksContainer.children[i].remove();
+        }
+      }
+
+      retailrocket.markup.render();
+    }('5e01bc7197a5250b883f4c92')); // test block id
+  } catch (error) {
+    if (retailrocket.dev.developmentMode()) console.log(error);
+  }
+</script>

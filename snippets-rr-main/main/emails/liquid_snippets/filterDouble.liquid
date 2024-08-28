@@ -1,0 +1,31 @@
+{%- comment -%} Перед началом таблицы {%- endcomment -%}
+<@ if (model.filterDouble) { @>
+{% assign algorithmSize = 0 %}
+{% for item in AlgorithmFill %}
+{% capture itemId %},{{item.Id}},{% endcapture %}
+{% if itemIdsList contains itemId %}{% continue %}{% endif %}
+{% assign algorithmSize = algorithmSize | plus: 1 %}
+{% endfor %}
+<@ } @>
+
+{% if algorithmSize > 0 %}
+{%- comment -%} Начало модуля {%- endcomment -%}
+{% assign limitium = <@-model.limit || 6@> %}
+{% assign lim = 0 %}
+{% assign inrow = 2 %}
+{% for item in AlgorithmFill %}
+{% capture itemId %},{{item.Id}},{% endcapture %}
+<@ if (model.filterDouble) { @>
+{% if itemIdsList contains itemId %}{% continue %}{% endif %}
+<@ } @>
+{% capture itemIdsList %}{{itemIdsList}}{{itemId}}{% endcapture %}
+{% assign lim = lim | plus: 1 %}
+{% assign mod = lim | modulo: inrow %}
+{%- comment -%} Верстка товара {%- endcomment -%}
+{% if lim >= limitum %}{% break %}{% endif %}
+{% if mod == 0 and forloop.last != true %}
+<!--[if (gte mso 9)|(IE)|(RP)]></tr><tr><![endif]-->
+{% endif %}
+{% endfor %}
+{%- comment -%} Конец модуля {%- endcomment -%}
+{% endif %}
